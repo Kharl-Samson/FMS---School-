@@ -1,0 +1,395 @@
+.login_container{
+    height: 100vh;
+    width: 100%;
+    background-color: #FFAA28;
+    overflow: hidden;
+}
+
+/*HOME CONTAINER BTN*/
+.home_container_btn{
+    z-index: 4;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    left: 0;
+    top: 5%;
+    background-color: #ffff;
+    padding: .5% 0;
+    padding-right: 1%;
+    padding-left: .5%;
+    font-size: 0rem;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transition: .3s ease-in;
+}
+.home_container_btn img{
+    height: 3.5vh;
+    width: auto;
+    margin-right: 5%;
+}
+.home_container_btn:hover{
+    font-size: 1rem;
+    background-color: rgb(75, 75, 75);
+    cursor: pointer;
+    color: #ffff;
+}
+.home_container_btn span{
+    color: #ffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+}
+
+/*CICT TEXT BG*/
+.login_container > .cict_text_container{
+    height: auto;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+.login_container > .cict_text_container > .cict_text{
+    height: 25vh;
+    width: auto;
+}
+.login_container > .cict_text_container1{
+    top : 5%;
+}
+.login_container > .cict_text_container2{
+    top : 35%;
+}
+.login_container > .cict_text_container3{
+    top : 65%;
+}
+.login_container > .cict_text_container > .cict_text1{
+    margin-left: 5%;
+    -webkit-animation: slide-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.login_container > .cict_text_container > .cict_text2{
+    margin-left:-2%;  
+    -webkit-animation: slide-right 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-right 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes slide-left {
+    0% {
+      -webkit-transform: translateX(0);
+       transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(-100px);
+       transform: translateX(-100px);
+    }
+  }
+  @keyframes slide-left {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(-100px);
+      transform: translateX(-100px);
+    }
+}
+@-webkit-keyframes slide-right {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(100px);
+      transform: translateX(100px);
+    }
+  }
+  @keyframes slide-right {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(100px);
+      transform: translateX(100px);
+    }
+}
+  
+  
+
+
+/*IMAGE ROUNDER*/
+.img_rounder_container{
+    height: auto;
+    width: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+}
+.img_rounder_container > img{
+    height: 100vh;
+    width: auto;
+    margin-top: -35%;
+    margin-left: 40%;
+    animation: rotation 50s infinite linear;
+}
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+}
+
+/*LOGIN FORM*/
+.login_form_container{
+    position: absolute;
+    inset: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+.login_form_container .login_form{
+    height: 100%;
+    width: 100%;
+    border-radius: 40px;
+    background-color: #ffff;
+    display: flex;
+}
+.login_form_container .login_form > .left,
+.login_form_container .login_form > .right{
+    width: 50%;
+    height: 100%;
+}
+.login_form_container .login_form > .left .left_container{
+    height: 100%;
+    width: 80%;
+    margin: 0% auto;
+}
+.login_form_container .login_form > .left .left_container h1{
+    font-family: 'Poppins', sans-serif;
+    color: #2B2B2B;
+    font-size: 2rem;
+    margin-top: 10%;
+}
+.login_form_container .login_form > .left .left_container .subtext{
+    font-family: 'Poppins', sans-serif;
+    color: #B9B9B9;
+    font-size: 1rem;
+    margin-top: 1%;
+}
+.login_form_container .login_form > .left > .left_container .input_container{
+    height: 6vh;
+    width: 100%;
+    background-color: #f3f2f2;
+    border: 1px solid #D8D8D8;
+    border-radius: 8px;
+    display: flex;
+}
+.login_form_container .login_form > .left > .left_container .input_container > .icon_container{
+    width: 13%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login_form_container .login_form > .left > .left_container .input_container > .icon_container > img{
+    height: 40%;
+    width: auto;
+}
+.login_form_container .login_form > .left > .left_container .input_container > input{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: .9rem;
+    height: 100%;
+    width: 85%;
+}
+.login_form_container .login_form > .left > .left_container .input_container1{
+    margin-top: 10%;
+}
+.login_form_container .login_form > .left > .left_container .input_container2{
+    margin-top: 6%;
+}
+.login_form_container .login_form > .left > .left_container .input_container2 > input{
+    width: 75%;
+}
+.login_form_container .login_form > .left > .left_container .input_container2 .toggle_password{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login_form_container .login_form > .left > .left_container .input_container2 .toggle_password img{
+    height: 50%;
+    width: auto;
+    visibility: hidden;
+}
+.login_form_container .login_form > .left > .left_container .input_container2 .toggle_password .close_eye{
+   display: none;
+}
+.login_form_container .login_form > .left > .left_container .input_container2 .toggle_password img:hover{
+    cursor: pointer;
+    opacity: 40%;
+}
+.login_form_container .login_form > .left > .left_container .remember_forgot_container{
+    height:auto;
+    width: 100%;
+    margin-top: 3%;
+    display: flex;
+    align-items: center;
+}
+.login_form_container .login_form > .left > .left_container .remember_forgot_container .left{
+    display: flex;
+    align-items: center;
+    margin-right: 5%;
+    height: 4vh;
+}
+.login_form_container .login_form > .left > .left_container .remember_forgot_container .right{
+    display: flex;
+    align-items: center;
+    height: 4vh;
+}
+.login_form_container .login_form > .left > .left_container .remember_forgot_container .remember_me,
+.login_form_container .login_form > .left > .left_container .remember_forgot_container .forgot_pass{
+    font-family: 'Poppins', sans-serif;
+    font-size: .9rem;
+    color: #B9B9B9;
+    white-space: nowrap;
+}
+.login_form_container .login_form > .left > .left_container .remember_forgot_container .left > .remember_me{
+    margin-left: 2%;
+}
+.login_form_container .login_form > .left > .left_container .remember_forgot_container .forgot_pass:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: 80%;
+}
+.login_form_container .login_form > .left > .left_container .sign_in_btn{
+    height: 6vh;
+    width: 100%;
+    background-color: #FFAA28;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    color: #ffff;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-top: 3%;
+}
+.login_form_container .login_form > .left > .left_container .sign_in_btn:hover{
+    opacity: 70%;
+}
+.login_form_container .login_form > .right{
+    padding: 7.5% 0;
+    height: fit-content;
+    background-image: url(../img/login_img.png);
+    background-repeat: no-repeat;
+    background-size: 110%;
+    background-position: center center;    
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login_form_container .login_form > .right > img{
+    height:auto;
+    width: 65%;
+}
+@-webkit-keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+       transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+       transform: scale(1);
+    }
+  }
+  @keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+       transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+       transform: scale(1);
+    }
+}
+  
+
+/*FOOTER*/
+.login_container .footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}
+.login_container .footer span{
+    font-family: 'Poppins', sans-serif;
+    font-size: .8rem;
+    color: #fff;
+    margin: 0 3%;
+    margin-bottom: 1%;
+    text-align: center;
+}
+.login_container .footer .footer_clickable:hover{
+    cursor: pointer;
+    color: rgb(241, 240, 240);
+    text-decoration: underline;
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 799px) {
+    .home_container_btn{
+        padding: 2% 0;
+        padding-left: 1%;
+        padding-right: 2%;
+    }
+    .login_form_container .login_form > .left{
+        width: 100%;
+    }
+    .login_form_container .login_form > .right{
+        display: none;
+    }
+    .login_form_container .login_form > .left > .left_container .sign_in_btn{
+        margin-bottom: 7%;
+    }
+}
+
+@media only screen 
+and (max-device-width : 1281px) 
+and (max-device-height : 961px){
+    .login_form_container .login_form > .right{
+        height: 40vh;
+    }
+}   
+@media only screen 
+and (max-device-width : 1281px) 
+and (max-device-height : 721px){
+    .login_form_container .login_form > .right{
+        height: auto;
+    }
+}   
+@media only screen 
+and (max-device-width : 1281px) 
+and (max-device-height : 769px){
+    .login_form_container .login_form > .right{
+        height: auto;
+    }
+}   
+@media only screen 
+and (max-device-width : 1281px) 
+and (max-device-height : 601px){
+    .login_form_container .login_form > .right{
+        height: auto;
+    }
+}   
