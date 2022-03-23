@@ -8,6 +8,15 @@ import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import { Link } from "react-router-dom";
 
+import Home_Icon from "../images/icons/home.svg";
+import CICT_Text from "../images/login/cict_bg_text.png";
+import Image_rounder from "../images/login/login_img_rounder.png";
+import Username_icon from "../images/icons/username.svg";
+import Password_icon from "../images/icons/password.svg";
+import Open_eye_icon from "../images/icons/open_eye.svg";
+import Close_eye_icon from "../images/icons/close_eye.svg"; 
+import CICT_Logo from "../images/login/cict_logo.png";
+
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Login(){
@@ -47,23 +56,23 @@ export default function Login(){
 
             <Link to="/Home" style={{ textDecoration: 'none' }}>
                 <div className="home_container_btn">
-                    <img src="../images/icons/home.svg"/>
+                    <img src={Home_Icon}/>
                         <span>Home</span>
                 </div>
             </Link>
 
             <div className="cict_text_container cict_text_container1">
-                <img src="../images/login/cict_bg_text.png" className="cict_text cict_text1"/>     
+                <img src={CICT_Text} className="cict_text cict_text1"/>     
             </div>
             <div className="cict_text_container cict_text_container2">
-                <img src="../images/login/cict_bg_text.png" className="cict_text cict_text2"/>     
+                <img src={CICT_Text} className="cict_text cict_text2"/>     
             </div>
             <div className="cict_text_container cict_text_container3">
-                <img src="../images/login/cict_bg_text.png" className="cict_text cict_text1"/>     
+                <img src={CICT_Text} className="cict_text cict_text1"/>     
             </div>
 
             <div className="img_rounder_container">
-                <img src="../images/login/login_img_rounder.png" />
+                <img src={Image_rounder} />
             </div>
 
             <div className="login_form_container">
@@ -78,20 +87,20 @@ export default function Login(){
 
                                 <div className="input_container input_container1">
                                     <div className="icon_container">
-                                            <img src="../images/icons/username.svg" className=".for_hover" title="Username or Email"/>
+                                            <img src={Username_icon} className=".for_hover" title="Username or Email"/>
                                     </div>
                                     <input type="text" placeholder="Username or Email" />
                                 </div>
 
                                 <div className="input_container input_container2">
                                     <div className="icon_container">
-                                            <img src="../images/icons/password.svg" title="Password"/>
+                                            <img src={Password_icon} title="Password"/>
                                     </div>
                                     <input type="password" placeholder="Password" id="password" onKeyUp={TogglePass}/>
 
                                     <div className="toggle_password">
                                     
-                                            <img src="../images/icons/open_eye.svg" 
+                                            <img src={Open_eye_icon} 
                                                 className="password_toggle_icon open_eye"
                                                 style={pass.toggle}
                                                 onClick={show_pass}
@@ -99,7 +108,7 @@ export default function Login(){
                                             />
                 
             
-                                            <img src="../images/icons/close_eye.svg" 
+                                            <img src={Close_eye_icon}
                                                 className="password_toggle_icon close_eye"
                                                 style={pass.toggle}
                                                 onClick={hide_pass}
@@ -142,7 +151,7 @@ export default function Login(){
                         </div>
 
                         <div className="right">
-                            <img src="../images/login/cict_logo.png" className="cict_logo"/>
+                            <img src={CICT_Logo} className="cict_logo"/>
                         </div>
                     </div>
 
