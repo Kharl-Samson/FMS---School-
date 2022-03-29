@@ -16,6 +16,7 @@ import Password_icon from "../images/icons/password.svg";
 import Open_eye_icon from "../images/icons/open_eye.svg";
 import Close_eye_icon from "../images/icons/close_eye.svg"; 
 import CICT_Logo from "../images/login/cict_logo.png";
+import CICT_bg from "../images/login/login_img.png"
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -78,7 +79,7 @@ export default function Login(){
             <div className="login_form_container">
                 <Container maxWidth="md">
                     <Box sx={{  height: 'auto' }}>
-
+     
                     <div className="login_form">
                         <div className="left">
                             <div className="left_container">
@@ -148,14 +149,17 @@ export default function Login(){
                                 <button className="sign_in_btn">Sign in</button>
                                 <p className="dont_have_account_text">
                                     Don't have an account?&nbsp; 
-                                    <span>Sign up</span>
+
+                                    <Link to="/Register" style={{ textDecoration: 'none' }}>
+                                        <span>Sign up</span>
+                                    </Link>
                                 </p>
 
                             </div>
                         </div>
 
-                        <div className="right">
-                            <img src={CICT_Logo} className="cict_logo"/>
+                        <div className="right right_part">
+                             <img src={CICT_Logo} className="cict_logo"/>
                         </div>
                     </div>
 

@@ -120,9 +120,10 @@
     top: 0;
     right: 0;
     overflow: hidden;
+    padding-bottom: 2%;
 }
 .img_rounder_container > img{
-    height: 100vh;
+    height: 98vh;
     width: auto;
     margin-top: -35%;
     margin-left: 40%;
@@ -149,16 +150,16 @@
 	animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 .login_form_container .login_form{
-    height: 100%;
+    height: auto;
     width: 100%;
     border-radius: 40px;
     background-color: #ffff;
-    display: flex;
+    display:flex;
 }
 .login_form_container .login_form > .left,
 .login_form_container .login_form > .right{
     width: 50%;
-    height: 100%;
+    height: auto;
 }
 .login_form_container .login_form > .left .left_container{
     height: 100%;
@@ -282,23 +283,23 @@
 .login_form_container .login_form > .left > .left_container .sign_in_btn:hover{
     opacity: 70%;
 }
-.login_form_container .login_form > .right{
-    padding: 7.5% 0;
-    height: fit-content;
-    background-image: url(../images/login/login_img.png);
-    background-repeat: no-repeat;
-    background-size: 110%;
-    background-position: center center;    
+.login_form_container .login_form > .right_part{
+    background: url('../images/login/login_img.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     border-top-right-radius: 40px;
     border-bottom-right-radius: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.login_form_container .login_form > .right > img{
-    height:auto;
+.login_form_container .login_form > .right_part .cict_logo{
     width: 65%;
+    height: auto;
 }
+
 @-webkit-keyframes scale-up-center {
     0% {
       -webkit-transform: scale(0.5);
@@ -326,6 +327,7 @@
     font-size: .8rem;
     font-family: 'Poppins', sans-serif;
     color: #666666;
+    margin-bottom: 10%;
 }
 .dont_have_account_text span{
     color: #FB6340;
@@ -380,7 +382,7 @@
 and (max-device-width : 1281px) 
 and (max-device-height : 961px){
     .login_form_container .login_form > .right{
-        height: 40vh;
+   
     }
 }   
 @media only screen 
