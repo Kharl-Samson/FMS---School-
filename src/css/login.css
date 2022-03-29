@@ -4,7 +4,6 @@
     background-color: #FFAA28;
     overflow: hidden;
 }
-
 /*HOME CONTAINER BTN*/
 .home_container_btn{
     z-index: 4;
@@ -41,7 +40,6 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
 }
-
 /*CICT TEXT BG*/
 .login_container > .cict_text_container{
     height: auto;
@@ -114,8 +112,6 @@
 }
   
   
-
-
 /*IMAGE ROUNDER*/
 .img_rounder_container{
     height: auto;
@@ -140,7 +136,6 @@
       transform: rotate(359deg);
     }
 }
-
 /*LOGIN FORM*/
 .login_form_container{
     position: absolute;
@@ -342,7 +337,7 @@
 }
 
 /*FOOTER*/
-.login_container .footer{
+.login_container .footer{ 
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -361,7 +356,6 @@
     color: rgb(241, 240, 240);
     text-decoration: underline;
 }
-
 /*RESPONSIVE*/
 @media screen and (max-width: 799px) {
     .home_container_btn{
@@ -380,6 +374,8 @@
     }
 }
 
+     
+  
 @media only screen 
 and (max-device-width : 1281px) 
 and (max-device-height : 961px){
