@@ -3,8 +3,6 @@ import '../css/login.css';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { useState } from "react";
-import { orange } from '@mui/material/colors';
-import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import { Link } from "react-router-dom";
 
@@ -16,6 +14,7 @@ import Password_icon from "../images/icons/password.svg";
 import Open_eye_icon from "../images/icons/open_eye.svg";
 import Close_eye_icon from "../images/icons/close_eye.svg"; 
 import CICT_Logo from "../images/login/cict_logo.png";
+import Email_icon from "../images/icons/email.png"
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -27,7 +26,6 @@ export default function Register(){
         visibility: open ? "visible" : "hidden",
       }
     };
-
     function TogglePass(){
         if(document.getElementById("password").value == ""){
             setOpen(false);
@@ -35,8 +33,7 @@ export default function Register(){
         else{
             setOpen(true);
         }
-    }
-
+    } 
     function show_pass(){
         document.getElementById('password').type = 'text';
         document.getElementsByClassName("open_eye")[0].style.display = "none"
@@ -47,6 +44,33 @@ export default function Register(){
         document.getElementById('password').type = 'password';
         document.getElementsByClassName("open_eye")[0].style.display = "flex"
         document.getElementsByClassName("close_eye")[0].style.display = "none"
+    }
+
+    const [open1,setOpen1] = useState(false)
+    const pass1 = {
+        toggle:{
+          visibility: open1 ? "visible" : "hidden",
+        }
+    };
+    function TogglePass1(){
+        if(document.getElementById("confirm_password").value == ""){
+            setOpen1(false);
+        }
+        else{
+            setOpen1(true);
+        }
+    }
+
+    function show_pass1(){
+        document.getElementById('confirm_password').type = 'text';
+        document.getElementsByClassName("open_eye")[1].style.display = "none"
+        document.getElementsByClassName("close_eye")[1].style.display = "flex"
+    }
+
+    function hide_pass1(){
+        document.getElementById('confirm_password').type = 'password';
+        document.getElementsByClassName("open_eye")[1].style.display = "flex"
+        document.getElementsByClassName("close_eye")[1].style.display = "none"
     }
 
 
@@ -75,17 +99,96 @@ export default function Register(){
                 <img src={Image_rounder} />
             </div>
 
-            <div className="login_form_container">
+            <div className="login_form_container register_form_container">
                 <Container maxWidth="md">
                     <Box sx={{  height: 'auto' }}>
 
                     <div className="login_form">
                         <div className="left">
-                 
+
+                            <div className="left_container">
+                                <h1 style={{lineHeight : 1,}}>Create an Account</h1>
+                                <p className="already_have_account_text">
+                                    Already have an account?&nbsp; 
+
+                                    <Link to="/" style={{ textDecoration: 'none' }}>
+                                        <span>Sign in</span>
+                                    </Link>
+                                </p>
+
+                                <div className="input_container input_container1">
+                                    <div className="icon_container">
+                                            <img src={Username_icon} className=".for_hover" title="First Name"/>
+                                    </div>
+                                    <input type="text" placeholder="First Name" />
+                                </div>
+
+                                <div className="input_container input_container2">
+                                    <div className="icon_container">
+                                            <img src={Username_icon} className=".for_hover" title="Last Name"/>
+                                    </div>
+                                    <input type="text" placeholder="Last Name" />
+                                </div>
+
+                                <div className="input_container input_container2">
+                                    <div className="icon_container">
+                                            <img src={Email_icon} className=".for_hover" title="Email"/>
+                                    </div>
+                                    <input type="text" placeholder="Email" />
+                                </div>
+
+                                <div className="input_container input_container2">
+                                    <div className="icon_container">
+                                            <img src={Password_icon} title="Password"/>
+                                    </div>
+                                    <input type="password" placeholder="Password" id="password" onKeyUp={TogglePass}/>
+                                    <div className="toggle_password">                           
+                                            <img src={Open_eye_icon} 
+                                                className="password_toggle_icon open_eye"
+                                                style={pass.toggle}
+                                                onClick={show_pass}
+                                                title="Show Password"
+                                            />         
+                                            <img src={Close_eye_icon}
+                                                className="password_toggle_icon close_eye"
+                                                style={pass.toggle}
+                                                onClick={hide_pass}
+                                                title="Hide Password"
+                                            />
+                                    </div>
+                                </div>
+
+                                <div className="input_container input_container2">
+                                    <div className="icon_container">
+                                            <img src={Password_icon} title="Confirm Password"/>
+                                    </div>
+                                    <input type="password" placeholder="Confirm Password" id="confirm_password" onKeyUp={TogglePass1}/>
+                                    <div className="toggle_password">                           
+                                            <img src={Open_eye_icon} 
+                                                className="password_toggle_icon open_eye"
+                                                style={pass1.toggle}
+                                                onClick={show_pass1}
+                                                title="Show Password"
+                                            />         
+                                            <img src={Close_eye_icon}
+                                                className="password_toggle_icon close_eye"
+                                                style={pass1.toggle}
+                                                onClick={hide_pass1}
+                                                title="Hide Password"
+                                            />
+                                    </div>
+                                </div>
+
+                                <button className="sign_up_btn">Sign up</button>
+           
+                                <p className="terms_and_service">
+                                    By continuing to use this website, I state that I have read and understood the <span>Terms of Service</span> and <span>Privacy Policy</span>.
+                                </p>                
+                            </div>
                 
                         </div>
 
-                        <div className="right">
+                        <div className="right right_part">
                             <img src={CICT_Logo} className="cict_logo"/>
                         </div>
                     </div>

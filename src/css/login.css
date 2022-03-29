@@ -146,8 +146,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    -webkit-animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    -webkit-animation: scale-up-center .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	animation: scale-up-center .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 .login_form_container .login_form{
     height: auto;
@@ -223,7 +223,7 @@
     justify-content: center;
 }
 .login_form_container .login_form > .left > .left_container .input_container2 .toggle_password img{
-    height: 50%;
+    height: 35%;
     width: auto;
     visibility: hidden;
 }
@@ -358,6 +358,157 @@
     color: rgb(241, 240, 240);
     text-decoration: underline;
 }
+
+
+
+
+/*REGISTER*/
+.register_form_container{
+	-webkit-animation: flip-vertical-bck 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) reverse ;
+	animation: flip-vertical-bck 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) reverse ;
+}
+@-webkit-keyframes flip-vertical-bck {
+    0% {
+      -webkit-transform: translateZ(0) rotateY(0);
+      transform: translateZ(0) rotateY(0);
+    }
+    100% {
+      -webkit-transform: translateZ(-260px) rotateY(-180deg);
+      transform: translateZ(-260px) rotateY(-180deg);
+    }
+  }
+  @keyframes flip-vertical-bck {
+    0% {
+      -webkit-transform: translateZ(0) rotateY(0);
+      transform: translateZ(0) rotateY(0);
+    }
+    100% {
+      -webkit-transform: translateZ(-260px) rotateY(-180deg);
+      transform: translateZ(-260px) rotateY(-180deg);
+    }
+  }
+.already_have_account_text{
+    margin: 0;
+    margin-top: 2%;
+    font-size: .8rem;
+    font-family: 'Poppins', sans-serif;
+    color: #666666;
+    margin-bottom: 10%;
+}
+.already_have_account_text span{
+    color: #FB6340;
+    font-weight: bold;
+}
+.already_have_account_text span:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.sign_up_btn{
+    height: 6vh;
+    width: 100%;
+    background-color: #FFAA28;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    color: #ffff;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-top: 5%;
+}
+.sign_up_btn:hover{
+    opacity: 70%;
+}
+.terms_and_service{
+    margin: 0;
+    margin-left: 1%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    font-family: 'Poppins', sans-serif;
+    font-size: .7rem;
+    color: #666666;
+    text-align: center;
+}
+.terms_and_service span{
+    color: #CA861E;
+}
+.terms_and_service span:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+
+/*FORGOT PASSWORD*/
+.forgot_password_container{
+    margin-left: 100px;
+    -webkit-animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes slide-left {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(-100px);
+      transform: translateX(-100px);
+    }
+  }
+  @keyframes slide-left {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(-100px);
+      transform: translateX(-100px);
+    }
+  }
+.login_form_container .login_form > .left .left_container .forgot_header{
+    margin-top: 10%;
+    margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+}
+.login_form_container .login_form > .left .left_container .forgot_header h1{
+    margin: 0;
+    padding: 0;
+}
+.login_form_container .login_form > .left .left_container .forgot_header .back{
+    font-size: 3rem;
+    margin: 0;
+    margin-top: 0%;
+    font-weight: bold;
+    color: #FFAA28;
+}
+.login_form_container .login_form > .left .left_container .forgot_header .back:hover{
+    cursor: pointer;
+    color: #fabe64;
+}
+.login_form_container .login_form .left .left_container .forgot_subtext{
+    font-family: 'Poppins', sans-serif;
+    color: #B9B9B9;
+    font-size: .8rem;
+}
+.forgot_pass_btn{
+    height: 6vh;
+    width: 100%;
+    background-color: #FFAA28;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    color: #ffff;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.forgot_pass_btn:hover{
+    opacity: 70%;
+}
+
 /*RESPONSIVE*/
 @media screen and (max-width: 799px) {
     .home_container_btn{

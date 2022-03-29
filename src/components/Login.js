@@ -141,7 +141,9 @@ export default function Login(){
                                                 <span className="remember_me">Remember Me</span>
                                             </div>
                                             <div className="right">
-                                                <span className="forgot_pass">Forgot Password?</span>
+                                                <Link to="/ForgotPassword" style={{ textDecoration: 'none' }}>
+                                                    <span className="forgot_pass">Forgot Password?</span>
+                                                </Link>          
                                             </div> 
                                     </Grid>
                                </div>
