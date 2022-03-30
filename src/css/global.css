@@ -16,3 +16,101 @@ body::-webkit-scrollbar {
 button:hover{
     cursor: pointer;
 }
+
+
+/*MODAL CONTAINER*/
+.modal_container{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.288);
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.modal_validation{
+    width: auto;
+    height: auto;
+    padding: 20px 10px;
+    margin: 20px;
+    background-color: #ffff;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    -webkit-animation: scale-up-center 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
+    animation: scale-up-center 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
+}
+@-webkit-keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+  @keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+.modal_validation .emailVal_img{
+    height: 20vh;
+    width: auto;
+    margin-top: 5%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.modal_validation .val_header{
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #2B2B2B;
+    font-size: 2rem;
+    margin-top: 3%;
+}
+.modal_validation .val_subtext{
+    margin: 0;
+    margin-top: 2%;
+    font-family: 'Poppins', sans-serif;
+    font-size: .9rem;
+    text-align: center;
+    line-height: 1.3;
+    max-width: 55%;
+}
+.modal_validation .modal_close_btn{
+    height: 6vh;
+    width: 40vh;
+    padding: 0 ;
+    background-color: #FFAA28;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    color: #ffff;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-top: 6%;
+    margin-bottom: 5%;
+}
+.modal_validation .modal_close_btn:hover{
+    opacity: 70%;
+}
+
+
+/*RESPONSIVE*/
+@media screen and (max-width: 799px) {
+    .modal_validation .val_subtext{
+        max-width: 80%;
+    }
+}
