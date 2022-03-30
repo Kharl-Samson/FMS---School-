@@ -14,7 +14,7 @@ import Password_icon from "../images/icons/password.svg";
 import Open_eye_icon from "../images/icons/open_eye.svg";
 import Close_eye_icon from "../images/icons/close_eye.svg"; 
 import CICT_Logo from "../images/login/cict_logo.png";
-import Email_icon from "../images/icons/email.png";
+import Email_icon from "../images/icons/email.svg";
 import Invalid_icon from "../images/icons/invalid.svg";
 import Valid_icon from "../images/icons/valid.svg";
 
@@ -161,7 +161,6 @@ export default function Register(){
             }
     }
 
-    let history = useNavigate();
     const [data,setData ] = useState({
         first_name:"",
         last_name:"",
@@ -187,7 +186,7 @@ export default function Register(){
             password:data.password,
             confirm_password:data.confirm_password
         }
-        console.log(sendData)
+        //console.log(sendData)
 
         if (validator.isEmail(document.getElementById("email").value)) {
             if (validator.isStrongPassword(document.getElementById('password').value, {
@@ -197,7 +196,7 @@ export default function Register(){
 
                 axios.post('http://localhost/fms/register.php',sendData)
                 .then((result)=>{
-                    
+
                     if(result.data.status == "Invalid"){
                         alert('Invalid User')
                     }

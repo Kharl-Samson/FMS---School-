@@ -6,17 +6,20 @@ import { useState } from "react";
 import { orange } from '@mui/material/colors';
 import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import Home_Icon from "../images/icons/home.svg";
 import CICT_Text from "../images/login/cict_bg_text.png";
 import Image_rounder from "../images/login/login_img_rounder.png";
-import Username_icon from "../images/icons/username.svg";
+import Email_icon from "../images/icons/email.svg";
 import Password_icon from "../images/icons/password.svg";
 import Open_eye_icon from "../images/icons/open_eye.svg";
 import Close_eye_icon from "../images/icons/close_eye.svg"; 
 import CICT_Logo from "../images/login/cict_logo.png";
-import CICT_bg from "../images/login/login_img.png"
+import Invalid_icon from "../images/icons/invalid.svg";
+
+import {useNavigate} from 'react-router-dom';
+import axios from "axios";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -50,10 +53,60 @@ export default function Login(){
         document.getElementsByClassName("close_eye")[0].style.display = "none"
     }
 
+    function hide_validation(){
+        document.getElementsByClassName("form_handler_container")[0].style.display = "none";
+        document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
+        document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
+        document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
+    }
+
+    let navigate = useNavigate();
+    const [user,setData ] = useState({
+        email:"",
+        password:""
+    })
+
+    const handleChange=(e)=>{
+        setData({...user, [e.target.name]: e.target.value });
+    }
+
+    const submitForm=(e)=>{
+        e.preventDefault();
+        const sendData = {
+            email:user.email,
+            password:user.password,
+        }
+
+        //console.log(sendData)
+        axios.post('http://localhost/fms/login.php',sendData)
+        .then((result)=>{
+
+            if(result.data.status === "Admin Login"){
+                alert("admin login")
+            }
+            else if(result.data.status === "Faculty Login"){
+                window.localStorage.setItem('email', result.data.email);
+                window.localStorage.setItem('name', result.data.name);
+                navigate(`/FacultyDashboard`);
+            }
+            else if(result.data.status === "Pending Admin" || result.data.status === "Pending Faculty"){
+                document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
+                document.getElementsByClassName("text_verifyer")[0].innerHTML = "This account is account is not yet approve by the admin.";
+                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
+            }
+            else if(result.data.status === "Invalid"){
+                document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
+                document.getElementsByClassName("text_verifyer")[0].innerHTML = "Incorrect email or password.";
+                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
+            }
+
+        })   
+    }
 
     return (
         <div className="login_container">
-
 
             <Link to="/Home" style={{ textDecoration: 'none' }}>
                 <div className="home_container_btn">
@@ -77,6 +130,7 @@ export default function Login(){
             </div>
 
             <div className="login_form_container">
+                <form onSubmit={submitForm}>
                 <Container maxWidth="md">
                     <Box sx={{  height: 'auto' }}>
      
@@ -88,16 +142,16 @@ export default function Login(){
 
                                 <div className="input_container input_container1">
                                     <div className="icon_container">
-                                            <img src={Username_icon} className=".for_hover" title="Username or Email"/>
+                                            <img src={Email_icon} className=".for_hover" title="Email"/>
                                     </div>
-                                    <input type="text" placeholder="Username or Email" />
+                                    <input type="text" placeholder="Email" name="email" onChange={handleChange} value={user.email} onKeyUp={hide_validation} required/>
                                 </div>
 
                                 <div className="input_container input_container2">
                                     <div className="icon_container">
                                             <img src={Password_icon} title="Password"/>
                                     </div>
-                                    <input type="password" placeholder="Password" id="password" onKeyUp={TogglePass}/>
+                                    <input type="password" placeholder="Password" id="password" name="password" onKeyUp={() => { TogglePass(); hide_validation();}} onChange={handleChange} value={user.password} required/>
 
                                     <div className="toggle_password">
                                     
@@ -148,7 +202,13 @@ export default function Login(){
                                     </Grid>
                                </div>
 
-                                <button className="sign_in_btn">Sign in</button>
+                               <div className="form_handler_container">
+                                     <img src={Invalid_icon} className="img_verifyer"/>
+                                     <p className="text_verifyer"></p>
+                                </div>    
+
+                                <button type="submit" className="sign_in_btn">Sign in</button>
+
                                 <p className="dont_have_account_text">
                                     Don't have an account?&nbsp; 
 
@@ -167,6 +227,7 @@ export default function Login(){
 
                     </Box>
                 </Container>
+                </form>
             </div>
 
             <div className="footer">

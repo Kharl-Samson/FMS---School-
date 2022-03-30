@@ -9,7 +9,7 @@ import Home_Icon from "../images/icons/home.svg";
 import CICT_Text from "../images/login/cict_bg_text.png";
 import Image_rounder from "../images/login/login_img_rounder.png";
 import CICT_Logo from "../images/login/cict_logo.png";
-import Email_icon from "../images/icons/email.png"
+import Email_icon from "../images/icons/email.svg"
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
