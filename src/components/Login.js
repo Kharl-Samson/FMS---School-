@@ -25,6 +25,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Login(){
 
+    //Para matoggle yung password
     const [open,setOpen] = useState(false)
     const pass = {
       toggle:{
@@ -34,25 +35,25 @@ export default function Login(){
 
     function TogglePass(){
         if(document.getElementById("password").value == ""){
-            setOpen(false);
+            setOpen(false); //Pag wala laman password input mag set sa false para mag hide toggle icon
         }
         else{
             setOpen(true);
         }
     }
-
+    //Para maview yung password sa input form
     function show_pass(){
         document.getElementById('password').type = 'text';
         document.getElementsByClassName("open_eye")[0].style.display = "none"
         document.getElementsByClassName("close_eye")[0].style.display = "flex"
     }
-
+    //Para mahide yung password sa input form
     function hide_pass(){
         document.getElementById('password').type = 'password';
         document.getElementsByClassName("open_eye")[0].style.display = "flex"
         document.getElementsByClassName("close_eye")[0].style.display = "none"
     }
-
+    //Para mahide yung validation sa form
     function hide_validation(){
         document.getElementsByClassName("form_handler_container")[0].style.display = "none";
         document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
@@ -60,42 +61,46 @@ export default function Login(){
         document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
     }
 
-    let navigate = useNavigate();
+    let navigate = useNavigate(); //Para mag direct sa specific page
+
+    //Declaring variable data to pass in backend
     const [user,setData ] = useState({
         email:"",
         password:""
     })
-
+    //Setting a value to a data 
     const handleChange=(e)=>{
         setData({...user, [e.target.name]: e.target.value });
     }
-
+    //Getting the value of all input when submitting the form
     const submitForm=(e)=>{
         e.preventDefault();
+        //Sending the data request to call it on backend
         const sendData = {
             email:user.email,
             password:user.password,
         }
-
         //console.log(sendData)
+
+        //Sending the data to my backend
         axios.post('http://localhost/fms/login.php',sendData)
         .then((result)=>{
 
-            if(result.data.status === "Admin Login"){
+            if(result.data.status === "Admin Login"){ //If response is Admin Login
                 alert("admin login")
             }
-            else if(result.data.status === "Faculty Login"){
+            else if(result.data.status === "Faculty Login"){ //If response is Faculty Login
                 window.localStorage.setItem('email', result.data.email);
                 window.localStorage.setItem('name', result.data.name);
                 navigate(`/FacultyDashboard`);
             }
-            else if(result.data.status === "Pending Admin" || result.data.status === "Pending Faculty"){
+            else if(result.data.status === "Pending Admin" || result.data.status === "Pending Faculty"){ //If the account is still pending
                 document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "This account is account is not yet approve by the admin.";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
                 document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
             }
-            else if(result.data.status === "Invalid"){
+            else if(result.data.status === "Invalid"){ //If username or password is invalid
                 document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "Incorrect email or password.";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"

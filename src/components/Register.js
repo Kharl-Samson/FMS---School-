@@ -26,7 +26,8 @@ import ModalValidation from "./ModalValidation";
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Register(){
-
+    
+    //Para matoggle yung password
     const [open,setOpen] = useState(false)
     const pass = {
       toggle:{
@@ -35,24 +36,25 @@ export default function Register(){
     };
     function TogglePass(){
         if(document.getElementById("password").value == ""){
-            setOpen(false);
+            setOpen(false); //Pag wala laman password input mag set sa false para mag hide toggle icon
         }
         else{
-            setOpen(true);
+            setOpen(true);  
         }
     } 
+    //Para maview yung password sa input form
     function show_pass(){
         document.getElementById('password').type = 'text';
         document.getElementsByClassName("open_eye")[0].style.display = "none"
         document.getElementsByClassName("close_eye")[0].style.display = "flex"
     }
-
+    //Para mahide yung password sa input form
     function hide_pass(){
         document.getElementById('password').type = 'password';
         document.getElementsByClassName("open_eye")[0].style.display = "flex"
         document.getElementsByClassName("close_eye")[0].style.display = "none"
     }
-
+    //Para matoggle yung sa confirm password
     const [open1,setOpen1] = useState(false)
     const pass1 = {
         toggle:{
@@ -61,42 +63,42 @@ export default function Register(){
     };
     function TogglePass1(){
         if(document.getElementById("confirm_password").value == ""){
-            setOpen1(false);
+            setOpen1(false); //Pag wala laman password input mag set sa false para mag hide toggle icon
         }
         else{
             setOpen1(true);
         }
     }
-
+   //Para maview yung password sa input form
     function show_pass1(){
         document.getElementById('confirm_password').type = 'text';
         document.getElementsByClassName("open_eye")[1].style.display = "none"
         document.getElementsByClassName("close_eye")[1].style.display = "flex"
     }
-
+   //Para mahide yung password sa input form
     function hide_pass1(){
         document.getElementById('confirm_password').type = 'password';
         document.getElementsByClassName("open_eye")[1].style.display = "flex"
         document.getElementsByClassName("close_eye")[1].style.display = "none"
     }
 
-  
+    //Para mavalidate email
     function email_validation(){
-        if (validator.isEmail(document.getElementById("email").value)) {
+        if (validator.isEmail(document.getElementById("email").value)) { //Pag valid email
                 document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "rgb(76, 180, 76)"
                 document.getElementsByClassName("img_verifyer")[0].src = Valid_icon;
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "Your email is valid.";
                 document.getElementsByClassName("email_container")[0].style.border = "1px solid #D8D8D8";   
         } 
-        else if(document.getElementById("email").value === "" ){
+        else if(document.getElementById("email").value === "" ){  //Pag alang value email sa input form
                 document.getElementsByClassName("form_handler_container")[0].style.display = "none";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "rgb(76, 180, 76)"
                 document.getElementsByClassName("img_verifyer")[0].src = Valid_icon;
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
                 document.getElementsByClassName("email_container")[0].style.border = "1px solid #D8D8D8";   
         }
-        else {
+        else { //Pag invalid email
                 document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "Your email is invalid.";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
@@ -105,8 +107,9 @@ export default function Register(){
         }
     }
 
+    //Pang validate ng password
     function password_validation(){
-        if (validator.isStrongPassword(document.getElementById('password').value, {
+        if (validator.isStrongPassword(document.getElementById('password').value, { //Pag valid password
             minLength: 8, minLowercase: 1,
             minUppercase: 1, minNumbers: 1, minSymbols: 1
           })) {          
@@ -115,7 +118,7 @@ export default function Register(){
                 document.getElementsByClassName("img_verifyer")[0].src = Valid_icon;
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "Your password is valid.";
                 document.getElementsByClassName("password_container")[0].style.border = "1px solid #D8D8D8";
-          } else {
+          } else { //Pag maiksi or madali yung password
                 document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "Your password is not strong.";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
@@ -123,7 +126,7 @@ export default function Register(){
                 document.getElementsByClassName("password_container")[0].style.border = "1px solid red";      
           }
           
-          if(document.getElementById("password").value === "" ){
+          if(document.getElementById("password").value === "" ){ //Pag wala value yung password sa input form
                 document.getElementsByClassName("form_handler_container")[0].style.display = "none";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
@@ -133,18 +136,19 @@ export default function Register(){
           }
     }
 
+    //Pang determing kung match yung password at confirm password
     function password_verifyer(){
         const pass = document.getElementById('password').value;
         const confirm_pass = document.getElementById('confirm_password').value;
 
-            if(pass !== confirm_pass && confirm_pass !== ""){
+            if(pass !== confirm_pass && confirm_pass !== ""){ //Pag di equal yung password at confirm password 
                 document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "Please make sure your password match.";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
                 document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
                 document.getElementsByClassName("confirm_password_container")[0].style.border = "1px solid red";   
             }
-            else if(confirm_pass === ""){
+            else if(confirm_pass === ""){ //Pag wala value yung confirm password input
                 document.getElementsByClassName("password_container")[0].style.border = "1px solid #D8D8D8"; 
                 document.getElementsByClassName("confirm_password_container")[0].style.border = "1px solid #D8D8D8";   
                 document.getElementsByClassName("form_handler_container")[0].style.display = "none";
@@ -152,7 +156,7 @@ export default function Register(){
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
                 document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;  
             }
-            else{
+            else{ //Pag match equal yung password at confirm password 
                 document.getElementsByClassName("form_handler_container")[0].style.display = "none";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
@@ -161,6 +165,7 @@ export default function Register(){
             }
     }
 
+    //Declaring variable data to pass in backend
     const [data,setData ] = useState({
         first_name:"",
         last_name:"",
@@ -168,17 +173,18 @@ export default function Register(){
         password:"",
         confirm_password:""
     })
-
+    //Setting a value to a data 
     const handleChange=(e)=>{
         setData({ ...data, [e.target.name]: e.target.value });
     }
-
+    //Getting the value of all input when submitting the form
     const submitForm=(e)=>{
         e.preventDefault();
 
         const pass = document.getElementById('password').value;
         const confirm_pass = document.getElementById('confirm_password').value;
 
+        //Sending the data request to call it on backend
         const sendData = {
             first_name:data.first_name,
             last_name:data.last_name,
@@ -188,40 +194,40 @@ export default function Register(){
         }
         //console.log(sendData)
 
-        if (validator.isEmail(document.getElementById("email").value)) {
-            if (validator.isStrongPassword(document.getElementById('password').value, {
+        if (validator.isEmail(document.getElementById("email").value)) {// If email is valid 
+            if (validator.isStrongPassword(document.getElementById('password').value, { // If password is valid
                 minLength: 8, minLowercase: 1,
                 minUppercase: 1, minNumbers: 1, minSymbols: 1
             })) {  
-
+                //Sending the data to my backend
                 axios.post('http://localhost/fms/register.php',sendData)
                 .then((result)=>{
 
-                    if(result.data.status == "Invalid"){
+                    if(result.data.status == "Invalid"){//If the response is invalid
                         alert('Invalid User')
                     }
-                    else if(result.data.status == "Password doesnt match"){
+                    else if(result.data.status == "Password doesnt match"){ //If the response is Password doesnt match
                         document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
                         document.getElementsByClassName("text_verifyer")[0].innerHTML = "Please make sure your password match.";
                         document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
                         document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
                         document.getElementsByClassName("confirm_password_container")[0].style.border = "1px solid red";   
                     }
-                    else if(result.data.status == "Email taken"){
+                    else if(result.data.status == "Email taken"){ //If the response is Email taken
                         document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
                         document.getElementsByClassName("text_verifyer")[0].innerHTML = "E-mail has already been taken.";
                         document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
                         document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
                         document.getElementsByClassName("email_container")[0].style.border = "1px solid red";   
                     }
-                    else if(result.data.status == "valid"){ 
+                    else if(result.data.status == "valid"){ //If the response is valid
                         //pag tama lalabas modal
                         document.getElementsByClassName("modal_container")[0].style.display = "flex";
                     }
     
-                })//ito
+                })//End of axios
             }
-            else {
+            else { //If the password is not strong
                 document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "Your password is not strong.";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
@@ -229,7 +235,7 @@ export default function Register(){
                 document.getElementsByClassName("password_container")[0].style.border = "1px solid red";    
             }
         }
-        else{
+        else{ //If the email is invalid
             document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
             document.getElementsByClassName("text_verifyer")[0].innerHTML = "Your email is invalid.";
             document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
@@ -240,6 +246,7 @@ export default function Register(){
 
     return (
         <div className="login_container">
+
             <Link to="/Home" style={{ textDecoration: 'none' }}>
                 <div className="home_container_btn">
                     <img src={Home_Icon}/>
