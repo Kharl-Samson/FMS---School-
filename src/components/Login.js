@@ -25,6 +25,9 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Login(){
 
+    //Para maclear email sa local storage
+    localStorage.removeItem("email");
+
     //Para matoggle yung password
     const [open,setOpen] = useState(false)
     const pass = {

@@ -1,22 +1,22 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import '../css/dashboard.css';
+import NavbarFaculty from "./NavbarFaculty";
+import RightNavbar from './RightNavbar';
 
 export default function FacultyDashboard(){
-
-    const [auth,setAuth] = useState('');
-    let navigate = useNavigate();
-    
-    useEffect(()=>{
-        var auth = localStorage.getItem('email');
-        if(auth === null){
-            navigate(`/`)
-        }
-        setAuth(auth);
-    },
-    [])
+    const [value, onChange] = useState(new Date());
 
     return (
-        <h1>Dashboard : Hello {   localStorage.getItem('email')  }</h1>
+        <div className="dashboard_container">
+
+            <NavbarFaculty/>
+
+            <div className="dashboard_content">
+     
+            </div>
+            
+            <RightNavbar/>
+
+        </div>
     )
 }

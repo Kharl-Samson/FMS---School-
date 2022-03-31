@@ -7,6 +7,7 @@ import Register from "./components/Register";
 import ForgotPassword from "./components/ForgotPassword";
 import FacultyDashboard from "./components/FacultyDashboard";
 
+
 export default function App() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ export default function App() {
               <Route path="Home" element={<Home/>} />
 
               <Route path="FacultyDashboard" element={<FacultyDashboard/>} />
+
             </Routes>
         
     </div>
