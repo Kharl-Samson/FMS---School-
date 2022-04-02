@@ -143,7 +143,7 @@ button:hover{
     margin: 0;
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
-    font-size: .8rem;
+    font-size: 2.8rem;
     line-height: 1.5;
     white-space: nowrap;
 }
@@ -151,7 +151,7 @@ button:hover{
     height: .01rem;
     width: 70%;
     margin: 0% auto;
-    margin-bottom: 15%;
+    margin-bottom: 20%;
     background-color: rgb(180, 180, 180);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
@@ -211,6 +211,266 @@ button:hover{
 }
 .drawer_btn{
     display: none;
+}
+
+
+
+/*RIGHT NAVBAR PART*/
+.dashboard_container .right_navbar_container{
+    width: auto;
+    height: 100vh;
+    padding: 0 2vh;
+    z-index: 0;
+    border-top-left-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.dashboard_container .right_navbar_container .right_navbar_top{
+    height: auto;
+    width: 100%;
+    margin-top: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dashboard_container .right_navbar_container .theme_toggle{
+    margin-left: 3vh;
+    padding: 3px;
+    height: 3.5vh;
+    width: 7vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+    transition: .5s ease-in;
+}
+.dashboard_container .right_navbar_container .theme_toggle .circle{
+    height: 3.5vh;
+    width: 3.5vh;
+    margin-left: 3.5vh;
+    border-radius: 50%;
+    background-color: #FFE879;
+    transition: .1s ease-in;
+}
+.dashboard_container .right_navbar_container .theme_toggle .circle:hover{
+    cursor: pointer;
+}
+.dashboard_container .right_navbar_container .right_navbar_profile{
+    background-color: rgba(255, 255, 255, 0.881);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 20px;
+    padding: 3px;
+    padding-left: 5px;
+    margin-left: 5vh;
+    margin-right: 3vh;
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+.dashboard_container .right_navbar_container .right_navbar_profile span{
+    font-size: 1rem;
+    margin-left: 1vh;
+    font-weight: 600;
+}
+.dashboard_container .right_navbar_container .right_navbar_profile .arrow_down{
+    height: 2.5vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    width: auto;
+}
+.dashboard_container .right_navbar_container .right_navbar_profile .arrow_down:hover{
+    cursor: pointer;
+    opacity: 70%;
+}
+
+
+.dashboard_container .right_navbar_container .task_container{
+    margin: 0 2vh;
+    margin-top: 5vh;
+    height: 45vh;
+    width: 290px;
+}
+.dashboard_container .right_navbar_container .task_container .task_top{
+    height: 15vh;
+    width: 90%;
+    padding: 0 5%;
+    background-color: #f6bc66;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.dashboard_container .right_navbar_container .task_container .task_top .task_header{
+    display: flex;
+    height: 7vh;
+    width: 100%;
+}
+.dashboard_container .right_navbar_container .task_container .task_top .task_header .left{
+    display: flex;
+    width: 60%;
+    height: 100%;
+    flex-direction: column;
+}
+.dashboard_container .right_navbar_container .task_container .task_top .task_header .left p{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffff;
+    margin: 0;
+    margin-top: 3%;
+}
+.dashboard_container .right_navbar_container .task_container .task_top .task_header .left span{
+    margin: 0;
+    font-size: .8rem;
+    color: #727272;
+    line-height: 1;
+}
+.dashboard_container .right_navbar_container .task_container .task_top .task_header .right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 40%;
+    height: 100%;
+}
+.dashboard_container .right_navbar_container .task_container .task_top .task_header .right .task_btn{
+    height: auto;
+    width: auto;
+    background-color: #ffa51e;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    color: #fff;
+    padding: 5px 10px;
+}
+.dashboard_container .right_navbar_container .task_container .task_top .task_header .right .task_btn:hover{
+    cursor: pointer;
+    opacity: 80%;
+}
+.dashboard_container .right_navbar_container .task_container .task_calendar{
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dashboard_container .right_navbar_container .task_container .task_calendar .date{
+    width: 13%;
+    margin: 0 .6%;
+    height: 6vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+}
+.dashboard_container .right_navbar_container .task_container .task_calendar .date_today{
+    background-color: #ffff;
+    border-radius: 15px;
+}
+.dashboard_container .right_navbar_container .task_container .task_calendar .date p:nth-child(1){
+    font-size: .9rem;
+    margin: 0;
+    color: #333333;
+    font-weight: 600;
+}
+.dashboard_container .right_navbar_container .task_container .task_calendar .date p:nth-child(2){
+    font-size: .8rem;
+    margin: 0;
+    color: #666666;
+}
+.dashboard_container .right_navbar_container .task_container .task_content{
+    height: 30vh;
+    width: 90%;
+    padding: 0 5%;
+    background-color: #fad397;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow-y: scroll;
+}  
+.dashboard_container .right_navbar_container .task_container .task_content::-webkit-scrollbar {
+    width: 5px;
+}
+.dashboard_container .right_navbar_container .task_container .task_content::-webkit-scrollbar-track {
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+.dashboard_container .right_navbar_container .task_container .task_content::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    background:  #FFAA28;
+}
+
+
+
+.dashboard_container .right_navbar_container .task_container .task_box{
+    height: 70px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dashboard_container .right_navbar_container .task_container .task_box:hover{
+    cursor: pointer;
+    opacity: 80%;
+}
+.dashboard_container .right_navbar_container .task_container .task_box span{
+    font-size: .8rem;
+}
+.dashboard_container .right_navbar_container .task_container .task_box .task_description{
+    flex-grow: 1;
+    height: 100%;
+    margin-left: 5%;
+    border-radius: 12px;
+    background-color: #FBEFD2;
+}
+.dashboard_container .right_navbar_container .task_container .task_box:nth-child(even) .task_description:nth-child(even){
+    background-color: #B0A0FF;
+}
+.dashboard_container .right_navbar_container .task_container .task_box .task_description .top{
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+    font-size: .8rem;
+    font-weight: 600;
+    color: #FFAA28;
+}
+.dashboard_container .right_navbar_container .task_container .task_box:nth-child(even) .task_description:nth-child(even) .top{
+    color: #ffff;
+}
+.dashboard_container .right_navbar_container .task_container .task_box .task_description .top .task_icon{
+    height: 3vh;
+    width: 3vh;
+    background-color: #FFAA28;
+    border-radius: 50%;
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5%;
+}
+.dashboard_container .right_navbar_container .task_container .task_box:nth-child(even) .task_description:nth-child(even) .top .task_icon{
+    background-color: white;
+}
+.dashboard_container .right_navbar_container .task_container .task_box .task_description .top .task_icon img{
+    height: 40%;
+    width: auto;
+}
+.dashboard_container .right_navbar_container .task_container .task_box:nth-child(even) .task_description:nth-child(even) .top .task_icon img{
+    filter: grayscale(100%) brightness(50%) sepia(50%) hue-rotate(-100deg) saturate(500%) contrast(1);
+}
+.dashboard_container .right_navbar_container .task_container .task_box .task_description .task_text{
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: .8rem;
+    color: #FFAA28;
+}
+.dashboard_container .right_navbar_container .task_container .task_box:nth-child(even) .task_description:nth-child(even) .task_text{
+    color: #FFFF;
 }
 
 /*RESPONSIVE*/
@@ -431,3 +691,5 @@ button:hover{
   text-align: center;
   margin-bottom: 1%;
 }
+
+

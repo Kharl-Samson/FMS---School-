@@ -72,8 +72,7 @@ export default function NavbarFaculty(){
                 <div className="navbar_logo_container nav_part1">
                     <img src={CICT_Logo} className="cict_logo"/>
                     <div className="cict_text">
-                        <span>College of Information and</span>
-                        <span>Communication Technology</span>
+                        <span>CICT</span>
                     </div>
                 </div>
                 <div className="nav_line nav_part1"></div>
@@ -111,7 +110,7 @@ export default function NavbarFaculty(){
             </Link>
 
             {/* Nav drawer fo smaller device */}
-            {['left', 'right', 'top', 'bottom'].map((anchor) => (
+        {['bottom'].map((anchor) => (
         <React.Fragment key={anchor}>
             <div className="drawer_btn" onClick={toggleDrawer(anchor, true)}>
                 <img src={Arrowup_icon}/>

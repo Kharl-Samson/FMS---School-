@@ -4,7 +4,7 @@ import NavbarFaculty from "./NavbarFaculty";
 import RightNavbar from './RightNavbar';
 
 export default function FacultyDashboard(){
-    const [value, onChange] = useState(new Date());
+
 
     return (
         <div className="dashboard_container">

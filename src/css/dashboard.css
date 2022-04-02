@@ -27,42 +27,6 @@
     background: transparent; 
 }
 
-/*RIGHT NAVBAR PART*/
-.dashboard_container .right_navbar_container{
-    width: auto;
-    height: 100vh;
-    padding: 0 5vh;
-    background-color: #ffff;
-    border-top-left-radius: 30px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-.dashboard_container .profile_rightbar_container{
-    margin-top: 5%;
-    height: auto;
-    width: auto;
-    display: flex;
-    align-items: center;
-}
-.dashboard_container .profile_rightbar_container .profile_img{
-    margin-right: 2vh;
-    height: 7vh;
-    width: 6vh;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-}
-.dashboard_container .profile_rightbar_container p{
-    margin: 0;
-    font-weight: 600;
-    font-size: 1rem;
-    white-space: nowrap;
-}
-.dashboard_container .profile_rightbar_container img{
-    height: 3vh;
-    width: auto;
-    margin-left: 2vh;
-}
-.dashboard_container .profile_rightbar_container img:hover{
-    cursor: pointer;
-}
 
 /*RESPONSIVE*/
 @media screen and (max-width: 799px) { 
