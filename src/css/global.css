@@ -109,6 +109,121 @@ button:hover{
 }
 
 
+/*NAVBAR SIZE*/
+.navbar_sizer{
+    top: 5vh;
+    width: 100%;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+}
+.left_nav_sizer{
+    padding: 5px;
+    height: 40px;
+    width: 45px;
+    background-color: #ffaa28;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #ffff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.left_nav_sizer:hover{
+    cursor: pointer;
+    background-color: #fcb853;
+}
+.left_nav_sizer span{
+    -webkit-animation: slide-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite;
+    animation: slide-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite;
+}
+@-webkit-keyframes slide-left {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(-5px);
+      transform: translateX(-5px);
+    }
+  }
+  @keyframes slide-left {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(-5px);
+      transform: translateX(-5px);
+    }
+}
+.right_nav_sizer{
+    padding: 5px;
+    height: 40px;
+    width: 45px;
+    background-color: #ffaa28;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #ffff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.right_nav_sizer:hover{
+    cursor: pointer;
+    background-color: #fcb853;
+}
+.right_nav_sizer span{
+	-webkit-animation: slide-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite ;
+	 animation: slide-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite;
+}
+.right_nav_sizer_smaller{
+    height: 35px;
+    width: 40px;
+    background-color: #ffaa28;
+    border-radius: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #ffff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.right_nav_sizer_smaller:hover{
+    cursor: pointer;
+    background-color: #fcb853;
+}
+.right_nav_sizer_smaller span{
+    margin-bottom: 3%;
+	-webkit-animation: slide-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite ;
+	 animation: slide-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite;
+}
+@-webkit-keyframes slide-right {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(3px);
+      transform: translateX(3px);
+    }
+  }
+  @keyframes slide-right {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(3px);
+      transform: translateX(3px);
+    }
+}
+  
+
 /*SIDE NAVBAR FOR ALL USER*/
 .navbar_account_container{
     display: flex;
@@ -121,7 +236,7 @@ button:hover{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .navbar_account_container .navbar_logo_container{
-    height: auto;
+    height: 8vh;
     margin-right: 10vh;
     width: 100%;  
     padding: 35px 0;
@@ -144,20 +259,18 @@ button:hover{
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
     font-size: 2.8rem;
-    line-height: 1.5;
     white-space: nowrap;
 }
 .navbar_account_container .nav_line{
     height: .01rem;
     width: 70%;
     margin: 0% auto;
-    margin-bottom: 20%;
+    margin-bottom: 6vh;
     background-color: rgb(180, 180, 180);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 .navbar_account_container .navlink_container{
     height: auto;
-    padding: 7% 0;
     width: auto;
     display: flex;
     align-items: center;
@@ -178,6 +291,7 @@ button:hover{
     width: 20px;
     margin-right: 8%;
     margin-left: 15%;
+    padding: 3vh 0;
 }
 .navbar_account_container .nav_active{
     background-color: #fff2df;
@@ -185,17 +299,9 @@ button:hover{
     border-left: 5px solid #FFAA28;
 }
 .navbar_account_container .logout_container{
-    height: auto;
-    padding: 7% 0;
-    width: auto;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
+
     color: #666666;
-    margin-bottom: 2%;
+
 }
 .navbar_account_container .logout_container:hover{
     cursor: pointer;
@@ -221,11 +327,13 @@ button:hover{
     height: 100vh;
     padding: 0 2vh;
     z-index: 0;
+    margin-right: 0;
     border-top-left-radius: 30px;
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: .5s ease-in;
 }
 .dashboard_container .right_navbar_container .right_navbar_top{
     height: auto;
@@ -284,8 +392,7 @@ button:hover{
     cursor: pointer;
     opacity: 70%;
 }
-
-
+/*RIGHT NAVBAR PART -> TASK CONTAINER*/
 .dashboard_container .right_navbar_container .task_container{
     margin: 0 2vh;
     margin-top: 5vh;
@@ -400,14 +507,13 @@ button:hover{
     -webkit-border-radius: 5px;
     background:  #FFAA28;
 }
-
-
-
+/*RIGHT NAVBAR PART -> TASK BOX*/
 .dashboard_container .right_navbar_container .task_container .task_box{
     height: 70px;
     width: 100%;
     margin: 0 auto;
     margin-top: 5%;
+    margin-bottom: 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -418,6 +524,7 @@ button:hover{
 }
 .dashboard_container .right_navbar_container .task_container .task_box span{
     font-size: .8rem;
+    width: 24%;
 }
 .dashboard_container .right_navbar_container .task_container .task_box .task_description{
     flex-grow: 1;
@@ -472,6 +579,96 @@ button:hover{
 .dashboard_container .right_navbar_container .task_container .task_box:nth-child(even) .task_description:nth-child(even) .task_text{
     color: #FFFF;
 }
+/*RIGHT NAVBAR PART -> ACTIVITY LOG CONTAINER*/
+.activitylog_container{
+    width: 290px;
+    margin: 0 2vh;
+    height: 6vh;
+    border-radius: 15px;
+    margin-top: 10%;
+    background-color: #fec97b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+}
+.activitylog_container span{
+    font-size: 1rem;
+    margin-left: 5%;
+    color: #5C3902;
+}
+.MoreHorizIcon:hover{
+    cursor: pointer !important;
+}
+.activitylog_content{
+    width: 290px;
+    height: 25vh;
+    margin: 0 2vh;
+    margin-top: 4%;    
+    overflow-y: scroll;
+}
+.activitylog_content::-webkit-scrollbar {
+    width: 5px;
+}
+.activitylog_content::-webkit-scrollbar-track {
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+.activitlog_content::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.856);
+}
+.activitylog_content .activity_box{
+    margin: 0% auto;
+    margin-bottom: 4%;
+    display: flex;
+    height: 70px;
+    width: 90%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.856);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: .5s ease-in;
+}
+.activitylog_content .activity_box:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.993);
+}
+.activitylog_content .activity_box .left{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.activitylog_content .activity_box .left img{
+    height: 70%;
+    width: 70%;
+}
+.activitylog_content .activity_box .right{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.activitylog_content .activity_box .right span:nth-child(1){
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.1;
+}
+.activitylog_content .activity_box .right span:nth-child(2){
+    font-size: .8rem;
+    font-weight: 600;
+    color: #3D3D3D;
+    line-height: 1.2;
+}
+.activitylog_content .activity_box .right span:nth-child(3){
+    font-size: .8rem;
+    color: #8A8A8A;
+    line-height: 1.5;
+}
+
+
 
 /*RESPONSIVE*/
 @media screen and (max-width: 799px) {
@@ -482,6 +679,15 @@ button:hover{
 
 
 @media screen and (max-width: 850px) {
+    .navbar_sizer{
+        justify-content: flex-end;
+    }
+    .left_nav_sizer{
+        display: none;
+    }
+    .right_nav_sizer{
+        display: none;
+    }
 
     /*SIDE NAVBAR FOR ALL USER*/
     .navbar_account_container{
@@ -564,6 +770,40 @@ button:hover{
           transform: translateY(-5px);
         }
       }
+
+    /*RIGHT NAVBAR PART*/
+    .right_navbar_container{
+        position: fixed;
+        right: 0;
+        display: none;
+    }
+    .right_nav_sizer_smaller{
+        display: flex;
+    }
+
+    /*RIGHT NAVBAR PART -> TASK CONTAINER*/
+    .dashboard_container .right_navbar_container .task_container{
+        margin: 0 2vh;
+        margin-top: 5vh;
+        height: 45vh;
+        width: 290px;
+    }
+    .dashboard_container .right_navbar_container .task_container .task_top{
+        height: 20vh;
+    }
+    .dashboard_container .right_navbar_container .task_container .task_top .task_header{
+        display: flex;
+        height: 10vh;
+    }
+    .dashboard_container .right_navbar_container .task_container .task_calendar{
+        height: 10vh;
+    }
+    .dashboard_container .right_navbar_container .task_container .task_calendar .date{
+        height: 8vh;
+    }
+    .dashboard_container .right_navbar_container .task_container .task_content{
+        height: 25vh;
+    }  
 }
 
 

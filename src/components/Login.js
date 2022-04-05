@@ -25,6 +25,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Login(){
 
+      
     //Para maclear email sa local storage
     localStorage.removeItem("email");
 
@@ -88,7 +89,6 @@ export default function Login(){
         //Sending the data to my backend
         axios.post('http://localhost/fms/login.php',sendData)
         .then((result)=>{
-
             if(result.data.status === "Admin Login"){ //If response is Admin Login
                 alert("admin login")
             }
@@ -110,7 +110,7 @@ export default function Login(){
                 document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
             }
 
-        })   
+        })    
     }
 
     return (
