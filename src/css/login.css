@@ -61,55 +61,14 @@
     top : 65%;
 }
 .login_container > .cict_text_container > .cict_text1{
-    margin-left: 5%;
-    -webkit-animation: slide-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
 }
 .login_container > .cict_text_container > .cict_text2{
-    margin-left:-2%;  
-    -webkit-animation: slide-right 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-right 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    margin-left: 5%;
 }
-@-webkit-keyframes slide-left {
-    0% {
-      -webkit-transform: translateX(0);
-       transform: translateX(0);
-    }
-    100% {
-      -webkit-transform: translateX(-100px);
-       transform: translateX(-100px);
-    }
-  }
-  @keyframes slide-left {
-    0% {
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-    }
-    100% {
-      -webkit-transform: translateX(-100px);
-      transform: translateX(-100px);
-    }
-}
-@-webkit-keyframes slide-right {
-    0% {
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-    }
-    100% {
-      -webkit-transform: translateX(100px);
-      transform: translateX(100px);
-    }
-  }
-  @keyframes slide-right {
-    0% {
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-    }
-    100% {
-      -webkit-transform: translateX(100px);
-      transform: translateX(100px);
-    }
-}
+
+  
+
   
   
 /*IMAGE ROUNDER*/
@@ -441,30 +400,10 @@
 
 /*FORGOT PASSWORD*/
 .forgot_password_container{
-    margin-left: 100px;
     -webkit-animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
-@-webkit-keyframes slide-left {
-    0% {
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-    }
-    100% {
-      -webkit-transform: translateX(-100px);
-      transform: translateX(-100px);
-    }
-  }
-  @keyframes slide-left {
-    0% {
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-    }
-    100% {
-      -webkit-transform: translateX(-100px);
-      transform: translateX(-100px);
-    }
-  }
+
 .login_form_container .login_form > .left .left_container .forgot_header{
     margin-top: 10%;
     margin-bottom: 5%;

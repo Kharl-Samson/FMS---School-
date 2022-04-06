@@ -26,6 +26,93 @@
 .dashboard_container .dashboard_content::-webkit-scrollbar-thumb:window-inactive {
     background: transparent; 
 }
+.top_dashboard_content{
+    height: 35vh;
+    width: 95%;
+    margin: 0% auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.weather_container{
+    padding: 10px 0;
+    margin-right: 3%;
+    height: 100%;
+    width: 50vh;
+    background-color: #FFFFFF;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 15px;
+    display: flex;
+    transition: .8s;
+}
+.weather_container:hover{
+   margin-top: -3%;
+   cursor: pointer;
+}
+
+.weather_container .left{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.weather_container .left .weather_temperature{
+    font-size: 7vh;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1;
+    margin-left: 15%;
+}
+.weather_container .left .weather_description{
+    margin-left: 15%;
+    white-space: nowrap;
+}
+.weather_container .left .date_today{
+    margin: 0;
+    line-height: 1.3;
+    font-size: 1rem;
+    margin-left: 15%;
+    white-space: nowrap;
+}
+.weather_container .left .goodmorning{
+    margin: 0;
+    font-size: 1.3rem;
+    margin-top: 5%;
+    margin-left: 15%;
+    white-space: nowrap;
+    line-height: 1;
+}
+.weather_container .left .name{
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-left: 15%;
+    margin-bottom: 10%;
+}
+.weather_container .right{
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.weather_container  .weather_icon{
+    width: auto;
+    height: 20vh;
+    margin-top: -8%;
+}
+
+.slideshow-container{
+    height: 100%;
+    padding: 10px 0;
+    width: 65vh;
+    border-radius: 15px;
+    background-color: #ffff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 
 /*RESPONSIVE*/

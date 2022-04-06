@@ -176,6 +176,7 @@ button:hover{
 .right_nav_sizer:hover{
     cursor: pointer;
     background-color: #fcb853;
+    opacity: 80%;
 }
 .right_nav_sizer span{
 	-webkit-animation: slide-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite ;
@@ -186,7 +187,7 @@ button:hover{
     width: 40px;
     background-color: #ffaa28;
     border-radius: 10px;
-    display: none;
+    display:flex;
     align-items: center;
     justify-content: center;
     font-size: 2.5rem;
@@ -198,7 +199,7 @@ button:hover{
     background-color: #fcb853;
 }
 .right_nav_sizer_smaller span{
-    margin-bottom: 3%;
+    margin-bottom: 8%;
 	-webkit-animation: slide-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite ;
 	 animation: slide-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite;
 }
@@ -327,13 +328,14 @@ button:hover{
     height: 100vh;
     padding: 0 2vh;
     z-index: 0;
-    margin-right: 0;
+    position: fixed;
+    right: 0;
     border-top-left-radius: 30px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    transition: .5s ease-in;
+    transition: .3s ease-in;
 }
 .dashboard_container .right_navbar_container .right_navbar_top{
     height: auto;
@@ -775,7 +777,7 @@ button:hover{
     .right_navbar_container{
         position: fixed;
         right: 0;
-        display: none;
+        margin-right: -170%;
     }
     .right_nav_sizer_smaller{
         display: flex;

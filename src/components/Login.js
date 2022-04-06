@@ -6,7 +6,7 @@ import { useState } from "react";
 import { orange } from '@mui/material/colors';
 import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Home_Icon from "../images/icons/home.svg";
 import CICT_Text from "../images/login/cict_bg_text.png";
@@ -25,7 +25,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Login(){
 
-      
+  
     //Para maclear email sa local storage
     localStorage.removeItem("email");
 
@@ -114,10 +114,10 @@ export default function Login(){
     }
 
     return (
-        <div className="login_container">
+        <div className="login_container" >
 
             <Link to="/Home" style={{ textDecoration: 'none' }}>
-                <div className="home_container_btn">
+                <div className="home_container_btn" >
                     <img src={Home_Icon}/>
                         <span>Home</span>
                 </div>

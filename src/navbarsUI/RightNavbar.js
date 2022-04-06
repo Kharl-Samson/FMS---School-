@@ -9,7 +9,7 @@ import Arrow_down from '../images/icons/arrow_down.svg'
 import { Link} from "react-router-dom";
 import moment from 'moment';
 import LocalActivityIcon from '@mui/icons-material/LocalActivity';
-import  ToggleRightNav from '../functions/RightNavbar';
+import CloseRightNavbar from '../functions/CloseRightNavbar'
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -155,6 +155,7 @@ export default function RightNavbar(){
     };
 
 
+
     return (
         <div className="right_navbar_container" id="test"
             style={{
@@ -163,7 +164,7 @@ export default function RightNavbar(){
         >
 
             <div className='right_navbar_top'>
-                <div className='right_nav_sizer_smaller' title="Minimize" onClick={ToggleRightNav}><span>&#187;</span></div>
+                <div className='right_nav_sizer_smaller' title="Minimize" onClick={CloseRightNavbar}><span>&#187;</span></div>
 
                 <div className='theme_toggle' id="theme_toggle" style={{ backgroundImage: `url(${LightThemeBG})` }} >
                     <div className='circle' id="circle" onClick={theme_toggle}></div>

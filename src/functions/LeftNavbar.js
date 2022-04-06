@@ -1,41 +1,42 @@
-var toggleLeftStatus = "open";
-function ToggleLeftNav(){
-    if(toggleLeftStatus === "open"){
-        document.getElementsByClassName('left_nav_sizer')[0].title = "Maximize"
-        document.getElementsByClassName('span2_left_nav')[0].style.display = "flex";
+var left_navbar_status = "open";
+
+function Left_navToggler(){
+    if(left_navbar_status === "open"){ //Closing left nav
+        left_navbar_status = "close";
         document.getElementsByClassName('span1_left_nav')[0].style.display = "none";
-        var elements = document.getElementsByClassName("left_nav_minimize");
-        for (var i = 0, len = elements.length; i < len; i++) {
-                elements[i].style.display = "none";
+        document.getElementsByClassName('span2_left_nav')[0].style.display = "flex";
+        document.getElementsByClassName('left_nav_sizer')[0].title = "Maximize";
+        var left_nav_minimize = document.getElementsByClassName('left_nav_minimize');
+        for(var i=0; i< left_nav_minimize.length; i++){
+            left_nav_minimize[i].style.display = "none";
         }
-        var elements1 = document.getElementsByClassName("navlink_container");
-        for (var i = 0, len = elements1.length; i < len; i++) {
-                elements1[i].style.justifyContent = "center";
+        var navlink_container = document.getElementsByClassName('navlink_container');
+        for(var i=0; i< navlink_container.length; i++){
+            navlink_container[i].style.justifyContent = "center";
         }
-        var elements3 = document.getElementsByClassName("left_nav_minimize_img");
-        for (var i = 0, len = elements3.length; i < len; i++) {
-                elements3[i].style.marginLeft = "0%";
+        var left_nav_minimize_img = document.getElementsByClassName('left_nav_minimize_img');
+        for(var i=0; i< left_nav_minimize_img.length; i++){
+            left_nav_minimize_img[i].style.marginLeft = "0%";
         }
-        toggleLeftStatus = "close";
     }
     else{
-        document.getElementsByClassName('left_nav_sizer')[0].title = "Minimize"
-        document.getElementsByClassName('span2_left_nav')[0].style.display = "none";
+        left_navbar_status = "open";
         document.getElementsByClassName('span1_left_nav')[0].style.display = "flex";
-        var elements = document.getElementsByClassName("left_nav_minimize");
-        for (var i = 0, len = elements.length; i < len; i++) {
-                elements[i].style.display = "flex";
+        document.getElementsByClassName('span2_left_nav')[0].style.display = "none";
+        document.getElementsByClassName('left_nav_sizer')[0].title = "Minimize";
+        var left_nav_minimize = document.getElementsByClassName('left_nav_minimize');
+        for(var i=0; i< left_nav_minimize.length; i++){
+            left_nav_minimize[i].style.display = "flex";
         }
-        var elements1 = document.getElementsByClassName("navlink_container");
-        for (var i = 0, len = elements1.length; i < len; i++) {
-                elements1[i].style.justifyContent = "flex-start";
+        var navlink_container = document.getElementsByClassName('navlink_container');
+        for(var i=0; i< navlink_container.length; i++){
+            navlink_container[i].style.justifyContent = "flex-start";
         }
-        var elements3 = document.getElementsByClassName("left_nav_minimize_img");
-        for (var i = 0, len = elements3.length; i < len; i++) {
-                elements3[i].style.marginLeft = "15%";
+        var left_nav_minimize_img = document.getElementsByClassName('left_nav_minimize_img');
+        for(var i=0; i< left_nav_minimize_img.length; i++){
+            left_nav_minimize_img[i].style.marginLeft = "15%";
         }
-        toggleLeftStatus = "open";
     }
 }
 
-export default ToggleLeftNav;
+export default Left_navToggler;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect }  from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import OpenRightNavbar from "../functions/OpenRightNavbar";
 import CICT_Logo from "../images/login/cict_logo.png";
 import Dashboard_icon from "../images/icons/dashboard.svg";
 import Profile_icon from "../images/icons/profile.svg";
@@ -30,10 +30,7 @@ export default function NavbarFaculty(){
         },
         [])
 
-        function toggle_navSmallerDevice(){
-            document.getElementsByClassName('right_navbar_container')[0].style.display = "inline-block";
-        }        
-
+ 
     return (
         <div className="navbar_account_container">
 
@@ -80,7 +77,7 @@ export default function NavbarFaculty(){
             </Link>
 
             {/* Nav drawer fo smaller device */}
-            <div className="drawer_btn" onClick={toggle_navSmallerDevice} >
+            <div className="drawer_btn" onClick={OpenRightNavbar} >
                 <img src={Menu_icon}/>
             </div>
      
