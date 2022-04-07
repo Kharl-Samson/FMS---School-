@@ -15,6 +15,8 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function ForgotPassword(){
 
+    document.title = "CICT | Forgot Password";
+
     return (
         <div className="login_container">
 

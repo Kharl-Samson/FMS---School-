@@ -25,6 +25,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Login(){
 
+    document.title = "CICT | Sign in or Sign up";
   
     //Para maclear email sa local storage
     localStorage.removeItem("email");

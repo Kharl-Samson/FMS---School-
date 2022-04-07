@@ -27,6 +27,8 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Register(){
     
+    document.title = "CICT | Sign in or Sign up";
+
     //Para matoggle yung password
     const [open,setOpen] = useState(false)
     const pass = {
