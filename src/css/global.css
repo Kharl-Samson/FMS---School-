@@ -112,10 +112,8 @@ button:hover{
 /*NAVBAR SIZE*/
 .navbar_sizer{
     top: 5vh;
-    width: 100%;
+    width: auto;
     position: sticky;
-    display: flex;
-    justify-content: space-between;
 }
 .left_nav_sizer{
     padding: 5px;
@@ -160,12 +158,11 @@ button:hover{
     }
 }
 .right_nav_sizer{
-    padding: 5px;
-    height: 40px;
-    width: 45px;
+    padding: 3px;
+    height: 3.5vh;
+    width: 7vh;
     background-color: #ffaa28;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -179,27 +176,36 @@ button:hover{
     opacity: 80%;
 }
 .right_nav_sizer span{
+    margin-bottom: 5%;
 	-webkit-animation: slide-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite ;
 	 animation: slide-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite;
 }
-.right_nav_sizer_smaller{
-    height: 35px;
-    width: 40px;
-    background-color: #ffaa28;
-    border-radius: 10px;
-    display:flex;
+
+
+.right_nav_sizer_Open{
+    top: 4.5vh;
+    padding: 5px;
+    height: 45px;
+    width: 80px;
+    background-color: #ffff;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2.5rem;
     color: #ffff;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    position:  fixed;
+    right: 0;
 }
-.right_nav_sizer_smaller:hover{
+.right_nav_sizer_Open:hover{
     cursor: pointer;
-    background-color: #fcb853;
+    background-color: rgb(240, 240, 240);
 }
-.right_nav_sizer_smaller span{
-    margin-bottom: 8%;
+.right_nav_sizer_Open span{
+    color: #ffaa28;
+    margin-bottom: 2.5%;
 	-webkit-animation: slide-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite ;
 	 animation: slide-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite;
 }
@@ -277,8 +283,7 @@ button:hover{
     align-items: center;
     justify-content: flex-start;
     font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1rem;
     color: #a2b0c2;
     margin-bottom: 2%;
 }
@@ -295,6 +300,7 @@ button:hover{
     padding: 3vh 0;
 }
 .navbar_account_container .nav_active{
+    font-weight: bold;
     background-color: #fff2df;
     color: #4b4e52;
     border-left: 5px solid #FFAA28;
@@ -324,18 +330,19 @@ button:hover{
 
 /*RIGHT NAVBAR PART*/
 .dashboard_container .right_navbar_container{
+    position: fixed;
+    right: 0;
     width: auto;
     height: 100vh;
     padding: 0 2vh;
-    z-index: 0;
-    position: fixed;
-    right: 0;
     border-top-left-radius: 30px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     transition: .3s ease-in;
+    display: block;
+    margin-right: -100%;
 }
 .dashboard_container .right_navbar_container .right_navbar_top{
     height: auto;
@@ -687,9 +694,10 @@ button:hover{
     .left_nav_sizer{
         display: none;
     }
-    .right_nav_sizer{
+    .right_nav_sizer_Open{
         display: none;
     }
+
 
     /*SIDE NAVBAR FOR ALL USER*/
     .navbar_account_container{

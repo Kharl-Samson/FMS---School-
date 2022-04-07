@@ -61,13 +61,56 @@
     top : 65%;
 }
 .login_container > .cict_text_container > .cict_text1{
-
+    margin-left: 5%;
+	-webkit-animation: slide-left1 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-left1 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes slide-left1 {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(-110px);
+      transform: translateX(-110px);
+    }
+  }
+  @keyframes slide-left1 {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(-110px);
+      transform: translateX(-110px);
+    }
 }
 .login_container > .cict_text_container > .cict_text2{
-    margin-left: 5%;
+    margin-left: -10%;
+    -webkit-animation: slide-right1 01s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-right1 01s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes slide-right1 {
+    0% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(230px);
+              transform: translateX(230px);
+    }
+  }
+  @keyframes slide-right1 {
+    0% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(230px);
+              transform: translateX(230px);
+    }
 }
 
-  
 
   
   
@@ -483,8 +526,11 @@
         padding-left: 1%;
         padding-right: 2%;
     }
+    .login_form_container .login_form{
+        border-radius: 20px;
+    }
     .login_form_container .login_form > .left{
-        width: 100%;
+        width: 90vw;
     }
     .login_form_container .login_form > .right{
         display: none;

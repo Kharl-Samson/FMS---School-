@@ -12,13 +12,10 @@ export default function NavbarSizer(){
  // Para maclose yung right nav
   window.onclick = function(event) {
     if (event.target == document.getElementsByClassName('dashboard_content')[0] && mediaQuery.matches) {
-      document.getElementsByClassName('right_nav_sizer')[0].title = "Maximize";
-      document.getElementsByClassName('right_navbar_container')[0].style.marginRight = "-70%";
-      document.getElementsByClassName('span1_right_nav')[0].style.display = "none";
-      document.getElementsByClassName('avatar_navbar_sizer')[0].style.display = "flex";
-      document.getElementsByClassName('right_nav_sizer')[0].style.width = "80px";
-      document.getElementsByClassName('right_nav_sizer')[0].style.backgroundColor = "#ffff";
-      document.getElementsByClassName('span2_right_nav')[0].style.color = "#ffaa28";
+      document.getElementsByClassName('right_navbar_container')[0].style.marginRight = "-100%";
+      setTimeout(function(){
+          document.getElementsByClassName('right_nav_sizer_Open')[0].style.display = "flex";
+      },200);
     }
   }
     return (
@@ -27,17 +24,20 @@ export default function NavbarSizer(){
           <span className='span1_left_nav'>&#171;</span>
           <span className='span2_left_nav' style={{display: "none" }}>&#187;</span>
         </div>
-        <div className='right_nav_sizer'  title="Minimize" onClick={OpenRightNavbar}>
-          <span className='span1_right_nav'>&#187;</span>
-          <span className='span2_right_nav'>&#171;</span>
+        
+
+        <div className='right_nav_sizer_Open'  title="Maximize" onClick={OpenRightNavbar}>
+          <span className='span2_right_nav' >&#171;</span>
           <Avatar 
                 src="http://localhost/fms/upload_profile/sample_profile.jpg" 
                 className='avatar_navbar_sizer'
-                sx={{ bgcolor: deepOrange[600] , width: "4vh", height: "4vh", fontSize: "1rem", margin: "0 10px", display: "none"}}
+                sx={{ bgcolor: deepOrange[600] , width: "4vh", height: "4vh", fontSize: "1rem", margin: "0 10px"}}
             >
                 {initialName}
           </Avatar>
         </div>
+
+
       </div>
     )
 }

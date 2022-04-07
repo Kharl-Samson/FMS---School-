@@ -162,10 +162,12 @@ export default function RightNavbar(){
                 backgroundImage: `url(${RightNavbar_bg})` 
             }}
         >
-
             <div className='right_navbar_top'>
-                <div className='right_nav_sizer_smaller' title="Minimize" onClick={CloseRightNavbar}><span>&#187;</span></div>
 
+                <div className='right_nav_sizer'  title="Minimize" onClick={CloseRightNavbar}>
+                    <span className='span1_right_nav'>&#187;</span>
+                </div>
+                
                 <div className='theme_toggle' id="theme_toggle" style={{ backgroundImage: `url(${LightThemeBG})` }} >
                     <div className='circle' id="circle" onClick={theme_toggle}></div>
                 </div>

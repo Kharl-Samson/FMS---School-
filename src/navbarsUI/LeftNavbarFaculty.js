@@ -68,7 +68,7 @@ export default function NavbarFaculty(){
             </div>
 
 
-     
+
             <Link to="/" style={{ textDecoration: 'none' }}>
                 <div className="logout_container navlink_container">
                     <img src={Logout_icon} className='left_nav_minimize_img'/>
