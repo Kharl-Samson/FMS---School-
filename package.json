@@ -15,6 +15,7 @@
     "axios": "^0.26.1",
     "flat-carousel": "^0.0.1",
     "framer-motion": "^6.2.8",
+    "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "nuka-carousel": "^5.0.7",
     "radium": "^0.26.2",

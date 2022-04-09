@@ -25,6 +25,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Login(){
 
+    //Loading the icon in the tab
     document.querySelector("link[rel='shortcut icon']").href = CICT_Logo;
     document.title = "CICT | Sign in or Sign up";
   

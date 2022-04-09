@@ -4,7 +4,6 @@ import slider1 from '../images/image_slider1.png';
 import slider2 from '../images/image_slider2.png';
 import slider3   from '../images/image_slider3.png';
 import slider_transitionDashboard from '../functions/SliderDashboard'
-import Grid from '@mui/material/Grid';
 
 export default function WeatherAndBanner(){
      //Slider transition
@@ -60,7 +59,7 @@ export default function WeatherAndBanner(){
                     <p className='weather_temperature' style={{ color: "#ffaa28"}}></p>
                     <p className='weather_description' style={{textTransform: "capitalize", color: "#d9a047", fontWeight: "600"}}></p>
                     <p style={{marginBottom: "1vh"}} className="date_today">{date_today}</p>
-                    <p className='goodmorning'>Good Morning,</p>
+                    <p className='goodmorning'>Welcome Back,</p>
                     <p className='name'>{firstName}!</p>
                 </div>
                 <div className='right'>

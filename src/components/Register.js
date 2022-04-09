@@ -20,7 +20,6 @@ import Valid_icon from "../images/icons/valid.svg";
 
 import validator from 'validator'
 import axios from "axios";
-import {useNavigate} from 'react-router-dom';
 import ModalValidation from "./ModalValidation";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -248,7 +247,7 @@ export default function Register(){
 
     return (
         <div className="login_container">
-
+    
             <Link to="/Home" style={{ textDecoration: 'none' }}>
                 <div className="home_container_btn">
                     <img src={Home_Icon}/>
@@ -390,12 +389,12 @@ export default function Register(){
 
             {/*Modal*/ }
             <div className="modal_container">
-                    <ModalValidation
-                        name = "EmailValidation.gif"
-                        headtext = "Successful!"
-                        subtext = "Your submission has been sent! Kindly check your email and spam for the reply. Thanks!"
-                        button1 = "Close"
-                    />
+                <ModalValidation
+                    name = "EmailValidation.gif"
+                    headtext = "Successful!"
+                    subtext = "Your submission has been sent! Kindly check your email and spam for the reply. Thanks!"
+                    button1 = "Close"
+                />
             </div>
 
 

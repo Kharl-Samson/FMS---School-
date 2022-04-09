@@ -61,7 +61,7 @@ export default function NavbarFaculty(){
 
                     <div className="navlink_container nav_part3" >
                         <img src={Certificate_icon} className="left_nav_minimize_img"/>
-                        <span className='left_nav_minimize'>Certificate</span>
+                        <span className='left_nav_minimize'>Certificates</span>
                     </div>
                     
                 </div>

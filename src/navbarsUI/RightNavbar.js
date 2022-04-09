@@ -18,16 +18,26 @@ import Divider from '@mui/material/Divider';
 import TermsOfService from '@mui/icons-material/Article';
 import PrivacyPolicy from '@mui/icons-material/Security';
 import Logout from '@mui/icons-material/Logout';
-import TaskIcon from '../images/icons/task.svg'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import log_login from '../images/icons/log_login.svg';
+import MenuVerticalIcon from '../images/icons/menu_vertical.svg';
+import TaskIcon1 from '@mui/icons-material/Task';
 
 import axios from "axios";
 import { useState } from "react";
+import TaskModal from '../modalsUi/TaskModal';
+import EachTask from '../eachTask/EachTask';
+import taskDateClick from '../functions/TaskDateSelector';
+import ViewTaskModal from '../modalsUi/ViewTaskModal';
 
 export default function RightNavbar(){
   //getting the email of user
   let email_key = localStorage.getItem('email');
+
+  //Open the modal for task 
+  function OpenTaskModal(){
+      document.getElementsByClassName("task_modal_container")[0].style.display = "flex";
+  }
 
   //Hook for view the list of task of user
   const [task, setTask] = useState([]);  
@@ -41,55 +51,7 @@ export default function RightNavbar(){
       loadTasks();
   }, []);
 
-  //Task box container using map -> AM time
-  const Task_box_AM = task.map((res)=> {
-    var description_trim = res.description;
-    description_trim = description_trim.substring(0, 20);
-    var dot = "...";
-    var time_AM = res.time.slice(-2);
-    res.description.length >= 23 ? dot = "..." : dot = "" ;
-    if(res.email === email_key ){
-        if(time_AM == "am"){
-            return (
-                <div className='task_box'>
-                    <span>{res.time}</span>
-                    <div className='task_description'>
-                        <div className='top' style={{textTransform: "uppercase"}}>
-                            <div className='task_icon'><img src={TaskIcon}/></div>
-                            {res.title}
-                        </div>
-                        <span className='task_text'>{description_trim+dot}</span>
-                    </div>
-                </div>
-            )
-        }
-    }
-  })
-  //Task box container using map -> PM time
-  const Task_box_PM = task.map((res)=> {
-    var description_trim = res.description;
-    description_trim = description_trim.substring(0, 20);
-    var dot = "...";
-    var time_AM = res.time.slice(-2);
-    res.description.length >= 23 ? dot = "..." : dot = "" ;
-    if(res.email === email_key ){
-        if(time_AM == "pm"){
-            return (
-                <div className='task_box'>
-                    <span>{res.time}</span>
-                    <div className='task_description'>
-                        <div className='top' style={{textTransform: "uppercase"}}>
-                            <div className='task_icon'><img src={TaskIcon}/></div>
-                            {res.title}
-                        </div>
-                        <span className='task_text'>{description_trim+dot}</span>
-                    </div>
-                </div>
-            )
-        }
-    }
-  })
-
+  
 
     //date today
     const today = new Date();
@@ -105,15 +67,338 @@ export default function RightNavbar(){
     let startdate7 = moment().add(3, "days");
     
     const startdate_array = [startdate1,startdate2,startdate3,startdate4,startdate5,startdate6,startdate7];
+    const today_arrayConverterd = [];
     const today_array = [];
     const initialday = [];
     var x;
     for(x = 0 ; x < 7 ; x++){
-        today_array.push(startdate_array[x].format("DD"));
+        today_arrayConverterd.push(startdate_array[x].format("L"));
         initialday.push(startdate_array[x] ? startdate_array[x].format("dddd").substring(0,2)  : '');
+        today_array.push(startdate_array[x].format("DD"));
     }
 
+    var taskDateValue =  new Date().toISOString().slice(0, 10);
+    window.localStorage.setItem('taskDateValue', taskDateValue);
+
+
+  //-------------------------------------------------------------------------------//
+    //Task box container using map -> AM time
+    const Task_box_AM1= task.map((res)=> {
+        var description_trim = res.description;
+        description_trim = description_trim.substring(0, 20);
+        var dot = "...";
+        var time_AM = res.time.slice(-2);
+        res.description.length >= 23 ? dot = "..." : dot = "" ; 
+        var today = today_arrayConverterd[0];
+        var splitToday = today.split("/");
+        var date_Set = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+        taskDateValue = date_Set;
+        if(res.email === email_key && res.date === taskDateValue ){
+            if(time_AM == "am"){
+                return (
+                    <EachTask 
+                        time={res.time}
+                        title= {res.title}
+                        description={description_trim+dot}
+                    />
+                )
+            }
+        }
+    })
+    //Task box container using map -> PM time
+    const Task_box_PM1= task.map((res)=> {
+        var description_trim = res.description;
+        description_trim = description_trim.substring(0, 20);
+        var dot = "...";
+        var time_AM = res.time.slice(-2);
+        res.description.length >= 23 ? dot = "..." : dot = "" ;  
+        var today = today_arrayConverterd[0];
+        var splitToday = today.split("/");
+        var date_Set = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+        taskDateValue = date_Set;   
+        if(res.email === email_key && res.date === taskDateValue ){
+            if(time_AM == "pm"){
+                return (
+                    <EachTask 
+                        time={res.time}
+                        title= {res.title}
+                        description={description_trim+dot}
+                    />
+                )
+            }
+        }
+    })
+    //Task box container using map -> AM time
+    const Task_box_AM2= task.map((res)=> {
+        var description_trim = res.description;
+        description_trim = description_trim.substring(0, 20);
+        var dot = "...";
+        var time_AM = res.time.slice(-2);
+        res.description.length >= 23 ? dot = "..." : dot = "" ;   
+        var today = today_arrayConverterd[1];
+        var splitToday = today.split("/");
+        var date_Set = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+        taskDateValue = date_Set;
+        if(res.email === email_key && res.date === taskDateValue ){
+            if(time_AM == "am"){
+                return (
+                    <EachTask 
+                        time={res.time}
+                        title= {res.title}
+                        description={description_trim+dot}
+                    />
+                )
+            }
+        }
+    })
+    //Task box container using map -> PM time
+    const Task_box_PM2= task.map((res)=> {
+        var description_trim = res.description;
+        description_trim = description_trim.substring(0, 20);
+        var dot = "...";
+        var time_AM = res.time.slice(-2);
+        res.description.length >= 23 ? dot = "..." : dot = "" ; 
+        var today = today_arrayConverterd[1];
+        var splitToday = today.split("/");
+        var date_Set = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+        taskDateValue = date_Set;
+        if(res.email === email_key && res.date === taskDateValue ){
+            if(time_AM == "pm"){
+                return (
+                    <EachTask 
+                        time={res.time}
+                        title= {res.title}
+                        description={description_trim+dot}
+                    />
+                )
+            }
+        }
+    })
+    //Task box container using map -> AM time
+    const Task_box_AM3= task.map((res)=> {
+        var description_trim = res.description;
+        description_trim = description_trim.substring(0, 20);
+        var dot = "...";
+        var time_AM = res.time.slice(-2);
+        res.description.length >= 23 ? dot = "..." : dot = "" ; 
+        var today = today_arrayConverterd[2];
+        var splitToday = today.split("/");
+        var date_Set = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+        taskDateValue = date_Set;
+        if(res.email === email_key && res.date === taskDateValue ){
+            if(time_AM == "am"){
+                return (
+                    <EachTask 
+                        time={res.time}
+                        title= {res.title}
+                        description={description_trim+dot}
+                    />
+                )
+            }
+        }
+    })    
+    //Task box container using map -> PM time
+    const Task_box_PM3= task.map((res)=> {
+        var description_trim = res.description;
+        description_trim = description_trim.substring(0, 20);
+        var dot = "...";
+        var time_AM = res.time.slice(-2);
+        res.description.length >= 23 ? dot = "..." : dot = "" ; 
+        var today = today_arrayConverterd[2];
+        var splitToday = today.split("/");
+        var date_Set = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+        taskDateValue = date_Set;
+        if(res.email === email_key && res.date === taskDateValue ){
+            if(time_AM == "pm"){
+                return (
+                    <EachTask 
+                        time={res.time}
+                        title= {res.title}
+                        description={description_trim+dot}
+                    />
+                )
+            }
+        }
+    })    
+    //Task box container using map -> PM time
+    const Task_box_AM_today = task.map((res)=> {
+            var description_trim = res.description;
+            description_trim = description_trim.substring(0, 20);
+            var dot = "...";
+            var time_AM = res.time.slice(-2);
+            res.description.length >= 23 ? dot = "..." : dot = "" ; 
+            if(res.email === email_key && res.date === localStorage.getItem('taskDateValue') ){
+                if(time_AM == "am"){
+                    return (
+                        <EachTask 
+                            time={res.time}
+                            title= {res.title}
+                            description={description_trim+dot}
+                        />
+                    )
+                }
+            }
+     })
+    //Task box container using map -> PM time
+    const Task_box_PM_today = task.map((res)=> {
+        var description_trim = res.description;
+        description_trim = description_trim.substring(0, 20);
+        var dot = "...";
+        var time_AM = res.time.slice(-2);
+        res.description.length >= 23 ? dot = "..." : dot = "" ; 
   
+        if(res.email === email_key && res.date === localStorage.getItem('taskDateValue') ){
+            if(time_AM == "pm"){
+                return (
+                    <EachTask 
+                        time={res.time}
+                        title= {res.title}
+                        description={description_trim+dot}
+                    />
+                )
+            }
+        }
+    })
+    //Task box container using map -> AM time
+    const Task_box_AM5= task.map((res)=> {
+        var description_trim = res.description;
+        description_trim = description_trim.substring(0, 20);
+        var dot = "...";
+        var time_AM = res.time.slice(-2);
+        res.description.length >= 23 ? dot = "..." : dot = "" ; 
+        var today = today_arrayConverterd[4];
+        var splitToday = today.split("/");
+        var date_Set = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+        taskDateValue = date_Set;
+        if(res.email === email_key && res.date === taskDateValue ){
+            if(time_AM == "am"){
+                return (
+                    <EachTask 
+                        time={res.time}
+                        title= {res.title}
+                        description={description_trim+dot}
+                    />
+                )
+            }
+        }
+    })       
+    //Task box container using map -> PM time
+    const Task_box_PM5= task.map((res)=> {
+        var description_trim = res.description;
+        description_trim = description_trim.substring(0, 20);
+        var dot = "...";
+        var time_AM = res.time.slice(-2);
+        res.description.length >= 23 ? dot = "..." : dot = "" ; 
+        var today = today_arrayConverterd[4];
+        var splitToday = today.split("/");
+        var date_Set = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+        taskDateValue = date_Set;
+        if(res.email === email_key && res.date === taskDateValue ){
+            if(time_AM == "pm"){
+                return (
+                    <EachTask 
+                        time={res.time}
+                        title= {res.title}
+                        description={description_trim+dot}
+                    />
+                )
+            }
+        }
+    })    
+   //Task box container using map -> AM time
+   const Task_box_AM6= task.map((res)=> {
+    var description_trim = res.description;
+    description_trim = description_trim.substring(0, 20);
+    var dot = "...";
+    var time_AM = res.time.slice(-2);
+    res.description.length >= 23 ? dot = "..." : dot = "" ; 
+    var today = today_arrayConverterd[5];
+    var splitToday = today.split("/");
+    var date_Set = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+    taskDateValue = date_Set;
+    if(res.email === email_key && res.date === taskDateValue ){
+        if(time_AM == "am"){
+            return (
+                <EachTask 
+                    time={res.time}
+                    title= {res.title}
+                    description={description_trim+dot}
+                />
+            )
+        }
+    }
+    })       
+    //Task box container using map -> PM time
+    const Task_box_PM6= task.map((res)=> {
+        var description_trim = res.description;
+        description_trim = description_trim.substring(0, 20);
+        var dot = "...";
+        var time_AM = res.time.slice(-2);
+        res.description.length >= 23 ? dot = "..." : dot = "" ; 
+        var today = today_arrayConverterd[5];
+        var splitToday = today.split("/");
+        var date_Set = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+        taskDateValue = date_Set;
+        if(res.email === email_key && res.date === taskDateValue ){
+            if(time_AM == "pm"){
+                return (
+                    <EachTask 
+                        time={res.time}
+                        title= {res.title}
+                        description={description_trim+dot}
+                    />
+                )
+            }
+        }
+    })    
+    //Task box container using map -> AM time
+    const Task_box_AM7= task.map((res)=> {
+        var description_trim = res.description;
+        description_trim = description_trim.substring(0, 20);
+        var dot = "...";
+        var time_AM = res.time.slice(-2);
+        res.description.length >= 23 ? dot = "..." : dot = "" ; 
+        var today = today_arrayConverterd[6];
+        var splitToday = today.split("/");
+        var date_Set = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+        taskDateValue = date_Set;
+        if(res.email === email_key && res.date === taskDateValue ){
+            if(time_AM == "am"){
+                return (
+                    <EachTask 
+                        time={res.time}
+                        title= {res.title}
+                        description={description_trim+dot}
+                    />
+                )
+            }
+        }
+    })         
+    //Task box container using map -> PM time
+    const Task_box_PM7 = task.map((res)=> {
+        var description_trim = res.description;
+        description_trim = description_trim.substring(0, 20);
+        var dot = "...";
+        var time_AM = res.time.slice(-2);
+        res.description.length >= 23 ? dot = "..." : dot = "" ; 
+        var today = today_arrayConverterd[6];
+        var splitToday = today.split("/");
+        var date_Set = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+        taskDateValue = date_Set;
+        if(res.email === email_key && res.date === taskDateValue ){
+            if(time_AM == "pm"){
+                return (
+                    <EachTask 
+                        time={res.time}
+                        title= {res.title}
+                        description={description_trim+dot}
+                    />
+                )
+            }
+        }
+    })     
+  //-------------------------------------------------------------------------------//
+
     //for getting the initial name in avatar
     let initialName = localStorage.getItem('name').charAt(0);
     let firstName = localStorage.getItem('name').split(' ')[0]
@@ -154,10 +439,18 @@ export default function RightNavbar(){
       setAnchorEl_act(null);
     };
 
-
-
+    //Menu on task
+    const [anchor_task, setAnchorEl_task] = React.useState(null);
+    const open_task = Boolean(anchor_task);
+    const handleClick_task = (event) => {
+        setAnchorEl_task(event.currentTarget);
+    };
+    const handleClose_task = () => {
+        setAnchorEl_task(null);
+    };
+    
     return (
-        <div className="right_navbar_container" id="test"
+        <div className="right_navbar_container"
             style={{
                 backgroundImage: `url(${RightNavbar_bg})` 
             }}
@@ -269,45 +562,114 @@ export default function RightNavbar(){
                             <span>{monthToday+" "+yearToday}</span>
                         </div>
                         <div className='right'>
-                            <div className='task_btn'>+ Add Task</div>
+                            <div className='task_btn' onClick={OpenTaskModal}>+ Add Task</div> 
+                            <img src={MenuVerticalIcon} onClick={handleClick_task}/>
+                            <Menu
+                                anchorEl={anchor_task}
+                                id="account-menu"
+                                open={open_task}
+                                onClose={handleClose_task}
+                                onClick={handleClose_task}
+                                PaperProps={{
+                                    elevation: 0,
+                                    sx: {
+                                        overflow: 'visible',
+                                        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                                        mt: 1.5,
+                                        '& .MuiAvatar-root': {
+                                        width: 32,
+                                        height: 32,
+                                        ml: -0.5,
+                                        mr: 1,
+                                    },
+                                    '&:before': {
+                                        content: '""',
+                                        display: 'block',
+                                        position: 'absolute',
+                                        top: 0,
+                                        right: 14,
+                                        width: 10,
+                                        height: 10,
+                                        bgcolor: 'background.paper',
+                                        transform: 'translateY(-50%) rotate(45deg)',
+                                        zIndex: 0,
+                                    },
+                                    },
+                                    }}
+                                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                            >
+                                <MenuItem>
+                                    <ListItemIcon>
+                                        <TaskIcon1 fontSize="small" />
+                                    </ListItemIcon>
+                                    View all scheduled task
+                                </MenuItem>
+                            </Menu>
                         </div>
                     </div>
                     
                     <div className='task_calendar'>
-                        <button className='date'>
-                            <p>{initialday[0] }</p>
-                            <p>{today_array[0]}</p>
+                        <button className='date date1' onClick={() => { taskDateClick("date1");}}>
+                            <p className='day1'>{initialday[0] }</p>
+                            <p className='today1'>{today_array[0]}</p>
                         </button>
-                        <button className='date'>
+                        <button className='date date2' onClick={() => { taskDateClick("date2");}}>
                             <p>{initialday[1]}</p>
                             <p>{today_array[1]}</p>
                         </button>
-                        <button className='date'>
+                        <button className='date date3' onClick={() => { taskDateClick("date3");}}>
                             <p>{initialday[2]}</p>
                             <p>{today_array[2]}</p>
                         </button>
-                        <button className='date date_today'>
+                        <button className='date date_today date4' onClick={() => { taskDateClick("date_today");}}>
                             <p>{initialday[3]}</p>
                             <p>{today_array[3]}</p>
                         </button>
-                        <button className='date'>
+                        <button className='date date5' onClick={() => { taskDateClick("date5");}}>
                             <p>{initialday[4]}</p>
                             <p>{today_array[4]}</p>
                         </button>
-                        <button className='date'>
+                        <button className='date date6' onClick={() => { taskDateClick("date6");}}>
                             <p>{initialday[5]}</p>
                             <p>{today_array[5]}</p>
                         </button>
-                        <button className='date'>
+                        <button className='date date7' onClick={() => { taskDateClick("date7");}}>
                             <p>{initialday[6]}</p>
                             <p>{today_array[6]}</p>
                         </button>
                     </div>
                 </div>
 
-                <div className='task_content'>
-                        {Task_box_AM}
-                        {Task_box_PM}
+                <div className='task_content' id="reload_task">
+                    <div className='task1_display' style={{display:"none"}}>
+                        {Task_box_AM1}
+                        {Task_box_PM1}
+                    </div>
+                    <div className='task2_display' style={{display:"none"}}>
+                        {Task_box_AM2}
+                        {Task_box_PM2}
+                    </div>
+                    <div className='task3_display' style={{display:"none"}}>
+                        {Task_box_AM3}
+                        {Task_box_PM3}
+                    </div>
+                    <div className='task4_display'>
+                        {Task_box_AM_today}
+                        {Task_box_PM_today}
+                    </div>
+                    <div className='task5_display' style={{display:"none"}}>
+                        {Task_box_AM5}
+                        {Task_box_PM5}
+                    </div>
+                    <div className='task6_display' style={{display:"none"}}>
+                        {Task_box_AM6}
+                        {Task_box_PM6}
+                    </div>
+                    <div className='task7_display' style={{display:"none"}}>
+                        {Task_box_AM7}
+                        {Task_box_PM7}
+                    </div>
                 </div>
             </div>
  
@@ -383,7 +745,19 @@ export default function RightNavbar(){
                          <span>You logged in</span>
                     </div>
                 </div>
-            </div>       
+            </div>   
+
+
+
+            {/*MODAL FOR ADD TASK */}
+            <div className="modal_container task_modal_container">
+                <TaskModal/>
+            </div>
+
+            <div className="modal_container view_task_modal_container"
+             style={{display:"none"}}>
+                <ViewTaskModal/>
+            </div>
 
         </div>
     )
