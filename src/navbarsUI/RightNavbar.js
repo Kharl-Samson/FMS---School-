@@ -29,6 +29,7 @@ import TaskModal from '../modalsUi/TaskModal';
 import EachTask from '../eachTask/EachTask';
 import taskDateClick from '../functions/TaskDateSelector';
 import ViewTaskModal from '../modalsUi/ViewTaskModal';
+import SeeAllTask from '../taskUI/SeeAllTask';
 
 export default function RightNavbar(){
   //getting the email of user
@@ -448,6 +449,14 @@ export default function RightNavbar(){
     const handleClose_task = () => {
         setAnchorEl_task(null);
     };
+
+    //opening all task function
+    function viewAllTask(){
+        document.getElementsByClassName("view_alltask_modal_container")[0].style.display = "flex";
+        setTimeout(function(){
+            document.getElementsByClassName("see_all_task_container")[0].style.bottom = "0%";
+        },200);
+    }
     
     return (
         <div className="right_navbar_container"
@@ -599,7 +608,7 @@ export default function RightNavbar(){
                                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                             >
-                                <MenuItem>
+                                <MenuItem onClick={viewAllTask}>
                                     <ListItemIcon>
                                         <TaskIcon1 fontSize="small" />
                                     </ListItemIcon>
@@ -749,7 +758,7 @@ export default function RightNavbar(){
 
 
 
-            {/*MODAL FOR ADD TASK */}
+            {/*MODAL FOR TASK */}
             <div className="modal_container task_modal_container">
                 <TaskModal/>
             </div>
@@ -757,6 +766,10 @@ export default function RightNavbar(){
             <div className="modal_container view_task_modal_container"
              style={{display:"none"}}>
                 <ViewTaskModal/>
+            </div>
+            
+            <div className="modal_container view_alltask_modal_container">
+                <SeeAllTask/>
             </div>
 
         </div>
