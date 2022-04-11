@@ -3,7 +3,8 @@ import React from "react";
 export default function ModalValidationSucces (props){
 
     function CloseTaskModal(){
-        window.location.reload();
+        document.getElementsByClassName("success_modal_task_container")[0].style.display="none";
+        document.getElementsByClassName("task_modal_container")[0].style.display = "none";
     }
 
     return (

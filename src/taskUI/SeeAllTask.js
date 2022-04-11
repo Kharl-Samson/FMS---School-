@@ -2,18 +2,11 @@ import React, { useEffect } from 'react';
 import axios from "axios";
 import { useState } from "react";
 import Grid from '@mui/material/Grid';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import TimeIcon from "../images/icons/time.svg";
-import CalendarIcon from "../images/icons/calendar.svg";
 import SearchIcon from "../images/icons/search.svg";
-import no_record_icon from "../images/no_record_icon.png"
-import moment from 'moment';
+import no_record_icon from "../images/no_record_icon.png";
 import $ from 'jquery';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import TaskBox from './TaskBox';
+import SuccessSlideRightModal from '../modalsUi/SuccessSlideRightModal';
 
 export default function SeeAllTask(){
   //Email key
@@ -27,94 +20,28 @@ export default function SeeAllTask(){
   };
 
   useEffect(() => {
+    setInterval(() => {
       loadTasks();
+    }, 10);
   }, []);
 
 
-
-    //Menu on navbar
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-    
     //Task box container using map
     const Task_box= task.map((res)=> {
-      var dateFormat =  moment(res.date).format('LL');
         if(res.email === email_key){
                 return (
-                    <div className="task_box_container">
-                        <MoreHorizIcon sx={{float : 'right', marginRight: "5%", marginTop:"3%", color:"#ffff"}} className={"MoreHorizIcon"}  onClick={handleClick}/>
-                        <Menu
-                        anchorEl={anchorEl}
-                        id="account-menu"
-                        open={open}
-                        onClose={handleClose}
-                        onClick={handleClose}
-                        PaperProps={{
-                            elevation: 0,
-                            sx: {
-                                overflow: 'visible',
-                                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                                mt: 1.5,
-                                '& .MuiAvatar-root': {
-                                width: 32,
-                                height: 32,
-                                ml: -0.5,
-                                mr: 1,
-                            },
-                            '&:before': {
-                                content: '""',
-                                display: 'block',
-                                position: 'absolute',
-                                top: 0,
-                                right: 14,
-                                width: 10,
-                                height: 10,
-                                bgcolor: 'background.paper',
-                                transform: 'translateY(-50%) rotate(45deg)',
-                                zIndex: 0,
-                            },
-                        },
-                        }}
-                        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                    >
-                        <MenuItem>
-                            <ListItemIcon>
-                                <EditIcon fontSize="small" />
-                            </ListItemIcon>
-                            Edit Task
-                        </MenuItem>
-                        <MenuItem>
-                            <ListItemIcon>
-                                <DeleteIcon fontSize="small" />
-                            </ListItemIcon>
-                            Delete
-                        </MenuItem>
-                    </Menu>
-                    
-                        <div className="date_container">
-                            <img src={CalendarIcon}/>
-                            {dateFormat}
-                        </div>
-
-                        <p className="title">{res.title}</p>
-                        <p className="description">{res.description}</p>
-                        <p className="link"><a href={res.link} target="_blank">{res.link}</a></p>
-
-                        <div className="date_container" style={{marginTop: "0"}}>
-                            <img src={TimeIcon}/>
-                            {res.time}
-                        </div>
-                    </div>
+                  <TaskBox
+                    id = {res.id}
+                    title = {res.title}
+                    description = {res.description}
+                    link = {res.link}
+                    date = {res.date}
+                    time = {res.time}
+                  />
                 )
         }
     })
+
 
         //Filter Search
         $("#searh_task").on("keyup", function() {
@@ -125,27 +52,55 @@ export default function SeeAllTask(){
 
             if($('#ul_task .task_box_container:visible').length === 0) {//pag not found
                 document.getElementsByClassName("no_record_found")[0].style.display = "flex";
+                document.getElementsByClassName("empty_data")[0].style.display = "none";
             }
             else if($('#ul_task .task_box_container:visible').length != 0){//pag found
                 document.getElementsByClassName("no_record_found")[0].style.display = "none";
+                document.getElementsByClassName("empty_data")[0].style.display = "none";
+            }
+            if(document.getElementById("searh_task").value == ""){
+                document.getElementsByClassName("no_record_found")[0].style.display = "none";
+                document.getElementsByClassName("empty_data")[0].style.display = "flex";
             }
         });
 
 
         //Closing all task function
-        var modal = document.getElementsByClassName("view_alltask_modal_container")[0];
+        var task_modal_container =  document.getElementsByClassName("task_modal_container")[0];
+        var view_task_modal_container =  document.getElementsByClassName("view_task_modal_container")[0];
+        var view_alltask_modal_container = document.getElementsByClassName("view_alltask_modal_container")[0];
+        var edit_task_modal_container = document.getElementsByClassName("edit_task_modal_container")[0];
+        var delete_task_modal_container = document.getElementsByClassName("delete_task_modal_container")[0];
+
         function CloseAllTask(){
             document.getElementsByClassName("see_all_task_container")[0].style.bottom = "-100%";
             setTimeout(function(){
                 document.getElementsByClassName("view_alltask_modal_container")[0].style.display = "none";
             },500);
         }
+
         window.onclick = function(event) {
-            if (event.target == modal) {
+            if (event.target == task_modal_container) {
+                task_modal_container.style.display = "none";
+                var input =  document.getElementsByClassName("task_input");
+                for(var i=0; i< input.length; i++){
+                    input[i].value = "";
+                }
+            }
+            else if (event.target == view_task_modal_container) {
+                view_task_modal_container.style.display = "none";
+            }
+            else if (event.target == view_alltask_modal_container) {
                 document.getElementsByClassName("see_all_task_container")[0].style.bottom = "-100%";
                 setTimeout(function(){
-                    document.getElementsByClassName("view_alltask_modal_container")[0].style.display = "none";
+                    view_alltask_modal_container.style.display = "none";
                 },500);
+            }
+            else if (event.target == edit_task_modal_container) {
+                edit_task_modal_container.style.display = "none";
+            }
+            else if (event.target == delete_task_modal_container) {
+                delete_task_modal_container.style.display = "none";
             }
         }
 
@@ -171,17 +126,33 @@ export default function SeeAllTask(){
                         direction="row"
                         justifyContent="center"
                         alignItems="center"
+                        id="see_all_task_container"
                     >   
-                        {Task_box}
+                        {Task_box.length !== 0 ? 
+                                Task_box :      
+                                  <div className='empty_data'>
+                                    <img src={no_record_icon}/>
+                                    <p>You have no tasks in your list</p>
+                                </div>
+                        }
 
                         <div className='no_record_found'>
                                 <img src={no_record_icon}/>
                                 <p>Sorry, No records found</p>
                         </div>
+                    
+                        
                     </Grid>     
                 </ul>
             </div>
-            
+
+            {/*Modal*/ }
+            <SuccessSlideRightModal
+                img="success_modal.svg"
+                title="Success!"
+                subtitle="This action was process succesfully."
+            />             
+
         </div>
     )
 }

@@ -109,6 +109,86 @@ button:hover{
 }
 
 
+.modal_validation_version2{
+    width: auto;
+    height: auto;
+    margin: 20px;
+    overflow: hidden;
+    background-color: #ffff;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    -webkit-animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
+    animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
+}
+.modal_validation_version2 .close_modal{
+    margin-right: 40px;
+    font-size: 2rem;
+    margin-top: 20px;
+    font-weight: 600;
+    float: right;
+    line-height: 1;
+}
+.modal_validation_version2 .close_modal:hover{
+    cursor: pointer;
+    opacity: 80%;
+}
+.modal_validation_version2 .top{
+    margin-top: 20px;
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.modal_validation_version2 .top img{
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+}
+.modal_validation_version2 .title{
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #232325;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.modal_validation_version2 .subtitle{
+    color: #F32D2D;
+    font-size: .9rem;
+    font-style: italic;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.modal_validation_version2 .bot{
+    padding: 15px 40px;
+    width: auto;
+    height: auto;
+    background-color: #e9e8e8;
+    flex-grow: 1;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+.modal_validation_version2 .bot button{
+    border: none;
+    font-size: 1rem;
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+.modal_validation_version2 .bot button:nth-child(1){
+    background-color: transparent;
+    color: #232325;
+}
+.modal_validation_version2 .bot button[type="submit"]{
+    background-color: #f03f3f;
+    color: #ffff;
+}
+.modal_validation_version2 .bot button:hover{
+    opacity: 80%;
+}
+
 /*NAVBAR SIZE*/
 .navbar_sizer{
     top: 5vh;
@@ -329,6 +409,9 @@ button:hover{
 
 
 /*RIGHT NAVBAR PART*/
+.dashboard_container #right_navbar_container{
+    margin-right: 0;
+}
 .dashboard_container .right_navbar_container{
     position: fixed;
     right: 0;
@@ -538,10 +621,6 @@ button:hover{
     align-items: center;
     justify-content: space-between;
 }
-.dashboard_container .right_navbar_container .task_container .task_box:hover{
-    cursor: pointer;
-    opacity: 80%;
-}
 .dashboard_container .right_navbar_container .task_container .task_box span{
     font-size: .8rem;
     width: 24%;
@@ -552,6 +631,10 @@ button:hover{
     margin-left: 5%;
     border-radius: 12px;
     background-color: #FBEFD2;
+}
+.dashboard_container .right_navbar_container .task_container .task_box .task_description:hover{
+    cursor: pointer;
+    opacity: 80%;
 }
 .dashboard_container .right_navbar_container .task_container .task_box:nth-child(even) .task_description:nth-child(even){
     background-color: #B0A0FF;
@@ -807,6 +890,61 @@ button:hover{
     opacity: 70%;
 }
 
+/*MODAL RIGHT SIDE*/
+.success_modal_right_side{
+    height: auto;
+    width: auto;
+    background-color: #6fcf97;
+    position: fixed;
+    border-radius: 10px;
+    top: 5%;
+    right: -100%; /*2%*/
+    padding: 15px 20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: .4s ease;
+}
+.success_modal_right_side .left{
+    height: auto;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.success_modal_right_side .left img{
+    height: auto;
+    width: 90%;
+    margin-right: 10px;
+}
+.success_modal_right_side .center p{
+    margin: 0;
+    line-height: 1.2;
+    color: #ffff;
+}
+.success_modal_right_side .center p:nth-child(1){
+    font-size: 1.2rem;
+}
+.success_modal_right_side .center p:nth-child(2){
+    font-size: .9rem;
+    color: rgb(237, 234, 234);
+}
+.success_modal_right_side .right{
+    height: 40px;
+    width: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+.success_modal_right_side .right p{
+    font-size: 2rem;
+    line-height: .5;
+    color: #ffff;
+}
+.success_modal_right_side .right p:hover{
+    cursor: pointer;
+    opacity: 70%;
+}
 
 /*SEE ALL TASK CONTAINER*/
 .see_all_task_container{
@@ -1007,6 +1145,37 @@ button:hover{
     color: rgb(103, 102, 102);
 }
 
+
+.empty_data{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.empty_data img{
+    height: 200px;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+.empty_data p{
+    font-size: 1.5rem;
+    color: rgb(103, 102, 102);
+}
+.empty_data_small{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.empty_data_small img{
+    height: 60px;
+    margin-bottom: 5%;  
+    margin-top: 3rem;
+}
+.empty_data_small p{
+    font-size: .9rem;
+    color: rgb(103, 102, 102);
+}
 
 /*RESPONSIVE*/
 @media screen and (max-width: 799px) {

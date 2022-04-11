@@ -1,11 +1,15 @@
 import react from "react";
 import TaskModalIcon from '../images/icons/task_modal.svg';
+import SubtitlesIcon from '@mui/icons-material/Subtitles';
+import DescriptionIcon from '@mui/icons-material/Description';
+import LinkIcon from '@mui/icons-material/Link';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 export default function ViewTaskModal(){
     function CloseTaskModal(){
         document.getElementsByClassName("view_task_modal_container")[0].style.display = "none";
     }
-
     return(
             <div className='task_modal'>
                 <div className='top'>
@@ -18,20 +22,35 @@ export default function ViewTaskModal(){
                 </div>
 
                     <div className='task_form'>
-                        <label>Title</label>
-                        <p style={{fontSize: "1rem"}} id="task_title">1</p>
+                        <div style={{display:"flex",alignItems:"flex-end", color: "#616263"}}>
+                            <SubtitlesIcon style={{marginRight :"5px"}}/>
+                            <label>Title</label>
+                        </div>
+                        <p style={{fontSize: "1rem", marginBottom: "10px"}} id="task_title"></p>
 
-                        <label>Description</label>
-                        <p style={{fontSize: "1rem"}}>test</p>
+                        <div style={{display:"flex",alignItems:"flex-end", color: "#616263"}}>
+                            <DescriptionIcon style={{marginRight :"5px"}}/>
+                            <label>Description</label>
+                        </div>
+                        <p style={{fontSize: "1rem", marginBottom: "10px"}}  id="task_description"></p>
 
-                        <label>Link</label>
-                        <a href="#" style={{color: "#5171E3"}}>test</a>
+                        <div style={{display:"flex",alignItems:"flex-end", color: "#616263"}}>
+                            <LinkIcon style={{marginRight :"5px"}}/>
+                            <label>Link</label>
+                        </div>
+                        <a href="#" target="_blank" style={{color: "#5171E3", marginBottom: "10px"}} id="task_link"></a>
 
-                        <label>Date</label>
-                        <p style={{fontSize: "1rem"}}>test</p>
+                        <div style={{display:"flex",alignItems:"flex-end", color: "#616263"}}>
+                            <DateRangeIcon style={{marginRight :"5px"}}/>
+                            <label>Date</label>
+                        </div>
+                        <p style={{fontSize: "1rem", marginBottom: "10px"}} id="task_date"></p>
 
-                        <label>Time</label>
-                        <p style={{fontSize: "1rem"}}>test</p>
+                        <div style={{display:"flex",alignItems:"flex-end", color: "#616263"}}>
+                            <AccessTimeIcon style={{marginRight :"5px"}}/>
+                            <label>Time</label>
+                        </div>
+                        <p style={{fontSize: "1rem", marginBottom: "10px"}} id="task_time"></p>
                     </div>
             </div>
     )

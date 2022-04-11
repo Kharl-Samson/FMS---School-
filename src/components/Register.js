@@ -21,6 +21,8 @@ import Valid_icon from "../images/icons/valid.svg";
 import validator from 'validator'
 import axios from "axios";
 import ModalValidation from "./ModalValidation";
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -205,7 +207,9 @@ export default function Register(){
                 .then((result)=>{
 
                     if(result.data.status == "Invalid"){//If the response is invalid
-                        alert('Invalid User')
+                        <Stack sx={{ width: '100%' }} spacing={2}>
+                            <Alert severity="error">There was an error in your SQL Connection!</Alert>
+                        </Stack>
                     }
                     else if(result.data.status == "Password doesnt match"){ //If the response is Password doesnt match
                         document.getElementsByClassName("form_handler_container")[0].style.display = "flex";

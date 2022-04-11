@@ -26,10 +26,13 @@ import TaskIcon1 from '@mui/icons-material/Task';
 import axios from "axios";
 import { useState } from "react";
 import TaskModal from '../modalsUi/TaskModal';
-import EachTask from '../eachTask/EachTask';
+import EachTask from '../taskUI/EachTask';
 import taskDateClick from '../functions/TaskDateSelector';
 import ViewTaskModal from '../modalsUi/ViewTaskModal';
 import SeeAllTask from '../taskUI/SeeAllTask';
+import EditTaskModal from '../modalsUi/EditTaskModal';
+import DeleteModal from '../modalsUi/DeleteModal';
+import no_record_icon from "../images/no_record_icon.png";
 
 export default function RightNavbar(){
   //getting the email of user
@@ -49,7 +52,9 @@ export default function RightNavbar(){
   };
 
   useEffect(() => {
+    setInterval(() => {
       loadTasks();
+          }, 10);
   }, []);
 
   
@@ -81,7 +86,6 @@ export default function RightNavbar(){
     var taskDateValue =  new Date().toISOString().slice(0, 10);
     window.localStorage.setItem('taskDateValue', taskDateValue);
 
-
   //-------------------------------------------------------------------------------//
     //Task box container using map -> AM time
     const Task_box_AM1= task.map((res)=> {
@@ -101,6 +105,9 @@ export default function RightNavbar(){
                         time={res.time}
                         title= {res.title}
                         description={description_trim+dot}
+                        description_notTrim = {res.description}
+                        link= {res.link}
+                        date = {res.date}
                     />
                 )
             }
@@ -124,6 +131,9 @@ export default function RightNavbar(){
                         time={res.time}
                         title= {res.title}
                         description={description_trim+dot}
+                        description_notTrim = {res.description}
+                        link= {res.link}
+                        date = {res.date}
                     />
                 )
             }
@@ -147,6 +157,9 @@ export default function RightNavbar(){
                         time={res.time}
                         title= {res.title}
                         description={description_trim+dot}
+                        description_notTrim = {res.description}
+                        link= {res.link}
+                        date = {res.date}
                     />
                 )
             }
@@ -170,6 +183,9 @@ export default function RightNavbar(){
                         time={res.time}
                         title= {res.title}
                         description={description_trim+dot}
+                        description_notTrim = {res.description}
+                        link= {res.link}
+                        date = {res.date}
                     />
                 )
             }
@@ -193,6 +209,9 @@ export default function RightNavbar(){
                         time={res.time}
                         title= {res.title}
                         description={description_trim+dot}
+                        description_notTrim = {res.description}
+                        link= {res.link}
+                        date = {res.date}
                     />
                 )
             }
@@ -216,6 +235,9 @@ export default function RightNavbar(){
                         time={res.time}
                         title= {res.title}
                         description={description_trim+dot}
+                        description_notTrim = {res.description}
+                        link= {res.link}
+                        date = {res.date}
                     />
                 )
             }
@@ -235,6 +257,9 @@ export default function RightNavbar(){
                             time={res.time}
                             title= {res.title}
                             description={description_trim+dot}
+                            description_notTrim = {res.description}
+                            link= {res.link}
+                            date = {res.date}
                         />
                     )
                 }
@@ -255,6 +280,9 @@ export default function RightNavbar(){
                         time={res.time}
                         title= {res.title}
                         description={description_trim+dot}
+                        description_notTrim = {res.description}
+                        link= {res.link}
+                        date = {res.date}
                     />
                 )
             }
@@ -278,6 +306,9 @@ export default function RightNavbar(){
                         time={res.time}
                         title= {res.title}
                         description={description_trim+dot}
+                        description_notTrim = {res.description}
+                        link= {res.link}
+                        date = {res.date}
                     />
                 )
             }
@@ -301,6 +332,9 @@ export default function RightNavbar(){
                         time={res.time}
                         title= {res.title}
                         description={description_trim+dot}
+                        description_notTrim = {res.description}
+                        link= {res.link}
+                        date = {res.date}
                     />
                 )
             }
@@ -321,9 +355,12 @@ export default function RightNavbar(){
         if(time_AM == "am"){
             return (
                 <EachTask 
-                    time={res.time}
                     title= {res.title}
                     description={description_trim+dot}
+                    description_notTrim = {res.description}
+                    link= {res.link}
+                    date = {res.date}
+                    time={res.time}
                 />
             )
         }
@@ -347,6 +384,9 @@ export default function RightNavbar(){
                         time={res.time}
                         title= {res.title}
                         description={description_trim+dot}
+                        description_notTrim = {res.description}
+                        link= {res.link}
+                        date = {res.date}
                     />
                 )
             }
@@ -370,6 +410,9 @@ export default function RightNavbar(){
                         time={res.time}
                         title= {res.title}
                         description={description_trim+dot}
+                        description_notTrim = {res.description}
+                        link= {res.link}
+                        date = {res.date}
                     />
                 )
             }
@@ -393,6 +436,9 @@ export default function RightNavbar(){
                         time={res.time}
                         title= {res.title}
                         description={description_trim+dot}
+                        description_notTrim = {res.description}
+                        link= {res.link}
+                        date = {res.date}
                     />
                 )
             }
@@ -457,7 +503,18 @@ export default function RightNavbar(){
             document.getElementsByClassName("see_all_task_container")[0].style.bottom = "0%";
         },200);
     }
-    
+
+    function initializeTasktoday() {//Show task today when empty
+        let temp = document.getElementsByClassName("task4_display")[0].innerHTML;
+        if (temp.indexOf('-') > -1){//pag may laman
+        }
+        else{
+          document.getElementsByClassName("empty_data_small4")[0].style.display = "flex"
+        }
+      }
+      window.addEventListener("load", initializeTasktoday);
+
+
     return (
         <div className="right_navbar_container"
             style={{
@@ -654,30 +711,58 @@ export default function RightNavbar(){
                     <div className='task1_display' style={{display:"none"}}>
                         {Task_box_AM1}
                         {Task_box_PM1}
+                        <div className='empty_data_small empty_data_small1'>
+                            <img src={no_record_icon}/>
+                            <p>You have no tasks in your list</p>
+                        </div>
                     </div>
                     <div className='task2_display' style={{display:"none"}}>
                         {Task_box_AM2}
                         {Task_box_PM2}
+                        <div className='empty_data_small empty_data_small2'>
+                            <img src={no_record_icon}/>
+                            <p>You have no tasks in your list</p>
+                        </div>
                     </div>
                     <div className='task3_display' style={{display:"none"}}>
                         {Task_box_AM3}
                         {Task_box_PM3}
+                        <div className='empty_data_small empty_data_small3'>
+                            <img src={no_record_icon}/>
+                            <p>You have no tasks in your list</p>
+                        </div>
                     </div>
                     <div className='task4_display'>
                         {Task_box_AM_today}
                         {Task_box_PM_today}
+                        <div className='empty_data_small empty_data_small4'>
+                            <img src={no_record_icon}/>
+                            <p>You have no tasks in your list</p>
+                        </div>
                     </div>
                     <div className='task5_display' style={{display:"none"}}>
                         {Task_box_AM5}
                         {Task_box_PM5}
+                        <div className='empty_data_small empty_data_small5'>
+                            <img src={no_record_icon}/>
+                            <p>You have no tasks in your list</p>
+                        </div>
                     </div>
                     <div className='task6_display' style={{display:"none"}}>
                         {Task_box_AM6}
                         {Task_box_PM6}
+                        <div className='empty_data_small empty_data_small6'>
+                            <img src={no_record_icon}/>
+                            <p>You have no tasks in your list</p>
+                        </div>
                     </div>
                     <div className='task7_display' style={{display:"none"}}>
                         {Task_box_AM7}
                         {Task_box_PM7}
+                        <div className='empty_data_small empty_data_small7'>
+                            <img src={no_record_icon}/>
+                            <p>You have no tasks in your list</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -770,6 +855,16 @@ export default function RightNavbar(){
             
             <div className="modal_container view_alltask_modal_container">
                 <SeeAllTask/>
+            </div>
+
+            <div className="modal_container edit_task_modal_container">
+                <EditTaskModal/>
+            </div>
+
+            <div className="modal_container delete_task_modal_container">
+                <DeleteModal
+                    forWhatModal = "submitFormDeleteTask"
+                />
             </div>
 
         </div>
