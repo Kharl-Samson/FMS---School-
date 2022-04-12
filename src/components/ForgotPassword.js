@@ -90,9 +90,15 @@ export default function ForgotPassword(){
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <span className="footer_clickable">Terms of Service</span>
-                    <span className="footer_clickable">Privacy Policy</span>
-                    <span>CICT © 2022</span>
+                    <Link to="/TermsOfService" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}} target="_blank">
+                        <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Terms of Service</span>
+                    </Link>
+                    <Link to="/PrivacyPolicy" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}} target="_blank">
+                        <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Privacy Policy</span>
+                    </Link>
+                    <Link to="" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}}>
+                         <span style={{whiteSpace: "nowrap" }}>CICT © 2022</span>
+                    </Link>
                 </Grid>                                                    
             </div>
 

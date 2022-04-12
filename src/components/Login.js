@@ -98,6 +98,7 @@ export default function Login(){
             else if(result.data.status === "Faculty Login"){ //If response is Faculty Login
                 window.localStorage.setItem('email', result.data.email);
                 window.localStorage.setItem('name', result.data.name);
+                window.localStorage.setItem('profile_photo', result.data.profile_photo);
                 navigate(`/FacultyDashboard`);
             }
             else if(result.data.status === "Pending Admin" || result.data.status === "Pending Faculty"){ //If the account is still pending
@@ -248,9 +249,15 @@ export default function Login(){
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <span className="footer_clickable">Terms of Service</span>
-                    <span className="footer_clickable">Privacy Policy</span>
-                    <span>CICT © 2022</span>
+                    <Link to="/TermsOfService" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}} target="_blank">
+                        <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Terms of Service</span>
+                    </Link>
+                    <Link to="/PrivacyPolicy" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}} target="_blank">
+                        <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Privacy Policy</span>
+                    </Link>
+                    <Link to="" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}}>
+                         <span style={{whiteSpace: "nowrap" }}>CICT © 2022</span>
+                    </Link>
                 </Grid>                                                    
             </div>
 

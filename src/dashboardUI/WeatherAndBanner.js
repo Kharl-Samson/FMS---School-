@@ -68,7 +68,7 @@ export default function WeatherAndBanner(){
             </div>
 
             <div className="slideshow-container slideshow-container1" style={{ backgroundImage: `url(${slider1})`}}>
-                <p  style={{fontSize : "1.7rem"}}>College of Information and Communications Technology</p>
+                <p style={{fontSize : "1.7rem"}}>College of Information and Communications Technology</p>
                 <div className='line'>
                     <div style={{backgroundColor: "#ffff"}}></div> <div></div> <div></div>
                 </div>

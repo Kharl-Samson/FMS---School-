@@ -5,6 +5,7 @@ export default function ModalValidationSucces (props){
     function CloseTaskModal(){
         document.getElementsByClassName("success_modal_task_container")[0].style.display="none";
         document.getElementsByClassName("task_modal_container")[0].style.display = "none";
+        window.localStorage.setItem('constStatus', "ready");
     }
 
     return (

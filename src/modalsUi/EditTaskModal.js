@@ -27,6 +27,7 @@ export default function EditTaskModal(){
                 axios.post('http://localhost/fms/updatetask.php',sendData)
                 .then((result)=>{                   
                     if(result.data.status === "Success"){
+                        window.localStorage.setItem('constStatus', "ready");
                         document.getElementsByClassName("edit_task_modal_container")[0].style.display = "none";
                         document.getElementsByClassName("task_edit_side_modal")[0].style.display = "flex"; 
                         setTimeout(function(){

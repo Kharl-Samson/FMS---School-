@@ -1,23 +1,20 @@
 import React, { useEffect } from 'react';
 import '../css/dashboard.css';
-import Avatar from '@mui/material/Avatar';
-import { deepOrange } from '@mui/material/colors';
 import RightNavbar_bg from '../images/right_navbar_bg.png';
 import LightThemeBG from '../images/light_themeBG.png';
-import DarkThemeBG from '../images/dark_themeBG.png';
+
 import Arrow_down from '../images/icons/arrow_down.svg'
 import { Link} from "react-router-dom";
 import moment from 'moment';
 import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 import CloseRightNavbar from '../functions/CloseRightNavbar'
+import TaskBoxRefresher from '../functions/TaskBoxRefresher';
+import theme_toggle from '../functions/ThemeToggle';
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
-import TermsOfService from '@mui/icons-material/Article';
-import PrivacyPolicy from '@mui/icons-material/Security';
-import Logout from '@mui/icons-material/Logout';
+
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import log_login from '../images/icons/log_login.svg';
 import MenuVerticalIcon from '../images/icons/menu_vertical.svg';
@@ -33,10 +30,14 @@ import SeeAllTask from '../taskUI/SeeAllTask';
 import EditTaskModal from '../modalsUi/EditTaskModal';
 import DeleteModal from '../modalsUi/DeleteModal';
 import no_record_icon from "../images/no_record_icon.png";
+import ProfileAvatar from './ProfileAvatar';
 
 export default function RightNavbar(){
   //getting the email of user
   let email_key = localStorage.getItem('email');
+  //for getting the initial name in avatar
+  let initialName = localStorage.getItem('name').charAt(0);
+  let firstName = localStorage.getItem('name').split(' ')[0]
 
   //Open the modal for task 
   function OpenTaskModal(){
@@ -52,12 +53,23 @@ export default function RightNavbar(){
   };
 
   useEffect(() => {
-    setInterval(() => {
       loadTasks();
-          }, 10);
   }, []);
 
-  
+  setInterval(() => {
+    if(localStorage.getItem('constStatus') === "ready"){
+      loadTasks();
+      setInterval(() => {
+        TaskBoxRefresher();
+      },50);
+      window.localStorage.setItem('constStatus', "notready");
+    }
+  }, 10);
+
+  document.onmousemove = function() {
+     TaskBoxRefresher();
+  }
+
 
     //date today
     const today = new Date();
@@ -446,36 +458,6 @@ export default function RightNavbar(){
     })     
   //-------------------------------------------------------------------------------//
 
-    //for getting the initial name in avatar
-    let initialName = localStorage.getItem('name').charAt(0);
-    let firstName = localStorage.getItem('name').split(' ')[0]
-
-    var theme_ctr = "light";
-    function theme_toggle(){
-            if(theme_ctr === "light"){//togle light mode
-                document.getElementById("circle").style.marginLeft = "0";
-                document.getElementById("circle").style.backgroundColor = "#ffff";
-                document.getElementById("theme_toggle").style.backgroundImage = `url(${DarkThemeBG})`;
-                theme_ctr = "dark";
-            }
-            else{//toggle dark mode
-                document.getElementById("circle").style.marginLeft = "3.5vh";
-                document.getElementById("circle").style.backgroundColor = "#FFE879";
-                document.getElementById("theme_toggle").style.backgroundImage = `url(${LightThemeBG})`;
-                theme_ctr = "light";
-            }
-    }
-
-    //Menu on navbar
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-
     //Menu on activity log
     const [anchor_act, setAnchorEl_act] = React.useState(null);
     const open_act = Boolean(anchor_act);
@@ -504,24 +486,13 @@ export default function RightNavbar(){
         },200);
     }
 
-    function initializeTasktoday() {//Show task today when empty
-        let temp = document.getElementsByClassName("task4_display")[0].innerHTML;
-        if (temp.indexOf('-') > -1){//pag may laman
-        }
-        else{
-          document.getElementsByClassName("empty_data_small4")[0].style.display = "flex"
-        }
-      }
-      window.addEventListener("load", initializeTasktoday);
-
-
     return (
         <div className="right_navbar_container"
             style={{
                 backgroundImage: `url(${RightNavbar_bg})` 
             }}
         >
-            <div className='right_navbar_top'>
+            <div className='right_navbar_top' id="right_navbar_top">
 
                 <div className='right_nav_sizer'  title="Minimize" onClick={CloseRightNavbar}>
                     <span className='span1_right_nav'>&#187;</span>
@@ -531,90 +502,7 @@ export default function RightNavbar(){
                     <div className='circle' id="circle" onClick={theme_toggle}></div>
                 </div>
 
-                <div className='right_navbar_profile'>
-                    <Avatar 
-                        src="http://localhost/fms/upload_profile/sample_profile.jpg" 
-                        sx={{ bgcolor: deepOrange[600] , width: "4vh", height: "4vh", fontSize: "1rem"}}
-                    >
-                        {initialName}
-                    </Avatar>
-                    <span>{firstName}</span>
-                    <img src={Arrow_down} className="arrow_down" title='Account' onClick={handleClick}/>
-
-                    <Menu
-                        anchorEl={anchorEl}
-                        id="account-menu"
-                        open={open}
-                        onClose={handleClose}
-                        onClick={handleClose}
-                        PaperProps={{
-                            elevation: 0,
-                            sx: {
-                                overflow: 'visible',
-                                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                                mt: 1.5,
-                                '& .MuiAvatar-root': {
-                                width: 32,
-                                height: 32,
-                                ml: -0.5,
-                                mr: 1,
-                            },
-                            '&:before': {
-                                content: '""',
-                                display: 'block',
-                                position: 'absolute',
-                                top: 0,
-                                right: 14,
-                                width: 10,
-                                height: 10,
-                                bgcolor: 'background.paper',
-                                transform: 'translateY(-50%) rotate(45deg)',
-                                zIndex: 0,
-                            },
-                        },
-                        }}
-                        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                    >
-
-                        <MenuItem>
-                            <Avatar 
-                                src="http://localhost/fms/upload_profile/sample_profile.jpg" 
-                                sx={{ bgcolor: deepOrange[600] , width: "4vh", height: "4vh", fontSize: "1rem"}}
-                                >
-                                {initialName}
-                            </Avatar>
-                            Profile
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem>
-                            <ListItemIcon>
-                                <TermsOfService fontSize="small" />
-                            </ListItemIcon>
-                            Terms of Service
-                        </MenuItem>
-                        <MenuItem>
-                            <ListItemIcon>
-                                <PrivacyPolicy fontSize="small" />
-                            </ListItemIcon>
-                            Privacy Policy
-                        </MenuItem>
-                        <MenuItem>
-                            <ListItemIcon>
-                                <LocalActivityIcon fontSize="small" />
-                            </ListItemIcon>
-                            Activity Log
-                        </MenuItem>
-                        <Link to="/" style={{ textDecoration: 'none', color: '#212121' }}>
-                        <MenuItem>
-                            <ListItemIcon>
-                                <Logout fontSize="small" />
-                            </ListItemIcon>
-                            Sign Out
-                        </MenuItem>
-                        </Link>
-                    </Menu>
-                </div>
+                <ProfileAvatar/>
 
             </div>
 
@@ -765,6 +653,7 @@ export default function RightNavbar(){
                         </div>
                     </div>
                 </div>
+
             </div>
  
             <div className='activitylog_container'>

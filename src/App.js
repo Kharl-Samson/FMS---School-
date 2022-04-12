@@ -6,6 +6,9 @@ import Home from "./components/Home";
 import Register from "./components/Register";
 import ForgotPassword from "./components/ForgotPassword";
 import FacultyDashboard from "./components/FacultyDashboard";
+import Privacy_Policy from "./components/Privacy_Policy";
+import Terms_of_Service from "./components/Terms_of_Service";
+
 
 export default function App() {
   return (
@@ -14,6 +17,8 @@ export default function App() {
               <Route path="/" element={<Login/>} />
               <Route path="Register" element={<Register/>} />
               <Route path="ForgotPassword" element={<ForgotPassword/>} />
+              <Route path="PrivacyPolicy" element={<Privacy_Policy/>} />
+              <Route path="TermsOfService" element={<Terms_of_Service/>} />
 
               <Route path="Home" element={<Home/>} />
               

@@ -612,7 +612,7 @@ button:hover{
 }
 /*RIGHT NAVBAR PART -> TASK BOX*/
 .dashboard_container .right_navbar_container .task_container .task_box{
-    height: 70px;
+    height: 80px;
     width: 100%;
     margin: 0 auto;
     margin-top: 5%;

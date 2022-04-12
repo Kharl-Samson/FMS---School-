@@ -151,13 +151,13 @@
 }
 
 .slideshow-container2{
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: flex-end;
     color: #ffff;
 }
 .slideshow-container3{
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: flex-end;
     color: #ffff;

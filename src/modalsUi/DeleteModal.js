@@ -23,6 +23,7 @@ export default function DeleteModal(props){
            axios.post('http://localhost/fms/deletetask.php',sendData)
            .then((result)=>{                   
             if(result.data.status === "Success"){
+                window.localStorage.setItem('constStatus', "ready");
                 document.getElementsByClassName("delete_task_modal_container")[0].style.display = "none"
 
                 document.getElementsByClassName("task_edit_side_modal")[0].style.display = "flex"; 
