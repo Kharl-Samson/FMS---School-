@@ -3,12 +3,14 @@ import TaskModalIcon from '../images/icons/task_modal.svg';
 import { useState } from "react";
 import axios from "axios";
 
-import ModalValidationSucces from "./SuccessModal";
-
 export default function TaskModal(){
 
     function CloseTaskModal(){
         document.getElementsByClassName("task_modal_container")[0].style.display = "none";
+        var input =  document.getElementsByClassName("task_input");
+        for(var i=0; i< input.length; i++){
+            input[i].value = "";
+        }
     }
 
     //Declaring variable data to pass in backend
@@ -43,6 +45,10 @@ export default function TaskModal(){
                 .then((result)=>{ 
                     if(result.data.status === "Success"){
                         document.getElementsByClassName("success_modal_task_container")[0].style.display="flex";
+                        var input =  document.getElementsByClassName("task_input");
+                        for(var i=0; i< input.length; i++){
+                            input[i].value = "";
+                        }
                     }
                     else{
                         alert("sql error")
@@ -56,7 +62,7 @@ export default function TaskModal(){
         <div className='top'>
             <img src={TaskModalIcon}/>
             <div className='header'>
-                <p>Create a taks</p>
+                <p>Create a tasks</p>
                 <p>Add some information about the task</p>
             </div>
             <div className='close_btn'><span title="Close" onClick={CloseTaskModal}>&#215;</span></div>
@@ -87,15 +93,7 @@ export default function TaskModal(){
         </div>
         </form>
 
-            {/*Modal*/ }
-            <div className="modal_container success_modal_task_container">
-                <ModalValidationSucces
-                    name = "success_modal.svg"
-                    headtext = "Successful"
-                    subtext = "You have successfully added a task to your schedule."
-                    button1 = "Close"
-                />
-            </div>
+
 
         </div>
     )

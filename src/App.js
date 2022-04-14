@@ -8,7 +8,7 @@ import ForgotPassword from "./components/ForgotPassword";
 import FacultyDashboard from "./components/FacultyDashboard";
 import Privacy_Policy from "./components/Privacy_Policy";
 import Terms_of_Service from "./components/Terms_of_Service";
-
+import PersonalDataSheet from "./components/PersonalDataSheet";
 
 export default function App() {
   return (
@@ -22,7 +22,9 @@ export default function App() {
 
               <Route path="Home" element={<Home/>} />
               
-              <Route path="FacultyDashboard" element={<FacultyDashboard/>} /> 
+              <Route path="FacultyDashboard" element={<FacultyDashboard/>} />                       
+              <Route path="PersonalDataSheet" element={<PersonalDataSheet/>} /> 
+
             </Routes>
         
     </div>

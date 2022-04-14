@@ -3,14 +3,26 @@ import moment from 'moment';
 import slider1 from '../images/image_slider1.png';
 import slider2 from '../images/image_slider2.png';
 import slider3   from '../images/image_slider3.png';
-import slider_transitionDashboard from '../functions/SliderDashboard'
 
 export default function WeatherAndBanner(){
-     //Slider transition
-     slider_transitionDashboard();
-     setInterval(function(){
-       slider_transitionDashboard();
-     },15000);
+
+  //Image slider autoplay function
+  var myIndex = 0;
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "flex";  
+    setTimeout(carousel, 6000); // Change image every 6 seconds
+  }
+
+  setTimeout(function(){
+    carousel();
+  },10);
 
    let weather = {
        apiKey: "dadee94a86d93919d257e4735ca6aa92",
@@ -67,14 +79,14 @@ export default function WeatherAndBanner(){
                 </div>      
             </div>
 
-            <div className="slideshow-container slideshow-container1" style={{ backgroundImage: `url(${slider1})`}}>
+            <div className="slideshow-container slideshow-container1 mySlides" style={{ backgroundImage: `url(${slider1})`}}>
                 <p style={{fontSize : "1.7rem"}}>College of Information and Communications Technology</p>
                 <div className='line'>
                     <div style={{backgroundColor: "#ffff"}}></div> <div></div> <div></div>
                 </div>
             </div>
 
-            <div className="slideshow-container slideshow-container2" style={{ backgroundImage: `url(${slider2})`}}>
+            <div className="slideshow-container slideshow-container2 mySlides" style={{ backgroundImage: `url(${slider2})`}}>
                 <p>CICT Vision</p>
                 <p>Bulacan State University exists to provide highly competent, ethical and service-oriented professionals that contribute to the sustainable socio-economic growth and development of the nation.</p>
                 <div className='line'>
@@ -82,7 +94,7 @@ export default function WeatherAndBanner(){
                 </div>
             </div>
 
-            <div className="slideshow-container slideshow-container3" style={{ backgroundImage: `url(${slider3})`}}>
+            <div className="slideshow-container slideshow-container3 mySlides" style={{ backgroundImage: `url(${slider3})`}}>
                 <p>CICT Mission</p>
                 <p>Bulacan State University is a progressive knowledge-generating institution globally recognized for excellent instruction,    pioneering research, and responsive community engagements.</p>
             <div className='line'>

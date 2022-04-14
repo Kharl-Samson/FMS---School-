@@ -11,11 +11,16 @@ export default function FacultyDashboard(){
 
     document.title = "CICT | Faculty Management System";
 
+    setTimeout(function(){
+        document.getElementById("dashboard_link").classList.add('nav_active');
+    },10);
+
     return (
         <div className="dashboard_container">
-            <LeftNavbarFaculty/>  
 
-            <div className="dashboard_content">
+            <LeftNavbarFaculty/>  
+            
+            <div className="main_content">
                 <NavbarSizer/>
 
                 <WeatherAndBanner/>

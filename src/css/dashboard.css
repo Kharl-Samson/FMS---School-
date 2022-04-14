@@ -6,27 +6,27 @@
 
 
 /*DASHBOARD CONTENT*/
-.dashboard_container .dashboard_content{
+.dashboard_container .main_content{
     flex-grow:1;
     height: 100vh;
     width: auto;
     overflow-y: scroll;
     background-color: #e5e5e5;
 }
-.dashboard_container .dashboard_content::-webkit-scrollbar {
+.dashboard_container .main_content::-webkit-scrollbar {
     width: 4px;
     -webkit-border-radius: 20px;
     border-radius: 20px;
 }
-.dashboard_container .dashboard_content::-webkit-scrollbar-track {
+.dashboard_container .main_content::-webkit-scrollbar-track {
     -webkit-border-radius: 20px;
     border-radius: 20px;
 }
-.dashboard_container .dashboard_content::-webkit-scrollbar-thumb {
+.dashboard_container .main_content::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     background: #FFAA28; 
 }
-.dashboard_container .dashboard_content::-webkit-scrollbar-thumb:window-inactive {
+.dashboard_container .main_content::-webkit-scrollbar-thumb:window-inactive {
     background: transparent; 
 }
 
@@ -108,6 +108,7 @@
 }
 
 .slideshow-container{
+    display: none;
     height: 30vh;
     padding: 10px 0;
     width: 75vh;
@@ -117,7 +118,6 @@
     background-position: center;
 }
 .slideshow-container1{
-    display: flex;
     flex-direction: column;
     justify-content: flex-end;
     color: #ffff;
@@ -151,13 +151,11 @@
 }
 
 .slideshow-container2{
-    display: flex;
     flex-direction: column;
     justify-content: flex-end;
     color: #ffff;
 }
 .slideshow-container3{
-    display: flex;
     flex-direction: column;
     justify-content: flex-end;
     color: #ffff;

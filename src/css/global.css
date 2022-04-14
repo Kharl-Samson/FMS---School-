@@ -31,6 +31,12 @@ button:hover{
     align-items: center;
     justify-content: center;
 }
+.delete_task_modal_container{
+    z-index: 201;
+}
+.edit_task_modal_container{
+    z-index: 201;
+}
 .modal_validation{
     width: auto;
     height: auto;
@@ -119,6 +125,7 @@ button:hover{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     -webkit-animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
     animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
+    z-index: 200;
 }
 .modal_validation_version2 .close_modal{
     margin-right: 40px;
@@ -961,6 +968,7 @@ button:hover{
     flex-direction: column;
     justify-content: space-between;
     transition: .3s ease-in;
+    z-index: 100;
 }
 .see_all_task_container .top{
     display: flex;

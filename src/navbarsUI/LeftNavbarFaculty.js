@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 
 
-export default function NavbarFaculty(){
+export default function NavbarFaculty(props){
 
         //If wala laman yung local storage di makaka access sa loob
         const [auth,setAuth] = useState('');
@@ -30,7 +30,6 @@ export default function NavbarFaculty(){
         },
         [])
 
- 
     return (
         <div className="navbar_account_container">
 
@@ -44,23 +43,27 @@ export default function NavbarFaculty(){
                 <div className="nav_line nav_part1"></div>
 
                 <div className="nav_part2">
-                    <div className="navlink_container nav_active">
-                        <img src={Dashboard_icon} className="left_nav_minimize_img"/>
+                    <Link to="/FacultyDashboard" style={{ textDecoration: 'none' }}>
+                    <div className="navlink_container" id="dashboard_link">
+                        <img src={Dashboard_icon} className="left_nav_minimize_img" title="Dashboard"/>
                         <span className='left_nav_minimize'>Dashboard</span>
                     </div>
+                    </Link>
 
-                    <div className="navlink_container">
-                        <img src={Profile_icon} className="left_nav_minimize_img"/>
+                    <div className="navlink_container" id="profile_link">
+                        <img src={Profile_icon} className="left_nav_minimize_img" title='Profile'/>
                         <span className='left_nav_minimize'>Profile</span>
                     </div>
-
-                    <div className="navlink_container">
-                    <img src={Pds_icon} className="left_nav_minimize_img"/>
+               
+                    <Link to="/PersonalDataSheet" style={{ textDecoration: 'none' }}>
+                    <div className="navlink_container"  id="pds_link">
+                    <img src={Pds_icon} className="left_nav_minimize_img" title='Personal Data Sheet'/>
                         <span className='left_nav_minimize'>PDS</span>
                     </div>
+                    </Link>
 
-                    <div className="navlink_container nav_part3" >
-                        <img src={Certificate_icon} className="left_nav_minimize_img"/>
+                    <div className="navlink_container nav_part3"  id="certificate_link">
+                        <img src={Certificate_icon} className="left_nav_minimize_img" title='Certificates'/>
                         <span className='left_nav_minimize'>Certificates</span>
                     </div>
                     
@@ -71,7 +74,7 @@ export default function NavbarFaculty(){
 
             <Link to="/" style={{ textDecoration: 'none' }}>
                 <div className="logout_container navlink_container">
-                    <img src={Logout_icon} className='left_nav_minimize_img'/>
+                    <img src={Logout_icon} className='left_nav_minimize_img' title='Sign Out'/>
                     <span className='left_nav_minimize'>Sign Out</span>
                 </div>
             </Link>
