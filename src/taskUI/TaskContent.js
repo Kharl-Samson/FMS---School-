@@ -153,9 +153,9 @@ export default function TaskContent(){
         }
     }
 
-  document.onmousemove = function() {
-     TaskBoxRefresher();
-  }
+  setTimeout(function(){
+    TaskBoxRefresher();
+  },210);
 
   //Closing success modal when adding a task
   function CloseSuccessAddTaskModal(){

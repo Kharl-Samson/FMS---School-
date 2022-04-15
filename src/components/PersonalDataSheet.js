@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { useEffect }  from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import '../css/pds.css';
 import LeftNavbarFaculty from '../navbarsUI/LeftNavbarFaculty';
 import NavbarSizer from '../navbarsUI/NavbarSizer';
@@ -19,8 +22,20 @@ import downloadyellow_icon from "../images/icons/download_yellow.svg";
 export default function PersonalDataSheet(){
     //for getting the initial name in avatar
     let initialName = localStorage.getItem('name').charAt(0);
-    let firstName = localStorage.getItem('name').split(' ')[0]
     let profile_photo = "http://localhost/fms/upload_profile/"+localStorage.getItem('profile_photo');
+
+    //If wala pa pds mag direct sa create pds
+    const [auth,setAuth] = useState('');
+    let navigate = useNavigate();
+            
+    useEffect(()=>{
+        var auth = localStorage.getItem('pds_status');
+        if(auth === "Pending"){
+            navigate(`/CreatePersonalDataSheet`)
+        }
+        setAuth(auth);
+    },
+    [])
 
     document.title = "CICT | Personal Data Sheet";
     setTimeout(function(){

@@ -24,9 +24,23 @@ import ModalValidation from "./ModalValidation";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Register(){
+    //Tooltip
+    const LightTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} classes={{ popper: className }}/>
+        ))(({ theme }) => ({
+            [`& .${tooltipClasses.tooltip}`]: {
+            backgroundColor: theme.palette.common.white,
+            color: 'rgba(0, 0, 0, 0.87)',
+            boxShadow: theme.shadows[1],
+            fontSize: ".8rem",
+        },
+    }));
     
     document.title = "CICT | Sign in or Sign up";
 
@@ -293,28 +307,36 @@ export default function Register(){
 
                                 <div className="input_container input_container1 fname_container">
                                     <div className="icon_container">
-                                            <img src={Username_icon} className=".for_hover" title="First Name"/>
+                                            <LightTooltip title="First Name">
+                                            <img src={Username_icon} className=".for_hover"/>
+                                            </LightTooltip>
                                     </div>
                                     <input type="text" placeholder="First Name" name="first_name" onChange={handleChange} value={data.first_name} required/>
                                 </div>
 
                                 <div className="input_container input_container2 lname_container">
                                     <div className="icon_container">
-                                            <img src={Username_icon} className=".for_hover" title="Last Name"/>
+                                            <LightTooltip title="Last Name">
+                                            <img src={Username_icon} className=".for_hover"/>
+                                            </LightTooltip>
                                     </div>
                                     <input type="text" placeholder="Last Name" name="last_name" onChange={handleChange} value={data.last_name} required/>
                                 </div>
 
                                 <div className="input_container input_container2 email_container">
                                     <div className="icon_container">
-                                            <img src={Email_icon} className=".for_hover" title="Email"/>
+                                            <LightTooltip title="Email">
+                                            <img src={Email_icon} className=".for_hover"/>
+                                            </LightTooltip>
                                     </div>
                                     <input type="text" placeholder="Email" name="email" id="email" onChange={handleChange} onKeyUp={email_validation} value={data.email} required/>
                                 </div>
 
                                 <div className="input_container input_container2 password_container">
                                     <div className="icon_container">
-                                            <img src={Password_icon} title="Password"/>
+                                            <LightTooltip title="Password">
+                                            <img src={Password_icon}/>
+                                            </LightTooltip>
                                     </div>
                                     <input type="password" placeholder="Password" name="password"  id="password" onKeyUp={() => { TogglePass(); password_validation();}} onChange={handleChange} value={data.password} required/>
                                     <div className="toggle_password">                           
@@ -335,7 +357,9 @@ export default function Register(){
 
                                 <div className="input_container input_container2 confirm_password_container">
                                     <div className="icon_container">
-                                            <img src={Password_icon} title="Confirm Password"/>
+                                            <LightTooltip title="Confirm Password">
+                                            <img src={Password_icon}/>
+                                            </LightTooltip>
                                     </div>
                                     <input type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" onKeyUp={() => { TogglePass1(); password_verifyer();}}  onChange={handleChange} value={data.confirm_password} required/>
                                     <div className="toggle_password">                           

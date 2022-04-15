@@ -10,10 +10,23 @@ import CICT_Text from "../images/login/cict_bg_text.png";
 import Image_rounder from "../images/login/login_img_rounder.png";
 import CICT_Logo from "../images/login/cict_logo.png";
 import Email_icon from "../images/icons/email.svg"
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function ForgotPassword(){
+    //Tooltip
+    const LightTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} classes={{ popper: className }}/>
+      ))(({ theme }) => ({
+        [`& .${tooltipClasses.tooltip}`]: {
+          backgroundColor: theme.palette.common.white,
+          color: 'rgba(0, 0, 0, 0.87)',
+          boxShadow: theme.shadows[1],
+          fontSize: ".8rem",
+        },
+    }));    
 
     document.title = "CICT | Forgot Password";
 
@@ -51,7 +64,9 @@ export default function ForgotPassword(){
                             <div className="left_container">
                                 <div className="forgot_header">
                                     <Link to="/" style={{ textDecoration: 'none' }}>
-                                        <p className="back" title="Back to sign in">&#8249;</p>
+                                        <LightTooltip title="Back to sign in">
+                                        <p className="back">&#8249;</p>
+                                        </LightTooltip>
                                     </Link>
                                     <h1 style={{marginTop: "3%", marginLeft: "5%",lineHeight : 1}}>Forgot Password</h1>
                                 </div>
@@ -60,7 +75,9 @@ export default function ForgotPassword(){
 
                                 <div className="input_container input_container2">
                                     <div className="icon_container">
-                                            <img src={Email_icon} className=".for_hover" title="Email"/>
+                                            <LightTooltip title="Email">
+                                            <img src={Email_icon} className=".for_hover"/>
+                                            </LightTooltip>
                                     </div>
                                     <input type="text" placeholder="Email address" />
                                 </div>

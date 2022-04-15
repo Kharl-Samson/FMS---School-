@@ -20,10 +20,23 @@ import Invalid_icon from "../images/icons/invalid.svg";
 
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Login(){
+    //Tooltip
+    const LightTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} classes={{ popper: className }}/>
+      ))(({ theme }) => ({
+        [`& .${tooltipClasses.tooltip}`]: {
+          backgroundColor: theme.palette.common.white,
+          color: 'rgba(0, 0, 0, 0.87)',
+          boxShadow: theme.shadows[1],
+          fontSize: ".8rem",
+        },
+    }));
 
     //Loading the icon in the tab
     document.querySelector("link[rel='shortcut icon']").href = CICT_Logo;
@@ -87,7 +100,6 @@ export default function Login(){
             email:user.email,
             password:user.password,
         }
-        //console.log(sendData)
 
         //Sending the data to my backend
         axios.post('http://localhost/fms/login.php',sendData)
@@ -98,6 +110,7 @@ export default function Login(){
             else if(result.data.status === "Faculty Login"){ //If response is Faculty Login
                 window.localStorage.setItem('email', result.data.email);
                 window.localStorage.setItem('name', result.data.name);
+                window.localStorage.setItem('pds_status', result.data.pds_status);
                 window.localStorage.setItem('profile_photo', result.data.profile_photo);
                 navigate(`/FacultyDashboard`);
             }
@@ -154,14 +167,18 @@ export default function Login(){
 
                                 <div className="input_container input_container1">
                                     <div className="icon_container">
-                                            <img src={Email_icon} className=".for_hover" title="Email"/>
+                                    <LightTooltip title="Email">
+                                            <img src={Email_icon} className=".for_hover"/>
+                                    </LightTooltip>
                                     </div>
                                     <input type="text" placeholder="Email" name="email" onChange={handleChange} value={user.email} onKeyUp={hide_validation} required/>
                                 </div>
 
                                 <div className="input_container input_container2">
                                     <div className="icon_container">
-                                            <img src={Password_icon} title="Password"/>
+                                    <LightTooltip title="Password">
+                                            <img src={Password_icon}/>
+                                    </LightTooltip>
                                     </div>
                                     <input type="password" placeholder="Password" id="password" name="password" onKeyUp={() => { TogglePass(); hide_validation();}} onChange={handleChange} value={user.password} required/>
 
@@ -173,7 +190,6 @@ export default function Login(){
                                                 onClick={show_pass}
                                                 title="Show Password"
                                             />
-                
             
                                             <img src={Close_eye_icon}
                                                 className="password_toggle_icon close_eye"

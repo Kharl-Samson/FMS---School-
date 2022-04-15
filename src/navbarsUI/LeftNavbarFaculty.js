@@ -10,12 +10,22 @@ import Pds_icon from "../images/icons/pds.svg";
 import Certificate_icon from "../images/icons/certificate.svg";
 import Logout_icon from "../images/icons/logout.svg";
 import Menu_icon from "../images/icons/menu.svg";
-
 import { Link } from "react-router-dom";
-
-
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
 export default function NavbarFaculty(props){
+    //Tooltip
+    const LightTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} classes={{ popper: className }}/>
+      ))(({ theme }) => ({
+        [`& .${tooltipClasses.tooltip}`]: {
+          backgroundColor: theme.palette.common.white,
+          color: 'rgba(0, 0, 0, 0.87)',
+          boxShadow: theme.shadows[1],
+          fontSize: ".8rem",
+        },
+    }));
 
         //If wala laman yung local storage di makaka access sa loob
         const [auth,setAuth] = useState('');
@@ -43,29 +53,41 @@ export default function NavbarFaculty(props){
                 <div className="nav_line nav_part1"></div>
 
                 <div className="nav_part2">
-                    <Link to="/FacultyDashboard" style={{ textDecoration: 'none' }}>
+                    <Link to="/FacultyDashboard" style={{ textDecoration: 'none',width: "25%" }}>
                     <div className="navlink_container" id="dashboard_link">
-                        <img src={Dashboard_icon} className="left_nav_minimize_img" title="Dashboard"/>
+                        <LightTooltip title='Dashboard'>
+                        <img src={Dashboard_icon} className="left_nav_minimize_img"/>
+                        </LightTooltip>
                         <span className='left_nav_minimize'>Dashboard</span>
                     </div>
                     </Link>
 
+                    <Link to="" style={{ textDecoration: 'none',width: "25%" }}>
                     <div className="navlink_container" id="profile_link">
-                        <img src={Profile_icon} className="left_nav_minimize_img" title='Profile'/>
+                        <LightTooltip title='Profile'>
+                        <img src={Profile_icon} className="left_nav_minimize_img"/>
+                        </LightTooltip>
                         <span className='left_nav_minimize'>Profile</span>
                     </div>
-               
-                    <Link to="/PersonalDataSheet" style={{ textDecoration: 'none' }}>
+                    </Link>
+
+                    <Link to="/PersonalDataSheet" style={{ textDecoration: 'none',width: "25%"  }}>
                     <div className="navlink_container"  id="pds_link">
-                    <img src={Pds_icon} className="left_nav_minimize_img" title='Personal Data Sheet'/>
+                        <LightTooltip title='Personal Data Sheet'>
+                        <img src={Pds_icon} className="left_nav_minimize_img"/>
+                        </LightTooltip>
                         <span className='left_nav_minimize'>PDS</span>
                     </div>
                     </Link>
 
+                    <Link to="" style={{ textDecoration: 'none',width: "25%" }}>
                     <div className="navlink_container nav_part3"  id="certificate_link">
-                        <img src={Certificate_icon} className="left_nav_minimize_img" title='Certificates'/>
+                        <LightTooltip title='Certificates'>
+                        <img src={Certificate_icon} className="left_nav_minimize_img"/>
+                        </LightTooltip>
                         <span className='left_nav_minimize'>Certificates</span>
                     </div>
+                    </Link>
                     
                 </div>
             </div>
@@ -74,7 +96,9 @@ export default function NavbarFaculty(props){
 
             <Link to="/" style={{ textDecoration: 'none' }}>
                 <div className="logout_container navlink_container">
-                    <img src={Logout_icon} className='left_nav_minimize_img' title='Sign Out'/>
+                    <LightTooltip title='Sign Out'>
+                    <img src={Logout_icon} className='left_nav_minimize_img'/>
+                    </LightTooltip>
                     <span className='left_nav_minimize'>Sign Out</span>
                 </div>
             </Link>

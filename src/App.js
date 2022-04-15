@@ -9,6 +9,7 @@ import FacultyDashboard from "./components/FacultyDashboard";
 import Privacy_Policy from "./components/Privacy_Policy";
 import Terms_of_Service from "./components/Terms_of_Service";
 import PersonalDataSheet from "./components/PersonalDataSheet";
+import CreatePersonalDataSheet from "./components/CreatePDS";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
               
               <Route path="FacultyDashboard" element={<FacultyDashboard/>} />                       
               <Route path="PersonalDataSheet" element={<PersonalDataSheet/>} /> 
+              <Route path="CreatePersonalDataSheet" element={<CreatePersonalDataSheet/>} /> 
 
             </Routes>
         
