@@ -4,6 +4,7 @@ import LeftNavbarFaculty from '../navbarsUI/LeftNavbarFaculty';
 import TextField from '@mui/material/TextField';
 import basic_info from '../images/icons/basic_info.svg';
 import address_info from '../images/icons/address_info.svg';
+import conctact_info from '../images/icons/conctact_info.svg'
 import Grid from '@mui/material/Grid';
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
@@ -11,6 +12,16 @@ import {regions, provinces, cities, barangays} from 'select-philippines-address'
 import {useEffect, useState} from "react";
 import { orange } from '@mui/material/colors';
 import Checkbox from '@mui/material/Checkbox';
+import PdsFormStepModal from '../modalsUi/PdsFormModal'
+import validatorPDS1 from '../functions/PdsStepValidator'
+import education_info from '../images/icons/education_info.svg'
+import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
+import getAllElementaryInput from '../functions/GetAllEducInput';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -33,6 +44,27 @@ export default function CreatePersonalDataSheet(){
         }
     },10);
 
+    var today = moment().format('L'); 
+    today = today.split('/');
+    var maxDateInput = today[2]+"-"+today[0]+"-"+today[1];
+
+    //Validate Phone number
+    function phonenumber(){
+        var phone = document.getElementById("input_phone").value;
+        var phoneno = /^(09|\+639)\d{9}$/;
+        if( phone.length !==0 && phone.length !== 11){
+              document.getElementById("contact_validator").style.visibility = "visible";      
+        }
+        else if( phone.length === 0 ){
+          document.getElementById("contact_validator").style.visibility = "hidden";    
+        }
+        else if(!phone.match(phoneno)){
+            document.getElementById("contact_validator").style.visibility = "visible";      
+        }
+        else{
+          document.getElementById("contact_validator").style.visibility = "hidden";
+        }
+    }
 
     const [regionData, setRegion] = useState([]);
     const [provinceData, setProvince] = useState([]);
@@ -55,6 +87,7 @@ export default function CreatePersonalDataSheet(){
     const region = () => {
         regions().then(response => {
             setRegion(response);
+            sameAddressFunction();
         });
     }
     const province = (e) => {
@@ -63,26 +96,31 @@ export default function CreatePersonalDataSheet(){
             setProvince(response);
             setCity([]);
             setBarangay([]);
+            sameAddressFunction()
         });
     }
     const city = (e) => {
         setProvinceAddr(e.target.selectedOptions[0].text);
         cities(e.target.value).then(response => {
             setCity(response);
+            sameAddressFunction()
         });
     }
     const barangay = (e) => {
         setCityAddr(e.target.selectedOptions[0].text);
         barangays(e.target.value).then(response => {
             setBarangay(response);
+            sameAddressFunction()
         });
     }
     const brgy = (e) => {
         setBarangayAddr(e.target.selectedOptions[0].text);
+        sameAddressFunction()
     }
 
     useEffect(() => {
-        region()
+        region();
+        sameAddressFunction();
     }, [])
 
     const region1 = () => {
@@ -96,65 +134,106 @@ export default function CreatePersonalDataSheet(){
             setProvince1(response);
             setCity1([]);
             setBarangay1([]);
+            sameAddressFunction();
         });
     }
     const city1 = (e) => {
         setProvinceAddr1(e.target.selectedOptions[0].text);
         cities(e.target.value).then(response => {
             setCity1(response);
+            sameAddressFunction();
         });
     }
     const barangay1 = (e) => {
         setCityAddr1(e.target.selectedOptions[0].text);
         barangays(e.target.value).then(response => {
             setBarangay1(response);
+            sameAddressFunction();
         });
     }
     const brgy1 = (e) => {
         setBarangayAddr1(e.target.selectedOptions[0].text);
+        sameAddressFunction();
     }
 
     useEffect(() => {
         region1()
+        sameAddressFunction();
     }, [])
 
 
     //If resident and present address are same
-    function sameAddressFunction(){
-       var inp1 = document.getElementById("add_inp1").value;
-       var inp2 = document.getElementById("add_inp2").value;
-       var inp3 = document.getElementById("add_inp3").value;
-       var inp4 = document.getElementById("add_inp4").value;
-       var inp5 = document.getElementById("add_inp5").value;
-       var inp6 = document.getElementById("add_inp6").value;
-       var inp7 = document.getElementById("add_inp7").value;
-       var inp8 = document.getElementById("add_inp8").value;
-    
-       var e =document.getElementById("add_inp4");
-       var result = e.options[e.selectedIndex].text;
-
-
+    function sameAddressFunction(){    
        var checkBox = document.getElementById("address_checkbox");
+       var notCheck = document.getElementsByClassName('address_notcheck');
+       var check = document.getElementsByClassName('address_check');
        if (checkBox.checked == true){
-         document.getElementById("add1_inp1").value = inp1;
-         document.getElementById("add2_inp2").value = inp2;
-         document.getElementById("add3_inp3").value = inp3;
-         document.getElementById("add4_inp4").value = inp4;
-         document.getElementById("add5_inp5").value = result
-         document.getElementById("add6_inp6").value = inp6;
-         document.getElementById("add7_inp7").value = inp7;
-         document.getElementById("add8_inp8").value = inp8;
-
-
+          for(var i=0; i< notCheck.length; i++){
+              notCheck[i].style.display = "none";
+              check[i].style.display = "block";
+          }
+          var inp1 = document.getElementsByClassName("add_inp1")[0].value;
+          var inp2 = document.getElementsByClassName("add_inp2")[0].value;
+          var inp3 = document.getElementsByClassName("add_inp3")[0].value;
+          var inp8 = document.getElementsByClassName("add_inp8")[0].value;
+          document.getElementsByClassName('add1_inp1')[1].value = inp1;
+          document.getElementsByClassName('add2_inp2')[1].value = inp2;
+          document.getElementsByClassName('add3_inp3')[1].value = inp3;
+          document.getElementsByClassName('add4_inp4')[1].value = regionAddr;
+          document.getElementsByClassName('add5_inp5')[1].value = provinceAddr;
+          document.getElementsByClassName('add6_inp6')[1].value = cityAddr;
+          document.getElementsByClassName('add7_inp7')[1].value = barangayAddr;
+          document.getElementsByClassName('add8_inp8')[1].value = inp8;
+          document.getElementById("add_handler1").value = inp1;
+          document.getElementById("add_handler2").value = inp2;
+          document.getElementById("add_handler3").value = inp3;
+          document.getElementById("add_handler4").value = regionAddr;
+          document.getElementById("add_handler5").value = provinceAddr;
+          document.getElementById("add_handler6").value = cityAddr;
+          document.getElementById("add_handler7").value = barangayAddr;
+          document.getElementById("add_handler8").value = inp8;
+          document.getElementById("add_handler9").value = inp1;
+          document.getElementById("add_handler10").value = inp2;
+          document.getElementById("add_handler11").value = inp3;
+          document.getElementById("add_handler12").value = regionAddr;
+          document.getElementById("add_handler13").value = provinceAddr;
+          document.getElementById("add_handler14").value = cityAddr;
+          document.getElementById("add_handler15").value = barangayAddr;
+          document.getElementById("add_handler16").value = inp8;
       } else {
-        document.getElementById("add1_inp1").value = "";
-        document.getElementById("add2_inp2").value = "";
-        document.getElementById("add3_inp3").value = "";
-        document.getElementById("add4_inp4").value = "";
-        document.getElementById("add5_inp5").value = "";
-        document.getElementById("add6_inp6").value = "";
-        document.getElementById("add7_inp7").value = "";
-        document.getElementById("add8_inp8").value = "";
+          for(var i=0; i< notCheck.length; i++){
+            notCheck[i].style.display = "block";
+            check[i].style.display = "none";
+          }
+          var inp1 = document.getElementsByClassName("add_inp1")[0].value;
+          var inp2 = document.getElementsByClassName("add_inp2")[0].value;
+          var inp3 = document.getElementsByClassName("add_inp3")[0].value;
+          var inp8 = document.getElementsByClassName("add_inp8")[0].value;
+          document.getElementsByClassName('add1_inp1')[1].value = inp1;
+          document.getElementsByClassName('add2_inp2')[1].value = inp2;
+          document.getElementsByClassName('add3_inp3')[1].value = inp3;
+          document.getElementsByClassName('add4_inp4')[1].value = regionAddr;
+          document.getElementsByClassName('add5_inp5')[1].value = provinceAddr;
+          document.getElementsByClassName('add6_inp6')[1].value = cityAddr;
+          document.getElementsByClassName('add7_inp7')[1].value = barangayAddr;
+          document.getElementsByClassName('add8_inp8')[1].value = inp8;
+          document.getElementsByClassName('add8_inp8')[1].value = inp8;
+          document.getElementById("add_handler1").value = inp1;
+          document.getElementById("add_handler2").value = inp2;
+          document.getElementById("add_handler3").value = inp3;
+          document.getElementById("add_handler4").value = regionAddr;
+          document.getElementById("add_handler5").value = provinceAddr;
+          document.getElementById("add_handler6").value = cityAddr;
+          document.getElementById("add_handler7").value = barangayAddr;
+          document.getElementById("add_handler8").value = inp8;
+          document.getElementById("add_handler9").value = document.getElementsByClassName('add1_inp1')[0].value;
+          document.getElementById("add_handler10").value = document.getElementsByClassName('add2_inp2')[0].value;
+          document.getElementById("add_handler11").value = document.getElementsByClassName('add3_inp3')[0].value;
+          document.getElementById("add_handler12").value = regionAddr1;
+          document.getElementById("add_handler13").value = provinceAddr1;
+          document.getElementById("add_handler14").value = cityAddr1;
+          document.getElementById("add_handler15").value = barangayAddr1;
+          document.getElementById("add_handler16").value = document.getElementsByClassName('add8_inp8')[0].value;
       }
     }
 
@@ -167,10 +246,48 @@ export default function CreatePersonalDataSheet(){
         var age_dt = new Date(month_diff);            //convert the calculated difference in date format  
         var year = age_dt.getUTCFullYear();           //extract year from date  
         var age = Math.abs(year - 1970);              //now calculate the age of the user   
-        document.getElementById("age_input").value = age +" years old";   
-      
+        document.getElementById("age_input").innerHTML =  age; 
     }
 
+    //Add elementary entry
+    const [elemEntry, setElemEntry] = useState([
+      {id: uuidv4()}
+    ])
+    const handleAddElemEntry = () => {
+      setElemEntry([...elemEntry, {  id: uuidv4() }])
+    }
+    const handleRemoveElemEntry = id => {
+      const values  = [...elemEntry];
+      values.splice(values.findIndex(value => value.id === id), 1);
+      setElemEntry(values);
+    }
+
+    //Add secondary entry
+    const [secondaryEntry, setSecondaryEntry] = useState([
+      {id: uuidv4()}
+    ])
+    const handleAddSecondaryEntry = () => {
+      setSecondaryEntry([...secondaryEntry, {  id: uuidv4() }])
+    }
+    const handleRemoveSecondaryEntry = id => {
+      const values  = [...secondaryEntry];
+      values.splice(values.findIndex(value => value.id === id), 1);
+      setSecondaryEntry(values);
+    }    
+
+    //Add vocational/trade course entry
+    const [vocationalEntry, setVocationalEntry] = useState([
+      {id: uuidv4()}
+    ])
+    const handleAddVocationalEntry = () => {
+      setVocationalEntry([...vocationalEntry, {  id: uuidv4() }])
+    }
+    const handleRemoveVocationalEntry = id => {
+      const values  = [...vocationalEntry];
+      values.splice(values.findIndex(value => value.id === id), 1);
+      setVocationalEntry(values);
+    }    
+    
     return (
         <div className="dashboard_container" style={{ backgroundColor: "#FFAA28"}}>
             <LeftNavbarFaculty/>  
@@ -204,7 +321,7 @@ export default function CreatePersonalDataSheet(){
                 <div className='form_container'>
                 <form>
 
-                    <div className='step_content step1_content'>
+                    <div className='step_content step1_content' style={{display:"none"}}>
                             <p className='step_text'>Step 1</p>
                             <p className='step_desc'>Enter your Personal Information</p>
                            
@@ -218,10 +335,10 @@ export default function CreatePersonalDataSheet(){
                                     justifyContent="center"
                                     alignItems="center"
                                 >
-                                    <TextField label="First Name" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' required/>
-                                    <TextField label="Middle Name" variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable'/>
-                                    <TextField label="Last Name" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' required/>
-                                    <TextField label="Name Extension (Optional)" variant="outlined" color="warning"  className='pds_input' placeholder='(ex. Jr., Sr., III)  Type N/A if Not Applicable'/>
+                                    <TextField label="First Name" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="fname_pds" required inputProps={{style:{textTransform: "capitalize"}}}/>
+                                    <TextField label="Middle Name" variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} id="mname_pds"/>
+                                    <TextField label="Last Name" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required'  id="lname_pds" required inputProps={{style:{textTransform: "capitalize"}}}/>
+                                    <TextField label="Name Extension (Optional)" variant="outlined" color="warning"  className='pds_input' placeholder='(ex. Jr., Sr., III)  Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} id="nameextension_pds"/>
                                     <TextField
                                         onChange={getAge}
                                         required
@@ -230,13 +347,18 @@ export default function CreatePersonalDataSheet(){
                                         label="Birthday"
                                         color="warning"
                                         type="date"
-                                        value="2000-01-01"
+                                        defaultValue="2000-01-01"
+                                        inputProps={{ min: "1950-01-01", max: maxDateInput }} 
                                         InputLabelProps={{shrink: true,}}
                                     />
-                                    <TextField label="Age" id="age_input" variant="outlined" color="warning"  className='pds_input' value="0" disabled style={{color: "red"}} required/>
 
+                                    <div className='pds_inputAGE'>
+                                      <p>Age : <span id="age_input">0</span> years old</p>
+                                    </div>
+                 
                                     <Autocomplete             
                                       className='pds_input'
+                                      id="cob_pds"
                                       sx={{ width: "350px"}}
                                       options={countries}
                                       autoHighlight
@@ -270,9 +392,10 @@ export default function CreatePersonalDataSheet(){
                                          )}
                                     />
 
-                                    <TextField label="City of Birth" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' required/>
+                                    <TextField label="Place of Birth" variant="outlined" color="warning"  className='pds_input' placeholder='(ex. Bulacan) Fields with * are required' id="cityOfBirth_pds" required inputProps={{style:{textTransform: "capitalize"}}}/>
 
                                     <Autocomplete
+                                        id="gender_pds"
                                         options={gender}
                                         className='pds_input'
                                         sx={{ width: "350px"}}
@@ -281,6 +404,7 @@ export default function CreatePersonalDataSheet(){
                                     />
 
                                      <Autocomplete
+                                        id="civil_pds"
                                         options={civil_status}
                                         className='pds_input'
                                         sx={{ width: "350px"}}
@@ -288,22 +412,24 @@ export default function CreatePersonalDataSheet(){
                                         required {...params} label="Civil Status" />}
                                     />
 
-                                    <TextField label="Height" variant="outlined" color="warning"  className='pds_input' placeholder='(cm) Fields with * are required' required/>
-                                    <TextField label="Weight" variant="outlined" color="warning"  className='pds_input' placeholder='(Kg) Fields with * are required' required/>
-                                    <TextField label="Blood Type" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' required/>
-                                    <TextField label="GSIS ID No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable'/>
-                                    <TextField label="PAG-IBIG ID No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable'/>
-                                    <TextField label="PHILHEALTH No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable'/>
-                                    <TextField label="SSS No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable'/>
-                                    <TextField label="TIN No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable'/>
-
+                                    <TextField label="Height" variant="outlined" color="warning"  className='pds_input' placeholder='(cm) Fields with * are required' id="height_pds" required/>
+                                    <TextField label="Weight" variant="outlined" color="warning"  className='pds_input' placeholder='(kg) Fields with * are required' id="weight_pds" required/>
+                                    <TextField label="Blood Type" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="blood_pds" required/>
+                                    <TextField label="GSIS ID No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable' id="gsis_pds"/>
+                                    <TextField label="PAG-IBIG ID No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable' id="pagibig_pds"/>
+                                    <TextField label="PHILHEALTH No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable'  id="philhealth_pds"/>
+                                    <TextField label="SSS No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable' id="sss_pds"/>
+                                    <TextField label="TIN No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable' id="tin_pds"/>
                                     <Autocomplete
+                                        id="citizenship_pds"
                                         options={nationality}
                                         className='pds_input'
                                         sx={{ width: "350px"}}
                                         renderInput={(params) => <TextField color="warning" placeholder='Fields with * are required'
                                         required {...params} label="Citizenship" />}
                                     />
+                                    <TextField label="Email Address" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="email_pds" required/>
+                                    <TextField label="Alternate Email Address" variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable'  id="al_email_pds"/>
                                 </Grid>
 
                                 <div className='info_div'>
@@ -319,22 +445,22 @@ export default function CreatePersonalDataSheet(){
 
                                             <div className='address_input'>
                                                 <label>House / Block / Lot No. :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' id="add_inp1" required onKeyUp={sameAddressFunction}/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add_inp1" onKeyUp={sameAddressFunction} required id="House_pds"/>
                                             </div>
 
                                             <div className='address_input'>
                                                 <label>Street :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' id="add_inp2" required onKeyUp={sameAddressFunction}/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add_inp2" onKeyUp={sameAddressFunction} required id="street_pds"/>
                                             </div>
                          
                                             <div className='address_input'>
                                                 <label>Subdivision / Village :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' id="add_inp3" required onKeyUp={sameAddressFunction}/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add_inp3" onKeyUp={sameAddressFunction} required id="subdi_pds"/>
                                             </div>             
                  
                                             <div className='address_input'>
                                             <label>Region (Required) :</label>
-                                            <select onChange={province} onSelect={region} onMouseDown={sameAddressFunction} id="add_inp4" >
+                                            <select onChange={province} onSelect={region} className="add_inp4">
                                                     <option disabled>Select Region</option>
                                                     {regionData && regionData.length > 0 && regionData.map((item) => <option
                                                     key={item.region_code} value={item.region_code}>{item.region_name}</option>)}
@@ -343,7 +469,7 @@ export default function CreatePersonalDataSheet(){
 
                                             <div className='address_input'>
                                             <label>Province (Required) :</label>
-                                            <select onChange={city} onMouseDown={sameAddressFunction} id="add_inp5">
+                                            <select onChange={city} className="add_inp5" id="province1_pds">
                                                     <option disabled>Select Province</option>
                                                     {provinceData && provinceData.length > 0 && provinceData.map((item) => <option
                                                     key={item.province_code} value={item.province_code}>{item.province_name}</option>)}
@@ -351,9 +477,9 @@ export default function CreatePersonalDataSheet(){
                                             </div>
 
                                             <div className='address_input'>
-                                            <label>City (Required) :</label>
-                                            <select onChange={barangay} onMouseDown={sameAddressFunction} id="add_inp6">
-                                                    <option disabled>Select City</option>
+                                            <label>City / Municipality (Required) :</label>
+                                            <select onChange={barangay} className="add_inp6" id="city1_pds">
+                                                    <option disabled>Select City/Municipality</option>
                                                     {cityData && cityData.length > 0 && cityData.map((item) => <option
                                                     key={item.city_code} value={item.city_code}>{item.city_name}</option>)}
                                             </select>
@@ -361,7 +487,7 @@ export default function CreatePersonalDataSheet(){
                              
                                             <div className='address_input'>
                                             <label>Barangay (Required) :</label>
-                                            <select onChange={brgy} onMouseDown={sameAddressFunction} id="add_inp7">
+                                            <select onChange={brgy} className="add_inp7"  id="barangay1_pds">
                                                     <option disabled>Select Barangay</option>
                                                     {barangayData && barangayData.length > 0 && barangayData.map((item) => <option
                                                     key={item.brgy_code} value={item.brgy_code}>{item.brgy_name}</option>)}
@@ -370,12 +496,12 @@ export default function CreatePersonalDataSheet(){
 
                                             <div className='address_input'>
                                                 <label>ZIP Code (Required) :</label>
-                                                <input type="number" placeholder='ex. 3003'  id="add_inp8" required onKeyUp={sameAddressFunction}/>
+                                                <input type="number" placeholder='ex. 3003' className="add_inp8" onKeyUp={sameAddressFunction} id="zip1_pds" required/>
                                             </div>
 
                                             <div style={{width:"100%",display:"flex",alignItems:"center",marginBottom:"1rem"}}>
                                             <Checkbox
-                                                onClick={sameAddressFunction}
+                                                onClick={ sameAddressFunction}
                                                 {...label}
                                                 id="address_checkbox"
                                                 sx={{
@@ -393,10 +519,10 @@ export default function CreatePersonalDataSheet(){
 
                                     </Grid>
 
-                                    <div className='info_div'>
-                                        <img src={address_info}/>
-                                        Permanent Address
-                                    </div>
+                                <div className='info_div'>
+                                    <img src={address_info}/>
+                                    Permanent Address
+                                </div>
                                     <Grid
                                         container
                                         direction="row"
@@ -404,78 +530,370 @@ export default function CreatePersonalDataSheet(){
                                         alignItems="center"
                                     >
 
-                                            <div className='address_input'>
+                                            {/*Pag nahindi naka check yung checkbox */}
+                                            <div className='address_input address_notcheck'>
                                                 <label>House / Block / Lot No. :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' id="add1_inp1" required/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add1_inp1" onKeyUp={sameAddressFunction} required id="House1_pds"/>
                                             </div>
-
-                                            <div className='address_input'>
+                                            <div className='address_input address_notcheck'>
                                                 <label>Street :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' id="add2_inp2" required/>
-                                            </div>
-                         
-                                            <div className='address_input'>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add2_inp2" onKeyUp={sameAddressFunction} required id="street1_pds"/>
+                                            </div>                        
+                                            <div className='address_input address_notcheck'>
                                                 <label>Subdivision / Village :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' id="add3_inp3" required/>
-                                            </div>
-                                            
-                                            <div className='address_input'>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add3_inp3" onKeyUp={sameAddressFunction}  required id="subdi1_pds"/>
+                                            </div>                                                                      
+                                            <div className='address_input address_notcheck'>
                                             <label>Region (Required) :</label>
-                                            <select onChange={province1} onSelect={region1}>
+                                            <select onChange={province1} onSelect={region1} className="add4_inp4">
                                                     <option disabled>Select Region</option>
                                                     {regionData1 && regionData1.length > 0 && regionData1.map((item) => <option
                                                     key={item.region_code} value={item.region_code}>{item.region_name}</option>)}
                                             </select>
                                             </div>
-
-                                            <div className='address_input'>
+                                            <div className='address_input address_notcheck'>
                                             <label>Province (Required) :</label>
-                                            <select onChange={city1} id="add5_inp5">
+                                            <select onChange={city1} className="add5_inp5" id="province2_pds">
                                                     <option disabled>Select Province</option>
                                                     {provinceData1 && provinceData1.length > 0 && provinceData1.map((item) => <option
                                                     key={item.province_code} value={item.province_code}>{item.province_name}</option>)}
                                             </select>
                                             </div>
-
-                                            <div className='address_input'>
+                                            <div className='address_input address_notcheck'>
                                             <label>City (Required) :</label>
-                                            <select onChange={barangay1} id="add6_inp6">
+                                            <select onChange={barangay1} className="add6_inp6" id="city2_pds">
                                                     <option disabled>Select City</option>
                                                     {cityData1 && cityData1.length > 0 && cityData1.map((item) => <option
                                                     key={item.city_code} value={item.city_code}>{item.city_name}</option>)}
                                             </select>
-                                            </div>
-                             
-                                            <div className='address_input'>
+                                            </div>                             
+                                            <div className='address_input address_notcheck'>
                                             <label>Barangay (Required) :</label>
-                                            <select onChange={brgy1} id="add7_inp7">
+                                            <select onChange={brgy1} className="add7_inp7" id="barangay2_pds">
                                                     <option disabled>Select Barangay</option>
                                                     {barangayData1 && barangayData1.length > 0 && barangayData1.map((item) => <option
                                                     key={item.brgy_code} value={item.brgy_code}>{item.brgy_name}</option>)}
                                             </select>
                                             </div>
-
-                                            <div className='address_input'>
+                                            <div className='address_input address_notcheck'>
                                                 <label>ZIP Code (Required) :</label>
-                                                <input type="number" placeholder='ex. 3003' id="add8_inp8" required/>
+                                                <input type="number" placeholder='ex. 3003' className="add8_inp8" onKeyUp={sameAddressFunction} id="zip2_pds" required/>
                                             </div>
+
+                                            {/*Pag naka check yung checkbox */}
+                                            <div className='address_input address_check'>
+                                                <label>House / Block / Lot No. :</label>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add1_inp1" required readOnly/>
+                                            </div>
+                                            <div className='address_input address_check'>
+                                                <label>Street :</label>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add2_inp2" required readOnly/>
+                                            </div>                      
+                                            <div className='address_input address_check'>
+                                                <label>Subdivision / Village :</label>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add3_inp3" required readOnly/>
+                                            </div>
+                                            <div className='address_input address_check'>
+                                                <label>Region (Required) :</label>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add4_inp4" required readOnly/>
+                                            </div>
+                                            <div className='address_input address_check'>
+                                                <label>Province (Required) :</label>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add5_inp5" required readOnly/>
+                                            </div>
+                                            <div className='address_input address_check'>
+                                                <label>City (Required) :</label>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add6_inp6" required readOnly/>
+                                            </div>
+                                            <div className='address_input address_check'>
+                                                <label>Barangay (Required) :</label>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add7_inp7" required readOnly/>
+                                            </div>
+                                            <div className='address_input address_check'>
+                                                <label>ZIP Code (Required) :</label>
+                                                <input type="number" placeholder='ex. 3003' className="add8_inp8" required readOnly/>
+                                            </div>
+
+                                            {/*Address input handler*/}
+                                            <input type="hidden" id="add_handler1"/>
+                                            <input type="hidden" id="add_handler2"/>
+                                            <input type="hidden" id="add_handler3"/>
+                                            <input type="hidden" id="add_handler4"/>
+                                            <input type="hidden" id="add_handler5"/>
+                                            <input type="hidden" id="add_handler6"/>
+                                            <input type="hidden" id="add_handler7"/>
+                                            <input type="hidden" id="add_handler8"/>
+                                            <input type="hidden" id="add_handler9"/>
+                                            <input type="hidden" id="add_handler10"/>
+                                            <input type="hidden" id="add_handler11"/>
+                                            <input type="hidden" id="add_handler12"/>
+                                            <input type="hidden" id="add_handler13"/>
+                                            <input type="hidden" id="add_handler14"/>
+                                            <input type="hidden" id="add_handler15"/>
+                                            <input type="hidden" id="add_handler16"/>
                                     </Grid>
+
+                                <div className='info_div'>
+                                    <img src={conctact_info}/>
+                                    Contact Number(s)
+                                </div>
+                                <Grid
+                                    container
+                                    direction="row"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                >
+                                    <div style={{display:"flex", flexDirection :"column",margin:"0 10px"}} className='pds_input'>
+                                    <TextField label="Mobile No." variant="outlined" color="warning"  placeholder='(093961XXXX6) Fields with * are required' type="number" required  style={{margin:"0", width:"100%"}} id="input_phone" onKeyUp={() => { phonenumber(); sameAddressFunction();}}/>
+                                    <span id="contact_validator">Mobile No. is an invalid format.</span>
+                                    </div>
+                                    <div style={{display:"flex", flexDirection :"column",margin:"0 10px"}} className='pds_input'>
+                                    <TextField label="Telephone No." variant="outlined" color="warning" style={{margin:"0", width:"100%"}} placeholder='Type N/A if Not Applicable' id="tele_pds"/>
+                                    <span style={{fontSize:".9rem",visibility:"hidden"}}>Mobile No. is an invalid format.</span>
+                                    </div>
+                                </Grid>
 
                     </div>
 
+                    <div className='step_content step2_content' style={{display:"block"}}>
+                            <p className='step_text'>Step 2</p>
+                            <p className='step_desc'>Enter your Educational Background</p>
+
+                            <div className='info_div'>
+                                <img src={education_info}/>
+                                Elementary
+                            </div>
+
+                            { elemEntry.map(index => (
+                            <div id='for_append_elem'>
+                                  <TextField label="Name of Elementary School" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Fields with * are required' required inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name="elem_namePDS[]"/>
+                                  
+                                  <TextField label="Basic Education/Degree/Course" variant="outlined" color="warning" className='pds_inputEduc'  required value="Elementary" disabled/>
+                                  <TextField
+                                        required
+                                        onChange={getAllElementaryInput}
+                                        name="elem_dateFromPDS[]"
+                                        className='pds_inputEducSemi'
+                                        label="Date Attended (From)"
+                                        color="warning"
+                                        type="date"
+                                        inputProps={{ min: "1950-01-01", max: maxDateInput }} 
+                                        InputLabelProps={{shrink: true,}}
+                                  />
+                                  <TextField
+                                        required
+                                        onChange={getAllElementaryInput}
+                                        name="elem_dateToPDS[]"
+                                        className='pds_inputEducSemi'
+                                        label="Date Attended (To)"
+                                        color="warning"
+                                        type="date"
+                                        inputProps={{ min: "1950-01-01", max: maxDateInput }} 
+                                        InputLabelProps={{shrink: true,}}
+                                  />
+                                  <Autocomplete
+                                        options={listYear}
+                                        className='pds_inputEducSemi'
+                                        renderInput={(params) => <TextField color="warning" placeholder='Choose N/A if Not Applicable'
+                                        {...params} label="Year Graduate" name="elem_yearGradPDS[]"/>}
+                                  />
+                                  <TextField label="Scholarships/Academic Honors Received" variant="outlined" color="warning" className='pds_inputEduc' placeholder='(ex. 1st honorable mention) Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name="elem_awardsPDS[]"/>
+                              <div className='line_educ'></div>       
+                            </div>
+                            )) }
+
+                            <input type="hidden" id='nameELEM_handler' style={{textTransform:"capitalize"}}/>
+                            <input type="hidden" id='attainELEM_handler'value="Elementary"/>
+                            <input type="hidden" id='dateFromELEM_handler'/>
+                            <input type="hidden" id='dateToELEM_handler'/>
+                            <input type="hidden" id='yearGradELEM_handler'/>
+                            <input type="hidden" id='awardELEM_handler' style={{textTransform:"capitalize"}}/>
+
+                            <div className='entry_button'>
+                              <button type="button" 
+                                disabled={elemEntry.length === 1} 
+                                onClick={() => handleRemoveElemEntry(elemEntry.id)}
+                              >
+                                  Remove
+                              </button>   
+                              <button type='button' onClick={handleAddElemEntry}>Add another entry</button>
+                            </div>
+
+
+
+                            {/*---------------------------------------------------------------------------------- */}
+                            <div className='info_div'>
+                                <img src={education_info}/>
+                                Secondary
+                            </div>
+
+                            {secondaryEntry.map(index => (
+                            <div id='for_append_elem'>
+                                  <TextField label="Name of School" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Fields with * are required' required inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name="second_namePDS[]"/>    
+                                  <Autocomplete
+                                        required
+                                        options={secondaryAttainment}
+                                        className='pds_inputEduc'
+                                        renderInput={(params) => <TextField color="warning" placeholder='Fields with * are required'
+                                        {...params} label="Basic Education/Degree/Course" name="second_attainmentPDS[]"/>}
+                                  />
+                                  <TextField
+                                        required
+                                        onChange={getAllElementaryInput}
+                                        name="second_dateFromPDS[]"
+                                        className='pds_inputEducSemi'
+                                        label="Date Attended (From)"
+                                        color="warning"
+                                        type="date"
+                                        inputProps={{ min: "1950-01-01", max: maxDateInput }} 
+                                        InputLabelProps={{shrink: true,}}
+                                  />
+                                  <TextField
+                                        required
+                                        onChange={getAllElementaryInput}
+                                        name="second_dateToPDS[]"
+                                        className='pds_inputEducSemi'
+                                        label="Date Attended (To)"
+                                        color="warning"
+                                        type="date"
+                                        inputProps={{ min: "1950-01-01", max: maxDateInput }} 
+                                        InputLabelProps={{shrink: true,}}
+                                  />
+                                  <Autocomplete
+                                        options={listYear}
+                                        className='pds_inputEducSemi'
+                                        renderInput={(params) => <TextField color="warning" placeholder='Choose N/A if Not Applicable'
+                                        {...params} label="Year Graduate" name="second_yearGradPDS[]"/>}
+                                  />
+                                  <TextField label="Scholarships/Academic Honors Received" variant="outlined" color="warning" className='pds_inputEduc' placeholder='(ex. 1st honorable mention) Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name="second_awardsPDS[]"/>
+                                  <div className='line_educ'></div>       
+                            </div>
+                            )) }
+
+                            <input type="hidden" id='nameSecond_handler' style={{textTransform:"capitalize"}}/>
+                            <input type="hidden" id='attainSecond_handler' style={{textTransform:"capitalize"}}/>
+                            <input type="hidden" id='dateFromSecond_handler'/>
+                            <input type="hidden" id='dateToSecond_handler'/>
+                            <input type="hidden" id='yearGradSecond_handler'/>
+                            <input type="hidden" id='awardSecond_handler' style={{textTransform:"capitalize"}}/>
+
+
+                            <div className='entry_button'>
+                              <button type="button" 
+                                disabled={secondaryEntry.length === 1} 
+                                onClick={() => handleRemoveSecondaryEntry(secondaryEntry.id)}
+                              >
+                                  Remove
+                              </button>   
+                              <button type='button' onClick={handleAddSecondaryEntry}>Add another entry</button>
+                            </div>
+
+                        
+                            {/*---------------------------------------------------------------------------------- */}
+                            <div className='info_div'>
+                                <img src={education_info}/>
+                                Vocational / Trade Course
+                            </div>
+
+                            {vocationalEntry.map(index => (
+                            <div id='for_append_elem'>
+                                  <TextField label="Name of School" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name=""/>    
+                                  <TextField label="Basic Education/Degree/Course" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name=""/>    
+
+                                  <TextField
+                                        onChange={getAllElementaryInput}
+                                        name=""
+                                        className='pds_inputEducSemi'
+                                        label="Date Attended (From)"
+                                        color="warning"
+                                        type="date"
+                                        inputProps={{ min: "1950-01-01", max: maxDateInput }} 
+                                        InputLabelProps={{shrink: true,}}
+                                  />
+                                  <TextField
+                                        onChange={getAllElementaryInput}
+                                        name=""
+                                        className='pds_inputEducSemi'
+                                        label="Date Attended (To)"
+                                        color="warning"
+                                        type="date"
+                                        inputProps={{ min: "1950-01-01", max: maxDateInput }} 
+                                        InputLabelProps={{shrink: true,}}
+                                  />
+                                  <Autocomplete
+                                        options={listYear}
+                                        onChange={getAllElementaryInput}
+                                        className='pds_inputEducSemi'
+                                        renderInput={(params) => <TextField color="warning" placeholder='Choose N/A if Not Applicable'
+                                        {...params} label="Year Graduate" />}
+                                  />
+                                  <TextField label="Scholarships/Academic Honors Received" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name=""/>
+                                  <div className='line_educ'></div>       
+                            </div>
+                            )) }
+
+                            <input type="hidden" id='' style={{textTransform:"capitalize"}}/>
+                            <input type="hidden" id='' style={{textTransform:"capitalize"}}/>
+                            <input type="hidden" id=''/>
+                            <input type="hidden" id=''/>
+                            <input type="hidden" id=''/>
+                            <input type="hidden" id='' style={{textTransform:"capitalize"}}/>
+
+
+                            <div className='entry_button'>
+                              <button type="button" 
+                                disabled={vocationalEntry.length === 1} 
+                                onClick={() => handleRemoveVocationalEntry(vocationalEntry.id)}
+                              >
+                                  Remove
+                              </button>   
+                              <button type='button' onClick={handleAddVocationalEntry}>Add another entry</button>
+                            </div>
+                
+                    </div>
+
                 </form>
+
+                    <div className="pds_validator">
+                      <PdsFormStepModal/>
+                    </div>
                 </div>
 
                 <div className='stepper_container'>
-                        <button>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
-                        <button>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button className='back_stepper back_stepper1' style={{display:"none"}}>&#8592; &nbsp;&nbsp;&nbsp; Back1</button>
+                        <button className='back_stepper back_stepper2' >&#8592; &nbsp;&nbsp;&nbsp; Back2</button>
+                        <button className='back_stepper back_stepper3' style={{display:"none"}}>&#8592; &nbsp;&nbsp;&nbsp; Back3</button>
+                        <button className='back_stepper back_stepper4' style={{display:"none"}}>&#8592; &nbsp;&nbsp;&nbsp; Back4</button>
+                        <button className='back_stepper back_stepper5' style={{display:"none"}}>&#8592; &nbsp;&nbsp;&nbsp; Back5</button>
+                        <button className='next_stepper next_stepper1' onMouseOver={sameAddressFunction} onClick={validatorPDS1} style={{display:"none"}} >Next1 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button className='next_stepper next_stepper2' onMouseOver={getAllElementaryInput}>Next2 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button className='next_stepper next_stepper3' style={{display:"none"}} >Next3 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button className='next_stepper next_stepper4' style={{display:"none"}} >Next4 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button className='next_stepper next_stepper5' style={{display:"none"}} >Next5 &nbsp;&nbsp;&nbsp; &#8594;</button>
                 </div>
             </div> 
+
+
         </div>
     )
 }
 
 
+
+
+
+//Year List
+var today = moment().format('L'); 
+today = today.split('/');
+var listYear = ["N/A","To Date"];
+for (let i=today[2]; i >= 1950; i--) {
+    listYear.push(i);
+}
+//Secondary Attainment
+const secondaryAttainment = [
+  { label: 'Junior High School' },
+  { label: 'Senior High School'},
+];
 //Citizenship
 const nationality = [
     "Afghan",
