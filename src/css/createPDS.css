@@ -106,6 +106,7 @@
     width: 90%;
     height: auto;
     padding: 1rem 0;
+    display: none;
 }
 .dashboard_container .main_content .form_container .step_content .step_text{
     font-size: 1.8rem;
@@ -155,6 +156,25 @@
     margin: 0 10px !important;
     margin-bottom: 30px !important;
 }
+.civil_license{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 10px !important;
+    margin-bottom: 30px !important;
+}
+.pds_inputEducSemi1{
+    float: left;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    margin: 0 10px !important;
+    margin-bottom: 30px !important;
+}
+.civil_license h3{
+    color: #494949;
+    margin-bottom: 30px !important;
+}
 .pds_inputEducSemi{
     float: left;
     display: flex;
@@ -163,13 +183,27 @@
     margin: 0 10px !important;
     margin-bottom: 30px !important;
 }
-
+.pds_inputEducSemi2{
+    float: left;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    margin: 0 10px !important;
+    margin-bottom: 30px !important;
+}
 
 .line_educ{
     height: .1rem;
     width: 100%;
     margin: 0px 10px;
     margin-bottom: 30px;
+    background-color: #FFAA28; 
+}
+.line_educ1{
+    height: .1rem;
+    width: 100%;
+    margin: 0px 10px;
+
     background-color: #FFAA28; 
 }
 .entry_button{
@@ -346,6 +380,17 @@ input[type=number] {
     }
 
     .pds_inputEducSemi{
+        width: 100%;
+    }
+
+    .civil_license{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .pds_inputEducSemi1{
+        width: 100%;
+    }
+    .pds_inputEducSemi2{
         width: 100%;
     }
 }

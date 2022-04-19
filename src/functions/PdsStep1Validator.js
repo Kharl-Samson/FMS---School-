@@ -1,48 +1,6 @@
 function validatorPDS1(){
     document.getElementsByClassName("pds_validator")[0].style.display = "block";
-
-    var stepperCounter = "1st";
-
-    var fname_pds =  document.getElementById("fname_pds").value;
-    var mname_pds =  document.getElementById("mname_pds").value
-    var lname_pds =  document.getElementById("lname_pds").value;
-    var nameextension_pds = document.getElementById("nameextension_pds").value;
-    var age_input = document.getElementById("age_input").innerHTML;
-    var cob_pds = document.getElementById("cob_pds").value;
-    var cityOfBirth_pds = document.getElementById("cityOfBirth_pds").value;
-    var gender_pds = document.getElementById("gender_pds").value;
-    var civil_pds = document.getElementById("civil_pds").value;
-    var height_pds = document.getElementById("height_pds").value;
-    var weight_pds = document.getElementById("weight_pds").value;
-    var blood_pds = document.getElementById("blood_pds").value;
-    var gsis_pds = document.getElementById("gsis_pds").value;
-    var pagibig_pds = document.getElementById("pagibig_pds").value;
-    var philhealth_pds = document.getElementById("philhealth_pds").value;
-    var sss_pds = document.getElementById("sss_pds").value;
-    var tin_pds = document.getElementById("tin_pds").value;
-    var citizenship_pds = document.getElementById("citizenship_pds").value;
-    var email_pds = document.getElementById("email_pds").value;
-    var al_email_pds = document.getElementById("al_email_pds").value;
-    var House_pds = document.getElementById("House_pds").value;
-    var street_pds = document.getElementById("street_pds").value;
-    var subdi_pds = document.getElementById("subdi_pds").value;
-    var province1_pds = document.getElementById("province1_pds").value;
-    var city1_pds = document.getElementById("city1_pds").value;
-    var barangay1_pds = document.getElementById("barangay1_pds").value;
-    var zip1_pds = document.getElementById("zip1_pds").value;
-    var House1_pds = document.getElementById("House1_pds").value;
-    var street1_pds = document.getElementById("street1_pds").value;
-    var subdi1_pds = document.getElementById("subdi1_pds").value;
-    var province2_pds = document.getElementById("province2_pds").value;
-    var city2_pds = document.getElementById("city2_pds").value;
-    var barangay2_pds = document.getElementById("barangay2_pds").value;
-    var zip2_pds = document.getElementById("zip2_pds").value;
-    var input_phone = document.getElementById("input_phone").value;
-    var tele_pds = document.getElementById("tele_pds").value;
-
     var list_of_errors = "";
-
-    
     function validateEmail(email) {
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         return emailReg.test(email);
@@ -104,6 +62,7 @@ function validatorPDS1(){
         document.getElementById("tele_pds").value == "" ? list_of_errors += "- Write N/A in Telephone No. <br/>": list_of_errors += ""
         document.getElementById("list_of_errors").innerHTML = list_of_errors;
 
+
         if(list_of_errors.length !== 0){
             setTimeout(() => {
                 var objDiv = document.getElementsByClassName("form_container")[0];
@@ -111,20 +70,27 @@ function validatorPDS1(){
             }, 50)
         }
     
-
-
-        
         if(list_of_errors.length === 0){
-            document.getElementsByClassName("pds_validator")[0].style.display = "none";
-            document.getElementsByClassName("step1_content")[0].style.display = "none";
-            document.getElementsByClassName("step2_content")[0].style.display = "block";
+            document.getElementsByClassName("pds_validator")[0].style.display = "none";           
             document.getElementsByClassName("form_container")[0].scrollTop = 0
 
+            document.getElementsByClassName("step1_content")[0].style.display = "none";
             document.getElementsByClassName("back_stepper1")[0].style.display = "none";
-            document.getElementsByClassName("back_stepper2")[0].style.display = "block";
             document.getElementsByClassName("next_stepper1")[0].style.display = "none";
-            document.getElementsByClassName("next_stepper2")[0].style.display = "block";
 
+            document.getElementsByClassName("stepper1")[0].style.borderBottomRightRadius = "0px";
+            document.getElementsByClassName("stepper1")[0].style.borderTopRightRadius = "0px";
+         
+            document.getElementsByClassName("stepper2")[0].style.backgroundColor = "#FFAA28";
+            document.getElementsByClassName("stepper2")[0].style.borderBottomRightRadius = "50px";
+            document.getElementsByClassName("stepper2")[0].style.borderTopRightRadius = "50px";
+            document.getElementsByClassName("circle2")[0].style.backgroundColor = "#ffff";
+            document.getElementsByClassName("circle2")[0].style.color = "#FFAA28";
+            document.getElementsByClassName("stepper_text2")[0].style.color = "#ffff";
+   
+            document.getElementsByClassName("back_stepper2")[0].style.display = "block";
+            document.getElementsByClassName("next_stepper2")[0].style.display = "block";
+            document.getElementsByClassName("step2_content")[0].style.display = "block";
         }
 
 }
