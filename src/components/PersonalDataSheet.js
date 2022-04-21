@@ -77,7 +77,7 @@ export default function PersonalDataSheet(){
                                <div className='avatar_container'> 
                                <Avatar 
                                     src={profile_photo} 
-                                    sx={{ bgcolor: deepOrange[600] , width: "200px", height: "200px", fontSize: "1rem", margin: "0 auto", border : "2px solid #ffff",borderRadius:"5px"}}
+                                    sx={{ bgcolor: deepOrange[600] , width: "200px", height: "200px", fontSize: "5rem", margin: "0 auto", border : "2px solid #ffff",borderRadius:"5px"}}
                                     variant="square"
                                     >
                                     {initialName}

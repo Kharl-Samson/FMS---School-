@@ -6,7 +6,8 @@ import basic_info from '../images/icons/basic_info.svg';
 import address_info from '../images/icons/address_info.svg';
 import conctact_info from '../images/icons/conctact_info.svg'
 import service_info from '../images/icons/service_info.svg'
-import work_info from '../images/icons/work_info.svg'
+import work_info from '../images/icons/work_info.svg';
+import LandD_info from '../images/icons/LandD_info.svg'
 import Grid from '@mui/material/Grid';
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
@@ -23,7 +24,12 @@ import getAllCSEinput from '../functions/GetAllCSEinput';
 import validatorPDS1 from '../functions/PdsStep1Validator';
 import validatorPDS2 from '../functions/PdsStep2Validator';
 import validatorPDS3 from '../functions/PdsStep3Validator';
+import validatorPDS4 from '../functions/PdsStep4Validator';
+import getAllWEinput from '../functions/GetAllWEinput';
+import getAllLDinput from '../functions/GetAllLDinput';
 import { Link } from "react-router-dom";
+import axios from 'axios';
+
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -44,6 +50,8 @@ export default function CreatePersonalDataSheet(){
         for(var i=0; i< left_nav_minimize_img.length; i++){
             left_nav_minimize_img[i].style.marginLeft = "0%";
         }
+
+        document.getElementById("leftnav_drawerBTN").style.display="none"
     },10);
 
     var today = moment().format('L'); 
@@ -342,6 +350,18 @@ export default function CreatePersonalDataSheet(){
       setWorkEntry(values);
     }         
 
+    //Add learn and development entry
+    const [ldEntry, setldEntry] = useState([
+      {id: uuidv4()}
+    ])
+    const handleAddldEntry = () => {
+      setldEntry([...ldEntry, {  id: uuidv4() }])
+    }
+    const handleRemoveldEntry = id => {
+      const values  = [...ldEntry];
+      values.splice(values.findIndex(value => value.id === id), 1);
+      setldEntry(values);
+    }       
 
     //back stepper function
     function back2_stepper(){   
@@ -395,10 +415,95 @@ export default function CreatePersonalDataSheet(){
       document.getElementsByClassName("next_stepper4")[0].style.display = "none";
       document.getElementsByClassName("step4_content")[0].style.display = "none";
     }
+    function back5_stepper(){   
+      document.getElementsByClassName("form_container")[0].scrollTop = 0
+      document.getElementsByClassName("step4_content")[0].style.display = "block";
+      document.getElementsByClassName("back_stepper4")[0].style.display = "block";
+      document.getElementsByClassName("next_stepper4")[0].style.display = "block";
+      document.getElementsByClassName("stepper4")[0].style.borderBottomRightRadius = "50px";
+      document.getElementsByClassName("stepper4")[0].style.borderTopRightRadius = "50px";
+      document.getElementsByClassName("stepper5")[0].style.backgroundColor = "transparent";
+      document.getElementsByClassName("stepper5")[0].style.borderBottomRightRadius = "0px";
+      document.getElementsByClassName("stepper5")[0].style.borderTopRightRadius = "0px";
+      document.getElementsByClassName("circle5")[0].style.backgroundColor = "#C2C9CB";
+      document.getElementsByClassName("circle5")[0].style.color = "#ffff";
+      document.getElementsByClassName("stepper_text5")[0].style.color = "#C2C9CB";
+      document.getElementsByClassName("back_stepper5")[0].style.display = "none";
+      document.getElementsByClassName("next_stepper5")[0].style.display = "none";
+      document.getElementsByClassName("step5_content")[0].style.display = "none";
+    }
+
+    //Submit PDS
+    const submitPDSTaskForm=(e)=>{
+      e.preventDefault();
+      const data = new FormData() 
+      
+      //Step1
+      //Sending the data request to call it on backend
+      const sendDataPDS = {
+        fname_pds: document.getElementById("fname_pds").value.toUpperCase(),
+        mname_pds: document.getElementById("mname_pds").value.toUpperCase(),
+        lname_pds: document.getElementById("lname_pds").value.toUpperCase(),
+        nameextension_pds: document.getElementById("nameextension_pds").value.toUpperCase(),
+        bdate_input: document.getElementById("bdate_input").value,
+        age_input: document.getElementById("age_input").textContent,
+        cob_pds: document.getElementById("cob_pds").value.toUpperCase(),
+        cityOfBirth_pds: document.getElementById("cityOfBirth_pds").value.toUpperCase(),
+        gender_pds: document.getElementById("gender_pds").value.toUpperCase(),
+        civil_pds: document.getElementById("civil_pds").value.toUpperCase(),
+        height_pds: document.getElementById("height_pds").value.toUpperCase(),
+        weight_pds: document.getElementById("weight_pds").value.toUpperCase(),
+        blood_pds: document.getElementById("blood_pds").value.toUpperCase(),
+        gsis_pds: document.getElementById("gsis_pds").value.toUpperCase(),
+        pagibig_pds: document.getElementById("pagibig_pds").value.toUpperCase(),
+        philhealth_pds: document.getElementById("philhealth_pds").value.toUpperCase(),
+        sss_pds: document.getElementById("sss_pds").value.toUpperCase(),
+        tin_pds: document.getElementById("tin_pds").textContent.toUpperCase(),
+        citizenship_pds: document.getElementById("citizenship_pds").value.toUpperCase(),
+        email_pds: document.getElementById("email_pds").value,
+        al_email_pds: document.getElementById("al_email_pds").value,
+        add_handler1: document.getElementById("add_handler1").value.toUpperCase(),
+        add_handler2: document.getElementById("add_handler2").value.toUpperCase(),
+        add_handler3: document.getElementById("add_handler3").value.toUpperCase(),
+        add_handler4: document.getElementById("add_handler4").value.toUpperCase(),
+        add_handler5: document.getElementById("add_handler5").value.toUpperCase(),
+        add_handler6: document.getElementById("add_handler6").value.toUpperCase(),
+        add_handler7: document.getElementById("add_handler7").value.toUpperCase(),
+        add_handler8: document.getElementById("add_handler8").value.toUpperCase(),
+        add_handler9: document.getElementById("add_handler9").value.toUpperCase(),
+        add_handler10: document.getElementById("add_handler10").value.toUpperCase(),
+        add_handler11: document.getElementById("add_handler11").value.toUpperCase(),
+        add_handler12: document.getElementById("add_handler12").value.toUpperCase(),
+        add_handler13: document.getElementById("add_handler13").value.toUpperCase(),
+        add_handler14: document.getElementById("add_handler14").value.toUpperCase(),
+        add_handler15: document.getElementById("add_handler15").value.toUpperCase(),
+        add_handler16: document.getElementById("add_handler16").value.toUpperCase(),
+        input_phone: document.getElementById("input_phone").value,
+        tele_pds: document.getElementById("tele_pds").value,
+      }
+      //Sending the data to my backend
+      axios.post('http://localhost/fms/createPDS.php',sendDataPDS)
+        .then((result)=>{                   
+            console.log(result.data.status)
+      })//End of axios
+
+      //for (let i = 0; i < document.getElementsByName("imgLD[]").length; i++) {
+        //data.append("file[]", document.getElementsByName("imgLD[]")[i].files[0]);
+      //}
+      //data.append('file', imgURL)
+      //let url = "http://localhost/fms/createPDS.php";
+      //axios.post(url, data, {}).then(res => { 
+        //console.log(res);
+      //})
+
+
+    }
+
     return (
         <div className="dashboard_container" style={{ backgroundColor: "#FFAA28"}}>
             <LeftNavbarFaculty/>  
 
+            <form onSubmit={submitPDSTaskForm}>
             <div className="main_content" style={{ backgroundColor: "#EFF4F9"}}>
                 <div className='stepper_container'>
 
@@ -426,8 +531,6 @@ export default function CreatePersonalDataSheet(){
                 </div>
 
                 <div className='form_container'>
-                <form>
-
                     <div className='step_content step1_content' style={{display:"block"}}>
                             <p className='step_text'>Step 1</p>
                             <p className='step_desc'>Enter your Personal Information</p>
@@ -535,7 +638,7 @@ export default function CreatePersonalDataSheet(){
                                         renderInput={(params) => <TextField color="warning" placeholder='Fields with * are required'
                                         required {...params} label="Citizenship" />}
                                     />
-                                    <TextField label="Email Address" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="email_pds" required/>
+                                    <TextField label="Email Address" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="email_pds" value={localStorage.getItem('email')} disabled/>
                                     <TextField label="Alternate Email Address" variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable'  id="al_email_pds"/>
                                 </Grid>
 
@@ -552,17 +655,17 @@ export default function CreatePersonalDataSheet(){
 
                                             <div className='address_input'>
                                                 <label>House / Block / Lot No. :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add_inp1" onKeyUp={sameAddressFunction} required id="House_pds"/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add_inp1" onKeyUp={sameAddressFunction} id="House_pds"/>
                                             </div>
 
                                             <div className='address_input'>
                                                 <label>Street :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add_inp2" onKeyUp={sameAddressFunction} required id="street_pds"/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add_inp2" onKeyUp={sameAddressFunction} id="street_pds"/>
                                             </div>
                          
                                             <div className='address_input'>
                                                 <label>Subdivision / Village :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add_inp3" onKeyUp={sameAddressFunction} required id="subdi_pds"/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add_inp3" onKeyUp={sameAddressFunction} id="subdi_pds"/>
                                             </div>             
                  
                                             <div className='address_input'>
@@ -577,7 +680,7 @@ export default function CreatePersonalDataSheet(){
                                             <div className='address_input'>
                                             <label>Province (Required) :</label>
                                             <select onChange={city} className="add_inp5" id="province1_pds">
-                                                    <option disabled>Select Province</option>
+                                                    <option value="" hidden>Select a Region first</option>
                                                     {provinceData && provinceData.length > 0 && provinceData.map((item) => <option
                                                     key={item.province_code} value={item.province_code}>{item.province_name}</option>)}
                                             </select>
@@ -586,7 +689,7 @@ export default function CreatePersonalDataSheet(){
                                             <div className='address_input'>
                                             <label>City / Municipality (Required) :</label>
                                             <select onChange={barangay} className="add_inp6" id="city1_pds">
-                                                    <option disabled>Select City/Municipality</option>
+                                                    <option value="" hidden>Select a Province first</option>
                                                     {cityData && cityData.length > 0 && cityData.map((item) => <option
                                                     key={item.city_code} value={item.city_code}>{item.city_name}</option>)}
                                             </select>
@@ -595,7 +698,7 @@ export default function CreatePersonalDataSheet(){
                                             <div className='address_input'>
                                             <label>Barangay (Required) :</label>
                                             <select onChange={brgy} className="add_inp7"  id="barangay1_pds">
-                                                    <option disabled>Select Barangay</option>
+                                                    <option value="" hidden>Select a City first</option>
                                                     {barangayData && barangayData.length > 0 && barangayData.map((item) => <option
                                                     key={item.brgy_code} value={item.brgy_code}>{item.brgy_name}</option>)}
                                             </select>
@@ -603,7 +706,7 @@ export default function CreatePersonalDataSheet(){
 
                                             <div className='address_input'>
                                                 <label>ZIP Code (Required) :</label>
-                                                <input type="number" placeholder='ex. 3003' className="add_inp8" onKeyUp={sameAddressFunction} id="zip1_pds" required/>
+                                                <input type="number" placeholder='ex. 3003' className="add_inp8" onKeyUp={sameAddressFunction} id="zip1_pds"/>
                                             </div>
 
                                             <div style={{width:"100%",display:"flex",alignItems:"center",marginBottom:"1rem"}}>
@@ -640,15 +743,15 @@ export default function CreatePersonalDataSheet(){
                                             {/*Pag nahindi naka check yung checkbox */}
                                             <div className='address_input address_notcheck'>
                                                 <label>House / Block / Lot No. :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add1_inp1" onKeyUp={sameAddressFunction} required id="House1_pds"/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add1_inp1" onKeyUp={sameAddressFunction} id="House1_pds"/>
                                             </div>
                                             <div className='address_input address_notcheck'>
                                                 <label>Street :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add2_inp2" onKeyUp={sameAddressFunction} required id="street1_pds"/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add2_inp2" onKeyUp={sameAddressFunction} id="street1_pds"/>
                                             </div>                        
                                             <div className='address_input address_notcheck'>
                                                 <label>Subdivision / Village :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add3_inp3" onKeyUp={sameAddressFunction}  required id="subdi1_pds"/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add3_inp3" onKeyUp={sameAddressFunction}  id="subdi1_pds"/>
                                             </div>                                                                      
                                             <div className='address_input address_notcheck'>
                                             <label>Region (Required) :</label>
@@ -661,7 +764,7 @@ export default function CreatePersonalDataSheet(){
                                             <div className='address_input address_notcheck'>
                                             <label>Province (Required) :</label>
                                             <select onChange={city1} className="add5_inp5" id="province2_pds">
-                                                    <option disabled>Select Province</option>
+                                                    <option value="" hidden>Select a Region first</option>
                                                     {provinceData1 && provinceData1.length > 0 && provinceData1.map((item) => <option
                                                     key={item.province_code} value={item.province_code}>{item.province_name}</option>)}
                                             </select>
@@ -669,7 +772,7 @@ export default function CreatePersonalDataSheet(){
                                             <div className='address_input address_notcheck'>
                                             <label>City (Required) :</label>
                                             <select onChange={barangay1} className="add6_inp6" id="city2_pds">
-                                                    <option disabled>Select City</option>
+                                                    <option value="" hidden>Select a Province first</option>
                                                     {cityData1 && cityData1.length > 0 && cityData1.map((item) => <option
                                                     key={item.city_code} value={item.city_code}>{item.city_name}</option>)}
                                             </select>
@@ -677,48 +780,48 @@ export default function CreatePersonalDataSheet(){
                                             <div className='address_input address_notcheck'>
                                             <label>Barangay (Required) :</label>
                                             <select onChange={brgy1} className="add7_inp7" id="barangay2_pds">
-                                                    <option disabled>Select Barangay</option>
+                                                    <option value="" hidden>Select a City first</option>
                                                     {barangayData1 && barangayData1.length > 0 && barangayData1.map((item) => <option
                                                     key={item.brgy_code} value={item.brgy_code}>{item.brgy_name}</option>)}
                                             </select>
                                             </div>
                                             <div className='address_input address_notcheck'>
                                                 <label>ZIP Code (Required) :</label>
-                                                <input type="number" placeholder='ex. 3003' className="add8_inp8" onKeyUp={sameAddressFunction} id="zip2_pds" required/>
+                                                <input type="number" placeholder='ex. 3003' className="add8_inp8" onKeyUp={sameAddressFunction} id="zip2_pds"/>
                                             </div>
 
                                             {/*Pag naka check yung checkbox */}
                                             <div className='address_input address_check'>
                                                 <label>House / Block / Lot No. :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add1_inp1" required readOnly/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add1_inp1" readOnly/>
                                             </div>
                                             <div className='address_input address_check'>
                                                 <label>Street :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add2_inp2" required readOnly/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add2_inp2" readOnly/>
                                             </div>                      
                                             <div className='address_input address_check'>
                                                 <label>Subdivision / Village :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add3_inp3" required readOnly/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add3_inp3" readOnly/>
                                             </div>
                                             <div className='address_input address_check'>
                                                 <label>Region (Required) :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add4_inp4" required readOnly/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add4_inp4" readOnly/>
                                             </div>
                                             <div className='address_input address_check'>
                                                 <label>Province (Required) :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add5_inp5" required readOnly/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add5_inp5"  readOnly/>
                                             </div>
                                             <div className='address_input address_check'>
                                                 <label>City (Required) :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add6_inp6" required readOnly/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add6_inp6"  readOnly/>
                                             </div>
                                             <div className='address_input address_check'>
                                                 <label>Barangay (Required) :</label>
-                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add7_inp7" required readOnly/>
+                                                <input type="text" placeholder='Type N/A if Not Applicable' className="add7_inp7"  readOnly/>
                                             </div>
                                             <div className='address_input address_check'>
                                                 <label>ZIP Code (Required) :</label>
-                                                <input type="number" placeholder='ex. 3003' className="add8_inp8" required readOnly/>
+                                                <input type="number" placeholder='ex. 3003' className="add8_inp8"  readOnly/>
                                             </div>
 
                                             {/*Address input handler*/}
@@ -1081,7 +1184,7 @@ export default function CreatePersonalDataSheet(){
                 
                     </div>
 
-                    <div className='step_content step3_content' style={{display:"none"}}>
+                    <div className='step_content step3_content'>
                             <p className='step_text'>Step 3</p>
                             <p className='step_desc'>Enter your Civil Service Eligibility</p>
 
@@ -1149,7 +1252,7 @@ export default function CreatePersonalDataSheet(){
                             </div>
                     </div>
 
-                    <div className='step_content step4_content' style={{display:"none"}}>
+                    <div className='step_content step4_content'>
                             <p className='step_text'>Step 4</p>
                             <p className='step_desc'>Enter your Work Experience</p>
 
@@ -1166,7 +1269,8 @@ export default function CreatePersonalDataSheet(){
                               alignItems="center"
                             >
                                   <TextField
-                                        name=""
+                                        onChange={getAllWEinput}
+                                        name="dateFromWE[]"
                                         className='pds_inputEducSemi'
                                         label="Inclusive Dates (From) [Leave blank if N/A]"
                                         color="warning"
@@ -1175,7 +1279,8 @@ export default function CreatePersonalDataSheet(){
                                         InputLabelProps={{shrink: true,}}
                                   />
                                   <TextField
-                                        name=""
+                                        onChange={getAllWEinput}
+                                        name="dateToWE[]"
                                         className='pds_inputEducSemi'
                                         label="Inclusive Dates (To) [Leave blank if N/A]"
                                         color="warning"
@@ -1183,42 +1288,42 @@ export default function CreatePersonalDataSheet(){
                                         inputProps={{ min: "1950-01-01", max: maxDateInput }} 
                                         InputLabelProps={{shrink: true,}}
                                   />
-                                  <TextField label="Position Title (Write in full / Do not abbreviate)" variant="outlined" color="warning" className='pds_inputEducSemi' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} name=""/>    
+                                  <TextField label="Position Title (Write in full / Do not abbreviate)" variant="outlined" color="warning" className='pds_inputEducSemi' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} name="positionWE[]" onChange={getAllWEinput}/>    
 
-                                  <TextField label="Department / Agency / Office / Company (Write in full / Do not abbreviate)" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} name=""/>    
+                                  <TextField label="Department / Agency / Office / Company (Write in full / Do not abbreviate)" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} name="deptWE[]" onChange={getAllWEinput}/>    
 
-                                  <TextField label="Monthly Salary" variant="outlined" color="warning" className='pds_inputEducSemi2' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "uppercase"}}} name=""/>    
+                                  <TextField label="Monthly Salary" variant="outlined" color="warning" className='pds_inputEducSemi2' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "uppercase"}}} name="monthlyWE[]" onChange={getAllWEinput}/>    
 
-                                  <TextField label='Salary/ Job/ Pay Grade (if applicable) & Step  (Format "00-0")/ Increment' variant="outlined" color="warning" className='pds_inputEducSemi2' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} name=""/>
+                                  <TextField label='Salary/ Job/ Pay Grade (if applicable) & Step  (Format "00-0")/ Increment' variant="outlined" color="warning" className='pds_inputEducSemi2' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} name="salaryWE[]" onChange={getAllWEinput}/>
 
                                   <Autocomplete
+                                        onChange={getAllWEinput}
                                         options={statusAppointment}
                                         className='pds_inputEducSemi2'
                                         renderInput={(params) => <TextField color="warning" placeholder='Choose N/A if Not Applicable'
-                                        required {...params} label="Status of Appointment" />}
+                                        {...params} label="Status of Appointment" name="appointWE[]" />}
                                     />
 
                                     <Autocomplete
+                                        onChange={getAllWEinput}
                                         options={yn}
                                         className='pds_inputEducSemi2'
                                         renderInput={(params) => <TextField color="warning" placeholder='Choose N/A if Not Applicable'
-                                        required {...params} label="
-                                        GOV'T SERVICE (Y/ N)"/>}
+                                        {...params} label="GOV'T SERVICE (Y/ N)" name="govtWE[]"/>}
                                     />
-
 
                                 <div className='line_educ'></div>     
                             </Grid>
                             )) }
 
-                            <input type="hidden" id='' value=" |:| "/>
-                            <input type="hidden" id='' value=" |:| "/>
-                            <input type="hidden" id='' value=" |:| " style={{textTransform:"capitalize"}}/>
-                            <input type="hidden" id='' value=" |:| " style={{textTransform:"capitalize"}}/>
-                            <input type="hidden" id='' value=" |:| " style={{textTransform:"uppercase"}}/>
-                            <input type="hidden" id='' value=" |:| " style={{textTransform:"uppercase"}}/>
-                            <input type="hidden" id='' value=" |:| " style={{textTransform:"uppercase"}}/>
-                            <input type="hidden" id='' value=" |:| " style={{textTransform:"uppercase"}}/>
+                            <input type="hidden" id='WE_dateFrom_handler' value=" |:| "/>
+                            <input type="hidden" id='WE_dateTo_handler' value=" |:| "/>
+                            <input type="hidden" id='WE_position_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
+                            <input type="hidden" id='WE_dept_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
+                            <input type="hidden" id='WE_monthly_handler' value=" |:| " style={{textTransform:"uppercase"}}/>
+                            <input type="hidden" id='WE_salary_handler' value=" |:| " style={{textTransform:"uppercase"}}/>
+                            <input type="hidden" id='WE_appoint_handler' value=" |:| " style={{textTransform:"uppercase"}}/>
+                            <input type="hidden" id='WE_govt_handler' value=" |:| " style={{textTransform:"uppercase"}}/>
 
                             <div className='entry_button'>
                               <button type="button" 
@@ -1230,9 +1335,98 @@ export default function CreatePersonalDataSheet(){
                               <button type='button' onClick={handleAddWorkEntry}>Add another entry</button>
                             </div>
 
-                     </div>       
+                     </div>     
 
-                </form>
+                     <div className='step_content step5_content'>
+                            <p className='step_text'>Step 5</p>
+                            <p className='step_desc'>Learning & Development</p>
+
+                            <div className='info_div' style={{fontSize:"1rem"}}>
+                                <img src={LandD_info}/>
+                                Learning and Development (L&D) Interventions/Training Programs Attended
+                            </div>  
+
+                            {ldEntry.map(index => (
+                            <Grid
+                              container
+                              direction="row"
+                              justifyContent="flex-start"
+                              alignItems="center"
+                            >             
+                                  <div className='file_input'>
+                                      <label>Upload Image (JPG or PNG only) [Leave blank if Not Applicable]:</label>
+                                      <input type="file" onChange={getAllLDinput} name="imgLD[]" />
+                                  </div>     
+
+                                  <TextField label="Title of Learning and Development Interventions/Training Programs (Write in full)" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} name="titleLD[]" onChange={getAllLDinput}/>  
+
+                                  <TextField
+                                        onChange={getAllLDinput}
+                                        name="dateFromLD[]"
+                                        className='pds_inputEducSemi'
+                                        label="Inclusive Dates of attendance (From) [Leave blank if N/A]"
+                                        color="warning"
+                                        type="date"
+                                        inputProps={{ min: "1950-01-01", max: maxDateInput }} 
+                                        InputLabelProps={{shrink: true,}}
+                                  />
+                                  <TextField
+                                        onChange={getAllLDinput}
+                                        name="dateToLD[]"
+                                        className='pds_inputEducSemi'
+                                        label="Inclusive Dates of attendance (To) [Leave blank if N/A]"
+                                        color="warning"
+                                        type="date"
+                                        inputProps={{ min: "1950-01-01", max: maxDateInput }} 
+                                        InputLabelProps={{shrink: true,}}
+                                  />
+                                  <TextField label="Number of hours" variant="outlined" color="warning" className='pds_inputEducSemi' placeholder='(ex. 8 HRS)Type N/A if Not Applicable' inputProps={{style:{textTransform: "uppercase"}}} name="hoursLD[]" onChange={getAllLDinput}/>      
+
+                                  <TextField label="Type of LD (Managerial/ Supervisory/ Technical/ etc)" variant="outlined" color="warning" className='pds_inputEducSemi2' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "uppercase"}}} name="typeLD[]" onChange={getAllLDinput}/>    
+
+                                  <TextField label='Conducted/ Sponsored By (Write in full)' variant="outlined" color="warning" className='pds_inputEducSemi2' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} name="sponsoredLD[]" onChange={getAllLDinput}/>
+
+                                  <Autocomplete
+                                        onChange={getAllLDinput}
+                                        options={LandDCoverage}
+                                        className='pds_inputEducSemi2'
+                                        renderInput={(params) => <TextField color="warning" placeholder='Choose N/A if Not Applicable'
+                                        {...params} label="Coverage" name="coverageLD[]" />}
+                                    />
+
+                                    <Autocomplete
+                                        onChange={getAllLDinput}
+                                        options={LandDCategory}
+                                        className='pds_inputEducSemi2'
+                                        renderInput={(params) => <TextField color="warning" placeholder='Choose N/A if Not Applicable'
+                                        {...params} label="Category" name="categoryLD[]"/>}
+                                    />
+
+                                  <div className='line_educ'></div>     
+                            </Grid>
+                            )) }
+
+                            <input type="hidden" id='LD_title_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
+                            <input type="hidden" id='LD_dateFrom_handler' value=" |:| "/>
+                            <input type="hidden" id='LD_dateTo_handler' value=" |:| "/>
+                            <input type="hidden" id='LD_hours_handler' value=" |:| " style={{textTransform:"uppercase"}}/>
+                            <input type="hidden" id='LD_type_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
+                            <input type="hidden" id='LD_sponsored_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
+                            <input type="hidden" id='LD_coverage_handler' value=" |:| " style={{textTransform:"uppercase"}}/>
+                            <input type="hidden" id='LD_category_handler' value=" |:| " style={{textTransform:"uppercase"}}/>
+                            <input type="hidden" id='LD_img_handler' value=" |:| " />
+
+                            <div className='entry_button'>
+                              <button type="button" 
+                                disabled={ldEntry.length === 1} 
+                                onClick={() => handleRemoveldEntry(ldEntry.id)}
+                              >
+                                  Remove
+                              </button>   
+                              <button type='button' onClick={handleAddldEntry}>Add another entry</button>
+                            </div>
+
+                      </div>
 
                     <div className="pds_validator">
                       <PdsFormStepModal/>
@@ -1240,31 +1434,47 @@ export default function CreatePersonalDataSheet(){
                 </div>
 
                 <div className='stepper_container'>
-                       <Link to="/FacultyDashboard" style={{ textDecoration: 'none',marginLeft:"5%" }} className="back_stepper1">
+                       <Link to="/FacultyDashboard" style={{ textDecoration: 'none',marginLeft:"5%"}} className="back_stepper1">
                         <button className='back_stepper' style={{whiteSpace:"nowrap"}}>&#8592; &nbsp;&nbsp;&nbsp; Go to Dashboard</button>
                       </Link>  
 
-                        <button className='back_stepper back_stepper2' style={{display:"none"}} onClick={back2_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
-                        <button className='back_stepper back_stepper3' style={{display:"none"}} onClick={back3_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
-                        <button className='back_stepper back_stepper4' style={{display:"none"}} onClick={back4_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
-                        <button className='back_stepper back_stepper5' style={{display:"none"}}>&#8592; &nbsp;&nbsp;&nbsp; Back5</button>
+                        <button type='button' className='back_stepper back_stepper2' style={{display:"none"}} onClick={back2_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
+                        <button type='button' className='back_stepper back_stepper3' style={{display:"none"}} onClick={back3_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
+                        <button type='button' className='back_stepper back_stepper4' style={{display:"none"}} onClick={back4_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
+                        <button type='button' className='back_stepper back_stepper5' style={{display:"none"}}  onClick={back5_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back5</button>
 
-                        <button className='next_stepper next_stepper1' onMouseOver={sameAddressFunction} onClick={validatorPDS1}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button className='next_stepper next_stepper2' style={{display:"none"}} onMouseOver={getAllElementaryInput} onClick={validatorPDS2}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button className='next_stepper next_stepper3' style={{display:"none"}}  onMouseOver={getAllCSEinput} onClick={validatorPDS3}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button className='next_stepper next_stepper4'  style={{display:"none"}}>Next4 &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button className='next_stepper next_stepper5' style={{display:"none"}} >Next5 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper1'  onMouseOver={sameAddressFunction} onClick={validatorPDS1}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper2' style={{display:"none"}} onMouseOver={getAllElementaryInput} onClick={validatorPDS2}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper3' style={{display:"none"}} onMouseOver={getAllCSEinput} onClick={validatorPDS3}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper4' style={{display:"none"}} onMouseOver={getAllWEinput} onClick={validatorPDS4}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper5' style={{display:"none"}} onMouseOver={getAllLDinput} >Next5 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='submit' className='next_stepper' style={{display:"none"}} >Submit &nbsp;&nbsp;&nbsp; &#8594;</button>
                 </div>
+           
             </div> 
-
+            </form>
 
         </div>
     )
 }
 
-
+//LandD Category
+const LandDCategory = [
+  { label: 'N/A' },
+  { label: 'TRAINING' },
+  { label: 'SEMINAR' },
+  { label: 'WORKSHOP'},
+];
+//LandD Coverage
+const LandDCoverage = [
+  { label: 'N/A' },
+  { label: 'INTERNATIONAL' },
+  { label: 'NATIOANAL' },
+  { label: 'REGIONAL'},
+  { label: 'LOCAL'},
+];
 //Govt service Y/N
-const yn = [{label: "N/A"},{label: "YES"}, {label:"NO"}]
+const yn = [{label: "N/A"},{label: "Y"}, {label:"N"}]
 //Status of Appointment
 const statusAppointment = [
   { label: 'N/A' },

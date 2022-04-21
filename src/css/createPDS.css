@@ -280,6 +280,27 @@
     outline: none;
 }
 
+.file_input{
+    font-size: 1rem;
+    width: 100%;
+    margin: 0 10px !important;
+    margin-bottom: 30px !important;
+    margin-top: -.8rem !important;
+}
+.file_input label{
+    font-size: .8rem;
+    color: rgb(64, 64, 64);
+}   
+.file_input input{
+    width: 100%;
+    border-radius: 4px;
+    background-color: transparent;
+    font-size: 1rem;
+    padding: 15px 0;
+    text-indent: 10px;
+    border: 1px solid #b2b2b2;
+}
+
 #contact_validator{
     color: red;
     visibility: hidden;
@@ -392,5 +413,10 @@ input[type=number] {
     }
     .pds_inputEducSemi2{
         width: 100%;
+    }
+
+    /*PDS CONTENT*/
+    .dashboard_container .main_content .form_container{
+        height: 70vh;
     }
 }

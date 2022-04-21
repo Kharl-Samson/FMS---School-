@@ -311,7 +311,7 @@ export default function Register(){
                                             <img src={Username_icon} className=".for_hover"/>
                                             </LightTooltip>
                                     </div>
-                                    <input type="text" placeholder="First Name" name="first_name" onChange={handleChange} value={data.first_name} required/>
+                                    <input type="text" placeholder="First Name" name="first_name" onChange={handleChange} value={data.first_name} required style={{textTransform:"capitalize"}}/>
                                 </div>
 
                                 <div className="input_container input_container2 lname_container">
@@ -320,7 +320,7 @@ export default function Register(){
                                             <img src={Username_icon} className=".for_hover"/>
                                             </LightTooltip>
                                     </div>
-                                    <input type="text" placeholder="Last Name" name="last_name" onChange={handleChange} value={data.last_name} required/>
+                                    <input type="text" placeholder="Last Name" name="last_name" onChange={handleChange} value={data.last_name} required style={{textTransform:"capitalize"}}/>
                                 </div>
 
                                 <div className="input_container input_container2 email_container">

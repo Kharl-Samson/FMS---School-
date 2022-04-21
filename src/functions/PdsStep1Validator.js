@@ -30,10 +30,18 @@ function validatorPDS1(){
         if( !validateEmail(document.getElementById("email_pds").value)) {    
             list_of_errors += "- Email address is an invalid format. <br/>"
         }
+      
         document.getElementById("al_email_pds").value == "" ? list_of_errors += "- Write N/A in Alternate Email address. <br/>": list_of_errors += ""
-        if( !validateEmail(document.getElementById("al_email_pds").value)) {    
-            list_of_errors += "- Alternate Email address is an invalid format. <br/>"
+        if(document.getElementById("al_email_pds").value == "N/A" || document.getElementById("al_email_pds").value =="N/a" || document.getElementById("al_email_pds").value =="n/A" || document.getElementById("al_email_pds").value =="n/a"){
+
+
         }
+        else{
+            if( !validateEmail(document.getElementById("al_email_pds").value)) {    
+                list_of_errors += "- Alternate Email address is an invalid format. <br/>"
+            }
+        }
+
         document.getElementById("House_pds").value == "" ? list_of_errors += "- Write N/A in Resident Address(House / Block / Lot No.). <br/>": list_of_errors += ""
         document.getElementById("street_pds").value == "" ? list_of_errors += "- Write N/A in Resident Address(Street). <br/>": list_of_errors += ""
         document.getElementById("subdi_pds").value == "" ? list_of_errors += "- Write N/A in Resident Address(Subdivision / Village). <br/>": list_of_errors += ""

@@ -104,7 +104,7 @@ export default function NavbarFaculty(props){
             </Link>
 
             {/* Nav drawer fo smaller device */}
-            <div className="drawer_btn" onClick={OpenRightNavbar} >
+            <div className="drawer_btn" onClick={OpenRightNavbar} id="leftnav_drawerBTN">
                 <img src={Menu_icon}/>
             </div>
      
