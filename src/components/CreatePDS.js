@@ -16,11 +16,13 @@ import {useEffect, useState} from "react";
 import { orange } from '@mui/material/colors';
 import Checkbox from '@mui/material/Checkbox';
 import PdsFormStepModal from '../modalsUi/PdsFormModal';
-import education_info from '../images/icons/education_info.svg'
+import education_info from '../images/icons/education_info.svg';
+import form_info from '../images/icons/form_info.svg';
 import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 import getAllElementaryInput from '../functions/GetAllEducInput';
 import getAllCSEinput from '../functions/GetAllCSEinput';
+import validatorPDS0 from '../functions/PdsStep0Validator';
 import validatorPDS1 from '../functions/PdsStep1Validator';
 import validatorPDS2 from '../functions/PdsStep2Validator';
 import validatorPDS3 from '../functions/PdsStep3Validator';
@@ -29,6 +31,8 @@ import getAllWEinput from '../functions/GetAllWEinput';
 import getAllLDinput from '../functions/GetAllLDinput';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+
+import PreviewPDS from './PreviewPDS';
 
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -364,6 +368,16 @@ export default function CreatePersonalDataSheet(){
     }       
 
     //back stepper function
+    function back1_stepper(){   
+      document.getElementsByClassName("pds_validator")[0].style.display = "none";
+      document.getElementsByClassName("consent_form")[0].style.display="block";
+      document.getElementsByClassName("step1_content")[0].style.display="none";
+      document.getElementsByClassName("back_stepper0")[0].style.display="block";
+      document.getElementsByClassName("back_stepper1")[0].style.display="none";
+
+      document.getElementsByClassName("next_stepper0")[0].style.display="block";
+      document.getElementsByClassName("next_stepper1")[0].style.display="none";
+    }
     function back2_stepper(){   
       document.getElementsByClassName("form_container")[0].scrollTop = 0
       document.getElementsByClassName("step1_content")[0].style.display = "block";
@@ -437,8 +451,7 @@ export default function CreatePersonalDataSheet(){
     const submitPDSTaskForm=(e)=>{
       e.preventDefault();
       const data = new FormData() 
-      
-      //Step1
+
       //Sending the data request to call it on backend
       const sendDataPDS = {
         fname_pds: document.getElementById("fname_pds").value.toUpperCase(),
@@ -480,24 +493,82 @@ export default function CreatePersonalDataSheet(){
         add_handler16: document.getElementById("add_handler16").value.toUpperCase(),
         input_phone: document.getElementById("input_phone").value,
         tele_pds: document.getElementById("tele_pds").value,
+        nameELEM_handler: document.getElementById("nameELEM_handler").value.toUpperCase(),
+        attainELEM_handler: document.getElementById("attainELEM_handler").value.toUpperCase(),
+        dateFromELEM_handler: document.getElementById("dateFromELEM_handler").value,
+        dateToELEM_handler: document.getElementById("dateToELEM_handler").value,
+        yearGradELEM_handler: document.getElementById("yearGradELEM_handler").value.toUpperCase(),
+        awardELEM_handler: document.getElementById("awardELEM_handler").value.toUpperCase(),
+        nameSecond_handler: document.getElementById("nameSecond_handler").value.toUpperCase(),
+        attainSecond_handler: document.getElementById("attainSecond_handler").value.toUpperCase(),
+        dateFromSecond_handler: document.getElementById("dateFromSecond_handler").value,
+        dateToSecond_handler: document.getElementById("dateToSecond_handler").value,
+        yearGradSecond_handler: document.getElementById("yearGradSecond_handler").value.toUpperCase(),
+        awardSecond_handler: document.getElementById("awardSecond_handler").value.toUpperCase(),
+        nameVocational_handler: document.getElementById("nameVocational_handler").value.toUpperCase(),
+        attainVocational_handler: document.getElementById("attainVocational_handler").value.toUpperCase(),
+        dateFromVocational_handler: document.getElementById("dateFromVocational_handler").value,
+        dateToVocational_handler: document.getElementById("dateToVocational_handler").value,
+        yearGradVocational_handler: document.getElementById("yearGradVocational_handler").value.toUpperCase(),
+        awardVocational_handler: document.getElementById("awardVocational_handler").value.toUpperCase(),
+        nameCollege_handler: document.getElementById("nameCollege_handler").value.toUpperCase(),
+        attainCollege_handler: document.getElementById("attainCollege_handler").value.toUpperCase(),
+        dateFromCollege_handler: document.getElementById("dateFromCollege_handler").value,
+        dateToCollege_handler: document.getElementById("dateToCollege_handler").value,
+        yearGradCollege_handler: document.getElementById("yearGradCollege_handler").value.toUpperCase(),
+        awardCollege_handler: document.getElementById("awardCollege_handler").value.toUpperCase(),
+        nameGraduate_handler: document.getElementById("nameGraduate_handler").value.toUpperCase(),
+        attainGraduate_handler: document.getElementById("attainGraduate_handler").value.toUpperCase(),
+        dateFromGraduate_handler: document.getElementById("dateFromGraduate_handler").value,
+        dateToGraduate_handler: document.getElementById("dateToGraduate_handler").value,
+        yearGradGraduate_handler: document.getElementById("yearGradGraduate_handler").value.toUpperCase(),
+        awardGraduate_handler: document.getElementById("awardGraduate_handler").value.toUpperCase(),  
+        CSE_board_handler: document.getElementById("CSE_board_handler").value.toUpperCase(),
+        CSE_rating_handler: document.getElementById("CSE_rating_handler").value.toUpperCase(),
+        CSE_dateExam_handler: document.getElementById("CSE_dateExam_handler").value,
+        CSE_placeExam_handler: document.getElementById("CSE_placeExam_handler").value.toUpperCase(),
+        CSE_licenseNo_handler: document.getElementById("CSE_licenseNo_handler").value.toUpperCase(),
+        CSE_dateValidity_handler: document.getElementById("CSE_dateValidity_handler").value,
+        WE_dateFrom_handler: document.getElementById("WE_dateFrom_handler").value,
+        WE_dateTo_handler: document.getElementById("WE_dateTo_handler").value,
+        WE_position_handler: document.getElementById("WE_position_handler").value.toUpperCase(),
+        WE_dept_handler: document.getElementById("WE_dept_handler").value.toUpperCase(),
+        WE_monthly_handler: document.getElementById("WE_monthly_handler").value.toUpperCase(),
+        WE_salary_handler: document.getElementById("WE_salary_handler").value.toUpperCase(),
+        WE_appoint_handler: document.getElementById("WE_appoint_handler").value.toUpperCase(),
+        WE_govt_handler: document.getElementById("WE_govt_handler").value.toUpperCase(),
+        LD_img_handler: document.getElementById("LD_img_handler").value,
+        LD_title_handler: document.getElementById("LD_title_handler").value.toUpperCase(),
+        LD_dateFrom_handler: document.getElementById("LD_dateFrom_handler").value.toUpperCase(),
+        LD_dateTo_handler: document.getElementById("LD_dateTo_handler").value.toUpperCase(),
+        LD_hours_handler: document.getElementById("LD_hours_handler").value.toUpperCase(),
+        LD_type_handler: document.getElementById("LD_type_handler").value.toUpperCase(),
+        LD_sponsored_handler: document.getElementById("LD_sponsored_handler").value.toUpperCase(),
+        LD_coverage_handler: document.getElementById("LD_coverage_handler").value.toUpperCase(),
+        LD_category_handler: document.getElementById("LD_category_handler").value.toUpperCase(),
       }
       //Sending the data to my backend
       axios.post('http://localhost/fms/createPDS.php',sendDataPDS)
         .then((result)=>{                   
             console.log(result.data.status)
       })//End of axios
-
-      //for (let i = 0; i < document.getElementsByName("imgLD[]").length; i++) {
-        //data.append("file[]", document.getElementsByName("imgLD[]")[i].files[0]);
-      //}
-      //data.append('file', imgURL)
-      //let url = "http://localhost/fms/createPDS.php";
-      //axios.post(url, data, {}).then(res => { 
+      for (let i = 0; i < document.getElementsByName("imgLD[]").length; i++) {
+        data.append("file[]", document.getElementsByName("imgLD[]")[i].files[0]);
+      }
+      let url = "http://localhost/fms/createPDS.php";
+      axios.post(url, data, {}).then(res => { 
         //console.log(res);
-      //})
-
+      })
 
     }
+
+    
+    function clickTest(){
+       document.getElementById("testP").textContent  = document.getElementById("fname_pds").value;
+    }
+
+
+
 
     return (
         <div className="dashboard_container" style={{ backgroundColor: "#FFAA28"}}>
@@ -531,7 +602,27 @@ export default function CreatePersonalDataSheet(){
                 </div>
 
                 <div className='form_container'>
-                    <div className='step_content step1_content' style={{display:"block"}}>
+
+                    <div className='step_content consent_form' style={{display:"none"}}>
+
+                          <div className='info_div'>
+                              <img src={form_info}/>
+                              Concent Form
+                          </div>
+                          <p className='p_consent'>We at the Bulacan State University (Main Campus) and the College of Information and Communications technology are committed to valuing the privacy and security of personal data entrusted by its employees.</p>
+                          <br/>
+                          <p className='p_consent'>The personal information being collected includes your sensitive personal information, educational background, and other personal records. Bulacan State University will only process this information to create a personal data sheet (PDS) for evaluation, management and automated profiling.</p>
+                          <br/>
+                          <p className='p_consent'>Your approval of this consent form does not prohibit the existence of other conditions for permissible personal data processing, and it does not renounce any of your rights under the Data Privacy Act of 2012 and other applicable laws. We aim to abide by the Data Privacy Act of 2012 (DPA) and to fully collaborate with the National Privacy Commission (NPC).</p>
+                          <br/>
+                          <p className='p_consent'>We have implemented appropriate and reasonable technical and organizational security measures designed to protect the security of any personal information we process. We regard your privacy with utmost importance. </p>
+                          <br/>
+                          <p className='p_consent'>By accepting, you acknowledge that you have read this form, understood its contents, and consent to the processing of your data for the purposes indicated in this Consent Form. If not, your data will not be used by Bulacan State University as long as your authorization to deny access has not been reversed.</p>
+                          <br/>
+                          <p className='p_consent'>By clicking next, I authorize Bulacan State University to collect and use my personal information.</p>
+                    </div>
+
+                    <div className='step_content step1_content'>
                             <p className='step_text'>Step 1</p>
                             <p className='step_desc'>Enter your Personal Information</p>
                            
@@ -545,7 +636,7 @@ export default function CreatePersonalDataSheet(){
                                     justifyContent="center"
                                     alignItems="center"
                                 >
-                                    <TextField label="First Name" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="fname_pds" required inputProps={{style:{textTransform: "capitalize"}}}/>
+                                    <TextField label="First Name" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="fname_pds" required inputProps={{style:{textTransform: "capitalize"}}} value="test"/>
                                     <TextField label="Middle Name" variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} id="mname_pds"/>
                                     <TextField label="Last Name" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required'  id="lname_pds" required inputProps={{style:{textTransform: "capitalize"}}}/>
                                     <TextField label="Name Extension (Optional)" variant="outlined" color="warning"  className='pds_input' placeholder='(ex. Jr., Sr., III)  Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} id="nameextension_pds"/>
@@ -891,7 +982,6 @@ export default function CreatePersonalDataSheet(){
                                         InputLabelProps={{shrink: true,}}
                                   />
                                   <TextField
-                                        required
                                         onChange={getAllElementaryInput}
                                         name="elem_dateToPDS[]"
                                         className='pds_inputEducSemi'
@@ -945,7 +1035,7 @@ export default function CreatePersonalDataSheet(){
                                         options={secondaryAttainment}
                                         className='pds_inputEduc'
                                         renderInput={(params) => <TextField color="warning" placeholder='Fields with * are required'
-                                        {...params} label="Basic Education/Degree/Course" name="second_attainmentPDS[]"/>}
+                                        {...params} label="Basic Education/Degree/Course" name="second_attainmentPDS[]"  required/>}
                                   />
                                   <TextField
                                         required
@@ -959,7 +1049,6 @@ export default function CreatePersonalDataSheet(){
                                         InputLabelProps={{shrink: true,}}
                                   />
                                   <TextField
-                                        required
                                         onChange={getAllElementaryInput}
                                         name="second_dateToPDS[]"
                                         className='pds_inputEducSemi'
@@ -1014,7 +1103,7 @@ export default function CreatePersonalDataSheet(){
                                         onChange={getAllElementaryInput}
                                         name="vocational_dateFromPDS[]"
                                         className='pds_inputEducSemi'
-                                        label="Date Attended (From)"
+                                        label="Date Attended (From) [Leave blank if N/A]"
                                         color="warning"
                                         type="date"
                                         inputProps={{ min: "1950-01-01", max: maxDateInput }} 
@@ -1024,7 +1113,7 @@ export default function CreatePersonalDataSheet(){
                                         onChange={getAllElementaryInput}
                                         name="vocational_dateToPDS[]"
                                         className='pds_inputEducSemi'
-                                        label="Date Attended (To) [Leave blank if date is up to present]"
+                                        label="Date Attended (To) [Leave blank if N/A]"
                                         color="warning"
                                         type="date"
                                         inputProps={{ min: "1950-01-01", max: maxDateInput }} 
@@ -1082,7 +1171,6 @@ export default function CreatePersonalDataSheet(){
                                     InputLabelProps={{shrink: true,}}
                                 />
                                 <TextField
-                                    required
                                     onChange={getAllElementaryInput}
                                     name="college_dateToPDS[]"
                                     className='pds_inputEducSemi'
@@ -1136,7 +1224,7 @@ export default function CreatePersonalDataSheet(){
                                         onChange={getAllElementaryInput}
                                         name="graduate_dateFromPDS[]"
                                         className='pds_inputEducSemi'
-                                        label="Date Attended (From)"
+                                        label="Date Attended (From) [Leave blank if N/A]"
                                         color="warning"
                                         type="date"
                                         inputProps={{ min: "1950-01-01", max: maxDateInput }} 
@@ -1146,7 +1234,7 @@ export default function CreatePersonalDataSheet(){
                                         onChange={getAllElementaryInput}
                                         name="graduate_dateToPDS[]"
                                         className='pds_inputEducSemi'
-                                        label="Date Attended (To) [Leave blank if date is up to present]"
+                                        label="Date Attended (To) [Leave blank if N/A]"
                                         color="warning"
                                         type="date"
                                         inputProps={{ min: "1950-01-01", max: maxDateInput }} 
@@ -1428,22 +1516,29 @@ export default function CreatePersonalDataSheet(){
 
                       </div>
 
+                        
+                      <PreviewPDS/>
+
+
+
                     <div className="pds_validator">
                       <PdsFormStepModal/>
                     </div>
                 </div>
 
                 <div className='stepper_container'>
-                       <Link to="/FacultyDashboard" style={{ textDecoration: 'none',marginLeft:"5%"}} className="back_stepper1">
-                        <button className='back_stepper' style={{whiteSpace:"nowrap"}}>&#8592; &nbsp;&nbsp;&nbsp; Go to Dashboard</button>
+                       <Link to="/FacultyDashboard" style={{ textDecoration: 'none',marginLeft:"5%"}} className="back_stepper0">
+                        <button className='back_stepper' style={{whiteSpace:"nowrap"}}>&#8592; &nbsp;&nbsp;&nbsp; Dashboard</button>
                       </Link>  
 
+                        <button type='button' className='back_stepper back_stepper1' style={{display:"none"}} onClick={back1_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
                         <button type='button' className='back_stepper back_stepper2' style={{display:"none"}} onClick={back2_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
                         <button type='button' className='back_stepper back_stepper3' style={{display:"none"}} onClick={back3_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
                         <button type='button' className='back_stepper back_stepper4' style={{display:"none"}} onClick={back4_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
-                        <button type='button' className='back_stepper back_stepper5' style={{display:"none"}}  onClick={back5_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back5</button>
+                        <button type='button' className='back_stepper back_stepper5' style={{display:"none"}}  onClick={back5_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
 
-                        <button type='button' className='next_stepper next_stepper1'  onMouseOver={sameAddressFunction} onClick={validatorPDS1}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper0'  onClick={validatorPDS0}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper1' style={{display:"none"}} onMouseOver={sameAddressFunction} onClick={validatorPDS1}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
                         <button type='button' className='next_stepper next_stepper2' style={{display:"none"}} onMouseOver={getAllElementaryInput} onClick={validatorPDS2}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
                         <button type='button' className='next_stepper next_stepper3' style={{display:"none"}} onMouseOver={getAllCSEinput} onClick={validatorPDS3}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
                         <button type='button' className='next_stepper next_stepper4' style={{display:"none"}} onMouseOver={getAllWEinput} onClick={validatorPDS4}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>

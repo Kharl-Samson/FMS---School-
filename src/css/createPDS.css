@@ -121,6 +121,10 @@
     text-align: center;
 }
 
+.form_container .p_consent{
+    margin: 0 5%;
+}
+
 .info_div{
     margin-top: 1rem;
     margin-bottom: 2rem;
@@ -378,6 +382,283 @@ input[type=number] {
     height: 250px;
     width: auto;
     z-index: 0;
+}
+
+.pds_review_container{
+    margin: 0% auto;
+    max-width: 80vw;
+    height: auto;
+    overflow-x: scroll;
+}
+.pds_review_container::-webkit-scrollbar {
+    height: 5px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+.pds_review_container::-webkit-scrollbar-track {
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+.pds_review_container::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    background: #FFAA28; 
+}
+.pds_review_container::-webkit-scrollbar-thumb:window-inactive {
+    background: transparent; 
+}
+
+
+/*PDS Preview*/
+.pds_review_container .pds_preview{
+    margin: 0% auto;
+    width: 1100px;
+    height: auto;
+    padding: 40px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.pds_review_container .pds_preview .top{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;    
+}
+.pds_review_container .pds_preview .top .left{
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+.pds_review_container .pds_preview .top .left img{
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+.pds_review_container .pds_preview .top .right p{
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+.pds_review_container .information_content{
+    margin-top: 2rem;
+    height: auto;
+    width: 100%;
+}
+.pds_review_container .information_content .header{
+    color: #ffff;
+    background-color: black;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-indent: 10px;
+    text-transform: uppercase;
+    padding: 1rem 0;
+}
+.pds_review_container .information_content .personal{
+    width: 100%;
+    display: flex;
+}
+.pds_review_container .information_content .name div{
+    height: auto;
+    width: 25%;
+}
+.pds_review_container .information_content .name div:nth-child(4){
+    width: 25%;
+}
+.pds_review_container .box{
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid black;
+}
+.pds_review_container .box span:nth-child(1){
+    font-size: .9rem;
+    margin-left: 30px;
+    color: rgb(125, 125, 125);
+
+}
+.pds_review_container .box span:nth-child(2){
+    font-size: .9rem;
+    margin-left: 30px;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.pds_review_container .information_content .other_personal .left{
+    flex-grow: 1;
+    width: 20%;
+}
+.pds_review_container .information_content .other_personal .left .box{
+    flex-grow: 1;
+}
+.pds_review_container .information_content .other_personal .right{
+    flex-grow: 1;
+}
+.pds_review_container .information_content .other_personal .right .citizenship_preview{
+    height: 20%;
+    width: 100%;
+    display: flex;
+}
+.pds_review_container .information_content .other_personal .right .citizenship_preview .left_citizenship{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(125, 125, 125);
+    border: 1.5px solid black;
+}
+.pds_review_container .information_content .other_personal .right .citizenship_preview .right_citizenship{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    border: 1.5px solid black;
+}
+.pds_review_container .information_content .other_personal .right .address_preview{
+    height: 20%;
+    width: 100%;
+    display: flex;
+}
+.pds_review_container .information_content .other_personal .right .zip_preview{
+    width: 100%;
+    height: 6%;
+    display: flex;
+    margin-top: 2px;
+}
+.pds_review_container .information_content .other_personal .right .zip_preview div:nth-child(1){
+    width: 35.3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9rem;
+    color: rgb(125, 125, 125);
+    text-transform: uppercase;
+    color: rgb(125, 125, 125);
+    border: 1.5px solid black;
+}
+.pds_review_container .information_content .other_personal .right .zip_preview div:nth-child(2){
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9rem;
+    color: rgb(2, 2, 2);
+    text-transform: uppercase;
+    border: 1.5px solid black;
+}
+.pds_review_container .information_content .other_personal .right .address_preview .left_address{
+    height: 100%;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(125, 125, 125);
+    border: 1.5px solid black;
+}
+.pds_review_container .information_content .other_personal .right .address_preview .right_address{
+    height: 100%;
+    width: 65%;
+    color: rgb(125, 125, 125);
+}
+.pds_review_container .information_content .other_personal .right .address_preview .right_address .add1{
+    height: 33.99%;
+    width: 100%;
+    display: flex;
+}
+.pds_review_container .information_content .other_personal .right .address_preview .right_address .add1 .box{
+    width: 50%;
+}
+.pds_review_container .information_content .education_content{
+    height: auto;
+    width: 100%;
+    display: flex;
+}
+.pds_review_container .information_content .education_content div{
+    display: flex;
+    font-size: .9rem;
+    padding-top: 10px;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    border: 1.5px solid black;
+}
+.pds_review_container .information_content .education_content .educ_level{
+    width: 13.2%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.pds_review_container .information_content .education_content .educ_level .educ_period{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-top: 1.5px solid black;
+    padding-top: 0;
+}
+.pds_review_container .information_content .education_content .educ_level .educ_period div{
+    width: 50%;
+    font-size: .8rem;
+    font-weight: normal;
+    border: none;
+    height: auto;
+    border: none;
+    padding-bottom: 10px;
+}
+.pds_review_container .information_content .education_content .educ_name{
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.pds_review_container .information_content .education_content .educ_name_content{
+    width: 85%;
+    display: block;
+    justify-content: flex-start;
+    padding-top: 0;
+    border: none;
+}
+.pds_review_container .information_content .education_content .educ_name_content .name_of_schooldPreview{
+    width: 100%;
+    flex-grow: 1;
+    justify-content: flex-start;
+    border: none;
+    padding-top: 0;
+}
+.pds_review_container .information_content .education_content .educ_name_content .box_name{
+    font-size: .8rem;
+    height: 10vh;
+    width: 16.5%;
+    padding: 10px 10px;
+    text-align: center;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+.pds_review_container .information_content .education_content .educ_name_content .box_name div{
+    border: none;
+    width: 100%;
+    height: 100%;
+    font-weight: normal;
+    font-size: .7rem;
+    text-align: center;
+}
+.pds_review_container .information_content .education_content .educ_name1{
+    width: 13%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.pds_review_container .information_content .education_content .educ_year{
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 
