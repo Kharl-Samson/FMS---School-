@@ -27,6 +27,7 @@ import validatorPDS1 from '../functions/PdsStep1Validator';
 import validatorPDS2 from '../functions/PdsStep2Validator';
 import validatorPDS3 from '../functions/PdsStep3Validator';
 import validatorPDS4 from '../functions/PdsStep4Validator';
+import validatorPDS5 from '../functions/PdsStep5Validator';
 import getAllWEinput from '../functions/GetAllWEinput';
 import getAllLDinput from '../functions/GetAllLDinput';
 import { Link } from "react-router-dom";
@@ -446,6 +447,17 @@ export default function CreatePersonalDataSheet(){
       document.getElementsByClassName("next_stepper5")[0].style.display = "none";
       document.getElementsByClassName("step5_content")[0].style.display = "none";
     }
+    function back6_stepper(){   
+      document.getElementsByClassName("back_stepper6")[0].style.display = "none";
+      document.getElementsByClassName("next_stepper6")[0].style.display = "none";
+      document.getElementsByClassName("preview_pds")[0].style.display = "none";
+      document.getElementsByClassName("form_container")[0].scrollTop = 0;
+      document.getElementsByClassName("step5_content")[0].style.display = "block";
+      document.getElementsByClassName("back_stepper5")[0].style.display = "block";
+      document.getElementsByClassName("next_stepper5")[0].style.display = "block";
+      document.getElementsByClassName("stepper5")[0].style.borderBottomRightRadius = "50px";
+      document.getElementsByClassName("stepper5")[0].style.borderTopRightRadius = "50px";
+    }
 
     //Submit PDS
     const submitPDSTaskForm=(e)=>{
@@ -562,13 +574,6 @@ export default function CreatePersonalDataSheet(){
 
     }
 
-    
-    function clickTest(){
-       document.getElementById("testP").textContent  = document.getElementById("fname_pds").value;
-    }
-
-
-
 
     return (
         <div className="dashboard_container" style={{ backgroundColor: "#FFAA28"}}>
@@ -603,7 +608,7 @@ export default function CreatePersonalDataSheet(){
 
                 <div className='form_container'>
 
-                    <div className='step_content consent_form' style={{display:"none"}}>
+                    <div className='step_content consent_form' style={{display:"block"}}>
 
                           <div className='info_div'>
                               <img src={form_info}/>
@@ -636,7 +641,7 @@ export default function CreatePersonalDataSheet(){
                                     justifyContent="center"
                                     alignItems="center"
                                 >
-                                    <TextField label="First Name" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="fname_pds" required inputProps={{style:{textTransform: "capitalize"}}} value="test"/>
+                                    <TextField label="First Name" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="fname_pds" required inputProps={{style:{textTransform: "capitalize"}}}/>
                                     <TextField label="Middle Name" variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} id="mname_pds"/>
                                     <TextField label="Last Name" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required'  id="lname_pds" required inputProps={{style:{textTransform: "capitalize"}}}/>
                                     <TextField label="Name Extension (Optional)" variant="outlined" color="warning"  className='pds_input' placeholder='(ex. Jr., Sr., III)  Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} id="nameextension_pds"/>
@@ -1515,11 +1520,8 @@ export default function CreatePersonalDataSheet(){
                             </div>
 
                       </div>
-
-                        
+                
                       <PreviewPDS/>
-
-
 
                     <div className="pds_validator">
                       <PdsFormStepModal/>
@@ -1536,14 +1538,15 @@ export default function CreatePersonalDataSheet(){
                         <button type='button' className='back_stepper back_stepper3' style={{display:"none"}} onClick={back3_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
                         <button type='button' className='back_stepper back_stepper4' style={{display:"none"}} onClick={back4_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
                         <button type='button' className='back_stepper back_stepper5' style={{display:"none"}}  onClick={back5_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
+                        <button type='button' className='back_stepper back_stepper6' style={{display:"none"}} onClick={back6_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back6</button>
 
-                        <button type='button' className='next_stepper next_stepper0'  onClick={validatorPDS0}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button type='button' className='next_stepper next_stepper1' style={{display:"none"}} onMouseOver={sameAddressFunction} onClick={validatorPDS1}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button type='button' className='next_stepper next_stepper2' style={{display:"none"}} onMouseOver={getAllElementaryInput} onClick={validatorPDS2}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button type='button' className='next_stepper next_stepper3' style={{display:"none"}} onMouseOver={getAllCSEinput} onClick={validatorPDS3}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button type='button' className='next_stepper next_stepper4' style={{display:"none"}} onMouseOver={getAllWEinput} onClick={validatorPDS4}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button type='button' className='next_stepper next_stepper5' style={{display:"none"}} onMouseOver={getAllLDinput} >Next5 &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button type='submit' className='next_stepper' style={{display:"none"}} >Submit &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper0'  onClick={validatorPDS0}>Next0 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper1' style={{display:"none"}} onMouseOver={sameAddressFunction} onClick={validatorPDS1}>Next1 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper2' style={{display:"none"}} onMouseOver={getAllElementaryInput} onClick={validatorPDS2}>Next2 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper3' style={{display:"none"}} onMouseOver={getAllCSEinput} onClick={validatorPDS3}>Next3 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper4' style={{display:"none"}} onMouseOver={getAllWEinput} onClick={validatorPDS4}>Next4 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper5' style={{display:"none"}} onMouseOver={getAllLDinput} onClick={validatorPDS5}>Next5 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='submit' className='next_stepper next_stepper6' style={{display:"none"}} >Submit &nbsp;&nbsp;&nbsp; &#8594;</button>
                 </div>
            
             </div> 

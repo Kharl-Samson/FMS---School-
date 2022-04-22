@@ -411,7 +411,7 @@ input[type=number] {
 /*PDS Preview*/
 .pds_review_container .pds_preview{
     margin: 0% auto;
-    width: 1100px;
+    width: 900px;
     height: auto;
     padding: 40px;
     background-color: white;
@@ -511,6 +511,7 @@ input[type=number] {
 .pds_review_container .information_content .other_personal .right .citizenship_preview .right_citizenship{
     height: 100%;
     width: 60%;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -541,6 +542,7 @@ input[type=number] {
 }
 .pds_review_container .information_content .other_personal .right .zip_preview div:nth-child(2){
     width: 65%;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -586,7 +588,6 @@ input[type=number] {
     border: 1.5px solid black;
 }
 .pds_review_container .information_content .education_content .educ_level{
-    width: 13.2%;
     padding: 0 10px;
     display: flex;
     flex-direction: column;
@@ -601,6 +602,7 @@ input[type=number] {
     border: none;
     border-top: 1.5px solid black;
     padding-top: 0;
+    margin-top: 15px;
 }
 .pds_review_container .information_content .education_content .educ_level .educ_period div{
     width: 50%;
@@ -609,10 +611,9 @@ input[type=number] {
     border: none;
     height: auto;
     border: none;
-    padding-bottom: 10px;
 }
 .pds_review_container .information_content .education_content .educ_name{
-    width: 15%;
+    padding: 10px 10px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -634,7 +635,6 @@ input[type=number] {
 .pds_review_container .information_content .education_content .educ_name_content .box_name{
     font-size: .8rem;
     height: 10vh;
-    width: 16.5%;
     padding: 10px 10px;
     text-align: center;
     font-weight: normal;
@@ -649,16 +649,190 @@ input[type=number] {
     text-align: center;
 }
 .pds_review_container .information_content .education_content .educ_name1{
-    width: 13%;
+    padding: 0 10px;
+    font-size: .8rem;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 .pds_review_container .information_content .education_content .educ_year{
-    width: 10%;
+    font-size: .8rem;
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
     text-align: center;
+}
+
+.pds_review_container .CSE_content{
+    height: auto;
+    width: 100%;
+    display: flex;
+}
+.pds_review_container .CSE_content .headers{
+    text-align: center;
+    padding: 10px;
+    height: auto;
+    border: 1.5px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: 600;
+    background-color: rgb(238, 236, 236);
+}
+.pds_review_container .CSE_content .headers div{
+    display: flex;
+    height: auto;
+    width: 100%;
+}
+.pds_review_container .CSE_content .headers div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid black;
+    font-weight: normal;
+}
+.pds_review_container .CSE_content .CSE_box{
+    font-size: .9rem;
+    padding: 10px;
+    height: auto;
+    text-align: center;
+    border: 1.5px solid black;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pds_review_container .CSE_content .CSE_box div{
+    font-size: .8rem;
+    padding: 0 5%;
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-break: break-all;
+}
+.pds_review_container .WE_content{
+    height: auto;
+    width: 100%;
+    display: flex;
+}
+.pds_review_container .WE_content .headers{
+    text-align: center;
+    padding: 10px;
+    height: auto;
+    border: 1.5px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: 600;
+    background-color: rgb(238, 236, 236);
+}
+.pds_review_container .WE_content .headers div{
+    display: flex;
+    height: auto;
+    width: 100%;
+}
+.pds_review_container .WE_content .headers div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid black;
+    font-weight: normal;
+}
+.pds_review_container .WE_content .WE_box{
+    text-align: center;
+    padding: 10px;
+    height: auto;
+    border: 1.5px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+}
+.pds_review_container .WE_content .WE_box div{
+    display: flex;
+    height: auto;
+    width: 100%;
+}
+.pds_review_container .WE_content .WE_box div div{
+    word-break: break-all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+    font-weight: normal;
+    padding: 0 5%;
+}
+.pds_review_container .LD_content{
+    height: auto;
+    width: 100%;
+    display: flex;
+}
+.pds_review_container .LD_content .headers{
+    text-align: center;
+    padding: 10px;
+    height: auto;
+    border: 1.5px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: 600;
+    background-color: rgb(238, 236, 236);
+}
+.pds_review_container .LD_content .headers div{
+    display: flex;
+    height: auto;
+    width: 100%;
+}
+.pds_review_container .LD_content .headers div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid black;
+    font-weight: normal;
+}
+.pds_review_container .LD_content .LD_box{
+    text-align: center;
+    padding: 10px;
+    height: auto;
+    border: 1.5px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+}
+.pds_review_container .LD_content .LD_box div{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.pds_review_container .LD_content .LD_box div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    padding: 0 5%;
+    height: 100%;
+    font-weight: normal;
 }
 
 
