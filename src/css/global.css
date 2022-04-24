@@ -396,9 +396,7 @@ button:hover{
     border-left: 5px solid #FFAA28;
 }
 .navbar_account_container .logout_container{
-
     color: #666666;
-
 }
 .navbar_account_container .logout_container:hover{
     cursor: pointer;

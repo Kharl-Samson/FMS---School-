@@ -13,20 +13,21 @@ export default function FacultyDashboard(){
 
     document.title = "CICT | Faculty Management System";
 
-
-
     setTimeout(function(){
         document.getElementById("dashboard_link").classList.add('nav_active');
-
-        if(localStorage.getItem('pds_status') ==="Approved" && localStorage.getItem('pds_ctr' === "on") ){
-            document.getElementById("profile_notify_container").style.display="none"
-         }
-        else if(localStorage.getItem('pds_status') ==="Pending" && localStorage.getItem('pds_ctr' === "off")){
-            document.getElementById("profile_notify_container").style.display="flex";
-        }
     },10);
 
-
+    setTimeout(function(){
+        if(localStorage.getItem('pds_status') ==="Approved"){
+            document.getElementById("profile_notify_container").style.display="none"
+        }
+        else if(localStorage.getItem('pds_status') ==="Pending" && localStorage.getItem('pds_ctr') ==="null"){
+            document.getElementById("profile_notify_container").style.display="flex";
+        }
+        else if(localStorage.getItem('pds_status') ==="Pending" && localStorage.getItem('pds_ctr') ==="off"){
+            document.getElementById("profile_notify_container").style.display="none";
+        }
+    },500);
 
     return (
         <div className="dashboard_container">

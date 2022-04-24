@@ -112,7 +112,7 @@ export default function Login(){
                 window.localStorage.setItem('email', result.data.email);
                 window.localStorage.setItem('name', result.data.name);
                 window.localStorage.setItem('pds_status', result.data.pds_status);
-                window.localStorage.setItem('pds_ctr', "off");
+                window.localStorage.setItem('pds_ctr', "null");
                 window.localStorage.setItem('profile_photo', result.data.profile_photo);
                 navigate(`/FacultyDashboard`);
             }
