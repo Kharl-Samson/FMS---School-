@@ -12,8 +12,8 @@ function validatorPDS2(){
     v_EdateFrom.length != e_DateFrom.length ? list_of_errors += "- Date attended (From) cannot be blank (Elementary). <br/>" : list_of_errors += ""
 
     const e_DateTo = document.getElementsByName("elem_dateToPDS[]");
-    //const v_EdateTo = Array.from(e_DateTo).filter( input => input.value !== "");
-    //v_EdateTo.length != e_DateTo.length ? list_of_errors += "- Date attended (To) cannot be blank (Elementary). <br/>" : list_of_errors += ""
+    const v_EdateTo = Array.from(e_DateTo).filter( input => input.value !== "");
+    v_EdateTo.length != e_DateTo.length ? list_of_errors += "- Date attended (To) cannot be blank (Elementary). <br/>" : list_of_errors += ""
     
     for(var z = 0; z < e_DateFrom.length; z++) {
         if(e_DateFrom[z].value >= e_DateTo[z].value && e_DateFrom[z].value !=="" && e_DateTo[z].value !==""){
@@ -23,6 +23,10 @@ function validatorPDS2(){
             list_of_errors += "";
         }
     }
+
+    const e_elem_unitPDS= document.getElementsByName("elem_unitPDS[]");
+    const v_elem_unitPDS = Array.from(e_elem_unitPDS).filter( input => input.value !== "");
+    v_elem_unitPDS.length != e_elem_unitPDS.length ? list_of_errors += "- Highest Level / Units Earned cannot be empty (Elementary). <br/>" : list_of_errors += ""
 
     const e_yearGrad = document.getElementsByName("elem_yearGradPDS[]");
     const v_EyearGrad = Array.from(e_yearGrad).filter( input => input.value !== "");
@@ -46,8 +50,8 @@ function validatorPDS2(){
     v_SdateFrom.length != s_DateFrom.length ? list_of_errors += "- Date attended (From) cannot be blank (Secondary). <br/>" : list_of_errors += ""
 
     const s_DateTo = document.getElementsByName("second_dateToPDS[]");
-    //const v_SdateTo = Array.from(s_DateTo).filter( input => input.value !== "");
-    //v_SdateTo.length != s_DateTo.length ? list_of_errors += "- Date attended (To) cannot be blank (Secondary). <br/>" : list_of_errors += ""
+    const v_SdateTo = Array.from(s_DateTo).filter( input => input.value !== "");
+    v_SdateTo.length != s_DateTo.length ? list_of_errors += "- Date attended (To) cannot be blank (Secondary). <br/>" : list_of_errors += ""
 
     for(var z = 0; z < s_DateFrom.length; z++) {
         if(s_DateFrom[z].value >= s_DateTo[z].value && s_DateFrom[z].value !=="" && s_DateTo[z].value !==""){
@@ -57,6 +61,10 @@ function validatorPDS2(){
             list_of_errors += "";
         }
     }
+
+    const e_second_unitPDS= document.getElementsByName("second_unitPDS[]");
+    const v_second_unitPDS = Array.from(e_second_unitPDS).filter( input => input.value !== "");
+    v_second_unitPDS.length != e_second_unitPDS.length ? list_of_errors += "- Highest Level / Units Earned cannot be empty (Secondary). <br/>" : list_of_errors += ""
 
     const s_yearGrad = document.getElementsByName("second_yearGradPDS[]");
     const v_SyearGrad = Array.from(s_yearGrad).filter( input => input.value !== "");
@@ -93,6 +101,10 @@ function validatorPDS2(){
         }
     }
 
+    const e_vocational_unitPDS= document.getElementsByName("vocational_unitPDS[]");
+    const v_vocational_unitPDS = Array.from(e_vocational_unitPDS).filter( input => input.value !== "");
+    v_vocational_unitPDS.length != e_vocational_unitPDS.length ? list_of_errors += "- Highest Level / Units Earned cannot be empty (Vocational). <br/>" : list_of_errors += ""
+
     const v_yearGrad = document.getElementsByName("vocational_yearGradPDS[]");
     const v_VyearGrad = Array.from(v_yearGrad).filter( input => input.value !== "");
     v_VyearGrad.length != v_yearGrad.length ? list_of_errors += "- Year graduate cannot be empty (Vocational). <br/>" : list_of_errors += ""
@@ -126,6 +138,11 @@ function validatorPDS2(){
             list_of_errors += "";
         }
     }
+
+    const e_college_unitPDS= document.getElementsByName("college_unitPDS[]");
+    const v_college_unitPDS = Array.from(e_college_unitPDS).filter( input => input.value !== "");
+    v_college_unitPDS.length != e_college_unitPDS.length ? list_of_errors += "- Highest Level / Units Earned cannot be empty (College). <br/>" : list_of_errors += ""
+
 
     const c_yearGrad = document.getElementsByName("college_yearGradPDS[]");
     const v_CyearGrad = Array.from(c_yearGrad).filter( input => input.value !== "");
@@ -161,6 +178,10 @@ function validatorPDS2(){
             list_of_errors += "";
         }
     }
+
+    const e_graduate_unitPDS= document.getElementsByName("graduate_unitPDS[]");
+    const v_graduate_unitPDS = Array.from(e_graduate_unitPDS).filter( input => input.value !== "");
+    v_graduate_unitPDS.length != e_graduate_unitPDS.length ? list_of_errors += "- Highest Level / Units Earned cannot be empty (Graduate Studies). <br/>" : list_of_errors += ""
 
     const g_yearGrad = document.getElementsByName("graduate_yearGradPDS[]");
     const v_GyearGrad = Array.from(g_yearGrad).filter( input => input.value !== "");

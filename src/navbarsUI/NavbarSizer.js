@@ -7,6 +7,7 @@ export default function NavbarSizer(){
   //for getting the initial name in avatar
   let initialName = localStorage.getItem('name').charAt(0);
   const mediaQuery = window.matchMedia('(max-width: 850px)'); //Para macheck to punta sa Navbar js function
+  let profile_photo = "http://localhost/fms/upload_profile/"+localStorage.getItem('profile_photo');
 
   //Left Navbar function
   var left_navbar_status = "open";
@@ -70,7 +71,7 @@ export default function NavbarSizer(){
         <div className='right_nav_sizer_Open'  title="Maximize" onClick={OpenRightNavbar}>
           <span className='span2_right_nav' >&#171;</span>
           <Avatar 
-                src="http://localhost/fms/upload_profile/sample_profile.jpg" 
+                src={profile_photo} 
                 className='avatar_navbar_sizer'
                 sx={{ bgcolor: deepOrange[600] , width: "4vh", height: "4vh", fontSize: "1rem", margin: "0 10px"}}
             >

@@ -24,6 +24,7 @@ function validatorPDS1(){
         document.getElementById("philhealth_pds").value == "" ? list_of_errors += "- Write N/A in PHILHEALTH No. <br/>": list_of_errors += ""
         document.getElementById("sss_pds").value == "" ? list_of_errors += "- Write N/A in SSS No. <br/>": list_of_errors += ""
         document.getElementById("tin_pds").value == "" ? list_of_errors += "- Write N/A in TIN No. <br/>": list_of_errors += ""
+        document.getElementById("employee_pds").value == "" ? list_of_errors += "- Employee No. cannot be blank. <br/>": list_of_errors += ""
         document.getElementById("citizenship_pds").value == "" ? list_of_errors += "- Citizenship cannot be blank. <br/>": list_of_errors += ""
         document.getElementById("email_pds").value == "" ? list_of_errors += "- Email Address cannot be blank. <br/>": list_of_errors += ""
         //email verifyer

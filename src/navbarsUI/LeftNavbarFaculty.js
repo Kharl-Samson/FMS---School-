@@ -6,7 +6,7 @@ import OpenRightNavbar from "../functions/OpenRightNavbar";
 import CICT_Logo from "../images/login/cict_logo.png";
 import Dashboard_icon from "../images/icons/dashboard.svg";
 import Profile_icon from "../images/icons/profile.svg";
-import Pds_icon from "../images/icons/pds.svg";
+import account_setting from "../images/icons/account_setting.svg";
 import Certificate_icon from "../images/icons/certificate.svg";
 import Logout_icon from "../images/icons/logout.svg";
 import Menu_icon from "../images/icons/menu.svg";
@@ -62,21 +62,12 @@ export default function NavbarFaculty(props){
                     </div>
                     </Link>
 
-                    <Link to="" style={{ textDecoration: 'none',width: "25%" }}>
-                    <div className="navlink_container" id="profile_link">
-                        <LightTooltip title='Profile'>
+                    <Link to="/PersonalInformation" style={{ textDecoration: 'none',width: "25%"  }}>
+                    <div className="navlink_container"  id="pds_link">
+                        <LightTooltip title='My Profile'>
                         <img src={Profile_icon} className="left_nav_minimize_img"/>
                         </LightTooltip>
-                        <span className='left_nav_minimize'>Profile</span>
-                    </div>
-                    </Link>
-
-                    <Link to="/PersonalDataSheet" style={{ textDecoration: 'none',width: "25%"  }}>
-                    <div className="navlink_container"  id="pds_link">
-                        <LightTooltip title='Personal Data Sheet'>
-                        <img src={Pds_icon} className="left_nav_minimize_img"/>
-                        </LightTooltip>
-                        <span className='left_nav_minimize'>PDS</span>
+                        <span className='left_nav_minimize'>My Profile</span>
                     </div>
                     </Link>
 
@@ -86,6 +77,15 @@ export default function NavbarFaculty(props){
                         <img src={Certificate_icon} className="left_nav_minimize_img"/>
                         </LightTooltip>
                         <span className='left_nav_minimize'>Certificates</span>
+                    </div>
+                    </Link>
+
+                    <Link to="" style={{ textDecoration: 'none',width: "25%" }}>
+                    <div className="navlink_container" id="profile_link">
+                        <LightTooltip title='Account Setting'>
+                        <img src={account_setting} className="left_nav_minimize_img"/>
+                        </LightTooltip>
+                        <span className='left_nav_minimize'>Account Setting</span>
                     </div>
                     </Link>
                     

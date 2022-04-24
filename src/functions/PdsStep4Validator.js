@@ -2,7 +2,7 @@ function validatorPDS4(){
     document.getElementsByClassName("pds_validator")[0].style.display = "block";
     var list_of_errors = "";
 
-    //CSE---------------------------------------------
+    //WE---------------------------------------------
     const dateFromWE = document.getElementsByName("dateFromWE[]");
     const dateToWE = document.getElementsByName("dateToWE[]");
     for(var z = 0; z < dateFromWE.length; z++) {
@@ -18,7 +18,7 @@ function validatorPDS4(){
     const positionWE1 = Array.from(positionWE).filter( input => input.value !== "");
     positionWE1.length != positionWE.length ? list_of_errors += "- Position Title cannot be blank. <br/>" : list_of_errors += ""
 
-    const deptWE = document.getElementsByName("placeExamCSE[]");
+    const deptWE = document.getElementsByName("deptWE[]");
     const deptWE1 = Array.from(deptWE).filter( input => input.value !== "");
     deptWE1.length != deptWE.length ? list_of_errors += "- Department / Agency / Office / Company cannot be blank. <br/>" : list_of_errors += ""
 

@@ -24,8 +24,8 @@ export default function App() {
               <Route path="Home" element={<Home/>} />
               
               <Route path="FacultyDashboard" element={<FacultyDashboard/>} />                       
-              <Route path="PersonalDataSheet" element={<PersonalDataSheet/>} /> 
-              <Route path="CreatePersonalDataSheet" element={<CreatePersonalDataSheet/>} /> 
+              <Route path="PersonalInformation" element={<PersonalDataSheet/>} /> 
+              <Route path="CreatePersonalInformation" element={<CreatePersonalDataSheet/>} /> 
 
 
             </Routes>

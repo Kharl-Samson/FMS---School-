@@ -32,6 +32,7 @@ import getAllWEinput from '../functions/GetAllWEinput';
 import getAllLDinput from '../functions/GetAllLDinput';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import SuccessIcon from '../images/icons/success_modal.svg';
 
 import PreviewPDS from './PreviewPDS';
 
@@ -40,7 +41,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function CreatePersonalDataSheet(){
 
-    document.title = "CICT | Create Personal Data Sheet";
+    document.title = "CICT | Personal Information";
     setTimeout(function(){
         document.getElementById("pds_link").classList.add('nav_active');
         var left_nav_minimize = document.getElementsByClassName('left_nav_minimize');
@@ -447,17 +448,7 @@ export default function CreatePersonalDataSheet(){
       document.getElementsByClassName("next_stepper5")[0].style.display = "none";
       document.getElementsByClassName("step5_content")[0].style.display = "none";
     }
-    function back6_stepper(){   
-      document.getElementsByClassName("back_stepper6")[0].style.display = "none";
-      document.getElementsByClassName("next_stepper6")[0].style.display = "none";
-      document.getElementsByClassName("preview_pds")[0].style.display = "none";
-      document.getElementsByClassName("form_container")[0].scrollTop = 0;
-      document.getElementsByClassName("step5_content")[0].style.display = "block";
-      document.getElementsByClassName("back_stepper5")[0].style.display = "block";
-      document.getElementsByClassName("next_stepper5")[0].style.display = "block";
-      document.getElementsByClassName("stepper5")[0].style.borderBottomRightRadius = "50px";
-      document.getElementsByClassName("stepper5")[0].style.borderTopRightRadius = "50px";
-    }
+
 
     //Submit PDS
     const submitPDSTaskForm=(e)=>{
@@ -483,7 +474,8 @@ export default function CreatePersonalDataSheet(){
         pagibig_pds: document.getElementById("pagibig_pds").value.toUpperCase(),
         philhealth_pds: document.getElementById("philhealth_pds").value.toUpperCase(),
         sss_pds: document.getElementById("sss_pds").value.toUpperCase(),
-        tin_pds: document.getElementById("tin_pds").textContent.toUpperCase(),
+        tin_pds: document.getElementById("tin_pds").value.toUpperCase(),
+        employee_pds : document.getElementById("employee_pds").value.toUpperCase(),
         citizenship_pds: document.getElementById("citizenship_pds").value.toUpperCase(),
         email_pds: document.getElementById("email_pds").value,
         al_email_pds: document.getElementById("al_email_pds").value,
@@ -509,30 +501,35 @@ export default function CreatePersonalDataSheet(){
         attainELEM_handler: document.getElementById("attainELEM_handler").value.toUpperCase(),
         dateFromELEM_handler: document.getElementById("dateFromELEM_handler").value,
         dateToELEM_handler: document.getElementById("dateToELEM_handler").value,
+        unitsELEM_handler: document.getElementById("unitsELEM_handler").value.toUpperCase(),
         yearGradELEM_handler: document.getElementById("yearGradELEM_handler").value.toUpperCase(),
         awardELEM_handler: document.getElementById("awardELEM_handler").value.toUpperCase(),
         nameSecond_handler: document.getElementById("nameSecond_handler").value.toUpperCase(),
         attainSecond_handler: document.getElementById("attainSecond_handler").value.toUpperCase(),
         dateFromSecond_handler: document.getElementById("dateFromSecond_handler").value,
         dateToSecond_handler: document.getElementById("dateToSecond_handler").value,
+        unitsSecond_handler: document.getElementById("unitsSecond_handler").value.toUpperCase(),
         yearGradSecond_handler: document.getElementById("yearGradSecond_handler").value.toUpperCase(),
         awardSecond_handler: document.getElementById("awardSecond_handler").value.toUpperCase(),
         nameVocational_handler: document.getElementById("nameVocational_handler").value.toUpperCase(),
         attainVocational_handler: document.getElementById("attainVocational_handler").value.toUpperCase(),
         dateFromVocational_handler: document.getElementById("dateFromVocational_handler").value,
         dateToVocational_handler: document.getElementById("dateToVocational_handler").value,
+        unitsVocational_handler: document.getElementById("unitsVocational_handler").value.toUpperCase(),
         yearGradVocational_handler: document.getElementById("yearGradVocational_handler").value.toUpperCase(),
         awardVocational_handler: document.getElementById("awardVocational_handler").value.toUpperCase(),
         nameCollege_handler: document.getElementById("nameCollege_handler").value.toUpperCase(),
         attainCollege_handler: document.getElementById("attainCollege_handler").value.toUpperCase(),
         dateFromCollege_handler: document.getElementById("dateFromCollege_handler").value,
         dateToCollege_handler: document.getElementById("dateToCollege_handler").value,
+        unitsCollege_handler: document.getElementById("unitsCollege_handler").value.toUpperCase(),
         yearGradCollege_handler: document.getElementById("yearGradCollege_handler").value.toUpperCase(),
         awardCollege_handler: document.getElementById("awardCollege_handler").value.toUpperCase(),
         nameGraduate_handler: document.getElementById("nameGraduate_handler").value.toUpperCase(),
         attainGraduate_handler: document.getElementById("attainGraduate_handler").value.toUpperCase(),
         dateFromGraduate_handler: document.getElementById("dateFromGraduate_handler").value,
         dateToGraduate_handler: document.getElementById("dateToGraduate_handler").value,
+        unitsGraduate_handler: document.getElementById("unitsGraduate_handler").value.toUpperCase(),
         yearGradGraduate_handler: document.getElementById("yearGradGraduate_handler").value.toUpperCase(),
         awardGraduate_handler: document.getElementById("awardGraduate_handler").value.toUpperCase(),  
         CSE_board_handler: document.getElementById("CSE_board_handler").value.toUpperCase(),
@@ -561,19 +558,21 @@ export default function CreatePersonalDataSheet(){
       }
       //Sending the data to my backend
       axios.post('http://localhost/fms/createPDS.php',sendDataPDS)
-        .then((result)=>{                   
-            console.log(result.data.status)
+        .then((result)=>{                
+          document.getElementsByClassName("success_modal_PDS_container")[0].style.display="flex";   
       })//End of axios
       for (let i = 0; i < document.getElementsByName("imgLD[]").length; i++) {
         data.append("file[]", document.getElementsByName("imgLD[]")[i].files[0]);
       }
       let url = "http://localhost/fms/createPDS.php";
-      axios.post(url, data, {}).then(res => { 
-        //console.log(res);
-      })
-
+      axios.post(url, data, {}).then(res => {})
     }
 
+    //Closing success modal create pds
+    function closeSuccessCreatePDSmodal(){
+        window.localStorage.setItem('pds_status', 'Approved');
+        window.location.replace("http://localhost:3000/PersonalDataSheet");
+    }
 
     return (
         <div className="dashboard_container" style={{ backgroundColor: "#FFAA28"}}>
@@ -718,14 +717,15 @@ export default function CreatePersonalDataSheet(){
                                         required {...params} label="Civil Status" />}
                                     />
 
-                                    <TextField label="Height" variant="outlined" color="warning"  className='pds_input' placeholder='(cm) Fields with * are required' id="height_pds" required/>
-                                    <TextField label="Weight" variant="outlined" color="warning"  className='pds_input' placeholder='(kg) Fields with * are required' id="weight_pds" required/>
+                                    <TextField label="Height" variant="outlined" color="warning"  className='pds_input' placeholder='(cm) Fields with * are required' id="height_pds" required type="number"/>
+                                    <TextField label="Weight" variant="outlined" color="warning"  className='pds_input' placeholder='(kg) Fields with * are required' id="weight_pds" required type="number"/>
                                     <TextField label="Blood Type" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="blood_pds" required/>
                                     <TextField label="GSIS ID No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable' id="gsis_pds"/>
                                     <TextField label="PAG-IBIG ID No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable' id="pagibig_pds"/>
                                     <TextField label="PHILHEALTH No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable'  id="philhealth_pds"/>
                                     <TextField label="SSS No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable' id="sss_pds"/>
                                     <TextField label="TIN No." variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable' id="tin_pds"/>
+                                    <TextField label="EMPLOYEE No." variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="employee_pds" required type="number"/>
                                     <Autocomplete
                                         id="citizenship_pds"
                                         options={nationality}
@@ -734,7 +734,7 @@ export default function CreatePersonalDataSheet(){
                                         renderInput={(params) => <TextField color="warning" placeholder='Fields with * are required'
                                         required {...params} label="Citizenship" />}
                                     />
-                                    <TextField label="Email Address" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="email_pds" value={localStorage.getItem('email')} disabled/>
+                                    <TextField label="Email Address *" variant="outlined" color="warning"  className='pds_input' placeholder='Fields with * are required' id="email_pds" value={localStorage.getItem('email')} disabled/>
                                     <TextField label="Alternate Email Address" variant="outlined" color="warning"  className='pds_input' placeholder='Type N/A if Not Applicable'  id="al_email_pds"/>
                                 </Grid>
 
@@ -971,7 +971,7 @@ export default function CreatePersonalDataSheet(){
                             </div>
 
                             { elemEntry.map(index => (
-                            <div id='for_append_elem'>
+                            <div id='for_append_elem' key="{}">
                                   <TextField label="Name of Elementary School" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Fields with * are required' required inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name="elem_namePDS[]"/>
                                   
                                   <TextField label="Basic Education/Degree/Course" variant="outlined" color="warning" className='pds_inputEduc'  required value="Elementary" disabled/>
@@ -979,7 +979,7 @@ export default function CreatePersonalDataSheet(){
                                         required
                                         onChange={getAllElementaryInput}
                                         name="elem_dateFromPDS[]"
-                                        className='pds_inputEducSemi'
+                                        className='pds_inputEducSemi5'
                                         label="Date Attended (From)"
                                         color="warning"
                                         type="date"
@@ -987,18 +987,27 @@ export default function CreatePersonalDataSheet(){
                                         InputLabelProps={{shrink: true,}}
                                   />
                                   <TextField
+                                        required
                                         onChange={getAllElementaryInput}
                                         name="elem_dateToPDS[]"
-                                        className='pds_inputEducSemi'
-                                        label="Date Attended (To) [Leave blank if date is up to present]"
+                                        className='pds_inputEducSemi5'
+                                        label="Date Attended (To)"
                                         color="warning"
                                         type="date"
                                         inputProps={{ min: "1950-01-01", max: maxDateInput }} 
                                         InputLabelProps={{shrink: true,}}
                                   />
+                                  <TextField
+                                        onChange={getAllElementaryInput}
+                                        name="elem_unitPDS[]"
+                                        className='pds_inputEducSemi5'
+                                        label="Highest Level / Units Earned (If not graduated)"
+                                        color="warning"
+                                        placeholder='Type N/A if Not Applicable'
+                                  />
                                   <Autocomplete
                                         options={listYear}
-                                        className='pds_inputEducSemi'
+                                        className='pds_inputEducSemi5'
                                         renderInput={(params) => <TextField color="warning" placeholder='Choose N/A if Not Applicable'
                                         {...params} label="Year Graduate" name="elem_yearGradPDS[]"/>}
                                   />
@@ -1011,6 +1020,7 @@ export default function CreatePersonalDataSheet(){
                             <input type="hidden" id='attainELEM_handler'value="Elementary"/>
                             <input type="hidden" id='dateFromELEM_handler' value=" |:| "/>
                             <input type="hidden" id='dateToELEM_handler' value=" |:| "/>
+                            <input type="hidden" id='unitsELEM_handler' value=" |:| "/>
                             <input type="hidden" id='yearGradELEM_handler' value=" |:| "/>
                             <input type="hidden" id='awardELEM_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
 
@@ -1033,7 +1043,7 @@ export default function CreatePersonalDataSheet(){
                             </div>
 
                             {secondaryEntry.map(index => (
-                            <div id='for_append_elem'>
+                            <div id='for_append_elem' key="{}">
                                   <TextField label="Name of School" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Fields with * are required' required inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name="second_namePDS[]"/>    
                                   <Autocomplete
                                         required
@@ -1046,7 +1056,7 @@ export default function CreatePersonalDataSheet(){
                                         required
                                         onChange={getAllElementaryInput}
                                         name="second_dateFromPDS[]"
-                                        className='pds_inputEducSemi'
+                                        className='pds_inputEducSemi5'
                                         label="Date Attended (From)"
                                         color="warning"
                                         type="date"
@@ -1054,18 +1064,27 @@ export default function CreatePersonalDataSheet(){
                                         InputLabelProps={{shrink: true,}}
                                   />
                                   <TextField
+                                        required
                                         onChange={getAllElementaryInput}
                                         name="second_dateToPDS[]"
-                                        className='pds_inputEducSemi'
-                                        label="Date Attended (To) [Leave blank if date is up to present]"
+                                        className='pds_inputEducSemi5'
+                                        label="Date Attended (To)"
                                         color="warning"
                                         type="date"
                                         inputProps={{ min: "1950-01-01", max: maxDateInput }} 
                                         InputLabelProps={{shrink: true,}}
                                   />
+                                  <TextField
+                                        onChange={getAllElementaryInput}
+                                        name="second_unitPDS[]"
+                                        className='pds_inputEducSemi5'
+                                        label="Highest Level / Units Earned (If not graduated)"
+                                        color="warning"
+                                        placeholder='Type N/A if Not Applicable'
+                                  />
                                   <Autocomplete
                                         options={listYear}
-                                        className='pds_inputEducSemi'
+                                        className='pds_inputEducSemi5'
                                         renderInput={(params) => <TextField color="warning" placeholder='Choose N/A if Not Applicable'
                                         {...params} label="Year Graduate" name="second_yearGradPDS[]"/>}
                                   />
@@ -1078,6 +1097,7 @@ export default function CreatePersonalDataSheet(){
                             <input type="hidden" id='attainSecond_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
                             <input type="hidden" id='dateFromSecond_handler' value=" |:| "/>
                             <input type="hidden" id='dateToSecond_handler' value=" |:| "/>
+                            <input type="hidden" id='unitsSecond_handler' value=" |:| "/>
                             <input type="hidden" id='yearGradSecond_handler' value=" |:| "/>
                             <input type="hidden" id='awardSecond_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
 
@@ -1100,14 +1120,14 @@ export default function CreatePersonalDataSheet(){
                             </div>
 
                             {vocationalEntry.map(index => (
-                            <div id='for_append_elem'>
+                            <div id='for_append_elem' key="{}">
                                   <TextField label="Name of School" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name="vocational_namePDS[]"/>    
                                   <TextField label="Basic Education/Degree/Course" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name="vocational_attainmentPDS[]"/>    
 
                                   <TextField
                                         onChange={getAllElementaryInput}
                                         name="vocational_dateFromPDS[]"
-                                        className='pds_inputEducSemi'
+                                        className='pds_inputEducSemi5'
                                         label="Date Attended (From) [Leave blank if N/A]"
                                         color="warning"
                                         type="date"
@@ -1117,17 +1137,25 @@ export default function CreatePersonalDataSheet(){
                                   <TextField
                                         onChange={getAllElementaryInput}
                                         name="vocational_dateToPDS[]"
-                                        className='pds_inputEducSemi'
+                                        className='pds_inputEducSemi5'
                                         label="Date Attended (To) [Leave blank if N/A]"
                                         color="warning"
                                         type="date"
                                         inputProps={{ min: "1950-01-01", max: maxDateInput }} 
                                         InputLabelProps={{shrink: true,}}
                                   />
+                                  <TextField
+                                        onChange={getAllElementaryInput}
+                                        name="vocational_unitPDS[]"
+                                        className='pds_inputEducSemi5'
+                                        label="Highest Level / Units Earned (If not graduated)"
+                                        color="warning"
+                                        placeholder='Type N/A if Not Applicable'
+                                  />
                                   <Autocomplete
                                         options={listYear}
                                         onChange={getAllElementaryInput}
-                                        className='pds_inputEducSemi'
+                                        className='pds_inputEducSemi5'
                                         renderInput={(params) => <TextField color="warning" placeholder='Choose N/A if Not Applicable'
                                         {...params} label="Year Graduate" name="vocational_yearGradPDS[]"/>}
                                   />
@@ -1140,6 +1168,7 @@ export default function CreatePersonalDataSheet(){
                             <input type="hidden" id='attainVocational_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
                             <input type="hidden" id='dateFromVocational_handler' value=" |:| "/>
                             <input type="hidden" id='dateToVocational_handler' value=" |:| "/>
+                            <input type="hidden" id='unitsVocational_handler' value=" |:| "/>
                             <input type="hidden" id='yearGradVocational_handler' value=" |:| "/>
                             <input type="hidden" id='awardVocational_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
 
@@ -1161,14 +1190,14 @@ export default function CreatePersonalDataSheet(){
                             </div>
 
                             {collegeEntry.map(index => (
-                            <div id='for_append_elem'>
+                            <div id='for_append_elem' key="{}">
                                 <TextField label="Name of School" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Fields with * are required' required inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name="college_namePDS[]"/>    
                                 <TextField label="Basic Education/Degree/Course" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Fields with * are required' inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name="college_attainmentPDS[]" required/>    
                                 <TextField
                                     required
                                     onChange={getAllElementaryInput}
                                     name="college_dateFromPDS[]"
-                                    className='pds_inputEducSemi'
+                                    className='pds_inputEducSemi5'
                                     label="Date Attended (From)"
                                     color="warning"
                                     type="date"
@@ -1178,16 +1207,24 @@ export default function CreatePersonalDataSheet(){
                                 <TextField
                                     onChange={getAllElementaryInput}
                                     name="college_dateToPDS[]"
-                                    className='pds_inputEducSemi'
+                                    className='pds_inputEducSemi5'
                                     label="Date Attended (To) [Leave blank if date is up to present]"
                                     color="warning"
                                     type="date"
                                     inputProps={{ min: "1950-01-01", max: maxDateInput }} 
                                     InputLabelProps={{shrink: true,}}
                                 />
+                                <TextField
+                                        onChange={getAllElementaryInput}
+                                        name="college_unitPDS[]"
+                                        className='pds_inputEducSemi5'
+                                        label="Highest Level / Units Earned (If not graduated)"
+                                        color="warning"
+                                        placeholder='Type N/A if Not Applicable'
+                                  />
                                 <Autocomplete
                                     options={listYear}
-                                    className='pds_inputEducSemi'
+                                    className='pds_inputEducSemi5'
                                     renderInput={(params) => <TextField color="warning" placeholder='Choose N/A if Not Applicable'
                                     {...params} label="Year Graduate" name="college_yearGradPDS[]"/>}
                                 />
@@ -1200,6 +1237,7 @@ export default function CreatePersonalDataSheet(){
                             <input type="hidden" id='attainCollege_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
                             <input type="hidden" id='dateFromCollege_handler' value=" |:| "/>
                             <input type="hidden" id='dateToCollege_handler' value=" |:| "/>
+                            <input type="hidden" id='unitsCollege_handler' value=" |:| "/>
                             <input type="hidden" id='yearGradCollege_handler' value=" |:| "/>
                             <input type="hidden" id='awardCollege_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
 
@@ -1221,14 +1259,14 @@ export default function CreatePersonalDataSheet(){
                             </div>
 
                             {graduateEntry.map(index => (
-                            <div id='for_append_elem'>
+                            <div id='for_append_elem' key="{}">
                                   <TextField label="Name of School" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name="graduate_namePDS[]"/>    
                                   <TextField label="Basic Education/Degree/Course" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} onChange={getAllElementaryInput} name="graduate_attainmentPDS[]"/>    
 
                                   <TextField
                                         onChange={getAllElementaryInput}
                                         name="graduate_dateFromPDS[]"
-                                        className='pds_inputEducSemi'
+                                        className='pds_inputEducSemi5'
                                         label="Date Attended (From) [Leave blank if N/A]"
                                         color="warning"
                                         type="date"
@@ -1238,17 +1276,25 @@ export default function CreatePersonalDataSheet(){
                                   <TextField
                                         onChange={getAllElementaryInput}
                                         name="graduate_dateToPDS[]"
-                                        className='pds_inputEducSemi'
+                                        className='pds_inputEducSemi5'
                                         label="Date Attended (To) [Leave blank if N/A]"
                                         color="warning"
                                         type="date"
                                         inputProps={{ min: "1950-01-01", max: maxDateInput }} 
                                         InputLabelProps={{shrink: true,}}
                                   />
+                                  <TextField
+                                        onChange={getAllElementaryInput}
+                                        name="graduate_unitPDS[]"
+                                        className='pds_inputEducSemi5'
+                                        label="Highest Level / Units Earned (If not graduated)"
+                                        color="warning"
+                                        placeholder='Type N/A if Not Applicable'
+                                  />
                                   <Autocomplete
                                         options={listYear}
                                         onChange={getAllElementaryInput}
-                                        className='pds_inputEducSemi'
+                                        className='pds_inputEducSemi5'
                                         renderInput={(params) => <TextField color="warning" placeholder='Choose N/A if Not Applicable'
                                         {...params} label="Year Graduate" name="graduate_yearGradPDS[]"/>}
                                   />
@@ -1261,6 +1307,7 @@ export default function CreatePersonalDataSheet(){
                             <input type="hidden" id='attainGraduate_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
                             <input type="hidden" id='dateFromGraduate_handler' value=" |:| "/>
                             <input type="hidden" id='dateToGraduate_handler' value=" |:| "/>
+                            <input type="hidden" id='unitsGraduate_handler' value=" |:| "/>
                             <input type="hidden" id='yearGradGraduate_handler' value=" |:| "/>
                             <input type="hidden" id='awardGraduate_handler' value=" |:| " style={{textTransform:"capitalize"}}/>
 
@@ -1292,6 +1339,7 @@ export default function CreatePersonalDataSheet(){
                               direction="row"
                               justifyContent="flex-start"
                               alignItems="center"
+                              key="{}"
                             >
                                 <TextField label="Career Service/ RA 1080 (BOARD/ BAR) Under Special Laws/ CES/ CSEE Barangay Eligibility / Driver's License" variant="outlined" color="warning" className='pds_inputEducSemi' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} name="boardCSE[]" onChange={getAllCSEinput}/>    
 
@@ -1356,6 +1404,7 @@ export default function CreatePersonalDataSheet(){
 
                             {workEntry.map(index => (
                             <Grid
+                              key="{}"
                               container
                               direction="row"
                               justifyContent="flex-start"
@@ -1441,6 +1490,7 @@ export default function CreatePersonalDataSheet(){
 
                             {ldEntry.map(index => (
                             <Grid
+                              key="{}"
                               container
                               direction="row"
                               justifyContent="flex-start"
@@ -1448,7 +1498,7 @@ export default function CreatePersonalDataSheet(){
                             >             
                                   <div className='file_input'>
                                       <label>Upload Image (JPG or PNG only) [Leave blank if Not Applicable]:</label>
-                                      <input type="file" onChange={getAllLDinput} name="imgLD[]" />
+                                      <input type="file" onChange={getAllLDinput} name="imgLD[]" accept="image/png, image/jpeg"  />
                                   </div>     
 
                                   <TextField label="Title of Learning and Development Interventions/Training Programs (Write in full)" variant="outlined" color="warning" className='pds_inputEduc' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "capitalize"}}} name="titleLD[]" onChange={getAllLDinput}/>  
@@ -1473,7 +1523,7 @@ export default function CreatePersonalDataSheet(){
                                         inputProps={{ min: "1950-01-01", max: maxDateInput }} 
                                         InputLabelProps={{shrink: true,}}
                                   />
-                                  <TextField label="Number of hours" variant="outlined" color="warning" className='pds_inputEducSemi' placeholder='(ex. 8 HRS)Type N/A if Not Applicable' inputProps={{style:{textTransform: "uppercase"}}} name="hoursLD[]" onChange={getAllLDinput}/>      
+                                  <TextField label="Number of hours" variant="outlined" color="warning" className='pds_inputEducSemi' placeholder='(ex. 8)Leave blank if Not Applicable' inputProps={{style:{textTransform: "uppercase"}}} name="hoursLD[]" onChange={getAllLDinput} type="number"/>      
 
                                   <TextField label="Type of LD (Managerial/ Supervisory/ Technical/ etc)" variant="outlined" color="warning" className='pds_inputEducSemi2' placeholder='Type N/A if Not Applicable' inputProps={{style:{textTransform: "uppercase"}}} name="typeLD[]" onChange={getAllLDinput}/>    
 
@@ -1522,6 +1572,8 @@ export default function CreatePersonalDataSheet(){
                       </div>
                 
                       <PreviewPDS/>
+           
+
 
                     <div className="pds_validator">
                       <PdsFormStepModal/>
@@ -1538,19 +1590,30 @@ export default function CreatePersonalDataSheet(){
                         <button type='button' className='back_stepper back_stepper3' style={{display:"none"}} onClick={back3_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
                         <button type='button' className='back_stepper back_stepper4' style={{display:"none"}} onClick={back4_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
                         <button type='button' className='back_stepper back_stepper5' style={{display:"none"}}  onClick={back5_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
-                        <button type='button' className='back_stepper back_stepper6' style={{display:"none"}} onClick={back6_stepper}>&#8592; &nbsp;&nbsp;&nbsp; Back6</button>
+                        <button type='button' className='back_stepper' style={{visibility:"hidden"}}>&#8592; &nbsp;&nbsp;&nbsp; Back</button>
 
-                        <button type='button' className='next_stepper next_stepper0'  onClick={validatorPDS0}>Next0 &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button type='button' className='next_stepper next_stepper1' style={{display:"none"}} onMouseOver={sameAddressFunction} onClick={validatorPDS1}>Next1 &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button type='button' className='next_stepper next_stepper2' style={{display:"none"}} onMouseOver={getAllElementaryInput} onClick={validatorPDS2}>Next2 &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button type='button' className='next_stepper next_stepper3' style={{display:"none"}} onMouseOver={getAllCSEinput} onClick={validatorPDS3}>Next3 &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button type='button' className='next_stepper next_stepper4' style={{display:"none"}} onMouseOver={getAllWEinput} onClick={validatorPDS4}>Next4 &nbsp;&nbsp;&nbsp; &#8594;</button>
-                        <button type='button' className='next_stepper next_stepper5' style={{display:"none"}} onMouseOver={getAllLDinput} onClick={validatorPDS5}>Next5 &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper0'  onClick={validatorPDS0}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper1' style={{display:"none"}} onMouseOver={sameAddressFunction} onClick={validatorPDS1}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper2' style={{display:"none"}} onMouseOver={getAllElementaryInput} onClick={validatorPDS2}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper3' style={{display:"none"}} onMouseOver={getAllCSEinput} onClick={validatorPDS3}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper4' style={{display:"none"}} onMouseOver={getAllWEinput} onClick={validatorPDS4}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
+                        <button type='button' className='next_stepper next_stepper5' style={{display:"none"}} onMouseOver={getAllLDinput} onClick={validatorPDS5}>Next &nbsp;&nbsp;&nbsp; &#8594;</button>
                         <button type='submit' className='next_stepper next_stepper6' style={{display:"none"}} >Submit &nbsp;&nbsp;&nbsp; &#8594;</button>
                 </div>
            
             </div> 
             </form>
+
+              {/*Modal When done Creating PDS*/ }
+              <div className="modal_container success_modal_PDS_container">
+                <div className="modal_validation">
+                    <img src={SuccessIcon} className="emailVal_img" style={{boxShadow :"none", height:"10vh"}}/>
+                    <h1 className="val_header">Congratulations</h1>
+                    <span className="val_subtext">You have successfully completed your personal profile information!</span>
+
+                    <button className="modal_close_btn" id="success_close_modal" style={{backgroundColor : "#249F5D"}} onClick={closeSuccessCreatePDSmodal}>Close</button>
+                </div>
+            </div>
 
         </div>
     )
@@ -1572,7 +1635,7 @@ const LandDCoverage = [
   { label: 'LOCAL'},
 ];
 //Govt service Y/N
-const yn = [{label: "N/A"},{label: "Y"}, {label:"N"}]
+const yn = [{label: "N/A"},{label: "YES"}, {label:"NO"}]
 //Status of Appointment
 const statusAppointment = [
   { label: 'N/A' },

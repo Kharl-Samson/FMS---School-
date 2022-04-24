@@ -82,7 +82,7 @@ export default function ProfileAvatar(){
                     >
                     {initialName}
                 </Avatar>
-                Profile
+                My Profile
             </MenuItem>
             <Divider />
             <MenuItem>

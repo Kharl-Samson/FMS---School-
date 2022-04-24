@@ -31,13 +31,13 @@ export default function PersonalDataSheet(){
     useEffect(()=>{
         var auth = localStorage.getItem('pds_status');
         if(auth === "Pending"){
-            navigate(`/CreatePersonalDataSheet`)
+            navigate(`/CreatePersonalInformation`)
         }
         setAuth(auth);
     },
     [])
 
-    document.title = "CICT | Personal Data Sheet";
+    document.title = "CICT | Personal Information";
     setTimeout(function(){
         document.getElementById("pds_link").classList.add('nav_active');
     },10);
@@ -65,14 +65,14 @@ export default function PersonalDataSheet(){
                         {{style: {
                             backgroundColor: "#FFAA28"
                         }}}>
-                        <Tab label="View PDS Info" value="1"  />
-                        <Tab label="VIew as PDF" value="2" />
+                        <Tab label="WEB VIEW" value="1"  />
+                        <Tab label="PDF VIEW" value="2" />
                     </TabList>
                     </Box>
                     <TabPanel value="1" style={{padding : "0",paddingTop : "1.5rem"}}>
                          <div className='view_pds_container'>
                             <div className='top_cover' style={{backgroundImage: `url(${cover_banner})`}}>
-                               <p>PERSONAL DATA SHEET</p>
+                               <p>PERSONAL INFORMATION</p>
 
                                <div className='avatar_container'> 
                                <Avatar 

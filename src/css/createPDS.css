@@ -187,6 +187,14 @@
     margin: 0 10px !important;
     margin-bottom: 30px !important;
 }
+.pds_inputEducSemi5{
+    float: left;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    margin: 0 10px !important;
+    margin-bottom: 30px !important;
+}
 .pds_inputEducSemi2{
     float: left;
     display: flex;
@@ -519,15 +527,15 @@ input[type=number] {
     border: 1.5px solid black;
 }
 .pds_review_container .information_content .other_personal .right .address_preview{
-    height: 20%;
+    height: 33.6%;
     width: 100%;
     display: flex;
 }
 .pds_review_container .information_content .other_personal .right .zip_preview{
+    margin-top: 2px;
     width: 100%;
     height: 6%;
     display: flex;
-    margin-top: 2px;
 }
 .pds_review_container .information_content .other_personal .right .zip_preview div:nth-child(1){
     width: 35.3%;
@@ -537,8 +545,9 @@ input[type=number] {
     font-size: .9rem;
     color: rgb(125, 125, 125);
     text-transform: uppercase;
-    color: rgb(125, 125, 125);
-    border: 1.5px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    height: 100%;
 }
 .pds_review_container .information_content .other_personal .right .zip_preview div:nth-child(2){
     width: 65%;
@@ -549,7 +558,9 @@ input[type=number] {
     font-size: .9rem;
     color: rgb(2, 2, 2);
     text-transform: uppercase;
-    border: 1.5px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    height: 100%;
 }
 .pds_review_container .information_content .other_personal .right .address_preview .left_address{
     height: 100%;
@@ -566,9 +577,9 @@ input[type=number] {
     color: rgb(125, 125, 125);
 }
 .pds_review_container .information_content .other_personal .right .address_preview .right_address .add1{
-    height: 33.99%;
+    height: 33.7%;
     width: 100%;
-    display: flex;
+    display: flex;  
 }
 .pds_review_container .information_content .other_personal .right .address_preview .right_address .add1 .box{
     width: 50%;
@@ -867,6 +878,9 @@ input[type=number] {
         width: 100%;
     }
     .pds_inputEducSemi2{
+        width: 100%;
+    }
+    .pds_inputEducSemi5{
         width: 100%;
     }
 
