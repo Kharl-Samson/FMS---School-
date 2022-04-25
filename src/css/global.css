@@ -1215,11 +1215,13 @@ button:hover{
     .navbar_account_container{
         position: fixed;
         top: auto;
+        z-index: 1;
         bottom: 0;
         width: 100%;
         height: auto;
         border-top-right-radius: 30px;
         border-top-left-radius: 30px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
     .navbar_account_container .nav_part1, .navbar_account_container .logout_container{
         display: none;
@@ -1297,6 +1299,7 @@ button:hover{
     .right_navbar_container{
         position: fixed;
         right: 0;
+        z-index: 2;
         margin-right: -170%;
     }
     .right_nav_sizer_smaller{
