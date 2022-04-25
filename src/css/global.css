@@ -1186,6 +1186,13 @@ button:hover{
     color: rgb(103, 102, 102);
 }
 
+
+
+/*SKELETON LOAD*/
+.skeleton_done{
+    display: none;
+}
+
 /*RESPONSIVE*/
 @media screen and (max-width: 799px) {
     .modal_validation .val_subtext{
@@ -1201,9 +1208,7 @@ button:hover{
     .left_nav_sizer{
         display: none;
     }
-    .right_nav_sizer_Open{
-        display: none;
-    }
+ 
 
 
     /*SIDE NAVBAR FOR ALL USER*/
@@ -1244,7 +1249,7 @@ button:hover{
         border-top-left-radius: 30px;
     }
     .drawer_btn{
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         border-radius: 50%;

@@ -213,11 +213,11 @@
     flex-direction: column;
     justify-content: center;
 }
-.statistics_container .box .right p:nth-child(1){
+.statistics_container .box .right .p1{
     font-size: 1rem;
     line-height: 1.2;
 }
-.statistics_container .box .right p:nth-child(2){
+.statistics_container .box .right .p2{
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 1.2;
@@ -290,6 +290,7 @@
 .certificate_container .for_boxShadow  #certificate2, .certificate_container .for_boxShadow  #certificate4{
     box-shadow: inset 2000px 0 0 0 #f7a57aaf;
 }
+
 .certificate_container .for_boxShadow .certificate:hover{
     background-size: 110% 110%;
     cursor: pointer;

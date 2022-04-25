@@ -8,7 +8,7 @@ import LeftNavbarFaculty from '../navbarsUI/LeftNavbarFaculty';
 import NavbarSizer from '../navbarsUI/NavbarSizer';
 import RightNavbar from '../navbarsUI/RightNavbar';
 import ProfileNotifyer from './NotifyerProfile';
- 
+
 export default function FacultyDashboard(){
 
     document.title = "CICT | Faculty Management System";
@@ -27,7 +27,7 @@ export default function FacultyDashboard(){
         else if(localStorage.getItem('pds_status') ==="Pending" && localStorage.getItem('pds_ctr') ==="off"){
             document.getElementById("profile_notify_container").style.display="none";
         }
-    },500);
+    },1000);
 
     return (
         <div className="dashboard_container">

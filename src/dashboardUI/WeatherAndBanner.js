@@ -3,6 +3,7 @@ import moment from 'moment';
 import slider1 from '../images/image_slider1.png';
 import slider2 from '../images/image_slider2.png';
 import slider3   from '../images/image_slider3.png';
+import Skeleton from '@mui/material/Skeleton';
 
 export default function WeatherAndBanner(){
 
@@ -44,10 +45,10 @@ export default function WeatherAndBanner(){
          const { icon, description } = data.weather[0];
          const { temp } = data.main;
          document.querySelector(".weather_icon").src ="https://openweathermap.org/img/wn/" + icon + "@4x.png";
-         document.querySelector(".weather_description").innerText = description;
+         document.getElementsByClassName("weather_description")[1].innerText = description;
          var real_temp = temp - 273.15;
          real_temp = parseInt(real_temp);
-         document.querySelector(".weather_temperature").innerText = real_temp + "°C";
+         document.getElementsByClassName("weather_temperature")[1].innerText = real_temp + "°C";
        }
      };
 
@@ -63,19 +64,39 @@ export default function WeatherAndBanner(){
    //for getting the initial name in avatar
    let firstName = localStorage.getItem('name').split(' ')[0]
 
+
+   //Skeleton show
+   setTimeout(function(){
+      var elements = document.getElementsByClassName("skeleton_done");
+      for (var i = 0, len = elements.length; i < len; i++) {
+         elements[i].style.display="block"
+     }
+     var elements1 = document.getElementsByClassName("skeleton_show");
+     for (var i = 0, len = elements1.length; i < len; i++) {
+        elements1[i].style.display="none"
+      }
+   },1000);
+
+
     return(
         <div className='top_dashboard_content minimizer_adjuster'>
 
             <div className='weather_container' onClick={goToweathersite}>
                 <div className='left'>
-                    <p className='weather_temperature' style={{ color: "#ffaa28"}}></p>
-                    <p className='weather_description' style={{textTransform: "capitalize", color: "#d9a047", fontWeight: "600"}}></p>
-                    <p style={{marginBottom: "1vh"}} className="date_today">{date_today}</p>
-                    <p className='goodmorning'>Welcome Back,</p>
-                    <p className='name'>{firstName}!</p>
+                    <Skeleton className='weather_temperature skeleton_show' animation="wave"/>
+                    <Skeleton className='weather_description skeleton_show' animation="wave"/>
+                    <Skeleton className="date_today skeleton_show" animation="wave"/>
+                    <Skeleton className='goodmorning skeleton_show' animation="wave"/>
+                    <Skeleton className='name skeleton_show' animation="wave"/>
+                    
+                    <p className='weather_temperature skeleton_done' style={{ color: "#ffaa28"}}></p>
+                    <p className='weather_description skeleton_done' style={{textTransform: "capitalize", color: "#d9a047", fontWeight: "600"}}></p>
+                    <p style={{marginBottom: "1vh"}} className="date_today skeleton_done">{date_today}</p>
+                    <p className='goodmorning skeleton_done'>Welcome Back,</p>
+                    <p className='name skeleton_done'>{firstName}!</p>
                 </div>
                 <div className='right'>
-                    <img src='' className='weather_icon'/>
+                    <img src='' className='weather_icon skeleton_done'/>
                 </div>      
             </div>
 
