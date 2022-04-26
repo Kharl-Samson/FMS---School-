@@ -15,6 +15,7 @@ export default function FacultyDashboard(){
 
     setTimeout(function(){
         document.getElementById("dashboard_link").classList.add('nav_active');
+        document.getElementById("link_dashboard").style.pointerEvents="none";
     },10);
 
     setTimeout(function(){

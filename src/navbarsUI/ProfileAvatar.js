@@ -74,7 +74,7 @@ export default function ProfileAvatar(){
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
-
+            <Link to="/PersonalInformation" style={{ textDecoration: 'none', color: '#212121' }}>
             <MenuItem>
                 <Avatar 
                     src={profile_photo} 
@@ -84,6 +84,8 @@ export default function ProfileAvatar(){
                 </Avatar>
                 My Profile
             </MenuItem>
+            </Link>
+
             <Divider />
             <MenuItem>
                 <ListItemIcon>

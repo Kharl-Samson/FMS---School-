@@ -1187,9 +1187,11 @@ button:hover{
 }
 
 
-
 /*SKELETON LOAD*/
 .skeleton_done{
+    display: none;
+}
+.skeleton_done1{
     display: none;
 }
 
@@ -1209,7 +1211,9 @@ button:hover{
         display: none;
     }
  
-
+    .link_disabler{
+       width: 25%;
+    }
 
     /*SIDE NAVBAR FOR ALL USER*/
     .navbar_account_container{
