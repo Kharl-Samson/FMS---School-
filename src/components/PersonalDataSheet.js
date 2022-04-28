@@ -34,6 +34,7 @@ import Skeleton from "@mui/material/Skeleton";
 import PreviewPDS from "./PreviewPDS";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
+import { Link } from "react-router-dom";
 
 export default function PersonalDataSheet() {
   //Tooltip
@@ -1980,7 +1981,8 @@ export default function PersonalDataSheet() {
     for (var i = 0, len = elements1.length; i < len; i++) {
       elements1[i].style.display = "none";
     }
-  }, 800);
+    document.getElementsByClassName("link_to_show")[0].disabled =false;
+  }, 1200);
 
   function goToWebView() {
     document.getElementsByClassName("view_pdf_container")[0].style.display =
@@ -2138,10 +2140,14 @@ export default function PersonalDataSheet() {
                       <img src={downloadyellow_icon} />
                       Download as PDF
                     </button>
-                    <button>
+
+                    <Link to="/EditPersonalInformation" style={{ textDecoration: 'none'}}>
+                    <button id="Edit_profile_btn" class="link_to_show" disabled>
                       <img src={edit_icon} />
-                      Edit your PDS
+                      Edit your profile
                     </button>
+                    </Link>
+
                   </div>
                 </div>
               </div>

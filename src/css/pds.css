@@ -101,7 +101,7 @@
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     color: #FFAA28;
 }
-.view_pds_container .avatar_container .cover_button button:nth-child(2){
+.view_pds_container .avatar_container .cover_button #Edit_profile_btn{
     color: #ffff;
     background-color: #FFAA28;
 }
@@ -259,13 +259,11 @@
     font-size: 1.2rem;
     color: #FFAA28;
     z-index: 10000;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
     border-bottom: 5px solid transparent;
 }
 .choices_pds_page div:hover{
     cursor: pointer;
-    background-color: #fce5c2;
+    color: #ffc472;
 }
 .choices_pds_page #WebView_PDS{
     font-weight: 600;
@@ -407,6 +405,7 @@
     .view_pds_container .avatar_container .cover_button button{
         height: 6vh;
         margin: 0;
+        width: 100%;
         margin-bottom: 10px;
     }
     .web_pds_container{

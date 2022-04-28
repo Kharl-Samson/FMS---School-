@@ -2214,7 +2214,7 @@ export default function CreatePersonalDataSheet() {
             >
               <div className="info_div">
                 <img src={form_info} />
-                Concent Form
+                Consent Form
               </div>
               <p className="p_consent">
                 We at the Bulacan State University (Main Campus) and the College

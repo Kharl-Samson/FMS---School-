@@ -285,11 +285,21 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+
+.certificate_container .for_boxShadow:nth-child(1n+1)  .certificate{
     box-shadow: inset 2000px 0 0 0 #7b61ff81;
 }
-.certificate_container .for_boxShadow  #certificate2, .certificate_container .for_boxShadow  #certificate4{
+.certificate_container .for_boxShadow:nth-child(2n+2)  .certificate{
     box-shadow: inset 2000px 0 0 0 #f7a57aaf;
 }
+.certificate_container .for_boxShadow:nth-child(3n+3)  .certificate{
+    box-shadow: inset 2000px 0 0 0 #fb74c7af;
+}
+.certificate_container .for_boxShadow:nth-child(4n+4)  .certificate{
+    box-shadow: inset 2000px 0 0 0 #7ab2f1af;
+}
+
 
 .certificate_container .for_boxShadow .certificate:hover{
     background-size: 110% 110%;

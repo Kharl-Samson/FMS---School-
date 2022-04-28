@@ -7,7 +7,7 @@ export default function RecentCertificate(){
             <div className='certificate_container'>
 
             <div className='for_boxShadow'>
-                <div className='certificate' id="certificate1"
+                <div className='certificate'
                     style={{ backgroundImage: `url("http://localhost/fms/upload_certificate/sample_cert.png")` }}
                 >   
                     <p>Faculty Webinar 2.0</p>
@@ -23,7 +23,7 @@ export default function RecentCertificate(){
                 </div>
             </div>
             <div className='for_boxShadow'>
-                <div className='certificate' id="certificate3"
+                <div className='certificate'
                     style={{ backgroundImage: `url("http://localhost/fms/upload_certificate/sample_cert.png")` }}
                 >   
                     <p>Faculty Webinar 2.0</p>
@@ -31,7 +31,7 @@ export default function RecentCertificate(){
                 </div>
             </div>
             <div className='for_boxShadow'>
-                <div className='certificate' id="certificate4"
+                <div className='certificate'
                     style={{ backgroundImage: `url("http://localhost/fms/upload_certificate/sample_cert.png")` }}
                 >   
                     <p>Faculty Webinar 2.0</p>

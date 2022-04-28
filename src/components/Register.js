@@ -266,13 +266,6 @@ export default function Register(){
     return (
         <div className="login_container">
     
-            <Link to="/Home" style={{ textDecoration: 'none' }}>
-                <div className="home_container_btn">
-                    <img src={Home_Icon}/>
-                        <span>Home</span>
-                </div>
-            </Link>
-
             <div className="cict_text_container cict_text_container1">
                 <img src={CICT_Text} className="cict_text cict_text1"/>     
             </div>
@@ -386,7 +379,15 @@ export default function Register(){
                                 <button type="submit" className="sign_up_btn">Sign up</button>
            
                                 <p className="terms_and_service">
-                                    By continuing to use this website, I state that I have read and understood the <span>Terms of Service</span> and <span>Privacy Policy</span>.
+                                    By continuing to use this website, I state that I have read and understood the&nbsp; 
+                                    <Link to="/TermsOfService" style={{ textDecoration: 'none', margin: "0"}} target="_blank">
+                                    <span>Terms of Service</span>
+                                    </Link>
+                                    &nbsp;and&nbsp; 
+                                    <Link to="/PrivacyPolicy" style={{ textDecoration: 'none', margin: "0"}} target="_blank">
+                                    <span>Privacy Policy</span>.
+                                    </Link>
+
                                 </p>                
                             </div>
                 

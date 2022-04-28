@@ -135,13 +135,6 @@ export default function Login(){
     return (
         <div className="login_container" >
 
-            <Link to="/Home" style={{ textDecoration: 'none' }}>
-                <div className="home_container_btn" >
-                    <img src={Home_Icon}/>
-                        <span>Home</span>
-                </div>
-            </Link>
-
             <div className="cict_text_container cict_text_container1">
                 <img src={CICT_Text} className="cict_text cict_text1"/>     
             </div>
