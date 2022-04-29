@@ -8,7 +8,6 @@ import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import { Link } from "react-router-dom";
 
-import Home_Icon from "../images/icons/home.svg";
 import CICT_Text from "../images/login/cict_bg_text.png";
 import Image_rounder from "../images/login/login_img_rounder.png";
 import Email_icon from "../images/icons/email.svg";

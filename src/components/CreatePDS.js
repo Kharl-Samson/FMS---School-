@@ -2100,7 +2100,7 @@ export default function CreatePersonalDataSheet() {
             </div>
 
             <div className="link_disabler">
-              <Link to="" style={{ textDecoration: "none", width: "100%" }}>
+              <Link to="/Certificates" style={{ textDecoration: "none", width: "100%" }}>
                 <div
                   className="navlink_container nav_part3"
                   id="certificate_link"

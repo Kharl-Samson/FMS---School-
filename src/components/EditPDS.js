@@ -42,7 +42,7 @@ import Skeleton from "@mui/material/Skeleton";
 
 
 export default function EditPersonalDataSheet() {
-  document.title = "CICT | Personal Information";
+  document.title = "CICT | Edit Personal Information";
   setTimeout(function () {
     document.getElementById("pds_link").classList.add("nav_active");
     var left_nav_minimize =
@@ -2589,7 +2589,7 @@ export default function EditPersonalDataSheet() {
             </div>
 
             <div className="link_disabler">
-              <Link to="" style={{ textDecoration: "none", width: "100%" }}>
+              <Link to="/Certificates" style={{ textDecoration: "none", width: "100%" }}>
                 <div
                   className="navlink_container nav_part3"
                   id="certificate_link"
@@ -3801,15 +3801,10 @@ export default function EditPersonalDataSheet() {
               sx={{ margin: "3vh 0rem" , marginRight:"5%"}}
           />
 
-            <Link
-              to="/PersonalInformation"
-              style={{ textDecoration: "none", marginLeft: "5%" }}
-              className="back_stepper1 skeleton_done1"
-            >
-              <button className="back_stepper" style={{ whiteSpace: "nowrap" }}>
-                &#8592; &nbsp;&nbsp;&nbsp; My Profile
-              </button>
-            </Link>
+
+            <button type="button" className="back_stepper back_stepper1 skeleton_done1" style={{ whiteSpace: "nowrap" }} onClick={() =>window.location.replace("http://localhost:3000/PersonalInformation")} >
+               &#8592; &nbsp;&nbsp;&nbsp; My Profile
+            </button>
             <button
               type="button"
               className="back_stepper back_stepper2"

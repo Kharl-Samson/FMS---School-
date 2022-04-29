@@ -2141,12 +2141,11 @@ export default function PersonalDataSheet() {
                       Download as PDF
                     </button>
 
-                    <Link to="/EditPersonalInformation" style={{ textDecoration: 'none'}}>
-                    <button id="Edit_profile_btn" class="link_to_show" disabled>
+                    <button id="Edit_profile_btn" class="link_to_show" onClick={() =>window.location.replace("http://localhost:3000/EditPersonalInformation")} >
                       <img src={edit_icon} />
                       Edit your profile
                     </button>
-                    </Link>
+       
 
                   </div>
                 </div>
