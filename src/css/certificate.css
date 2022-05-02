@@ -168,6 +168,13 @@
 .certificates_container .table_container .top .container:nth-child(3) div:nth-child(2){
     border: 2px solid #FFAA28;
     background-color: #FFAA28;
+}
+.certificates_container .table_container .top .container:nth-child(3) div:nth-child(2) .upload_cert{
+    height: 37px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #FFFF;
 }
 
@@ -762,6 +769,142 @@
     justify-content: center;
 }
 
+#fitlerBYdatRange{
+    display: flex;
+}
+#filterByText{
+    display: flex;
+}
+
+/*UPLOAD CERTIFICATE*/
+.Upload_certificate_form{
+    height: 87%;
+    width: 100%;
+    overflow-y: scroll;
+}
+.Upload_certificate_form::-webkit-scrollbar {
+    width: 4px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+.Upload_certificate_form::-webkit-scrollbar-track {
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+.Upload_certificate_form::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    background: #FFAA28; 
+}
+.Upload_certificate_form::-webkit-scrollbar-thumb:window-inactive {
+    background: transparent; 
+}
+.Upload_certificate_form .ceritificate_img{
+    height: auto;
+    width: 400px;
+    margin: 0% auto;
+    margin-top: 1rem;
+}
+.Upload_certificate_form .ceritificate_img p:nth-child(1){
+    font-size: 1rem;
+    font-weight: 600;
+}
+.Upload_certificate_form .ceritificate_img .img_container{
+    height: 280px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px dashed #8A8A8A;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Upload_certificate_form .ceritificate_img .img_container .upload_imgIcon{
+    height: 60px;
+    width: auto;
+}
+.Upload_certificate_form .ceritificate_img .img_container .selectText{
+    font-size: 1.1rem;
+    margin-bottom: 7px;
+}
+.Upload_certificate_form .ceritificate_img .img_container .selectText1{
+    font-size: 1rem;
+    color: #797979;
+}
+.Upload_certificate_form .ceritificate_img  button{
+    background-color: transparent;
+    font-size: 1rem;
+    padding: 5px 20px;
+    border-radius: 7px;
+    margin-top: 10px;
+    color: #FFAA28;
+    border: 2px solid #FFAA28;
+}
+.Upload_certificate_form .ceritificate_img  button:hover, .Upload_certificate_form .ceritificate_img .img_container:hover{
+    cursor: pointer;
+    opacity: 80%;
+}
+.uploaded_certIMG{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    display: none;
+}
+.certImg_toHide{
+    display: block;
+}
+.Upload_certificate_form .ceritificate_img  input[type="file"]{
+    display: none;
+}
+#selectFile_sub{
+    display: none;
+}
+
+.gridUploadCertcont{
+    margin: 0% auto;
+    width: 90% !important;
+    margin-top: 40px;
+}
+
+.Upload_certificate_btn{
+    width: 100%;
+    height: 13%;
+    background-color: #FFAA28;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Upload_certificate_btn button{
+    margin: 0 20px;
+    padding: 5px 20px;
+    font-size: 1rem;
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+    color: #ffff;
+}
+.Upload_certificate_btn button:hover{
+    opacity: 80%;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.validator_uploadCert{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin:10px 0;
+    font-weight: 600;
+    color: rgb(245, 74, 74);
+}
+.validator_uploadCert img{
+    height: 25px;
+    width: auto;
+    margin-right: 10px;
+}
+
 @media screen and (max-width: 850px) {
     .certificates_container{
         margin-top: 1rem;
@@ -784,5 +927,23 @@
     }
     .certificates_container .table_container .top .container:nth-child(3) div:nth-child(1){
         margin-bottom: 10px;
+    }
+    #fitlerBYdatRange{
+        display: none;
+    }
+    #filterByText{
+        display: none;
+    }
+    #filterByTextRight{
+        width: 100%;
+        padding-left: 15%;
+    }
+
+    /*Upload Certificate*/
+    .Upload_certificate_form .ceritificate_img{
+        width: 280px;
+    }
+    .Upload_certificate_form .ceritificate_img .img_container{
+        height: 200px;
     }
 }

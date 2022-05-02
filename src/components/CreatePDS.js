@@ -1,6 +1,5 @@
 import * as React from "react";
 import "../css/createPDS.css";
-import LeftNavbarFaculty from "../navbarsUI/LeftNavbarFaculty";
 import TextField from "@mui/material/TextField";
 import basic_info from "../images/icons/basic_info.svg";
 import address_info from "../images/icons/address_info.svg";

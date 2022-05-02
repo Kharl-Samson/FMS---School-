@@ -10,7 +10,7 @@ function validatorPDS5(){
     const dateFromLD = document.getElementsByName("dateFromLD[]");
     const dateToLD = document.getElementsByName("dateToLD[]");
     for(var z = 0; z < dateFromLD.length; z++) {
-        if(dateFromLD[z].value > dateToLD[z].value && dateToLD[z].value !=="" && dateToLD[z].value !==""){
+        if(dateFromLD[z].value > dateToLD[z].value && dateFromLD[z].value !=="" && dateToLD[z].value !==""){
             list_of_errors +="- Entry("+(z+1)+") Date From and To are invalid range (Secondary). <br/>";
         }
         else{

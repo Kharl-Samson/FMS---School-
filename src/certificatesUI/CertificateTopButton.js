@@ -23,6 +23,7 @@ import ApplyFilter from "../functions/ApplyFilterCert";
 import CertificatePDF from "./CertificatePDF";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
+import { Link } from "react-router-dom";
 
 export default function CertificateTopActions() {
   setTimeout(function () {
@@ -211,10 +212,10 @@ export default function CertificateTopActions() {
             disableRipple
           >
             <div className="filterCert_container">
-              <div className="left" style={{ pointerEvents: "none" }}>
+              <div className="left" style={{ pointerEvents: "none" }} id="filterByText">
                 Filter By
               </div>
-              <div className="right">
+              <div className="right" id="filterByTextRight">
                 <div className="checkbox_container">
                   <div>
                     <input
@@ -297,6 +298,7 @@ export default function CertificateTopActions() {
             </div>
 
             <div
+              id="fitlerBYdatRange"
               className="filterCert_container"
               style={{ borderTop: "1px solid rgb(152, 152, 152)" }}
             >
@@ -392,9 +394,14 @@ export default function CertificateTopActions() {
         <div onClick={printDocument}>
           <img src={download_yellow}/> Download as PDF
         </div>
+        
         <div>
-          <img src={uploadWhite} /> Upload Certificate
+         <Link to="/UploadCertificate" style={{ textDecoration: 'none' }} className="upload_cert">
+            <img src={uploadWhite} /> Upload Certificate
+          </Link>
         </div>
+
+
       </div>
 
         <CertificatePDF/>
