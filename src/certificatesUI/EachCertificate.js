@@ -92,21 +92,29 @@ export default function EachCertificate() {
    var inputLDfrom = document.getElementById("LD_dateFrom").value;
    var sliceinputLDfrom = inputLDfrom.slice(0, -5);
    const inputLDfrom_Array = sliceinputLDfrom.split(" |:| ");
-   const newArray1 = [];
-
-   for(var i=0 ; i<inputLDfrom_Array.length ; i++){
-        newArray1.push(moment(inputLDfrom_Array[i]).format('LL'))
-   }
-   setLDfrom(newArray1);
+   setLDfrom(inputLDfrom_Array );
  };
  const [LDto, setLDto] = useState([]);
  const loadLDto = async () => {
    var inputLDto = document.getElementById("LD_dateTo").value;
-   var replaceTo = inputLDto.replace(/-/g, "/");
+   var replaceTo = inputLDto.replace(/-/g, "-");
    var sliceinputLDto = replaceTo.slice(0, -5);
    const inputLDto_Array = sliceinputLDto.split(" |:| ");
-   setLDto(inputLDto_Array);
+   const newArray1 = [];
+   for(var i=0 ; i<inputLDto_Array .length ; i++){
+        newArray1.push(moment(inputLDto_Array [i]).format('LL'))
+   }
+   setLDto(newArray1);
  };
+
+ const [LDto1, setLDto1] = useState([]);
+ const loadLDto1 = async () => {
+   var inputLDto1 = document.getElementById("LD_dateTo").value;
+   var sliceinputLDto1 = inputLDto1.slice(0, -5);
+   const inputLDto1_Array = sliceinputLDto1.split(" |:| ");
+   setLDto1(inputLDto1_Array);
+ };
+
  const [LDhours, setLDhours] = useState([]);
  const loadLDhours = async () => {
    var inputLDhours = document.getElementById("LD_hours").value;
@@ -145,6 +153,7 @@ export default function EachCertificate() {
 
  useEffect(() => {
     setTimeout(function () {
+        loadLDto1();
         loadLDtitleFull();
         loadLDimage();
         loadLDtitle();
@@ -163,27 +172,27 @@ export default function EachCertificate() {
     const ldContent = LDtitle.map(() => {
       ld_ctr++;
       return (
-        <div className="for_boxShadow" id="certDesktop">
+        <div className="for_boxShadow certDesktop" id="certDesktop">
           <p style={{display:"none"}}>{LDtitleFull[ld_ctr]}</p>
           <p style={{display:"none"}}>{LDfrom[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDto[ld_ctr]}</p>
+          <input type="hidden" value={LDto1[ld_ctr]} className="inputDateKey_hidden"/>
           <p style={{display:"none"}}>{LDhours[ld_ctr]+" HOURS"}</p>
           <p style={{display:"none"}}>{LDtype[ld_ctr]}</p>
           <p style={{display:"none"}}>{LDsponsor[ld_ctr]}</p>
           <p style={{display:"none"}}>{LDcoverage[ld_ctr]}</p>
           <p style={{display:"none"}}>{LDcategory[ld_ctr]}</p>
-        <div
-          className="certificate"
-          style={{
-            backgroundImage: `url(http://localhost/fms/upload_certificate/`+LDimage[ld_ctr]+`)`,
-          }}
-        >
-        </div>
+          <div
+            className="certificate"
+            style={{
+              backgroundImage: `url(http://localhost/fms/upload_certificate/`+LDimage[ld_ctr]+`)`,
+            }}
+           >
+          </div>
 
         <div className="btn_container">
           <div>
             <p>{LDtitle[ld_ctr]}</p>
-            <p>{LDfrom[ld_ctr]}</p>
+            <p>{LDto[ld_ctr]}</p>
           </div>
           <div>
             <img src={menuIconGray} onClick={handleClick_act} />

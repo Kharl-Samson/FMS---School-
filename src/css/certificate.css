@@ -15,7 +15,7 @@
     height: 75vh;
     padding-top: 3vh;
     background-color: #ffff;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
     flex-direction: column;
@@ -33,44 +33,61 @@
 .certificates_container .table_container .top .container:nth-child(1){
     float: left;
     width: 400px;
-    border: 2px solid #c2c2c2;
-    background-color: #FFFF;
     border-radius: 5px;
     margin-right: 15px;
     display: flex;
 }
-.certificates_container .table_container .top .container:nth-child(1) select{
-    border: none;
-    width: 28%;
-    height: auto;
-    background-color: transparent;
-    outline: none;
-    font-size: .8rem;
-    text-indent: 10px;
-    color: #666666;
-}
-.certificates_container .table_container .top .container:nth-child(1):hover{
-    border: 2px solid #FFAA28;
-}
 .certificates_container .table_container .top .container:nth-child(1) input{
     height: 100%;
-    border: none;
-    width: 57%;
+    border: 2px solid #c2c2c2;
+    width: 60%;
     background-color: transparent;
     outline: none;
     text-indent: 10px;
     font-size: 1rem;
+    border-right: none;
+    border-left: none;
+    background-color: #FFFF;
 }
-.certificates_container .table_container .top .container:nth-child(1) div{
+.certificates_container .table_container .top .container:nth-child(1) div:nth-child(1){
     height: 100%;
-    width: 15%;
+    width: 10%;
     display: flex;
     align-items: center;
+    border: 2px solid #c2c2c2;
+    border-right: none;
     justify-content: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #FFFF;
 }
-.certificates_container .table_container .top .container:nth-child(1) div img{
+.certificates_container .table_container .top .container:nth-child(1) div:nth-child(1) img{
     height: 50%;
     width: auto;
+}
+.certificates_container .table_container .top .container:nth-child(1) .filter_container{
+    width: 30%;
+    height: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: #434343;
+    justify-content: center;
+    border: 2px solid #c2c2c2;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #FFFF;
+}
+.certificates_container .table_container .top .container:nth-child(1) .filter_container:hover{
+    cursor: pointer;
+    opacity: 80%;
+    border: 2px solid #FFAA28;
+}
+.certificates_container .table_container .top .container:nth-child(1) .filter_container img{
+    height: 45%;
+    width: auto;
+    margin-left: 8px;
 }
 
 .certificates_container .table_container .top .container:nth-child(2){
@@ -103,6 +120,10 @@
     justify-content: center;
     box-shadow: none;
     border-radius: 20px;
+}
+.certificates_container .table_container .top .container:nth-child(2) div:nth-child(1) div:hover{
+    cursor: pointer;
+    opacity: 80%;
 }
 .certificates_container .table_container .top .container:nth-child(2) div:nth-child(1) div img{
     height: 45%;
@@ -175,6 +196,7 @@
 .certificates_container .table_container .certficate_scrollable::-webkit-scrollbar-thumb:window-inactive {
     background: transparent; 
 }
+
 
 .certificates_container .for_boxShadow{
     flex: 0 0 auto;
@@ -438,6 +460,306 @@
     margin-bottom: 5px;
     width: 80%;
     height: auto;
+}
+
+.no_searchFound1{
+    height: 100%;
+    width: 300px;
+    margin: 0% auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #666666;
+}
+.no_searchFound1 img{
+    margin-bottom: 5px;
+    width: 80%;
+    height: auto;
+}
+.no_searchFound2{
+    height: 100%;
+    width: 300px;
+    margin: 0% auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #666666;
+}
+.no_searchFound2 img{
+    margin-bottom: 5px;
+    width: 80%;
+    height: auto;
+}
+
+
+.filterCert_container{
+    width: 400px;
+    height: auto;
+    display: flex;
+}
+.filterCert_container .left{
+    width: 20%;
+    height: auto;
+    flex-grow: 1;
+    font-family: 600;
+    font-size: .8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.filterCert_container .right{
+    width: 80%;
+    height: auto;
+}
+.filterCert_container .right .checkbox_container{
+    height: auto;
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+}
+.filterCert_container .right .checkbox_container div{
+    height: 100%;
+    width: 50%;
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+}
+.filterCert_container .right .checkbox_container div input.cb_filter{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 18px;
+  height:18px;
+  margin-right: 5px;
+  padding: 1.3px;
+  background-clip: content-box;
+  border: 2px solid #FFAA28;
+  background-color: #ffffff;
+  border-radius: 30%;
+}
+.filterCert_container .right .checkbox_container div input.cb_filter:checked {
+    background-color: #ff7328;
+}
+.filterCert_container .right .checkbox_container div input.cb_filter:hover{
+    cursor: pointer;
+}
+.filter_btn{
+    padding-top: 10px;
+    width: 100%;
+    height: auto;
+    border-top: 1px solid rgb(152, 152, 152);
+    display: flex;
+}
+.filter_btn .left{
+    width: 40%;
+    height: auto;
+    font-size: .9rem;    
+    color: rgb(245, 65, 65);
+}
+.filter_btn .left span:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.filter_btn .right{
+    width: 60%;
+    height: auto;
+    font-size: .9rem;    
+    display: flex;
+    justify-content: flex-end;
+}
+.filter_btn .right span{
+    font-weight: 600;
+}
+.filter_btn .right span:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.filter_btn .right span:nth-child(1){
+    margin-right: 20px;
+    color: #757575;
+}
+.filter_btn .right span:nth-child(2){
+    color: #FFAA28;
+}
+#removeTrans_MUI:hover{
+    cursor: context-menu;
+    background-color: transparent !important;
+}
+
+
+.date_range{
+    height: 37px;
+    width: 45%;
+    border: 1px solid rgb(152, 152, 152);
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+}
+.date_range:hover{
+    cursor: pointer;
+    opacity: 70%;
+}
+
+
+/*CERTIFICATE PDF*/
+.certificatePDF_container{
+    height: auto;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.373);
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5% 0;
+    z-index: -9999999;
+    opacity: 0;
+}
+.certificatePDF_container .pdf_container{
+    width: 100%;
+    height: auto;
+    background-color: #ffff;
+    padding: 3% 0%;
+    padding-top: 0%;
+}
+.certificatePDF_container .pdf_container .top{
+    height: auto;
+    width: 95%;
+    margin: 0% auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.certificatePDF_container .pdf_container .top img{
+    height: 150px;
+    width: auto;
+}
+.certificatePDF_container .pdf_container .header{
+    background-color: #1a2f5f;
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 100px;
+    color: #ffff;
+    width: 350px;
+    padding: 10px 105px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.9rem;
+    white-space: nowrap;
+}
+.certificatePDF_container .pdf_container .header1{
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 100px;
+    background-color: #ea7411;
+    margin-left: 70px;
+    color: #ffff;
+    width: 370px;
+    padding: 10px 105px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.9rem;
+    white-space: nowrap;
+}
+.certificatePDF_container .nameOfschool{
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #162d59;
+    margin-top: 5px;
+}
+.certificatePDF_container .pdf_container .th{
+    width: 95%;
+    height: auto;
+    margin: 0% auto;
+    padding: 10px 0;
+    font-size: 2rem;
+    text-align: center;
+    background-color: #162d59;
+    color: #ffff;
+    margin-top: 70px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.certificatePDF_container .pdf_container .th1{
+    width: 95%;
+    height: auto;
+    margin: 0% auto;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.3rem;
+    display: flex;
+}
+.certificatePDF_container .pdf_container .th1 div span{
+    margin: 0 10px;
+}
+.certificatePDF_container .pdf_container .th1 div:nth-child(1){
+    padding: 15px 0;
+    width: 20%;
+    border: 2px solid #162d59;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.certificatePDF_container .pdf_container .th1 div:nth-child(2){
+    padding: 15px 0;
+    width: 15%;
+    border: 2px solid #162d59;
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.certificatePDF_container .pdf_container .th1 div:nth-child(3){
+    padding: 15px 0;
+    width: 14%;
+    border: 2px solid #162d59;
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.certificatePDF_container .pdf_container .th1 div:nth-child(4){
+    padding: 15px 0;
+    width: 15%;
+    border: 2px solid #162d59;
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.certificatePDF_container .pdf_container .th1 div:nth-child(5){
+    padding: 15px 0;
+    width: 20%;
+    border: 2px solid #162d59;
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.certificatePDF_container .pdf_container .th1 div:nth-child(6){
+    padding: 15px 0;
+    width: 15%;
+    border: 2px solid #162d59;
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (max-width: 850px) {

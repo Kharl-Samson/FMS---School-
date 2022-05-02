@@ -425,30 +425,7 @@ export default function EditPersonalDataSheet() {
     },
   }));
 
-  const mq = window.matchMedia("(max-width: 850px)");
-  //Skeleton show
-  setTimeout(function () {
-    if (mq.matches) {
-      document.getElementsByClassName("back_stepper1")[0].style.display = "flex";
-      document.getElementsByClassName("next_stepper1")[0].style.display = "flex";
-      document.getElementsByClassName("skeleton_showA_mobile1")[0].style.display = "none";
-      document.getElementsByClassName("skeleton_showA_mobile2")[0].style.display = "none";
-      
-      var elements11 = document.getElementsByClassName("left_nav_minimize_img");
-      for (var i = 0, len = elements11.length; i < len; i++) {
-        elements11[i].style.display = "block";
-      }
-    } else {
-      var elements11 = document.getElementsByClassName("skeleton_done1");
-      for (var i = 0, len = elements11.length; i < len; i++) {
-        elements11[i].style.display = "block";
-      }
-      var elements12 = document.getElementsByClassName("skeleton_show1");
-      for (var i = 0, len = elements12.length; i < len; i++) {
-        elements12[i].style.display = "none";
-      }
-    }
-  }, 1200);
+ 
 
   //getting the email of user
   let email_key = localStorage.getItem("email");
@@ -2548,17 +2525,10 @@ export default function EditPersonalDataSheet() {
                 style={{ textDecoration: "none", width: "100%" }}
               >
                 <div className="navlink_container" id="dashboard_link">
-                  <Skeleton
-                    animation="wave"
-                    className="skeleton_show1"
-                    height={"22px"}
-                    width={"22px"}
-                    sx={{ margin: "3vh 1rem" }}
-                  />
                   <LightTooltip title="Dashboard">
                     <img
                       src={Dashboard_icon}
-                      className="left_nav_minimize_img skeleton_done1"
+                      className="left_nav_minimize_img"
                     />
                   </LightTooltip>
                 </div>
@@ -2571,17 +2541,10 @@ export default function EditPersonalDataSheet() {
                 style={{ textDecoration: "none", width: "100%" }}
               >
                 <div className="navlink_container" id="pds_link">
-                  <Skeleton
-                    animation="wave"
-                    className="skeleton_show1"
-                    height={"22px"}
-                    width={"22px"}
-                    sx={{ margin: "3vh 1rem" }}
-                  />
                   <LightTooltip title="My Profile">
                     <img
                       src={Profile_icon}
-                      className="left_nav_minimize_img skeleton_done1"
+                      className="left_nav_minimize_img"
                     />
                   </LightTooltip>
                 </div>
@@ -2594,17 +2557,10 @@ export default function EditPersonalDataSheet() {
                   className="navlink_container nav_part3"
                   id="certificate_link"
                 >
-                  <Skeleton
-                    animation="wave"
-                    className="skeleton_show1"
-                    height={"22px"}
-                    width={"22px"}
-                    sx={{ margin: "3vh 1rem" }}
-                  />
                   <LightTooltip title="Certificates">
                     <img
                       src={Certificate_icon}
-                      className="left_nav_minimize_img skeleton_done1"
+                      className="left_nav_minimize_img"
                     />
                   </LightTooltip>
                 </div>
@@ -2614,17 +2570,10 @@ export default function EditPersonalDataSheet() {
             <div className="link_disabler">
               <Link to="" style={{ textDecoration: "none", width: "100%" }}>
                 <div className="navlink_container" id="profile_link">
-                  <Skeleton
-                    animation="wave"
-                    className="skeleton_show1"
-                    height={"22px"}
-                    width={"22px"}
-                    sx={{ margin: "3vh 1rem" }}
-                  />
                   <LightTooltip title="Account Setting">
                     <img
                       src={account_setting}
-                      className="left_nav_minimize_img skeleton_done1"
+                      className="left_nav_minimize_img"
                     />
                   </LightTooltip>
                 </div>
@@ -2635,17 +2584,10 @@ export default function EditPersonalDataSheet() {
 
         <Link to="/" style={{ textDecoration: "none" }}>
           <div className="logout_container navlink_container">
-            <Skeleton
-              animation="wave"
-              className="skeleton_show1"
-              height={"22px"}
-              width={"22px"}
-              sx={{ margin: "3vh 1rem" }}
-            />
             <LightTooltip title="Sign Out">
               <img
                 src={Logout_icon}
-                className="left_nav_minimize_img skeleton_done1"
+                className="left_nav_minimize_img"
               />
             </LightTooltip>
           </div>
@@ -3786,23 +3728,7 @@ export default function EditPersonalDataSheet() {
 
           <div className="stepper_container">
 
-          <Skeleton
-              animation="wave"
-              className="skeleton_show1 skeleton_showA_mobile1"
-              height={"30px"}
-              width={"17vh"}
-              sx={{ margin: "3vh 0rem" , marginLeft:"5%"}}
-          />
-          <Skeleton
-              animation="wave"
-              className="skeleton_show1 skeleton_showA_mobile2"
-              height={"30px"}
-              width={"17vh"}
-              sx={{ margin: "3vh 0rem" , marginRight:"5%"}}
-          />
-
-
-            <button type="button" className="back_stepper back_stepper1 skeleton_done1" style={{ whiteSpace: "nowrap" }} onClick={() =>window.location.replace("http://localhost:3000/PersonalInformation")} >
+            <button type="button" className="back_stepper back_stepper1" style={{ whiteSpace: "nowrap" }} onClick={() =>window.location.replace("http://localhost:3000/PersonalInformation")} >
                &#8592; &nbsp;&nbsp;&nbsp; My Profile
             </button>
             <button
@@ -3840,7 +3766,7 @@ export default function EditPersonalDataSheet() {
 
             <button
               type="button"
-              className="next_stepper next_stepper1 skeleton_done1"
+              className="next_stepper next_stepper1"
               onClick={validatorPDS1V1}
             >
               Next &nbsp;&nbsp;&nbsp; &#8594;

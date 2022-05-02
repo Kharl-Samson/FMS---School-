@@ -1,9 +1,11 @@
 import React from "react";
+import CICT_Logo from "../images/login/cict_logo.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import no_record_icon from "../images/no_record_icon.png";
+import bulsu_icon from "../images/bulsu_icon.png";
 
-export default function TableRowCertificate() {
+export default function CertificatePDF(){
+   
   //getting the email of user
   let email_key = localStorage.getItem("email");
 
@@ -137,74 +139,80 @@ export default function TableRowCertificate() {
   const ldContent = LDtitle.map(() => {
     ld_ctr++;
     return (
-      <div
-        className="header certTABLEDesktop"
-        style={{ alignItems: "center", padding: "1rem 0" }}
-        id="certTABLEDesktop"
-      >
-        <div className="th">
-          <p style={{display:"none"}}>{LDtitleFull[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDfrom[ld_ctr]}</p>
-          <input type="hidden" value={LDto1[ld_ctr]} className="inputDateKey_hidden"/>
-          <p style={{display:"none"}}>{LDhours[ld_ctr]+" HOURS"}</p>
-          <p style={{display:"none"}}>{LDtype[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDsponsor[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDcoverage[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDcategory[ld_ctr]}</p>
-          <span style={{ color: "black"}}>{LDtitle[ld_ctr]}</span>
-        </div>
-        <div className="th">
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <div className="date" style={{ width: "50%", color: "black" }}>
-              {LDfrom[ld_ctr]}
+        <div className="th1" style={{fontWeight:"normal"}}>
+        <div><span>{LDtitleFull[ld_ctr]}</span></div>
+        <div>
+            <div style={{width:"100%",display:"flex",border:"none",justifyContent:"center",fontWeight:"normal",flexDirection:"row"}}>
+                <span style={{margin:"7px",wordBreak:"break-all"}}>{LDfrom[ld_ctr]}</span>
+                <span style={{margin:"0px"}}>-</span>
+                <span style={{margin:"7px",wordBreak:"break-all"}}>{LDto[ld_ctr]}</span>
             </div>
-            <div className="date" style={{ width: "50%", color: "black" }}>
-              {LDto[ld_ctr]}
-            </div>
-          </div>
         </div>
-        <div className="th">
-          <span style={{ color: "black" }}>{LDhours[ld_ctr]+" HOURS"}</span>
+        <div>
+            <span>{LDhours[ld_ctr]+" HOURS"}</span>
         </div>
-        <div className="th">
-          <button style={{ fontWeight: "600" }}>View</button>
-        </div>          
-      </div>
+        <div>
+            <span>{LDtype[ld_ctr]}</span>
+        </div>
+        <div>
+            <span>{LDsponsor[ld_ctr]}</span>
+        </div>
+        <div>
+            <span>{LDcoverage[ld_ctr]}</span>
+        </div>
+    </div>
     );
   });
 
-  return (
-    <div id="rowTable_forSearch">
-      <div className="header">
-        <div className="th">
-          <span>
-            Title of learning and development interventions/ training programs
-          </span>
-        </div>
-        <div className="th">
-          <div>INCLUSIVE DATES OF ATTENDANCE (mm/dd/yy)</div>
-          <div>
-            <div className="date">FROM</div>
-            <div className="date">TO</div>
-          </div>
-        </div>
-        <div className="th">
-          <span>Number of hours</span>
-        </div>
-        <div className="th">
-          <span>Action</span>
-        </div>
-      </div>
+    return(
+        <div className="certificatePDF_container">
+            <div className="pdf_container" id="convertable_pdf">
 
-      <div className="tableRow_scrollable_container">
-        {ldContent} 
-        <div className="no_searchFound1">
-              <img src={no_record_icon}/>
-              <p>No Certificate Available!</p>
-        </div>
-      </div>
+                <div className="top">
+                    <div>
+                        <p className="nameOfschool">Bulacan State University</p>
+                        <div className="header">COLLEGE OF INFORMATION AND</div>
+                        <div className="header1">COMMUNICATION TECHNOLOGY</div>
+                    </div>
+                    <div>
+                        <img src={bulsu_icon} style={{marginRight:"30px"}}/> 
+                        <img src={CICT_Logo}/> 
+                    </div>
+                </div>
 
-      {input_keyForCertificates}
-    </div>
-  );
+
+                <div className="th">
+                    LIST OF ALL CERTIFICATES
+                </div>
+
+                <div className="th1">
+                    <div><span>TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS / TRAINING PROGRAM</span></div>
+                    <div>
+                        <span>INCLUSIVE DATES OF ATTENDANCE</span>
+                        <div style={{width:"100%",display:"flex",border:"none",justifyContent:"center",fontWeight:"normal",flexDirection:"row"}}>
+                            <span style={{margin:"10px"}}>From</span>
+                            <span style={{margin:"10px"}}>-</span>
+                            <span style={{margin:"10px"}}>To</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span>NUMBER OF HOURS</span>
+                    </div>
+                    <div>
+                        <span>TYPE OF LD</span>
+                    </div>
+                    <div>
+                        <span>CONDUCTED / SPONSORED BY</span>
+                    </div>
+                    <div>
+                        <span>COVERAGE</span>
+                    </div>
+                </div>
+                {ldContent}
+            </div>
+
+            {input_keyForCertificates}
+        </div>
+    )
 }
+

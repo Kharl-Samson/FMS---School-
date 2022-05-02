@@ -80,15 +80,55 @@ export default function TableCertificateMobile(){
     const inputLDtype_Array = sliceinputLDtype.split(" |:| ");
     setLDtype(inputLDtype_Array);
   };
+  const [LDtitleFull, setLDtitleFull] = useState([]);
+  const loadLDtitleFull = async () => {
+    var inputLDtitleFull = document.getElementById("LD_title").value;
+    var sliceinputLDtitleFull = inputLDtitleFull.slice(0, -5);
+    const inputLDtitleFull_Array = sliceinputLDtitleFull.split(" |:| ");
+    setLDtitleFull(inputLDtitleFull_Array);
+  };
+  const [LDto1, setLDto1] = useState([]);
+  const loadLDto1 = async () => {
+    var inputLDto1 = document.getElementById("LD_dateTo").value;
+    var sliceinputLDto1 = inputLDto1.slice(0, -5);
+    const inputLDto1_Array = sliceinputLDto1.split(" |:| ");
+    setLDto1(inputLDto1_Array);
+  };
+  const [LDsponsor, setLDsponsor] = useState([]);
+  const loadLDsponsor = async () => {
+    var inputLDsponsor = document.getElementById("LD_sponsored").value;
+    var sliceinputLDsponsor = inputLDsponsor.slice(0, -5);
+    const inputLDsponsor_Array = sliceinputLDsponsor.split(" |:| ");
+    setLDsponsor(inputLDsponsor_Array);
+  };
+  const [LDcoverage, setLDcoverage] = useState([]);
+  const loadLDcoverage = async () => {
+    var inputLDcoverage = document.getElementById("LD_coverage").value;
+    var sliceinputLDcoverage = inputLDcoverage.slice(0, -5);
+    const inputLDcoverage_Array = sliceinputLDcoverage.split(" |:| ");
+    setLDcoverage(inputLDcoverage_Array);
+  };
+  const [LDcategory, setLDcategory] = useState([]);
+  const loadLDcategory = async () => {
+    var inputLDcategory = document.getElementById("LD_category").value;
+    var sliceinputLDcategory = inputLDcategory.slice(0, -5);
+    const inputLDcategory_Array = sliceinputLDcategory.split(" |:| ");
+    setLDcategory(inputLDcategory_Array);
+  }; 
 
   useEffect(() => {
     setTimeout(function () {
+      loadLDto1();
+      loadLDtitleFull();
       loadLDimage();
       loadLDtitle();
       loadLDfrom();
       loadLDto();
       loadLDhours(); 
+      loadLDsponsor();
       loadLDtype();
+      loadLDcoverage();
+      loadLDcategory();
     }, 1000);
   }, []);
 
@@ -97,7 +137,18 @@ export default function TableCertificateMobile(){
   const ldContent = LDtitle.map(() => {
     ld_ctr++;
     return (
-        <div className="mobile_container">
+        <div className="mobile_container certTABLEMobile" id="certTABLEMobile">
+
+          <p style={{display:"none"}}>{LDtitleFull[ld_ctr]}</p>
+          <p style={{display:"none"}}>{LDfrom[ld_ctr]}</p>
+          <input type="hidden" value={LDto1[ld_ctr]} className="inputDateKey_hidden"/>
+          <p style={{display:"none"}}>{LDhours[ld_ctr]+" HOURS"}</p>
+          <p style={{display:"none"}}>{LDtype[ld_ctr]}</p>
+          <p style={{display:"none"}}>{LDsponsor[ld_ctr]}</p>
+          <p style={{display:"none"}}>{LDcoverage[ld_ctr]}</p>
+          <p style={{display:"none"}}>{LDcategory[ld_ctr]}</p>
+
+
         <p className="th">Title of learning and development interventions/ training programs</p>
         <p className="th_content">{LDtitle[ld_ctr]}</p>
         <hr/>
@@ -125,7 +176,7 @@ export default function TableCertificateMobile(){
   });
 
     return(
-        <div>
+        <div id="rowTableMobile_forSearch">
             {ldContent}
             {input_keyForCertificates}
         </div>
