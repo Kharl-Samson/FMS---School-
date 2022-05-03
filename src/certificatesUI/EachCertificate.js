@@ -255,6 +255,50 @@ return (
                 </form>
                 </div>
             </div> 
+
+
+            <div className="view_certificate_container" id="view_cert">
+              <div className="view_certificate">
+                  <div className="left">
+                      <p>Certificate Detail</p>
+                      <img src="" id="viewCert_img"/>
+                  </div>
+
+                  <div className="right">
+                      <p title="Close" className='close_modal' onClick={closeViewModal}>&#215;</p>
+
+                      <p className="label">Title of learning and development interventions/ training programs</p>
+                      <p className="contentText" id="viewCert_title"></p>
+                      <p className="label">inclusive dates of attendance (from-to)</p>
+                      <p className="contentText" id="viewCert_fromTo"></p>
+                      <div style={{display:"flex", marginTop:"7px"}}>
+                          <div style={{width:"35%"}}>
+                              <p className="label">Number of hours</p>
+                              <p className="contentText" style={{marginTop:"0px"}} id="viewCert_hours"></p>
+                          </div>
+                          <div style={{width:"35%",marginLeft:"40px"}}>
+                              <p className="label">type of ld</p>
+                              <p className="contentText" style={{marginTop:"0px"}} id="viewCert_type"></p>
+                          </div>
+                      </div>
+                      <p className="label">conducted / sponsored by</p>
+                      <p className="contentText" id="viewCert_sponsor">bulsu college of information and communications technology</p>
+
+                      <div style={{display:"flex", marginTop:"7px"}}>
+                          <div style={{width:"35%"}}>
+                              <p className="label">coverage</p>
+                              <p className="contentText" style={{marginTop:"0px"}} id="viewCert_coverage"></p>
+                          </div>
+                          <div style={{width:"35%",marginLeft:"40px"}}>
+                              <p className="label">category</p>
+                              <p className="contentText" style={{marginTop:"0px"}} id="viewCert_category"></p>
+                          </div>
+                      </div>
+  
+                  </div>
+              </div>
+        </div>
+
     </Grid>
   );
 }
@@ -263,4 +307,9 @@ return (
 //Close delete certificate modal
 function closeDeleteModal(){
   document.getElementsByClassName("delete_certificate_modal_container")[0].style.display = "none"
+}
+
+//Close delete certificate modal
+function closeViewModal(){
+  document.getElementsByClassName("view_certificate_container")[0].style.display="none"
 }

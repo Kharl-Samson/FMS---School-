@@ -121,6 +121,7 @@ export default function TaskContent(){
     var edit_task_modal_container = document.getElementsByClassName("edit_task_modal_container")[0];
     var delete_task_modal_container = document.getElementsByClassName("delete_task_modal_container")[0];
     var delete_certificate_modal_container = document.getElementsByClassName("delete_certificate_modal_container")[0];
+    var view_certificate_container = document.getElementsByClassName("view_certificate_container")[0];
 
     function CloseAllTask(){
         document.getElementsByClassName("see_all_task_container")[0].style.bottom = "-100%";
@@ -154,6 +155,9 @@ export default function TaskContent(){
         }
         else if (event.target == delete_certificate_modal_container) {
             delete_certificate_modal_container.style.display = "none";
+        }
+        else if (event.target == view_certificate_container) {
+            view_certificate_container.style.display = "none";
         }
     }
 

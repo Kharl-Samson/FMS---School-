@@ -98,6 +98,19 @@ function openDeleteModal(){
     document.getElementById("edit_coverageInp").value = coverage;
     document.getElementById("edit_categoryInp").value = category;
 }  
+
+function viewCertificate(){
+  document.getElementsByClassName("view_certificate_container")[0].style.display="flex";
+
+  document.getElementById("viewCert_img").src = "http://localhost/fms/upload_certificate/"+props.LDimage;
+  document.getElementById("viewCert_title").textContent = props.LDtitleFull;
+  document.getElementById("viewCert_fromTo").textContent = "( "+props.LDfrom+" ) TO ( "+props.LDto1+" )";
+  document.getElementById("viewCert_hours").textContent = props.LDhours+" HOURS";
+  document.getElementById("viewCert_type").textContent =props.LDtype;
+  document.getElementById("viewCert_sponsor").textContent =props.LDsponsor;
+  document.getElementById("viewCert_coverage").textContent = props.LDcoverage;
+  document.getElementById("viewCert_category").textContent = props.LDcategory;
+}
   
     return(
         <div className="for_boxShadow certDesktop" id="certDesktop">
@@ -164,7 +177,7 @@ function openDeleteModal(){
       >
          <MenuItem style={{display:"none"}}>
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={viewCertificate}>
           <ListItemIcon>
             <VisibilityIcon fontSize="small" />
           </ListItemIcon>
@@ -186,3 +199,4 @@ function openDeleteModal(){
     </div>
     )
 }
+
