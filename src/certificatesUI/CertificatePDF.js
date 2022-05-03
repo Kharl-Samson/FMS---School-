@@ -140,7 +140,7 @@ export default function CertificatePDF(){
     ld_ctr++;
     return (
         <div className="th1" style={{fontWeight:"normal"}}>
-        <div><span>{LDtitleFull[ld_ctr]}</span></div>
+        <div><span style={{textTransform:"Uppercase" }}>{LDtitleFull[ld_ctr]}</span></div>
         <div>
             <div style={{width:"100%",display:"flex",border:"none",justifyContent:"center",fontWeight:"normal",flexDirection:"row"}}>
                 <span style={{margin:"7px",wordBreak:"break-all"}}>{LDfrom[ld_ctr]}</span>

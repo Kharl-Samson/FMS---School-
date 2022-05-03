@@ -1156,7 +1156,7 @@ export default function PreviewPDS() {
     if (resultYear <= 5) {
       return (
         <div className="LD_content" key="{key4}">
-          <div className="LD_box" style={{ width: "20%" }}>
+          <div className="LD_box" style={{ width: "20%",textTransform:"Uppercase" }}>
             {ldTitle[ld_ctr]}
           </div>
           <div className="LD_box" style={{ width: "15%" }}>

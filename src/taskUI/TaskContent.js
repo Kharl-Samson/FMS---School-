@@ -120,6 +120,7 @@ export default function TaskContent(){
     var view_alltask_modal_container = document.getElementsByClassName("view_alltask_modal_container")[0];
     var edit_task_modal_container = document.getElementsByClassName("edit_task_modal_container")[0];
     var delete_task_modal_container = document.getElementsByClassName("delete_task_modal_container")[0];
+    var delete_certificate_modal_container = document.getElementsByClassName("delete_certificate_modal_container")[0];
 
     function CloseAllTask(){
         document.getElementsByClassName("see_all_task_container")[0].style.bottom = "-100%";
@@ -150,6 +151,9 @@ export default function TaskContent(){
         }
         else if (event.target == delete_task_modal_container) {
             delete_task_modal_container.style.display = "none";
+        }
+        else if (event.target == delete_certificate_modal_container) {
+            delete_certificate_modal_container.style.display = "none";
         }
     }
 
@@ -871,7 +875,7 @@ export default function TaskContent(){
                 <div className="modal_validation_version2">             
                 <p title="Close" className='close_modal' onClick={closeDeleteModal}>&#215;</p>
                 <div className='top'>
-                    <img src={DeleteIconModal}/>
+                    <img src={DeleteIconModal} style={{marginLeft:"25px"}}/>
                     Delete
                 </div>
                 <p className='title'>Are you sure you want to continue? </p>

@@ -337,16 +337,14 @@ function loadfile(event){
 
 //LandD Category
 const LandDCategory = [
-    { label: "N/A" },
     { label: "TRAINING" },
     { label: "SEMINAR" },
     { label: "WORKSHOP" },
   ];
   //LandD Coverage
   const LandDCoverage = [
-    { label: "N/A" },
     { label: "INTERNATIONAL" },
-    { label: "NATIOANAL" },
+    { label: "NATIONAL" },
     { label: "REGIONAL" },
     { label: "LOCAL" },
   ];

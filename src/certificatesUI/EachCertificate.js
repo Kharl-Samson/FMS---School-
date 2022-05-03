@@ -1,29 +1,16 @@
 import React from "react";
-import menuIconGray from "../images/icons/menuIconGray.svg";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIconModal from '../images/icons/delete_icon_modal.svg';
+import CertificateGrid from "./CertificateGrid";
 import moment from 'moment';
+import SuccessSlideRightModal from '../modalsUi/SuccessSlideRightModal';
 
 export default function EachCertificate() {
   //getting the email of user
   let email_key = localStorage.getItem("email");
 
-  //Menu on Certificate
-  const [anchor_act, setAnchorEl_act] = React.useState(null);
-  const open_act = Boolean(anchor_act);
-  const handleClick_act = (event) => {
-    setAnchorEl_act(event.currentTarget);
-  };
-  const handleClose_act = () => {
-    setAnchorEl_act(null);
-  };
 
   //Hook for getting all certificates
   const [pdsStep5, setpdsStep5] = useState([]);
@@ -53,7 +40,14 @@ export default function EachCertificate() {
     }
   });
 
- //Hook for getting Each Certificates
+  setTimeout(function () {
+    if (document.getElementById("LD_title").value.length === 0) {
+      document.getElementById("certDesktop").style.display = "none"
+      document.getElementsByClassName("no_searchFound")[0].style.display ="flex";
+      }
+    }, 10);
+
+   //Hook for getting Each Certificates
  const [LDimage, setLDimage] = useState([]);
  const loadLDimage = async () => {
    var inputLDimage = document.getElementById("LD_img").value;
@@ -167,96 +161,58 @@ export default function EachCertificate() {
     }, 1000);
   }, []);
 
-    //Certificate content
-    let ld_ctr = -1;
-    const ldContent = LDtitle.map(() => {
-      ld_ctr++;
-      return (
-        <div className="for_boxShadow certDesktop" id="certDesktop">
-          <p style={{display:"none"}}>{LDtitleFull[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDfrom[ld_ctr]}</p>
-          <input type="hidden" value={LDto1[ld_ctr]} className="inputDateKey_hidden"/>
-          <p style={{display:"none"}}>{LDhours[ld_ctr]+" HOURS"}</p>
-          <p style={{display:"none"}}>{LDtype[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDsponsor[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDcoverage[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDcategory[ld_ctr]}</p>
-          <div
-            className="certificate"
-            style={{
-              backgroundImage: `url(http://localhost/fms/upload_certificate/`+LDimage[ld_ctr]+`)`,
-            }}
-           >
-          </div>
 
-        <div className="btn_container">
-          <div>
-            <p>{LDtitle[ld_ctr]}</p>
-            <p>{LDto[ld_ctr]}</p>
-          </div>
-          <div>
-            <img src={menuIconGray} onClick={handleClick_act} />
-          </div>
-        </div>
 
-        <Menu
-          anchorEl={anchor_act}
-          id="account-menu"
-          open={open_act}
-          onClose={handleClose_act}
-          onClick={handleClose_act}
-          PaperProps={{
-            elevation: 0,
-            sx: {
-              overflow: "visible",
-              filter: "drop-shadow(1px 1px 1.5px rgba(0, 0, 0, 0.18))",
-              mt: 1.5,
-              "& .MuiAvatar-root": {
-                width: 32,
-                height: 32,
-                ml: -0.5,
-                mr: 1,
-              },
-              "&:before": {
-                content: '""',
-                display: "block",
-                position: "absolute",
-                top: 0,
-                right: 14,
-                width: 10,
-                height: 10,
-                bgcolor: "background.paper",
-                transform: "translateY(-50%) rotate(45deg)",
-                zIndex: 0,
-              },
-            },
-          }}
-          transformOrigin={{ horizontal: "right", vertical: "top" }}
-          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-        >
-          <MenuItem>
-            <ListItemIcon>
-              <VisibilityIcon fontSize="small" />
-            </ListItemIcon>
-            View
-          </MenuItem>
-          <MenuItem>
-            <ListItemIcon>
-              <EditIcon fontSize="small" />
-            </ListItemIcon>
-            Edit
-          </MenuItem>
-          <MenuItem>
-            <ListItemIcon>
-              <DeleteIcon fontSize="small" />
-            </ListItemIcon>
-            Delete  
-          </MenuItem>
-        </Menu>
-      </div>
+//Certificate content
+let ld_ctr = -1;
+const ldContent = LDtitle.map(() => {
+ld_ctr++;
+return (
+        <CertificateGrid
+          LDkey = {ld_ctr}
+          LDimage = {LDimage[ld_ctr]}
+          LDtitleFull = {LDtitleFull[ld_ctr]}
+          LDtitle = {LDtitle[ld_ctr]}
+          LDfrom = {LDfrom[ld_ctr]}
+          LDto = {LDto[ld_ctr]}
+          LDto1= {LDto1[ld_ctr]}
+          LDhours = {LDhours[ld_ctr]}
+          LDtype = {LDtype[ld_ctr]}
+          LDsponsor = {LDsponsor[ld_ctr]}
+          LDcoverage = {LDcoverage[ld_ctr]}
+          LDcategory = {LDcategory[ld_ctr]}
+        />
       );
-    });
+});
 
+  //Getting the value of all input when submitting the form
+  const submitForm=(e)=>{
+    e.preventDefault();   
+        const sendData = {
+          email : localStorage.getItem("email"),
+          img : document.getElementById("edit_imgInp").value,
+          title : document.getElementById("edit_titleInp").value,
+          from : document.getElementById("edit_fromInp").value,
+          to : document.getElementById("edit_toInp").value,
+          hours : document.getElementById("edit_hoursInp").value,
+          type : document.getElementById("edit_typeInp").value,
+          sponsor : document.getElementById("edit_sponsorInp").value,
+          coverage : document.getElementById("edit_coverageInp").value,
+          category : document.getElementById("edit_categoryInp").value,
+       }    
+       
+       //Sending the data to my backend
+       axios.post('http://localhost/fms/deleteCertificate.php',sendData)
+      .then((result)=>{                   
+      if(result.data.status === "Success"){
+        window.location.reload(false)
+      }
+      else{
+              alert("There was an error in your SQL Connection!");
+      }
+     })//End of axios      
+}
+    
   return (
     <Grid
       container
@@ -265,8 +221,46 @@ export default function EachCertificate() {
       alignItems="center"
       id="gridTable_forSearch"
     >
+
+
       {ldContent}
       {input_keyForCertificates}
+
+
+            {/*Delete Task Modal*/}
+            <div className="modal_container delete_certificate_modal_container">
+                <div className="modal_validation_version2">             
+                <p title="Close" className='close_modal' onClick={closeDeleteModal}>&#215;</p>
+                <div className='top'>
+                    <img src={DeleteIconModal} style={{marginLeft:"25px"}}/>
+                    Delete
+                </div>
+                <p className='title'>Are you sure you want to continue? </p>
+                <p className='subtitle'>This action is permanent and cannot be undone!</p>
+
+                <form style={{width: "100%"}} onSubmit={submitForm}>
+                <div className='bot'>
+                    <input type="hidden" id="edit_imgInp"/>
+                    <input type="hidden" id="edit_titleInp"/>
+                    <input type="hidden" id="edit_fromInp"/>
+                    <input type="hidden" id="edit_toInp"/>
+                    <input type="hidden" id="edit_hoursInp"/>
+                    <input type="hidden" id="edit_typeInp"/>
+                    <input type="hidden" id="edit_sponsorInp"/>
+                    <input type="hidden" id="edit_coverageInp"/>
+                    <input type="hidden" id="edit_categoryInp"/>
+                    <button type="button" onClick={closeDeleteModal}>Cancel</button>
+                    <button type="submit">Delete</button>
+                </div>
+                </form>
+                </div>
+            </div> 
     </Grid>
   );
+}
+
+
+//Close delete certificate modal
+function closeDeleteModal(){
+  document.getElementsByClassName("delete_certificate_modal_container")[0].style.display = "none"
 }

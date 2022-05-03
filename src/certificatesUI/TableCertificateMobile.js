@@ -35,6 +35,13 @@ export default function TableCertificateMobile(){
     }
   });
 
+  setTimeout(function () {
+    if (document.getElementById("LD_title").value.length === 0) {
+      document.getElementById("certTABLEMobile").style.display = "none"
+      document.getElementsByClassName("no_searchFound2")[0].style.display ="flex";
+    }
+    }, 10);
+
   //Hook for getting Each Certificates
   const [LDimage, setLDimage] = useState([]);
   const loadLDimage = async () => {

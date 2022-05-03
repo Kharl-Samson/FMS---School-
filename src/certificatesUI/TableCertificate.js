@@ -35,6 +35,13 @@ export default function TableRowCertificate() {
     }
   });
 
+  setTimeout(function () {
+    if (document.getElementById("LD_title").value.length === 0) {
+      document.getElementById("certTABLEDesktop").style.display = "none"
+      document.getElementsByClassName("no_searchFound1")[0].style.display ="flex";
+    }
+    }, 10);
+
   //Hook for getting Each Certificates
   const [LDimage, setLDimage] = useState([]);
   const loadLDimage = async () => {

@@ -75,6 +75,19 @@ export default function CertificateTopActions() {
     document.getElementById("span_from").textContent = "dd/mm/yyyy";
     document.getElementById("span_to").textContent = "dd/mm/yyyy";
 
+    if (document.getElementById("LD_title").value.length === 0) {
+      document.getElementById("certDesktop").style.display = "none"
+      document.getElementsByClassName("no_searchFound")[0].style.display ="flex";
+    }
+    if (document.getElementById("LD_title").value.length === 0) {
+      document.getElementById("certTABLEDesktop").style.display = "none"
+      document.getElementsByClassName("no_searchFound1")[0].style.display ="flex";
+    }
+    if (document.getElementById("LD_title").value.length === 0) {
+      document.getElementById("certTABLEMobile").style.display = "none"
+      document.getElementsByClassName("no_searchFound2")[0].style.display ="flex";
+    }
+
     setAnchorEl_open(null);
   };
 
@@ -90,6 +103,11 @@ export default function CertificateTopActions() {
     document.getElementById("table_containerID").style.backgroundColor ="#ffff";
     document.getElementById("table_containerID").style.boxShadow ="rgba(0, 0, 0, 0.24) 0px 3px 8px";
     document.getElementById("grid_table").style.display = "block";
+
+    if (document.getElementById("LD_title").value.length === 0) {
+      document.getElementById("certDesktop").style.display = "none"
+      document.getElementsByClassName("no_searchFound")[0].style.display ="flex";
+    }
   }
 
   const mq = window.matchMedia("(max-width: 850px)");
@@ -107,9 +125,17 @@ export default function CertificateTopActions() {
     if (mq.matches) {
       document.getElementById("rowMobile_table").style.display = "block";
       document.getElementById("row_table").style.display = "none";
+      if (document.getElementById("LD_title").value.length === 0) {
+        document.getElementById("certTABLEMobile").style.display = "none"
+        document.getElementsByClassName("no_searchFound2")[0].style.display ="flex";
+      }
     } else {
       document.getElementById("row_table").style.display = "block";
       document.getElementById("rowMobile_table").style.display = "none";
+      if (document.getElementById("LD_title").value.length === 0) {
+        document.getElementById("certTABLEDesktop").style.display = "none"
+        document.getElementsByClassName("no_searchFound1")[0].style.display ="flex";
+      }
     }
   }
 
@@ -142,6 +168,19 @@ export default function CertificateTopActions() {
     document.getElementById("input_to").value = "";
     document.getElementById("span_from").textContent = "dd/mm/yyyy";
     document.getElementById("span_to").textContent = "dd/mm/yyyy";
+
+    if (document.getElementById("LD_title").value.length === 0) {
+      document.getElementById("certDesktop").style.display = "none"
+      document.getElementsByClassName("no_searchFound")[0].style.display ="flex";
+    }
+    if (document.getElementById("LD_title").value.length === 0) {
+      document.getElementById("certTABLEDesktop").style.display = "none"
+      document.getElementsByClassName("no_searchFound1")[0].style.display ="flex";
+    }
+    if (document.getElementById("LD_title").value.length === 0) {
+      document.getElementById("certTABLEMobile").style.display = "none"
+      document.getElementsByClassName("no_searchFound2")[0].style.display ="flex";
+    }
   }
 
   const [state, setState] = useState([

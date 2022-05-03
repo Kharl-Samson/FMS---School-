@@ -4852,7 +4852,7 @@ const LandDCategory = [
 const LandDCoverage = [
   { label: "N/A" },
   { label: "INTERNATIONAL" },
-  { label: "NATIOANAL" },
+  { label: "NATIONAL" },
   { label: "REGIONAL" },
   { label: "LOCAL" },
 ];
