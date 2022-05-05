@@ -5,12 +5,10 @@ import Grid from "@mui/material/Grid";
 import DeleteIconModal from '../images/icons/delete_icon_modal.svg';
 import CertificateGrid from "./CertificateGrid";
 import moment from 'moment';
-import SuccessSlideRightModal from '../modalsUi/SuccessSlideRightModal';
 
 export default function EachCertificate() {
   //getting the email of user
   let email_key = localStorage.getItem("email");
-
 
   //Hook for getting all certificates
   const [pdsStep5, setpdsStep5] = useState([]);
@@ -47,7 +45,7 @@ export default function EachCertificate() {
       }
     }, 10);
 
-   //Hook for getting Each Certificates
+  //Hook for getting Each Certificates
  const [LDimage, setLDimage] = useState([]);
  const loadLDimage = async () => {
    var inputLDimage = document.getElementById("LD_img").value;
@@ -227,7 +225,7 @@ return (
       {input_keyForCertificates}
 
 
-            {/*Delete Task Modal*/}
+            {/*Delete Certificate Modal*/}
             <div className="modal_container delete_certificate_modal_container">
                 <div className="modal_validation_version2">             
                 <p title="Close" className='close_modal' onClick={closeDeleteModal}>&#215;</p>
@@ -256,7 +254,7 @@ return (
                 </div>
             </div> 
 
-
+            {/*View Certificate Modal*/}
             <div className="view_certificate_container" id="view_cert">
               <div className="view_certificate">
                   <div className="left">
@@ -282,7 +280,7 @@ return (
                           </div>
                       </div>
                       <p className="label">conducted / sponsored by</p>
-                      <p className="contentText" id="viewCert_sponsor">bulsu college of information and communications technology</p>
+                      <p className="contentText" id="viewCert_sponsor"></p>
 
                       <div style={{display:"flex", marginTop:"7px"}}>
                           <div style={{width:"35%"}}>
@@ -297,7 +295,7 @@ return (
   
                   </div>
               </div>
-        </div>
+            </div>
 
     </Grid>
   );

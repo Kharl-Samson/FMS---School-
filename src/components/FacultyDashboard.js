@@ -18,17 +18,23 @@ export default function FacultyDashboard(){
         document.getElementById("link_dashboard").style.pointerEvents="none";
     },10);
 
-    setTimeout(function(){
-        if(localStorage.getItem('pds_status') ==="Approved"){
-            document.getElementById("profile_notify_container").style.display="none"
-        }
-        else if(localStorage.getItem('pds_status') ==="Pending" && localStorage.getItem('pds_ctr') ==="null"){
-            document.getElementById("profile_notify_container").style.display="flex";
-        }
-        else if(localStorage.getItem('pds_status') ==="Pending" && localStorage.getItem('pds_ctr') ==="off"){
-            document.getElementById("profile_notify_container").style.display="none";
-        }
-    },1000);
+    const mq = window.matchMedia("(max-width: 850px)");
+    if (mq.matches) {
+    }
+    else{
+        setTimeout(function(){
+            if(localStorage.getItem('pds_status') ==="Approved"){
+                document.getElementById("profile_notify_container").style.display="none"
+            }
+            else if(localStorage.getItem('pds_status') ==="Pending" && localStorage.getItem('pds_ctr') ==="null"){
+                document.getElementById("profile_notify_container").style.display="flex";
+            }
+            else if(localStorage.getItem('pds_status') ==="Pending" && localStorage.getItem('pds_ctr') ==="off"){
+                document.getElementById("profile_notify_container").style.display="none";
+            }
+        },1000);
+    }
+
 
     return (
         <div className="dashboard_container">

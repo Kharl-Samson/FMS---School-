@@ -762,7 +762,6 @@ input[type=number] {
     justify-content: center;
     font-size: .8rem;
     font-weight: 600;
-    background-color: rgb(238, 236, 236);
 }
 .pds_review_container .CSE_content .headers div{
     display: flex;
@@ -816,7 +815,6 @@ input[type=number] {
     justify-content: center;
     font-size: .8rem;
     font-weight: 600;
-    background-color: rgb(238, 236, 236);
 }
 .pds_review_container .WE_content .headers div{
     display: flex;
@@ -875,7 +873,6 @@ input[type=number] {
     justify-content: center;
     font-size: .8rem;
     font-weight: 600;
-    background-color: rgb(238, 236, 236);
 }
 .pds_review_container .LD_content .headers div{
     display: flex;

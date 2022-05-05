@@ -8,6 +8,7 @@ import TableRowCertificate from "../certificatesUI/TableCertificate";
 import TableCertificateMobile from "../certificatesUI/TableCertificateMobile";
 import no_record_icon from "../images/no_record_icon.png";
 import CertificateTopActions from "../certificatesUI/CertificateTopButton";
+import EditCertificate from "../certificatesUI/EditCertificate";
 
 
 export default function Certificates() {
@@ -19,6 +20,8 @@ export default function Certificates() {
         document.getElementById("link_certificate").style.pointerEvents="none";
     },10);
 
+
+
   return (
     <div className="dashboard_container">
         <LeftNavbarFaculty />
@@ -26,7 +29,7 @@ export default function Certificates() {
         <div className="main_content">
             <NavbarSizer />
 
-            <div className="certificates_container">
+            <div className="certificates_container" id="certificates_container">
                 <h1>Certificates</h1>
                 
                 <div className="table_container" id="table_containerID">
@@ -55,6 +58,8 @@ export default function Certificates() {
 
                 </div>
             </div>
+
+            <EditCertificate/>
    
         </div>
 

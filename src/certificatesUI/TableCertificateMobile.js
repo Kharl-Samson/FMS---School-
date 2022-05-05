@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import CertificateRowMobile from "./CertificateRowMobile";
 
 
 export default function TableCertificateMobile(){
@@ -40,7 +41,10 @@ export default function TableCertificateMobile(){
       document.getElementById("certTABLEMobile").style.display = "none"
       document.getElementsByClassName("no_searchFound2")[0].style.display ="flex";
     }
-    }, 10);
+    else{
+      document.getElementsByClassName("no_searchFound2")[0].style.display ="none";
+    }
+  }, 1300);
 
   //Hook for getting Each Certificates
   const [LDimage, setLDimage] = useState([]);
@@ -144,41 +148,20 @@ export default function TableCertificateMobile(){
   const ldContent = LDtitle.map(() => {
     ld_ctr++;
     return (
-        <div className="mobile_container certTABLEMobile" id="certTABLEMobile">
-
-          <p style={{display:"none"}}>{LDtitleFull[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDfrom[ld_ctr]}</p>
-          <input type="hidden" value={LDto1[ld_ctr]} className="inputDateKey_hidden"/>
-          <p style={{display:"none"}}>{LDhours[ld_ctr]+" HOURS"}</p>
-          <p style={{display:"none"}}>{LDtype[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDsponsor[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDcoverage[ld_ctr]}</p>
-          <p style={{display:"none"}}>{LDcategory[ld_ctr]}</p>
-
-
-        <p className="th">Title of learning and development interventions/ training programs</p>
-        <p className="th_content">{LDtitle[ld_ctr]}</p>
-        <hr/>
-
-        <p className="th" style={{marginTop:"10px"}}>Inclusive dates of attendance (mm/dd/yy)</p>
-        <div className="th_date">
-            <div>
-                <p>FROM</p>
-                <p>{LDfrom[ld_ctr]}</p>
-            </div>
-            <div>
-                <p>TO</p>
-                <p>{LDto[ld_ctr]}</p>
-            </div>
-        </div>
-        <hr/>
-
-        <p className="th" style={{marginTop:"10px"}}>Number of hours</p>
-        <p className="th_content">{LDhours[ld_ctr]+" HOURS"}</p>
-        <hr/>
-
-        <button>View</button>
-    </div>
+      <CertificateRowMobile
+        LDkey = {ld_ctr}
+        LDimage = {LDimage[ld_ctr]}
+        LDtitleFull = {LDtitleFull[ld_ctr]}
+        LDtitle = {LDtitle[ld_ctr]}
+        LDfrom = {LDfrom[ld_ctr]}
+        LDto = {LDto[ld_ctr]}
+        LDto1= {LDto1[ld_ctr]}
+        LDhours = {LDhours[ld_ctr]}
+        LDtype = {LDtype[ld_ctr]}
+        LDsponsor = {LDsponsor[ld_ctr]}
+        LDcoverage = {LDcoverage[ld_ctr]}
+        LDcategory = {LDcategory[ld_ctr]}
+      />
     );
   });
 
@@ -186,6 +169,55 @@ export default function TableCertificateMobile(){
         <div id="rowTableMobile_forSearch">
             {ldContent}
             {input_keyForCertificates}
+
+            {/*View Certificate Modal*/}
+            <div className="view_certificate_container" id="view_certificate_container2">
+              <div className="view_certificate">
+                  <div className="left">
+                      <p>Certificate Detail</p>
+                      <img src="" id="viewCert_img2"/>
+                  </div>
+
+                  <div className="right">
+                      <p title="Close" className='close_modal' onClick={closeViewModal2}>&#215;</p>
+
+                      <p className="label">Title of learning and development interventions/ training programs</p>
+                      <p className="contentText" id="viewCert_title2"></p>
+                      <p className="label">inclusive dates of attendance (from-to)</p>
+                      <p className="contentText" id="viewCert_fromTo2"></p>
+                      <div style={{display:"flex", marginTop:"7px"}}>
+                          <div style={{width:"35%"}}>
+                              <p className="label">Number of hours</p>
+                              <p className="contentText" style={{marginTop:"0px"}} id="viewCert_hours2"></p>
+                          </div>
+                          <div style={{width:"35%",marginLeft:"40px"}}>
+                              <p className="label">type of ld</p>
+                              <p className="contentText" style={{marginTop:"0px"}} id="viewCert_type2"></p>
+                          </div>
+                      </div>
+                      <p className="label">conducted / sponsored by</p>
+                      <p className="contentText" id="viewCert_sponsor2"></p>
+
+                      <div style={{display:"flex", marginTop:"7px"}}>
+                          <div style={{width:"35%"}}>
+                              <p className="label">coverage</p>
+                              <p className="contentText" style={{marginTop:"0px"}} id="viewCert_coverage2"></p>
+                          </div>
+                          <div style={{width:"35%",marginLeft:"40px"}}>
+                              <p className="label">category</p>
+                              <p className="contentText" style={{marginTop:"0px"}} id="viewCert_category2"></p>
+                          </div>
+                      </div>
+  
+                  </div>
+              </div>
+            </div>
+
         </div>
     )
+}
+
+//Close delete certificate modal
+function closeViewModal2(){
+  document.getElementById("view_certificate_container2").style.display="none"
 }

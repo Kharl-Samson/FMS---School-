@@ -349,6 +349,27 @@ export default function PersonalDataSheet() {
                   />
                   <div className="span_cont">
                     <span className="skeleton_done">
+                      Email Address
+                    </span>
+                    <span
+                      style={{ textTransform: "none", fontSize: ".9rem" }}
+                      className="skeleton_done"
+                    >
+                      {res.email}
+                    </span>
+                  </div>
+                  <Skeleton
+                    animation="wave"
+                    className="skeleton_show"
+                    style={{ marginLeft: "20px" }}
+                  />
+                  <Skeleton
+                    animation="wave"
+                    className="skeleton_show"
+                    style={{ marginLeft: "20px" }}
+                  />
+                  <div className="span_cont">
+                    <span className="skeleton_done">
                       Alternate Email Address
                     </span>
                     <span

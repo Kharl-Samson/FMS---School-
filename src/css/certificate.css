@@ -1009,6 +1009,11 @@
 }
 
 
+/*EDIT CERTIFICATE*/
+#edit_Certificate_Container{
+    display: none;
+}
+
 @media screen and (max-width: 875px) {
     .view_certificate_container .view_certificate .left{
         height:auto;

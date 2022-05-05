@@ -1155,6 +1155,23 @@ button:hover{
 }
 
 
+.no_certificateFound{
+    margin: 0% auto;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.no_certificateFound img{
+    height: 120px;
+    margin-top: 1rem;
+    margin-bottom: 5%;
+}
+.no_certificateFound p{
+    font-size: 1.3rem;
+    color: rgb(103, 102, 102);
+}
+
 .empty_data{
     display: flex;
     align-items: center;

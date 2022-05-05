@@ -25,9 +25,10 @@ export default function UploadCertificate(){
     today = today.split("/");
     var maxDateInput = today[2] + "-" + today[0] + "-" + today[1];
   
-    //getting the email of user
-    let email_key = localStorage.getItem("email");
-      //Hook for getting all certificates
+//getting the email of user
+let email_key = localStorage.getItem("email");
+
+ //Hook for getting all certificates
   const [pdsStep5, setpdsStep5] = useState([]);
   const loadpdsStep5 = async () => {
     const result = await axios.get("http://localhost/fms/pdsStep5.php");
@@ -137,7 +138,9 @@ const submitForm=(e)=>{
                             <div className="img_container">
                                 <img src={upload_imgIcon} className="upload_imgIcon certImg_toHide"/>
                                 <p className="selectText certImg_toHide">Select your certificate file</p>
+                                <p className="selectText1 certImg_toHide" style={{textAlign:"center",fontSize:".8rem",color:"red"}}>*No special characters and whitespaces for filename</p>
                                 <p className="selectText1 certImg_toHide">Only accepts JPG or PNG file</p>
+                                <p className="selectText1 certImg_toHide" style={{textAlign:"center",fontSize:".8rem"}}>Valid example : 1st_Seminar.png</p>
                                 <button type="button" onClick={selectFile} className="certImg_toHide" style={{padding:"7px 20px"}}>SELECT FILE</button>
 
                                 <img src="" className="uploaded_certIMG" id="uploaded_certIMG"/>

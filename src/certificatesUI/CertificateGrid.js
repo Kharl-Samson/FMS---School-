@@ -99,6 +99,7 @@ function openDeleteModal(){
     document.getElementById("edit_categoryInp").value = category;
 }  
 
+//View Certificate
 function viewCertificate(){
   document.getElementsByClassName("view_certificate_container")[0].style.display="flex";
 
@@ -111,7 +112,27 @@ function viewCertificate(){
   document.getElementById("viewCert_coverage").textContent = props.LDcoverage;
   document.getElementById("viewCert_category").textContent = props.LDcategory;
 }
-  
+
+
+//Edit Certificate
+function goToEditCert(){
+    document.getElementById("edit_Certificate_Container").style.display="block"
+    document.getElementById("certificates_container").style.display="none"
+
+    document.getElementById("edit_certIMG").src = "http://localhost/fms/upload_certificate/"+props.LDimage;
+    document.getElementById("imgInput_holder").value = props.LDimage;
+    document.getElementById("edit_titleLD").value = props.LDtitleFull;
+    document.getElementById("edit_dateFromLD").value = props.LDfrom;
+    document.getElementById("edit_dateToLD").value = props.LDto1;
+    document.getElementById("edit_hoursLD").value = props.LDhours;
+    document.getElementById("edit_typeLD").value = props.LDtype;
+    document.getElementById("edit_sponsoredLD").value = props.LDsponsor;
+    document.getElementById("edit_coverageLD").value = props.LDcoverage;
+    document.getElementById("edit_categoryLD").value = props.LDcategory;
+
+    document.getElementById("editCetificate_key").value = props.LDkey;
+}  
+
     return(
         <div className="for_boxShadow certDesktop" id="certDesktop">
         <p style={{display:"none"}}>{props.LDtitleFull}</p>
@@ -183,7 +204,7 @@ function viewCertificate(){
           </ListItemIcon>
           View
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={goToEditCert}>
           <ListItemIcon>
             <EditIcon fontSize="small" />
           </ListItemIcon>

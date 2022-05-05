@@ -634,9 +634,9 @@ export default function PreviewPDS() {
         </div>
         <div className="box_name" style={{ width: "17.8%" }}>
           <div style={{ borderRight: "1.5px solid black" }}>
-            {elemfrom[elem_ctr]}
+            <span style={{margin:"0 15px",wordBreak:"break-all"}}>{elemfrom[elem_ctr]}</span>
           </div>
-          <div>{elemTO[elem_ctr]}</div>
+          <div><span style={{margin:"0 15px",wordBreak:"break-all"}}>{elemTO[elem_ctr]}</span></div>
         </div>
         <div className="box_name" style={{ width: "11.8%" }}>
           {" "}
@@ -670,9 +670,9 @@ export default function PreviewPDS() {
         </div>
         <div className="box_name" style={{ width: "17.8%" }}>
           <div style={{ borderRight: "1.5px solid black" }}>
-            {SecondFrom[sec_ctr]}
+            <span style={{margin:"0 15px",wordBreak:"break-all"}}>{SecondFrom[sec_ctr]}</span>
           </div>
-          <div>{SecondTo[sec_ctr]}</div>
+          <div><span style={{margin:"0 15px",wordBreak:"break-all"}}>{SecondTo[sec_ctr]}</span></div>
         </div>
         <div className="box_name" style={{ width: "11.8%" }}>
           {" "}
@@ -706,10 +706,14 @@ export default function PreviewPDS() {
         </div>
         <div className="box_name" style={{ width: "17.8%" }}>
           <div style={{ borderRight: "1.5px solid black" }}>
-            {VocationalFrom[voc_ctr] == "" ? "N/A" : VocationalFrom[voc_ctr]}
+            <span style={{margin:"0 15px",wordBreak:"break-all"}}>
+              {VocationalFrom[voc_ctr] == "" ? "N/A" : VocationalFrom[voc_ctr]}
+            </span>
           </div>
           <div>
+            <span style={{margin:"0 15px",wordBreak:"break-all"}}>
             {VocationalTo[voc_ctr] == "" ? "N/A" : VocationalTo[voc_ctr]}
+            </span>
           </div>
         </div>
         <div className="box_name" style={{ width: "11.8%" }}>
@@ -744,7 +748,9 @@ export default function PreviewPDS() {
         </div>
         <div className="box_name" style={{ width: "17.8%" }}>
           <div style={{ borderRight: "1.5px solid black" }}>
+            <span style={{margin:"0 15px",wordBreak:"break-all"}}>
             {CollegeFrom[col_ctr] == "" ? "N/A" : CollegeFrom[col_ctr]}
+            </span>
           </div>
           <div>
             {CollegeTo[col_ctr] == "" ? "UP TO PRESENT" : CollegeTo[col_ctr]}
@@ -782,7 +788,9 @@ export default function PreviewPDS() {
         </div>
         <div className="box_name" style={{ width: "17.8%" }}>
           <div style={{ borderRight: "1.5px solid black" }}>
+            <span style={{margin:"0 15px",wordBreak:"break-all"}}>
             {GraduateFrom[grad_ctr] == "" ? "N/A" : GraduateFrom[grad_ctr]}
+            </span>
           </div>
           <div>{GraduateTo[grad_ctr] == "" ? "N/A" : GraduateTo[grad_ctr]}</div>
         </div>
@@ -1273,26 +1281,26 @@ export default function PreviewPDS() {
             <div className="education_content">
               <div
                 className="educ_level"
-                style={{ width: "13%", backgroundColor: "rgb(238, 236, 236)" }}
+                style={{ width: "13%"}}
               >
                 LEVEL
               </div>
               <div
                 className="educ_name"
-                style={{ width: "13%", backgroundColor: "rgb(238, 236, 236)" }}
+                style={{ width: "13%" }}
               >
                 <span>NAME OF SCHOOL</span> <span>(Write in full)</span>
               </div>
               <div
                 className="educ_name"
-                style={{ width: "13%", backgroundColor: "rgb(238, 236, 236)" }}
+                style={{ width: "13%" }}
               >
                 <span>BASIC EDUCATION / DEGREE / COURSE</span>{" "}
                 <span>(Write in full)</span>
               </div>
               <div
                 className="educ_level"
-                style={{ width: "15%", backgroundColor: "rgb(238, 236, 236)" }}
+                style={{ width: "15%" }}
               >
                 <span>PERIOD OF ATTENDANCE</span>
                 <div className="educ_period">
@@ -1302,14 +1310,14 @@ export default function PreviewPDS() {
               </div>
               <div
                 className="educ_name"
-                style={{ width: "10%", backgroundColor: "rgb(238, 236, 236)" }}
+                style={{ width: "10%" }}
               >
                 <span>HIGHEST LEVEL UNIT EARNED</span>{" "}
                 <span>(If not graduated)</span>
               </div>
               <div
                 className="educ_year"
-                style={{ width: "8%", backgroundColor: "rgb(238, 236, 236)" }}
+                style={{ width: "8%" }}
               >
                 YEAR GRADUATED
               </div>
@@ -1317,8 +1325,7 @@ export default function PreviewPDS() {
               <div
                 className="educ_name1"
                 style={{
-                  width: "10.1%",
-                  backgroundColor: "rgb(238, 236, 236)",
+                  width: "10.1%"
                 }}
               >
                 SCHOLARSHIP / ACADEMIC HONORS RECEIVED
@@ -1328,7 +1335,7 @@ export default function PreviewPDS() {
             <div className="education_content">
               <div
                 className="educ_level"
-                style={{ width: "13%", backgroundColor: "rgb(238, 236, 236)" }}
+                style={{ width: "13%" }}
               >
                 ELEMENTARY
               </div>
@@ -1338,7 +1345,7 @@ export default function PreviewPDS() {
             <div className="education_content">
               <div
                 className="educ_level"
-                style={{ width: "13%", backgroundColor: "rgb(238, 236, 236)" }}
+                style={{ width: "13%" }}
               >
                 SECONDARY
               </div>
@@ -1348,7 +1355,7 @@ export default function PreviewPDS() {
             <div className="education_content">
               <div
                 className="educ_level"
-                style={{ width: "13%", backgroundColor: "rgb(238, 236, 236)" }}
+                style={{ width: "13%" }}
               >
                 VOCATIONAL / TRADE / COURSE
               </div>
@@ -1358,7 +1365,7 @@ export default function PreviewPDS() {
             <div className="education_content">
               <div
                 className="educ_level"
-                style={{ width: "13%", backgroundColor: "rgb(238, 236, 236)" }}
+                style={{ width: "13%" }}
               >
                 College
               </div>
@@ -1368,7 +1375,7 @@ export default function PreviewPDS() {
             <div className="education_content">
               <div
                 className="educ_level"
-                style={{ width: "13%", backgroundColor: "rgb(238, 236, 236)" }}
+                style={{ width: "13%" }}
               >
                 Graduate Studies
               </div>
