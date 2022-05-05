@@ -14,6 +14,7 @@
     margin-top: 1rem;
     min-height: 75vh;
     height: auto;
+    margin-bottom: 5rem;
     padding-top: 3vh;
     background-color: #ffff;
     border-radius: 10px;
@@ -94,52 +95,159 @@
 .accountSettings_container .table_container .right .email{
     font-size: 1rem;
 }
-.accountSettings_container .table_container .right .info_details{
+.accountSettings_container .table_container .info_details{
     margin-top: 20px;
     height: auto;
-    width: 100%;
+    width: 460px;
     background-color: #ffff;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(30, 6, 6, 0.24) 0px 3px 8px;
     border-radius: 10px;
+    padding: 0 20px;
 }
-.accountSettings_container .table_container .right .info_details .top{
+.accountSettings_container .table_container .info_details1{
+    margin-top: 20px;
+    height: auto;
+    background-color: #ffff;
+    box-shadow: rgba(30, 6, 6, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    width: 90%;
+    padding:0% 5%;
+}
+.accountSettings_container .table_container .info_details form{
+    height: 100%;
+    width: 100%;
+}
+.accountSettings_container .table_container .info_details .top{
     padding: 10px 0;
     border-bottom: 1px solid rgb(160, 160, 160);
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.accountSettings_container .table_container .right .info_details .top span{
+.accountSettings_container .table_container .info_details .top span{
     font-size: 1.1rem;
     font-weight: 600;
-    margin-left: 20px;
 }
-.accountSettings_container .table_container .right .info_details .top img{
+.accountSettings_container .table_container .info_details .top img{
     height: 20px;
     width: auto;
-    margin-right: 20px;
 }
-.accountSettings_container .table_container .right .info_details .top img:hover{
-    cursor: pointer;
-    opacity: 70%;
-}
-.accountSettings_container .table_container .right .info_details .content{
+.accountSettings_container .table_container .info_details .content{
     margin-top: 20px;
     height: auto;
     width: 100%;
-    display: flex;
+    padding-bottom: 20px;
 }
-.accountSettings_container .table_container .right .info_details .content .left{
-    width: 100;
+.accountSettings_container .table_container .info_details .content .left{
+    width: 100%;
     height: auto;
     display: flex;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
 }
-.accountSettings_container .table_container .right .info_details .content .left .label{
+.accountSettings_container .table_container .info_details .content .left .label{
     font-size: 1rem;
-    margin: 10px 0;
-    margin-left: 20px;
-    font-weight: bold;
+}
+.accountSettings_container .table_container .info_details .content .left input[type="email"]{
+    width: 70%;
+    font-size: 1rem;
+    padding: 10px 0;
+    text-indent: 15px;
+    background-color: #f3f2f2;
+    border-radius: 5px;
+    border: 1px solid #D8D8D8;
+    outline-color: #FFAA28;
+}
+.accountSettings_container .table_container .info_details .content #save_btn{
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    padding: 9px;
+    border: none;
+    background-color: #FFAA28;
+    color: #ffff;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+.accountSettings_container .table_container .info_details .content #save_btn:hover{
+    opacity: 90%;
+}
+
+
+.input_container{
+    height: 6vh;
+    width: 100%;
+    background-color: #f3f2f2;
+    border: 1px solid #D8D8D8;
+    border-radius: 8px;
+    display: flex;
+}
+.input_container:hover{
+    border: 1px solid #FFAA28;
+}
+.input_container > .icon_container{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input_container > .icon_container > img{
+    height: 40%;
+    width: auto;
+}
+.input_container  .password{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    width: 80%;
+}
+.input_container2 .toggle_password{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input_container2 .toggle_password img{
+    height: 35%;
+    width: auto;
+    visibility: hidden;
+}
+.input_container2 .toggle_password .close_eye{
+   display: none;
+}
+.input_container2 .toggle_password img:hover{
+    cursor: pointer;
+    opacity: 40%;
+}
+
+.lock_profile{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.lock_profile input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+}
+.lock_profile span{
+    margin-left: 5px;
+    font-size: 1rem;
+}
+#lock_profile_note{
+    font-size: .8rem;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    line-height: 1.1;
+    color: #818181;
 }
 
 
@@ -160,5 +268,57 @@
     .accountSettings_container .table_container .left #profile_photo{
         height: 390px;
         width: 280px;
+    }
+    .accountSettings_container .table_container .right{
+        width: 90%;
+        height: auto;
+        padding-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .accountSettings_container .table_container .right .info_details{
+        width: 90%;
+        padding: 0 5%;
+    }
+    .accountSettings_container .table_container .info_details1{
+        width: 100%;
+    }
+    .accountSettings_container .table_container .right .info_details form{
+        height: 100%;
+        width: 100%;
+    }
+    .accountSettings_container .table_container .right .info_details .content .left{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    .accountSettings_container .table_container .right .info_details .content .left input[type="email"]{
+        width: 100%;
+    }
+    .input_container > .icon_container{
+        width: 15%;;
+    }
+    .input_container > .icon_container > img{
+        height: 40%;
+        width: auto;
+    }
+    .input_container  .password{
+        width: 70%;
+    }
+    .input_container2 .toggle_password{
+        width: 15%;
+    }
+
+    .accountSettings_container .table_container .right .full_name{
+      display: none;
+    }
+    .accountSettings_container .table_container .right .email{
+       display: none;
     }
 }

@@ -10,6 +10,13 @@ import edit_profileIcon from "../images/icons/edit_profileIcon.svg";
 import axios from "axios";
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import Invalid_icon from "../images/icons/invalid.svg";
+import Valid_icon from "../images/icons/valid.svg";
+import validator from 'validator';
+import lock_icon from "../images/icons/lock_icon.svg";
+import Password_icon from "../images/icons/password.svg";
+import Open_eye_icon from "../images/icons/open_eye.svg";
+import Close_eye_icon from "../images/icons/close_eye.svg"; 
 
 export default function AccountSettings(){
     document.title = "CICT | Faculty Management System";
@@ -90,6 +97,46 @@ const uploadPhotoForm=(e)=>{
     axios.post(url, data, {}).then((res) => {});
 }
 
+const editAccountForm=(e)=>{
+    e.preventDefault();
+        
+    //Sending the data request to call it on backend
+    const sendData = {
+        email_key : localStorage.getItem("email"),
+        edit_email: document.getElementById("edit_email").value,
+    }
+    
+    if (validator.isEmail(document.getElementById("edit_email").value)) {
+        axios.post('http://localhost/fms/updateAccount.php',sendData).then((result)=>{
+            if(result.data.status == "Invalid"){//If the response is invalid
+                alert("There was an error in your SQL Connection!")
+            }
+            else if(result.data.status == "Email taken"){ //If the response is Email taken
+                document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
+                document.getElementsByClassName("text_verifyer")[0].innerHTML = "E-mail has already been taken.";
+                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
+                document.getElementsByClassName("edit_email")[0].style.border = "1px solid red";   
+            }
+            else if(result.data.status == "Success"){ //If the response is valid
+                //pag tama lalabas modal
+                window.localStorage.setItem('email', document.getElementById("edit_email").value);
+                document.getElementsByClassName("profile_photo_side_modal")[0].style.display = "flex"; 
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.right = "2%"; 
+                },400);
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.right = "-100%"; 
+                },5000);
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.display = "none"; 
+                },6000);
+                //location.reload();
+            }
+        })//End of axios
+    }
+}
+
 function closingSuccessModalRight(){
     document.getElementsByClassName("profile_photo_side_modal")[0].style.right = "-100%"; 
     setTimeout(function(){
@@ -97,6 +144,223 @@ function closingSuccessModalRight(){
     },2000);
 }
 
+//Toggle Password
+function toggle_password1(){
+    document.getElementsByClassName("password_toggle_icon open_eye")[0].style.visibility="visible";
+}
+//Toggle Password
+function toggle_password2(){
+    document.getElementsByClassName("password_toggle_icon open_eye")[1].style.visibility="visible";
+}
+//Toggle Password
+function toggle_password3(){
+    document.getElementsByClassName("password_toggle_icon open_eye")[2].style.visibility="visible";
+}
+//Para maview yung password sa input form
+function show_pass1(){
+    document.getElementById('current_password').type = 'text';
+    document.getElementsByClassName("open_eye")[0].style.display = "none"
+    document.getElementsByClassName("close_eye")[0].style.display = "flex"
+    document.getElementsByClassName("close_eye")[0].style.visibility = "visible"
+}
+//Para mahide yung password sa input form
+function hide_pass1(){
+    document.getElementById('current_password').type = 'password';
+    document.getElementsByClassName("open_eye")[0].style.display = "flex"
+    document.getElementsByClassName("open_eye")[0].style.visibility = "visible"
+    document.getElementsByClassName("close_eye")[0].style.display = "none"
+}
+function show_pass2(){
+    document.getElementById('new_password').type = 'text';
+    document.getElementsByClassName("open_eye")[1].style.display = "none"
+    document.getElementsByClassName("close_eye")[1].style.display = "flex"
+    document.getElementsByClassName("close_eye")[1].style.visibility = "visible"
+}
+//Para mahide yung password sa input form
+function hide_pass2(){
+    document.getElementById('new_password').type = 'password';
+    document.getElementsByClassName("open_eye")[1].style.display = "flex"
+    document.getElementsByClassName("open_eye")[1].style.visibility = "visible"
+    document.getElementsByClassName("close_eye")[1].style.display = "none"
+}
+function show_pass3(){
+    document.getElementById('retype_password').type = 'text';
+    document.getElementsByClassName("open_eye")[2].style.display = "none"
+    document.getElementsByClassName("close_eye")[2].style.display = "flex"
+    document.getElementsByClassName("close_eye")[2].style.visibility = "visible"
+}
+//Para mahide yung password sa input form
+function hide_pass3(){
+    document.getElementById('retype_password').type = 'password';
+    document.getElementsByClassName("open_eye")[2].style.display = "flex"
+    document.getElementsByClassName("open_eye")[2].style.visibility = "visible"
+    document.getElementsByClassName("close_eye")[2].style.display = "none"
+}
+//Pang validate ng password
+function password_validation(){
+    if (validator.isStrongPassword(document.getElementById('new_password').value, { //Pag valid password
+    minLength: 8, minLowercase: 1,
+    minUppercase: 1, minNumbers: 1, minSymbols: 1
+    })) {          
+        document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
+        document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "rgb(76, 180, 76)"
+        document.getElementsByClassName("img_verifyer")[1].src = Valid_icon;
+        document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your password is valid.";
+    } else { //Pag maiksi or madali yung password
+        document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
+        document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your password is not strong.";
+        document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
+        document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;     
+    }     
+    if(document.getElementById("new_password").value === "" ){ //Pag wala value yung password sa input form
+        document.getElementsByClassName("form_handler_container")[1].style.display = "none";
+        document.getElementsByClassName("text_verifyer")[1].innerHTML = "";
+        document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
+        document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;
+    }
+}
+function password_validation1(){ 
+    if(document.getElementById('new_password').value != document.getElementById('retype_password').value){
+        document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
+        document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your password doesn't match.";
+        document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
+        document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;     
+    }
+    else{
+        document.getElementsByClassName("form_handler_container")[1].style.display = "none";
+        document.getElementsByClassName("text_verifyer")[1].innerHTML = "";
+        document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
+        document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;
+    }
+}
+const changePasswordForm=(e)=>{
+    e.preventDefault();
+
+    //Sending the data request to call it on backend
+    const sendData = {
+        email_key : localStorage.getItem("email"),
+        current_password: document.getElementById('current_password').value,
+        new_password: document.getElementById('new_password').value,
+    }
+    if(document.getElementById('new_password').value != document.getElementById('retype_password').value){
+        document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
+        document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your password doesn't match.";
+        document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
+        document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;     
+    }
+    else if (validator.isStrongPassword(document.getElementById('new_password').value, { // If password is valid
+        minLength: 8, minLowercase: 1,
+        minUppercase: 1, minNumbers: 1, minSymbols: 1
+    })) {  
+
+        //Sending the data to my backend
+        axios.post('http://localhost/fms/updatePassword.php',sendData)
+        .then((result)=>{
+            //console.log(result.data.status)
+            if(result.data.status == "Invalid"){//If the response is invalid
+                alert("There was an error in your SQL Connection!")
+            }
+            else if(result.data.status == "ErrorCurrent"){
+                document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
+                document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your current password is invalid.";
+                document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;     
+            }
+            else if(result.data.status == "Valid"){ //If the response is valid
+                //pag tama lalabas modal
+                document.getElementsByClassName("form_handler_container")[1].style.display = "none";
+                document.getElementsByClassName("text_verifyer")[1].innerHTML = "";
+                document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;
+
+                document.getElementById('current_password').value = "";
+                document.getElementById('retype_password').value = "";
+                document.getElementById('new_password').value = "";
+                document.getElementsByClassName("profile_photo_side_modal")[0].style.display = "flex"; 
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.right = "2%"; 
+                },400);
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.right = "-100%"; 
+                },5000);
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.display = "none"; 
+                },6000);
+            }
+
+            })//End of axios
+        }
+        else { //If the password is not strong
+            document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
+            document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your password is not strong.";
+            document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
+            document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;     
+        }
+}
+const lockedAccountForm=(e)=>{
+    e.preventDefault();
+        
+    //Sending the data request to call it on backend
+    if (document.getElementById("locked_checkbox").checked) {
+        const sendData = {
+            email_key : localStorage.getItem("email"),
+            lock_status : document.getElementById("locked_checkbox").value,
+        }
+        axios.post('http://localhost/fms/updateProfileSecurity.php',sendData).then((result)=>{
+            if(result.data.status == "Invalid"){//If the response is invalid
+                alert("There was an error in your SQL Connection!")
+            }
+            else if(result.data.status == "Valid"){ //If the response is valid
+                //pag tama lalabas modal
+                window.localStorage.setItem('profile_locked', "Locked");
+                document.getElementsByClassName("profile_photo_side_modal")[0].style.display = "flex"; 
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.right = "2%"; 
+                },400);
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.right = "-100%"; 
+                },5000);
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.display = "none"; 
+                },6000);
+            }
+        })//End of axios
+    } else {
+        const sendData = {
+            email_key : localStorage.getItem("email"),
+            lock_status : "",
+        }
+        axios.post('http://localhost/fms/updateProfileSecurity.php',sendData).then((result)=>{
+            if(result.data.status == "Invalid"){//If the response is invalid
+                alert("There was an error in your SQL Connection!")
+            }
+            else if(result.data.status == "Valid"){ //If the response is valid
+                //pag tama lalabas modal
+                window.localStorage.setItem('profile_locked', "");
+                document.getElementsByClassName("profile_photo_side_modal")[0].style.display = "flex"; 
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.right = "2%"; 
+                },400);
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.right = "-100%"; 
+                },5000);
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.display = "none"; 
+                },6000);
+            }
+        })//End of axios
+    }
+}
+
+setTimeout(function(){
+    if(localStorage.getItem("profile_locked") == ""){
+        document.getElementById("locked_checkbox").checked = false;
+    }
+    else{
+        document.getElementById("locked_checkbox").checked = true;
+    }
+    
+},500);
     return(
         <div className="dashboard_container">
 
@@ -139,31 +403,138 @@ function closingSuccessModalRight(){
                             <button type="submit">Save</button>
                         </div>
                         </form>
+
+                        <div className="info_details info_details1">
+                        <form onSubmit={lockedAccountForm}>
+                            <div className="top">
+                                <span>Privacy Setting</span>
+                                <img src={lock_icon}/>
+                            </div>
+                            <div className="content">
+                                 <div className="lock_profile">
+                                    <input type="checkbox" value="Locked" id="locked_checkbox"/>
+                                    <span>Lock my profile</span>
+                                 </div>
+                                 <p id="lock_profile_note">This means the admin can't download your personal information</p>
+                                <button id="save_btn" type="submit">Save Changes</button>
+                            </div>
+                        </form>
+                        </div>
                     </div>
                     <div className="right">
                         <p className="full_name">Kharl Samson</p>
                         <p className="gmail">khrlsmsn1110@gmail.com</p>
 
                         <div className="info_details">
+                        <form onSubmit={editAccountForm}>
                             <div className="top">
-                                <span>Profile details</span>
-                                <LightTooltip title="Edit Profile">
-                                    <img src={edit_profileIcon}/>
-                                </LightTooltip>
+                                <span>Edit Email</span>
+                                <img src={edit_profileIcon}/>
                             </div>
                             <div className="content">
                                 <div className="left">
-                                    <div>
-                                        <p className="label">Full Name</p>
-                                        <p>Khar</p>
-                                    </div>
-                                    
-                                    <p className="label">Department</p>
-                                    <p className="label">Address</p>
-                                    <p className="label">Employment Status</p>
-                                </div>
-                            </div>
+                                    <p className="label">Email : </p>
+                                    <input type="email" defaultValue={localStorage.getItem("email")} placeholder="Enter your email here..." id="edit_email" onChange={email_validation} required/>
+                                </div>      
+                                <div className="form_handler_container" style={{padding:"8px 0"}}>
+                                     <img src={Invalid_icon} className="img_verifyer"/>
+                                     <p className="text_verifyer" style={{fontSize:".9rem"}}></p>
+                                </div>    
+                                <button id="save_btn" type="submit">Save Changes</button>
+                             </div>
+                        </form>
                         </div>
+                        
+
+                        <div className="info_details" style={{marginTop:"40px",marginBottom:"40px"}}>
+                        <form onSubmit={changePasswordForm}>
+                            <div className="top">
+                                <span>Change Password</span>
+                                <img src={edit_profileIcon}/>
+                            </div>
+                            <div className="content">
+                                <div className="left" style={{flexDirection:"column",alignItems:"flex-start"}}>
+                                    <p className="label">Current Password : </p>
+                                    <div className="input_container input_container2 password_container">
+                                        <div className="icon_container">
+                                            <LightTooltip title="Password">
+                                            <img src={Password_icon}/>
+                                            </LightTooltip>
+                                        </div>
+                                        <input type="password" placeholder="Your password here..." name="password" className="password" id="current_password" onKeyUp={toggle_password1} required/>
+                                        <div className="toggle_password">                           
+                                            <img src={Open_eye_icon} 
+                                                className="password_toggle_icon open_eye"
+                                                title="Show Password"
+                                                onClick={show_pass1}
+                                            />         
+                                            <img src={Close_eye_icon}
+                                                className="password_toggle_icon close_eye"
+                                                title="Hide Password"
+                                                onClick={hide_pass1}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>   
+
+                                <div className="left" style={{flexDirection:"column",alignItems:"flex-start"}}>
+                                    <p className="label">New Password : </p>
+                                    <div className="input_container input_container2 password_container">
+                                        <div className="icon_container">
+                                            <LightTooltip title="Password">
+                                            <img src={Password_icon}/>
+                                            </LightTooltip>
+                                        </div>
+                                        <input type="password" placeholder="Your new password here..." className="password"  id="new_password"  onKeyUp={() => { toggle_password2(); password_validation();}} required/>
+                                        <div className="toggle_password">                           
+                                            <img src={Open_eye_icon} 
+                                                className="password_toggle_icon open_eye"
+                                                title="Show Password"
+                                                onClick={show_pass2}
+                                            />         
+                                            <img src={Close_eye_icon}
+                                                className="password_toggle_icon close_eye"
+                                                title="Hide Password"
+                                                onClick={hide_pass2}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>   
+                                   
+                                <div className="left" style={{flexDirection:"column",alignItems:"flex-start"}}>
+                                    <p className="label">Confirm New Password : </p>
+                                    <div className="input_container input_container2 password_container">
+                                        <div className="icon_container">
+                                            <LightTooltip title="Password">
+                                            <img src={Password_icon}/>
+                                            </LightTooltip>
+                                        </div>
+                                        <input type="password" placeholder="Retype your password here..." name="password" className="password" id="retype_password" onKeyUp={() => { toggle_password3(); password_validation1();}} required/>
+                                        <div className="toggle_password">                           
+                                            <img src={Open_eye_icon} 
+                                                className="password_toggle_icon open_eye"
+                                                title="Show Password"
+                                                onClick={show_pass3}
+                                            />         
+                                            <img src={Close_eye_icon}
+                                                className="password_toggle_icon close_eye"
+                                                title="Hide Password"
+                                                onClick={hide_pass3}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>   
+
+                                <div className="form_handler_container" style={{padding:"8px 0"}}>
+                                     <img src={Invalid_icon} className="img_verifyer"/>
+                                     <p className="text_verifyer" style={{fontSize:".9rem"}}></p>
+                                </div>    
+                                <button id="save_btn" type="submit">Save Changes</button>
+                             </div>
+                        </form>    
+                        </div>
+
+
                     </div>
                 </Grid>    
                 </div>
@@ -190,3 +561,27 @@ function closingSuccessModalRight(){
     )
 }
 
+    //Para mavalidate email
+    function email_validation(){
+        if (validator.isEmail(document.getElementById("edit_email").value)) { //Pag valid email
+                document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
+                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "rgb(76, 180, 76)"
+                document.getElementsByClassName("img_verifyer")[0].src = Valid_icon;
+                document.getElementsByClassName("text_verifyer")[0].innerHTML = "Your email is valid.";
+                document.getElementsByClassName("edit_email")[0].style.border = "1px solid #D8D8D8";   
+        } 
+        else if(document.getElementById("edit_email").value === "" ){  //Pag alang value email sa input form
+                document.getElementsByClassName("form_handler_container")[0].style.display = "none";
+                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "rgb(76, 180, 76)"
+                document.getElementsByClassName("img_verifyer")[0].src = Valid_icon;
+                document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
+                document.getElementsByClassName("edit_email")[0].style.border = "1px solid #D8D8D8";   
+        }
+        else { //Pag invalid email
+                document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
+                document.getElementsByClassName("text_verifyer")[0].innerHTML = "Your email is invalid.";
+                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
+                document.getElementsByClassName("edit_email")[0].style.border = "1px solid red";   
+        }
+    }
