@@ -121,6 +121,12 @@ const editAccountForm=(e)=>{
             else if(result.data.status == "Success"){ //If the response is valid
                 //pag tama lalabas modal
                 window.localStorage.setItem('email', document.getElementById("edit_email").value);
+
+                document.getElementsByClassName("form_handler_container")[0].style.display = "none";
+                document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
+                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
+
                 document.getElementsByClassName("profile_photo_side_modal")[0].style.display = "flex"; 
                 setTimeout(function(){
                     document.getElementsByClassName("profile_photo_side_modal")[0].style.right = "2%"; 

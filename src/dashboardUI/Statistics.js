@@ -33,10 +33,12 @@ export default function DashboardStatistics(){
     loadpdsStep5();
   }, []);
 
+  var key_DashA = 0;
   const input_keyForCertificates = pdsStep5.map((res) => {
+    key_DashA++;
     if (res.email_id === email_key ) {
       return (
-        <div>
+        <div key={key_DashA}>
           <input type="hidden" id="LD_category" value={res.LD_category} />
         </div>
       );

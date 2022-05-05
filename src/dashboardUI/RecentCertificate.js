@@ -19,10 +19,12 @@ useEffect(() => {
   loadpdsStep5();
 }, []);
 
+var key_reA = 0;
 const input_keyForCertificates = pdsStep5.map((res) => {
+  key_reA++;
   if (res.email_id === email_key) {
     return (
-      <div>
+      <div key={key_reA}>
         <input type="hidden" id="LD_img" value={res.LD_img} />
         <input type="hidden" id="LD_title" value={res.LD_title} />
         <input type="hidden" id="LD_dateTo" value={res.LD_dateTo} />
@@ -87,7 +89,7 @@ const ldContent = LDtitle.map(() => {
 ld_ctr++;
 if(ld_ctr<10){
     return (
-        <div className='for_boxShadow recentCert_Dash'>
+        <div className='for_boxShadow recentCert_Dash' key={ld_ctr}>
         <Link to="/Certificates" style={{ textDecoration: "none",display:"flex",width:"100%",height:"100%"}}>
             <div className='certificate'
                 style={{ backgroundImage: `url(http://localhost/fms/upload_certificate/`+LDimage[ld_ctr]+`)` }}

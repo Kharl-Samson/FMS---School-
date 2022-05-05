@@ -20,10 +20,12 @@ export default function PreviewPDS() {
     loadpdsStep1();
   }, []);
 
+  var key_A = 0;
   const pds_step1 = pdsStep1.map((res) => {
+    key_A++;
     if (res.email_id === email_key) {
       return (
-        <div className="information_content">
+        <div className="information_content" key={key_A}>
           <div className="header">Personal Information</div>
 
           <div className="personal name">
@@ -245,10 +247,12 @@ export default function PreviewPDS() {
     loadpdsStep2();
   }, []);
 
+  var key_B = 0;
   const pds_step2 = pdsStep2.map((res) => {
+    key_B++;
     if (res.email_id === email_key) {
       return (
-        <div>
+        <div key={key_B}>
           <input type="hidden" id="elemName" value={res.elem_namePDS} />
           <input type="hidden" id="elemFrom" value={res.elem_dateFromPDS} />
           <input type="hidden" id="elemTo" value={res.elem_dateToPDS} />
@@ -820,10 +824,12 @@ export default function PreviewPDS() {
     loadpdsStep3();
   }, []);
 
+  var key_C = 0;
   const pds_step3 = pdsStep3.map((res) => {
+    key_C++;
     if (res.email_id === email_key) {
       return (
-        <div>
+        <div key={key_C}>
           <input type="hidden" id="CSE_career" value={res.CSE_career} />
           <input type="hidden" id="CSE_rating" value={res.CSE_rating} />
           <input type="hidden" id="CSE_dateExam" value={res.CSE_dateExam} />
@@ -897,7 +903,7 @@ export default function PreviewPDS() {
   const cseContent = CseBoard.map(() => {
     cse_ctr++;
     return (
-      <div className="CSE_content" key="{key2}">
+      <div className="CSE_content" key={cse_ctr}>
         <div className="CSE_box" style={{ width: "20%" }}>
           {CseBoard[cse_ctr]}
         </div>
@@ -931,10 +937,12 @@ export default function PreviewPDS() {
     loadpdsStep4();
   }, []);
 
+  var key_D = 0;
   const pds_step4 = pdsStep4.map((res) => {
+    key_D++;
     if (res.email_id === email_key) {
       return (
-        <div>
+        <div key={key_D}>
           <input type="hidden" id="WE_dateFrom" value={res.WE_dateFrom} />
           <input type="hidden" id="WE_dateTo" value={res.WE_dateTo} />
           <input type="hidden" id="WE_position" value={res.WE_position} />
@@ -1026,7 +1034,7 @@ export default function PreviewPDS() {
   const weContent = wePosition.map(() => {
     we_ctr++;
     return (
-      <div className="WE_content" key="{key3}">
+      <div className="WE_content" key={we_ctr}>
         <div className="WE_box" style={{ width: "15%" }}>
           <div style={{ display: "flex" }}>
             <div>{weFrom[we_ctr] == "" ? "N/A" : weFrom[we_ctr]}</div>
@@ -1068,10 +1076,12 @@ export default function PreviewPDS() {
     loadpdsStep5();
   }, []);
 
+  var key_E = 0;
   const pds_step5 = pdsStep5.map((res) => {
+    key_E++;
     if (res.email_id === email_key) {
       return (
-        <div>
+        <div key={key_E }>
           <input type="hidden" id="LD_title" value={res.LD_title} />
           <input type="hidden" id="LD_dateFrom" value={res.LD_dateFrom} />
           <input type="hidden" id="LD_dateTo" value={res.LD_dateTo} />
@@ -1163,7 +1173,7 @@ export default function PreviewPDS() {
 
     if (resultYear <= 5) {
       return (
-        <div className="LD_content" key="{key4}">
+        <div className="LD_content" key={ld_ctr}>
           <div className="LD_box" style={{ width: "20%",textTransform:"Uppercase" }}>
             {ldTitle[ld_ctr]}
           </div>
