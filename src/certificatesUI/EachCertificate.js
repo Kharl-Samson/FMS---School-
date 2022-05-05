@@ -259,7 +259,7 @@ return (
               <div className="view_certificate">
                   <div className="left">
                       <p>Certificate Detail</p>
-                      <img src="" id="viewCert_img"/>
+                      <img src="" id="viewCert_img" onClick={view_certificate_enlarge}/>
                   </div>
 
                   <div className="right">
@@ -297,10 +297,19 @@ return (
               </div>
             </div>
 
+             {/*View Certificate Large*/}
+             <div className="view_certificate_enlarge" id="view_cert_enlarge">
+                  <img src="" id="imgCert"/>
+             </div>
+
     </Grid>
   );
 }
 
+//View Certificate Enlarge
+function view_certificate_enlarge(){
+  document.getElementById("view_cert_enlarge").style.display="flex";
+}
 
 //Close delete certificate modal
 function closeDeleteModal(){

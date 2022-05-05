@@ -103,6 +103,8 @@ function openDeleteModal(){
 function viewCertificate(){
   document.getElementsByClassName("view_certificate_container")[0].style.display="flex";
 
+  document.getElementById("imgCert").src =  "http://localhost/fms/upload_certificate/"+props.LDimage;
+  
   document.getElementById("viewCert_img").src = "http://localhost/fms/upload_certificate/"+props.LDimage;
   document.getElementById("viewCert_title").textContent = props.LDtitleFull;
   document.getElementById("viewCert_fromTo").textContent = "( "+props.LDfrom+" ) TO ( "+props.LDto1+" )";
@@ -112,6 +114,8 @@ function viewCertificate(){
   document.getElementById("viewCert_coverage").textContent = props.LDcoverage;
   document.getElementById("viewCert_category").textContent = props.LDcategory;
 }
+
+
 
 
 //Edit Certificate
@@ -144,6 +148,7 @@ function goToEditCert(){
         <p style={{display:"none"}}>{props.LDcoverage}</p>
         <p style={{display:"none"}}>{props.LDcategory}</p>
         <div
+          onClick={viewCertificate}
           className="certificate"
           style={{
             backgroundImage: `url(http://localhost/fms/upload_certificate/`+props.LDimage+`)`,

@@ -1,0 +1,164 @@
+.accountSettings_container{
+    width: 90%;
+    height: auto;
+    margin: 0% auto;
+}
+.accountSettings_container >h1:nth-child(1){
+    font-size: 2.3rem;
+    margin: 0;
+    color: #FFAA28;
+    text-indent: 20px;
+}
+.accountSettings_container .table_container{
+    width: 100%;
+    margin-top: 1rem;
+    min-height: 75vh;
+    height: auto;
+    padding-top: 3vh;
+    background-color: #ffff;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+}
+.accountSettings_container .table_container .left{
+    width: 300px;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.accountSettings_container .table_container .left #profile_photo{
+    margin-top: 2rem;
+    height: 410px;
+    width: 300px;
+    border-radius: 5px;
+    object-fit: cover;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.accountSettings_container .table_container .left .upload_profile{
+    height: 45px;
+    width: 45px;
+    background-color: #FFAA28;
+    border-radius: 50%;
+    margin-top: -30px;
+    margin-right: -17px;
+    border: 2px solid #ffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+.accountSettings_container .table_container .left .upload_profile:hover{
+    cursor: pointer;
+    background-color: #fcb954;
+}
+.accountSettings_container .table_container .left .upload_profile #uploadprofile_icon{
+    height: 20px;
+    width: auto;
+}
+.accountSettings_container .table_container .left #profile_photo_btn{
+    margin-top: 10px;
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.accountSettings_container .table_container .left #profile_photo_btn button{
+    border: none;
+    font-size: 1rem;
+    padding: 5px 30px;
+    margin: 0 10px;
+    color: #ffff;
+    border-radius: 8px;
+}
+.accountSettings_container .table_container .left #profile_photo_btn button:nth-child(1){
+    background-color: rgb(249, 112, 112);
+}
+.accountSettings_container .table_container .left #profile_photo_btn button:nth-child(2){
+    background-color: #f9b550;
+}
+.accountSettings_container .table_container .left #profile_photo_btn button:hover{
+    opacity: 80%;
+}
+
+.accountSettings_container .table_container .right{
+    width: 500px;
+    height: auto;
+    padding-top: 2rem;
+}
+.accountSettings_container .table_container .right .full_name{
+    font-size: 2rem;
+    font-weight: 600;
+}
+.accountSettings_container .table_container .right .email{
+    font-size: 1rem;
+}
+.accountSettings_container .table_container .right .info_details{
+    margin-top: 20px;
+    height: auto;
+    width: 100%;
+    background-color: #ffff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+}
+.accountSettings_container .table_container .right .info_details .top{
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(160, 160, 160);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.accountSettings_container .table_container .right .info_details .top span{
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-left: 20px;
+}
+.accountSettings_container .table_container .right .info_details .top img{
+    height: 20px;
+    width: auto;
+    margin-right: 20px;
+}
+.accountSettings_container .table_container .right .info_details .top img:hover{
+    cursor: pointer;
+    opacity: 70%;
+}
+.accountSettings_container .table_container .right .info_details .content{
+    margin-top: 20px;
+    height: auto;
+    width: 100%;
+    display: flex;
+}
+.accountSettings_container .table_container .right .info_details .content .left{
+    width: 100;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+}
+.accountSettings_container .table_container .right .info_details .content .left .label{
+    font-size: 1rem;
+    margin: 10px 0;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 850px) {
+    .accountSettings_container{
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .accountSettings_container{
+        padding-bottom: 15vh;
+    }
+    .accountSettings_container .table_container .left{
+        justify-content: center;
+        align-items: center;
+    }
+    .accountSettings_container .table_container .left #profile_photo{
+        height: 390px;
+        width: 280px;
+    }
+}

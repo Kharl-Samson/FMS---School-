@@ -311,7 +311,6 @@ const submitForm=(e)=>{
 }
 
 //SELECT FILE BTN 
-
 function selectFile(){
     document.getElementById('image_file').click();
 }

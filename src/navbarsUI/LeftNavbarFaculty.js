@@ -150,8 +150,8 @@ export default function NavbarFaculty(props) {
             </Link>
           </div>
 
-          <div className="link_disabler">
-            <Link to="" style={{ textDecoration: "none", width: "100%" }}>
+          <div id="link_accountSetting" className="link_disabler">
+            <Link to="/AccountSettings" style={{ textDecoration: "none", width: "100%" }}>
               <div className="navlink_container" id="profile_link">
                 <Skeleton
                   animation="wave"

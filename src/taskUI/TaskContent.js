@@ -124,6 +124,7 @@ export default function TaskContent(){
     var view_certificate_container = document.getElementsByClassName("view_certificate_container")[0];
     var view_certificate_container1 = document.getElementById("view_certificate_container1");
     var view_certificate_container2 = document.getElementById("view_certificate_container2");
+    var view_cert_enlarge = document.getElementById("view_cert_enlarge");
 
     function CloseAllTask(){
         document.getElementsByClassName("see_all_task_container")[0].style.bottom = "-100%";
@@ -166,6 +167,9 @@ export default function TaskContent(){
         }
         else if (event.target == view_certificate_container2) {
             view_certificate_container2.style.display = "none";
+        }
+        else if (event.target == view_cert_enlarge) {
+            view_cert_enlarge.style.display = "none";
         }
     }
 

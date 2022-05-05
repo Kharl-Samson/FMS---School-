@@ -2551,7 +2551,7 @@ export default function EditPersonalDataSheet() {
               </Link>
             </div>
 
-            <div className="link_disabler">
+            <div id="link_certificate" className="link_disabler">
               <Link to="/Certificates" style={{ textDecoration: "none", width: "100%" }}>
                 <div
                   className="navlink_container nav_part3"
@@ -2567,8 +2567,8 @@ export default function EditPersonalDataSheet() {
               </Link>
             </div>
 
-            <div className="link_disabler">
-              <Link to="" style={{ textDecoration: "none", width: "100%" }}>
+            <div id="link_accountSetting" className="link_disabler">
+              <Link to="/AccountSettings" style={{ textDecoration: "none", width: "100%" }}>
                 <div className="navlink_container" id="profile_link">
                   <LightTooltip title="Account Setting">
                     <img

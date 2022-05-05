@@ -12,6 +12,7 @@ import CreatePersonalDataSheet from "./components/CreatePDS";
 import EditPersonalDataSheet from "./components/EditPDS";
 import Certificates from "./components/Certificates";
 import UploadCertificate from "./certificatesUI/UploadCertificate";
+import AccountSettings from "./components/AccountSettings";
 
 export default function App() {
   return (
@@ -31,6 +32,8 @@ export default function App() {
 
               <Route path="Certificates" element={<Certificates/>} />   
               <Route path="UploadCertificate" element={<UploadCertificate/>} />   
+
+              <Route path="AccountSettings" element={<AccountSettings/>} />   
             </Routes>
         
     </div>

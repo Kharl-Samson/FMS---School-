@@ -270,6 +270,7 @@
 
 .certificates_container .for_boxShadow .certificate:hover{
     background-size: 110% 110%;
+    cursor: pointer;
 }
 
 
@@ -1009,6 +1010,27 @@
 }
 
 
+/*VIEW CERTIFICATE*/
+.view_certificate_enlarge{
+    height: 100vh;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.451);
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+}
+.view_certificate_enlarge #imgCert{
+    height: 500px;
+    width: auto;
+    -webkit-animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
+    animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
+}
+
+
+
 /*EDIT CERTIFICATE*/
 #edit_Certificate_Container{
     display: none;
@@ -1148,4 +1170,12 @@
     .Upload_certificate_form .ceritificate_img .img_container{
         height: 200px;
     }
+
+    .view_certificate_enlarge #imgCert{
+        height: auto;
+        width: 90%;
+        -webkit-animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
+        animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
+    }
+    
 }
