@@ -4398,7 +4398,6 @@ export default function CreatePersonalDataSheet() {
                         className="educ_level"
                         style={{
                           width: "13%",
-                          backgroundColor: "rgb(238, 236, 236)",
                         }}
                       >
                         LEVEL
@@ -4407,7 +4406,6 @@ export default function CreatePersonalDataSheet() {
                         className="educ_name"
                         style={{
                           width: "13%",
-                          backgroundColor: "rgb(238, 236, 236)",
                         }}
                       >
                         <span>NAME OF SCHOOL</span> <span>(Write in full)</span>
@@ -4416,7 +4414,6 @@ export default function CreatePersonalDataSheet() {
                         className="educ_name"
                         style={{
                           width: "13%",
-                          backgroundColor: "rgb(238, 236, 236)",
                         }}
                       >
                         <span>BASIC EDUCATION / DEGREE / COURSE</span>{" "}
@@ -4426,7 +4423,6 @@ export default function CreatePersonalDataSheet() {
                         className="educ_level"
                         style={{
                           width: "15%",
-                          backgroundColor: "rgb(238, 236, 236)",
                         }}
                       >
                         <span>PERIOD OF ATTENDANCE</span>
@@ -4441,7 +4437,6 @@ export default function CreatePersonalDataSheet() {
                         className="educ_name"
                         style={{
                           width: "10%",
-                          backgroundColor: "rgb(238, 236, 236)",
                         }}
                       >
                         <span>HIGHEST LEVEL UNIT EARNED</span>{" "}
@@ -4451,7 +4446,6 @@ export default function CreatePersonalDataSheet() {
                         className="educ_year"
                         style={{
                           width: "8%",
-                          backgroundColor: "rgb(238, 236, 236)",
                         }}
                       >
                         YEAR GRADUATED
@@ -4461,7 +4455,6 @@ export default function CreatePersonalDataSheet() {
                         className="educ_name1"
                         style={{
                           width: "10.1%",
-                          backgroundColor: "rgb(238, 236, 236)",
                         }}
                       >
                         SCHOLARSHIP / ACADEMIC HONORS RECEIVED
@@ -4473,7 +4466,6 @@ export default function CreatePersonalDataSheet() {
                         className="educ_level"
                         style={{
                           width: "13%",
-                          backgroundColor: "rgb(238, 236, 236)",
                         }}
                       >
                         ELEMENTARY
@@ -4488,7 +4480,6 @@ export default function CreatePersonalDataSheet() {
                         className="educ_level"
                         style={{
                           width: "13%",
-                          backgroundColor: "rgb(238, 236, 236)",
                         }}
                       >
                         SECONDARY
@@ -4503,7 +4494,6 @@ export default function CreatePersonalDataSheet() {
                         className="educ_level"
                         style={{
                           width: "13%",
-                          backgroundColor: "rgb(238, 236, 236)",
                         }}
                       >
                         VOCATIONAL / TRADE / COURSE
@@ -4518,7 +4508,6 @@ export default function CreatePersonalDataSheet() {
                         className="educ_level"
                         style={{
                           width: "13%",
-                          backgroundColor: "rgb(238, 236, 236)",
                         }}
                       >
                         College
@@ -4531,7 +4520,6 @@ export default function CreatePersonalDataSheet() {
                         className="educ_level"
                         style={{
                           width: "13%",
-                          backgroundColor: "rgb(238, 236, 236)",
                         }}
                       >
                         Graduate Studies
