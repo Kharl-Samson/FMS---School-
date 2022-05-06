@@ -79,10 +79,10 @@ export default function TaskModal(){
             <label>Link</label>
             <input type="text" placeholder="Link here (If necessary)" className='task_input' name="link" onChange={handleChange} value={datas.link}/>
 
-            <label>Date</label>
+            <label>Date<span style={{color: "red", fontSize: "1rem"}}>*</span></label>
             <input type="date" className='task_input'  min={new Date().toISOString().split('T')[0]} name="date" onChange={handleChange} value={datas.date} required/>
 
-            <label>Time</label>
+            <label>Time<span style={{color: "red", fontSize: "1rem"}}>*</span></label>
             <input type="time" className='task_input' name="time" onChange={handleChange} value={datas.time} required />
             <input type="hidden"  name="email"  value={localStorage.getItem('email')} required/>
         </div>

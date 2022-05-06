@@ -105,10 +105,20 @@ export default function Login(){
         axios.post('http://localhost/fms/login.php',sendData)
         .then((result)=>{
             if(result.data.status === "Admin Login"){ //If response is Admin Login
-                alert("admin login")
+                window.localStorage.setItem('email', result.data.email);
+                window.localStorage.setItem('fname', result.data.fname);
+                window.localStorage.setItem('lname', result.data.lname);
+                window.localStorage.setItem('name', result.data.name);
+                window.localStorage.setItem('pds_status', result.data.pds_status);
+                window.localStorage.setItem('pds_ctr', "null");
+                window.localStorage.setItem('profile_locked', result.data.profile_locked);
+                window.localStorage.setItem('profile_photo', result.data.profile_photo);
+                navigate(`/AdminDashboard`);
             }
             else if(result.data.status === "Faculty Login"){ //If response is Faculty Login
                 window.localStorage.setItem('email', result.data.email);
+                window.localStorage.setItem('fname', result.data.fname);
+                window.localStorage.setItem('lname', result.data.lname);
                 window.localStorage.setItem('name', result.data.name);
                 window.localStorage.setItem('pds_status', result.data.pds_status);
                 window.localStorage.setItem('pds_ctr', "null");

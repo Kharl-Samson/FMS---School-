@@ -160,6 +160,16 @@
     border: 1px solid #D8D8D8;
     outline-color: #FFAA28;
 }
+.accountSettings_container .table_container .info_details .content .left input[type="text"]{
+    width: 70%;
+    font-size: 1rem;
+    padding: 10px 0;
+    text-indent: 15px;
+    background-color: #f3f2f2;
+    border-radius: 5px;
+    border: 1px solid #D8D8D8;
+    outline-color: #FFAA28;
+}
 .accountSettings_container .table_container .info_details .content #save_btn{
     margin-top: 20px;
     width: 100%;
@@ -299,6 +309,9 @@
         margin-top: 20px;
     }
     .accountSettings_container .table_container .right .info_details .content .left input[type="email"]{
+        width: 100%;
+    }
+    .accountSettings_container .table_container .right .info_details .content .left input[type="text"]{
         width: 100%;
     }
     .input_container > .icon_container{

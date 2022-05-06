@@ -96,6 +96,44 @@ const uploadPhotoForm=(e)=>{
     let url = "http://localhost/fms/uploadProfile.php";
     axios.post(url, data, {}).then((res) => {});
 }
+const editAccountNameForm=(e)=>{
+    e.preventDefault();
+        
+    //Sending the data request to call it on backend
+    const sendData = {
+        email_key : localStorage.getItem("email"),
+        edit_fname: document.getElementById("edit_fname").value,
+        edit_lname: document.getElementById("edit_lname").value,
+    }
+    
+        axios.post('http://localhost/fms/updateAccountName.php',sendData).then((result)=>{
+            if(result.data.status == "Invalid"){//If the response is invalid
+                alert("There was an error in your SQL Connection!")
+            }
+            else if(result.data.status == "Success"){ //If the response is valid
+                //pag tama lalabas modal
+                window.localStorage.setItem('name', document.getElementById("edit_fname").value+" "+document.getElementById("edit_lname").value);
+                window.localStorage.setItem('fname', document.getElementById("edit_fname").value);
+                window.localStorage.setItem('lname', document.getElementById("edit_lname").value);
+
+                document.getElementsByClassName("form_handler_container")[0].style.display = "none";
+                document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
+                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
+
+                document.getElementsByClassName("profile_photo_side_modal")[0].style.display = "flex"; 
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.right = "2%"; 
+                },400);
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.right = "-100%"; 
+                },5000);
+                setTimeout(function(){
+                    document.getElementsByClassName("profile_photo_side_modal")[0].style.display = "none"; 
+                },6000);
+            }
+        })//End of axios
+}
 
 const editAccountForm=(e)=>{
     e.preventDefault();
@@ -112,20 +150,20 @@ const editAccountForm=(e)=>{
                 alert("There was an error in your SQL Connection!")
             }
             else if(result.data.status == "Email taken"){ //If the response is Email taken
-                document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
-                document.getElementsByClassName("text_verifyer")[0].innerHTML = "E-mail has already been taken.";
-                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
-                document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
-                document.getElementsByClassName("edit_email")[0].style.border = "1px solid red";   
+                document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
+                document.getElementsByClassName("text_verifyer")[1].innerHTML = "E-mail has already been taken.";
+                document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;
+                document.getElementsByClassName("edit_email")[1].style.border = "1px solid red";   
             }
             else if(result.data.status == "Success"){ //If the response is valid
                 //pag tama lalabas modal
                 window.localStorage.setItem('email', document.getElementById("edit_email").value);
 
-                document.getElementsByClassName("form_handler_container")[0].style.display = "none";
-                document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
-                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
-                document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
+                document.getElementsByClassName("form_handler_container")[1].style.display = "none";
+                document.getElementsByClassName("text_verifyer")[1].innerHTML = "";
+                document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;
 
                 document.getElementsByClassName("profile_photo_side_modal")[0].style.display = "flex"; 
                 setTimeout(function(){
@@ -208,35 +246,35 @@ function password_validation(){
     minLength: 8, minLowercase: 1,
     minUppercase: 1, minNumbers: 1, minSymbols: 1
     })) {          
-        document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
-        document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "rgb(76, 180, 76)"
-        document.getElementsByClassName("img_verifyer")[1].src = Valid_icon;
-        document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your password is valid.";
+        document.getElementsByClassName("form_handler_container")[2].style.display = "flex";
+        document.getElementsByClassName("form_handler_container")[2].style.backgroundColor = "rgb(76, 180, 76)"
+        document.getElementsByClassName("img_verifyer")[2].src = Valid_icon;
+        document.getElementsByClassName("text_verifyer")[2].innerHTML = "Your password is valid.";
     } else { //Pag maiksi or madali yung password
-        document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
-        document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your password is not strong.";
-        document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
-        document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;     
+        document.getElementsByClassName("form_handler_container")[2].style.display = "flex";
+        document.getElementsByClassName("text_verifyer")[2].innerHTML = "Your password is not strong.";
+        document.getElementsByClassName("form_handler_container")[2].style.backgroundColor = "#f7526d"
+        document.getElementsByClassName("img_verifyer")[2].src = Invalid_icon;     
     }     
     if(document.getElementById("new_password").value === "" ){ //Pag wala value yung password sa input form
-        document.getElementsByClassName("form_handler_container")[1].style.display = "none";
-        document.getElementsByClassName("text_verifyer")[1].innerHTML = "";
-        document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
-        document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;
+        document.getElementsByClassName("form_handler_container")[2].style.display = "none";
+        document.getElementsByClassName("text_verifyer")[2].innerHTML = "";
+        document.getElementsByClassName("form_handler_container")[2].style.backgroundColor = "#f7526d"
+        document.getElementsByClassName("img_verifyer")[2].src = Invalid_icon;
     }
 }
 function password_validation1(){ 
     if(document.getElementById('new_password').value != document.getElementById('retype_password').value){
-        document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
-        document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your password doesn't match.";
-        document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
-        document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;     
+        document.getElementsByClassName("form_handler_container")[2].style.display = "flex";
+        document.getElementsByClassName("text_verifyer")[2].innerHTML = "Your password doesn't match.";
+        document.getElementsByClassName("form_handler_container")[2].style.backgroundColor = "#f7526d"
+        document.getElementsByClassName("img_verifyer")[2].src = Invalid_icon;     
     }
     else{
-        document.getElementsByClassName("form_handler_container")[1].style.display = "none";
-        document.getElementsByClassName("text_verifyer")[1].innerHTML = "";
-        document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
-        document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;
+        document.getElementsByClassName("form_handler_container")[2].style.display = "none";
+        document.getElementsByClassName("text_verifyer")[2].innerHTML = "";
+        document.getElementsByClassName("form_handler_container")[2].style.backgroundColor = "#f7526d"
+        document.getElementsByClassName("img_verifyer")[2].src = Invalid_icon;
     }
 }
 const changePasswordForm=(e)=>{
@@ -249,10 +287,10 @@ const changePasswordForm=(e)=>{
         new_password: document.getElementById('new_password').value,
     }
     if(document.getElementById('new_password').value != document.getElementById('retype_password').value){
-        document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
-        document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your password doesn't match.";
-        document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
-        document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;     
+        document.getElementsByClassName("form_handler_container")[2].style.display = "flex";
+        document.getElementsByClassName("text_verifyer")[2].innerHTML = "Your password doesn't match.";
+        document.getElementsByClassName("form_handler_container")[2].style.backgroundColor = "#f7526d"
+        document.getElementsByClassName("img_verifyer")[2].src = Invalid_icon;     
     }
     else if (validator.isStrongPassword(document.getElementById('new_password').value, { // If password is valid
         minLength: 8, minLowercase: 1,
@@ -267,17 +305,17 @@ const changePasswordForm=(e)=>{
                 alert("There was an error in your SQL Connection!")
             }
             else if(result.data.status == "ErrorCurrent"){
-                document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
-                document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your current password is invalid.";
-                document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
-                document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;     
+                document.getElementsByClassName("form_handler_container")[2].style.display = "flex";
+                document.getElementsByClassName("text_verifyer")[2].innerHTML = "Your current password is invalid.";
+                document.getElementsByClassName("form_handler_container")[2].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[2].src = Invalid_icon;     
             }
             else if(result.data.status == "Valid"){ //If the response is valid
                 //pag tama lalabas modal
-                document.getElementsByClassName("form_handler_container")[1].style.display = "none";
-                document.getElementsByClassName("text_verifyer")[1].innerHTML = "";
-                document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
-                document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;
+                document.getElementsByClassName("form_handler_container")[2].style.display = "none";
+                document.getElementsByClassName("text_verifyer")[2].innerHTML = "";
+                document.getElementsByClassName("form_handler_container")[2].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[2].src = Invalid_icon;
 
                 document.getElementById('current_password').value = "";
                 document.getElementById('retype_password').value = "";
@@ -297,10 +335,10 @@ const changePasswordForm=(e)=>{
             })//End of axios
         }
         else { //If the password is not strong
-            document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
-            document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your password is not strong.";
-            document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
-            document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;     
+            document.getElementsByClassName("form_handler_container")[2].style.display = "flex";
+            document.getElementsByClassName("text_verifyer")[2].innerHTML = "Your password is not strong.";
+            document.getElementsByClassName("form_handler_container")[2].style.backgroundColor = "#f7526d"
+            document.getElementsByClassName("img_verifyer")[2].src = Invalid_icon;     
         }
 }
 const lockedAccountForm=(e)=>{
@@ -428,13 +466,34 @@ setTimeout(function(){
                         </div>
                     </div>
                     <div className="right">
-                        <p className="full_name">Kharl Samson</p>
-                        <p className="gmail">khrlsmsn1110@gmail.com</p>
+                        <div className="info_details">
+                        <form onSubmit={editAccountNameForm}>
+                            <div className="top">
+                                <span>Personal Details</span>
+                                <img src={edit_profileIcon}/>
+                            </div>
+                            <div className="content">
+                                <div className="left">
+                                    <p className="label">First Name : </p>
+                                    <input type="text" defaultValue={localStorage.getItem("fname")} placeholder="Enter your name here..." id="edit_fname" required/>
+                                </div>   
+                                <div className="left">
+                                    <p className="label">Last Name : </p>
+                                    <input type="text" defaultValue={localStorage.getItem("lname")} placeholder="Enter your name here..." id="edit_lname" required/>
+                                </div>    
+                                <div className="form_handler_container" style={{padding:"8px 0"}}>
+                                     <img src={Invalid_icon} className="img_verifyer"/>
+                                     <p className="text_verifyer" style={{fontSize:".9rem"}}></p>
+                                </div>    
+                                <button id="save_btn" type="submit">Save Changes</button>
+                             </div>
+                        </form>
+                        </div>
 
                         <div className="info_details">
                         <form onSubmit={editAccountForm}>
                             <div className="top">
-                                <span>Edit Email</span>
+                                <span>Change my Email</span>
                                 <img src={edit_profileIcon}/>
                             </div>
                             <div className="content">
@@ -570,24 +629,24 @@ setTimeout(function(){
     //Para mavalidate email
     function email_validation(){
         if (validator.isEmail(document.getElementById("edit_email").value)) { //Pag valid email
-                document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
-                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "rgb(76, 180, 76)"
-                document.getElementsByClassName("img_verifyer")[0].src = Valid_icon;
-                document.getElementsByClassName("text_verifyer")[0].innerHTML = "Your email is valid.";
-                document.getElementsByClassName("edit_email")[0].style.border = "1px solid #D8D8D8";   
+                document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
+                document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "rgb(76, 180, 76)"
+                document.getElementsByClassName("img_verifyer")[1].src = Valid_icon;
+                document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your email is valid.";
+                document.getElementsByClassName("edit_email")[1].style.border = "1px solid #D8D8D8";   
         } 
         else if(document.getElementById("edit_email").value === "" ){  //Pag alang value email sa input form
-                document.getElementsByClassName("form_handler_container")[0].style.display = "none";
-                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "rgb(76, 180, 76)"
-                document.getElementsByClassName("img_verifyer")[0].src = Valid_icon;
-                document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
-                document.getElementsByClassName("edit_email")[0].style.border = "1px solid #D8D8D8";   
+                document.getElementsByClassName("form_handler_container")[1].style.display = "none";
+                document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "rgb(76, 180, 76)"
+                document.getElementsByClassName("img_verifyer")[1].src = Valid_icon;
+                document.getElementsByClassName("text_verifyer")[1].innerHTML = "";
+                document.getElementsByClassName("edit_email")[1].style.border = "1px solid #D8D8D8";   
         }
         else { //Pag invalid email
-                document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
-                document.getElementsByClassName("text_verifyer")[0].innerHTML = "Your email is invalid.";
-                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
-                document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
-                document.getElementsByClassName("edit_email")[0].style.border = "1px solid red";   
+                document.getElementsByClassName("form_handler_container")[1].style.display = "flex";
+                document.getElementsByClassName("text_verifyer")[1].innerHTML = "Your email is invalid.";
+                document.getElementsByClassName("form_handler_container")[1].style.backgroundColor = "#f7526d"
+                document.getElementsByClassName("img_verifyer")[1].src = Invalid_icon;
+                document.getElementsByClassName("edit_email")[1].style.border = "1px solid red";   
         }
     }

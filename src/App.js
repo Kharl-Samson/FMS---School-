@@ -13,6 +13,7 @@ import EditPersonalDataSheet from "./components/EditPDS";
 import Certificates from "./components/Certificates";
 import UploadCertificate from "./certificatesUI/UploadCertificate";
 import AccountSettings from "./components/AccountSettings";
+import AdminDashboard from "./components/AdminDashboard";
 
 export default function App() {
   return (
@@ -34,6 +35,8 @@ export default function App() {
               <Route path="UploadCertificate" element={<UploadCertificate/>} />   
 
               <Route path="AccountSettings" element={<AccountSettings/>} />   
+
+              <Route path="AdminDashboard" element={<AdminDashboard/>} /> 
             </Routes>
         
     </div>
