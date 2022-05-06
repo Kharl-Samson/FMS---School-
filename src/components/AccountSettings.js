@@ -104,6 +104,8 @@ const editAccountNameForm=(e)=>{
         email_key : localStorage.getItem("email"),
         edit_fname: document.getElementById("edit_fname").value,
         edit_lname: document.getElementById("edit_lname").value,
+        edit_department: document.getElementById("edit_department").value,
+        edit_employment: document.getElementById("edit_employment").value,
     }
     
         axios.post('http://localhost/fms/updateAccountName.php',sendData).then((result)=>{
@@ -115,6 +117,8 @@ const editAccountNameForm=(e)=>{
                 window.localStorage.setItem('name', document.getElementById("edit_fname").value+" "+document.getElementById("edit_lname").value);
                 window.localStorage.setItem('fname', document.getElementById("edit_fname").value);
                 window.localStorage.setItem('lname', document.getElementById("edit_lname").value);
+                window.localStorage.setItem('department', document.getElementById("edit_department").value);
+                window.localStorage.setItem('employment', document.getElementById("edit_employment").value);
 
                 document.getElementsByClassName("form_handler_container")[0].style.display = "none";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
@@ -430,7 +434,6 @@ setTimeout(function(){
                             src={photoURL} 
                             id="profile_photo"
                             onError={(e)=>{e.target.onerror = null; e.target.src="http://localhost/fms/upload_profile/default_avatar.png"}}
-    
                         />
                         <LightTooltip title="Upload Photo">
                         <div className="upload_profile" onClick={selectFile}>
@@ -480,6 +483,23 @@ setTimeout(function(){
                                 <div className="left">
                                     <p className="label">Last Name : </p>
                                     <input type="text" defaultValue={localStorage.getItem("lname")} placeholder="Enter your name here..." id="edit_lname" required/>
+                                </div>    
+                                <div className="left">
+                                    <p className="label">Department : </p>
+                                    <select defaultValue={localStorage.getItem("department")} id="edit_department">
+                                        <option value="" hidden>-Select an option-</option>
+                                        <option value="BSIT" >BSIT</option>
+                                        <option value="BLIS" >BLIS</option>
+                                    </select>
+                                </div>    
+                                <div className="left">
+                                    <p className="label">Employment : </p>
+                                    <select defaultValue={localStorage.getItem("employment")} id="edit_employment">
+                                        <option value="" hidden>-Select an option-</option>
+                                        <option value="REGULAR" >REGULAR</option>
+                                        <option value="TEMPORARY" >TEMPORARY</option>
+                                        <option value="PART TIME" >PART TIME</option>
+                                    </select>
                                 </div>    
                                 <div className="form_handler_container" style={{padding:"8px 0"}}>
                                      <img src={Invalid_icon} className="img_verifyer"/>

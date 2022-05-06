@@ -7,6 +7,10 @@ import NavbarSizer from '../navbarsUI/NavbarSizer';
 import RightNavbar from '../navbarsUI/RightNavbar';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { deepOrange } from "@mui/material/colors";
+import DashboardStatisticsFaculty from '../dashboardUI/StatisticsFaculty';
 
 export default function AdminDashboard(){
 
@@ -16,6 +20,10 @@ export default function AdminDashboard(){
         document.getElementById("dashboard_link").classList.add('nav_active');
         document.getElementById("link_dashboard").style.pointerEvents="none";
     },10);
+
+    setTimeout(function(){
+        document.getElementsByClassName("table_dashboard_lisUsers")[0].style.marginTop = "2rem";
+    },1000);
 
     const mq = window.matchMedia("(max-width: 850px)");
     if (mq.matches) {
@@ -34,6 +42,56 @@ export default function AdminDashboard(){
         },1000);
     }
 
+  //getting the email of user
+  let email_key = localStorage.getItem("email");
+  //Hook for getting all certificates
+  const [getAllUser, setGetAllUser] = useState([]);
+  const loadGetUsers = async () => {
+    const result = await axios.get("http://localhost/fms/getAllUser.php");
+    setGetAllUser(result.data.phpresult);
+  };
+  useEffect(() => {
+    loadGetUsers();
+  }, []);
+
+  const AvatarGroupList = getAllUser.map((res) => {
+    if(email_key !== res.email){
+      return (
+        <Avatar alt={res.fname} src={"http://localhost/fms/upload_profile/"+res.profile_photo}
+        sx={{
+            bgcolor: deepOrange[600],
+            width: "34px",
+            height: "34px",
+            fontSize: ".9rem",
+          }}
+        />
+      );
+    }
+  });
+
+  var TableGroup_ctr = 0;
+  const TableGroupList = getAllUser.map((res) => {
+    TableGroup_ctr++;
+    if(email_key !== res.email && TableGroup_ctr<=6){
+        return (
+            <div className='th th_hover'>
+                <div style={{display:"flex",alignItems:"center"}}>
+                    <img 
+                        src={"http://localhost/fms/upload_profile/"+res.profile_photo}
+                        id="profile_photo"
+                        onError={(e)=>{e.target.onerror = null; e.target.src="http://localhost/fms/upload_profile/default_avatar.png"}}
+                    />
+                <span style={{fontWeight:"normal",fontSize:"1rem",marginLeft:"10px",color:"#3D3D3D"}}>{res.fname+" "+res.lname}</span>
+                </div>
+                <div><span style={{fontWeight:"normal",fontSize:"1rem",textDecoration:"underline"}}><a href={"mailto:"+res.email} target="_blank" style={{color:"#3D3D3D"}}>{res.email}</a></span></div>
+                <div style={{justifyContent:"center"}}><span style={{fontWeight:"normal",fontSize:"1rem",color:"#3D3D3D"}}>{res.department}</span></div>
+                <div><span style={{fontWeight:"normal",fontSize:"1rem",color:"#3D3D3D"}}>{res.employment+" EMPLOYEE"}</span></div>
+            </div>
+        );
+    }
+});
+
+
 
     return (
         <div className="dashboard_container">
@@ -44,26 +102,33 @@ export default function AdminDashboard(){
                 <NavbarSizer/>
 
                 <WeatherAndBanner/>
-                <DashboardStatistics/>
+                <DashboardStatisticsFaculty/>
 
                 <div className='table_dashboard_lisUsers'>
                     <div className='top'>
                         <div className='left'>
                             <span>Faculty</span>
                             <AvatarGroup max={4}>
-                                <Avatar alt="Remy Sharp" src="http://localhost/fms/upload_certificate/personA.jpg" sx={{ width: "32px", height: "32px" ,fontSize:".9rem"}}/>
-                                <Avatar alt="Travis Howard" src="http://localhost/fms/upload_certificate/personb.jpg" sx={{ width: "32px", height: "32px",fontSize:".9rem" }}/>
-                                <Avatar alt="Cindy Baker" src="http://localhost/fms/upload_certificate/personC.jpg" sx={{ width: "32px", height: "32px",fontSize:".9rem" }}/>
-                                <Avatar alt="Agnes Walker" src="http://localhost/fms/upload_certificate/e.png" sx={{ width: "32px", height: "32px" ,fontSize:".9rem"}} />
-                                <Avatar alt="Trevor Henderson" src="http://localhost/fms/upload_certificate/f.png" sx={{ width: "32px", height: "32px",fontSize:".9rem" }}/>
+                                {AvatarGroupList}
                             </AvatarGroup>
                         </div>
 
                         <div className='right'>
-                            <div className='btn'><span title="Close">&#187;</span></div>
+                            <div className='btn'><span title="Close" onClick={startScrolling}>&#187;</span></div>
                         </div>
                     </div>
+                    <div className='th'>
+                        <div style={{textIndent:"20px"}}><span>Name</span></div>
+                        <div><span>Email Address</span></div>
+                        <div style={{justifyContent:"center"}}><span>Department</span></div>
+                        <div><span>Employment Status</span></div>
+                    </div>
+                    {TableGroupList}
                 </div>
+
+                <div className='see_all_faculty'>
+                    See All &#62;
+                </div> 
 
                 
             </div>
@@ -73,3 +138,8 @@ export default function AdminDashboard(){
         </div>
     )
 }
+
+function startScrolling(){
+    document.querySelector(".see_all_faculty").scrollIntoView()
+}
+   

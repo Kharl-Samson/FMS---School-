@@ -684,7 +684,6 @@ export default function EditPersonalDataSheet() {
               className="pds_input"
               placeholder="Fields with * are required"
               id="employee_pds"
-              type="number"
             />
             <Autocomplete
               id="citizenship_pds"

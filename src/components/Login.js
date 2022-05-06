@@ -108,6 +108,8 @@ export default function Login(){
                 window.localStorage.setItem('email', result.data.email);
                 window.localStorage.setItem('fname', result.data.fname);
                 window.localStorage.setItem('lname', result.data.lname);
+                window.localStorage.setItem('department', result.data.department);
+                window.localStorage.setItem('employment', result.data.employment);
                 window.localStorage.setItem('name', result.data.name);
                 window.localStorage.setItem('pds_status', result.data.pds_status);
                 window.localStorage.setItem('pds_ctr', "null");

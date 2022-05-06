@@ -2490,7 +2490,6 @@ export default function CreatePersonalDataSheet() {
                   placeholder="Fields with * are required"
                   id="employee_pds"
                   required
-                  type="number"
                 />
                 <Autocomplete
                   id="citizenship_pds"
