@@ -4155,7 +4155,7 @@ export default function CreatePersonalDataSheet() {
               </div>
 
               <div className="pds_review_container">
-                <div className="pds_preview" id="convertable_pdf_PDS">
+                <div className="pds_preview">
                   <div className="top">
                     <div className="left">
                       <img src={CICT_Logo} />
