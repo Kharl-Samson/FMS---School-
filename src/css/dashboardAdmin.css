@@ -14,7 +14,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow-y: hidden;
 }
 
 .top_dashboard_content{
@@ -241,6 +240,12 @@
     font-weight: 600;
     color: #3D3D3D;
     margin-right: 5px;
+}
+.table_dashboard_lisUsers .top .right .btn{
+    transform: rotate(-90deg);
+}
+.table_dashboard_lisUsers .top .right .btn span{
+    font-size: 2rem;
 }
 
 

@@ -60,7 +60,7 @@ export default function AdminDashboard(){
                         </div>
 
                         <div className='right'>
-                            <div className='close_btn'><span title="Close">&#187;</span></div>
+                            <div className='btn'><span title="Close">&#187;</span></div>
                         </div>
                     </div>
                 </div>
