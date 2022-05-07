@@ -20,10 +20,12 @@ export default function EachCertificate() {
     loadpdsStep5();
   }, []);
 
+  var input_keyForCertificates_ctr = 0;
   const input_keyForCertificates = pdsStep5.map((res) => {
     if (res.email_id === email_key) {
+      input_keyForCertificates_ctr++;
       return (
-        <div>
+        <div key={input_keyForCertificates_ctr}>
           <input type="hidden" id="LD_img" value={res.LD_img} />
           <input type="hidden" id="LD_title" value={res.LD_title} />
           <input type="hidden" id="LD_dateFrom" value={res.LD_dateFrom} />
@@ -167,6 +169,7 @@ const ldContent = LDtitle.map(() => {
 ld_ctr++;
 return (
         <CertificateGrid
+          key={ld_ctr}
           LDkey = {ld_ctr}
           LDimage = {LDimage[ld_ctr]}
           LDtitleFull = {LDtitleFull[ld_ctr]}

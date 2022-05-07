@@ -7,7 +7,7 @@ import CICT_Logo from "../images/login/cict_logo.png";
 import Dashboard_icon from "../images/icons/dashboard.svg";
 import Profile_icon from "../images/icons/profile.svg";
 import account_setting from "../images/icons/account_setting.svg";
-import Certificate_icon from "../images/icons/certificate.svg";
+import manageUser from "../images/icons/manageUser.svg";
 import Logout_icon from "../images/icons/logout.svg";
 import Menu_icon from "../images/icons/menu.svg";
 import { Link } from "react-router-dom";
@@ -94,6 +94,55 @@ export default function NavbarAdmin(props) {
                 </LightTooltip>
                 <span className="left_nav_minimize skeleton_done1">
                   Dashboard
+                </span>
+              </div>
+            </Link>
+          </div>
+
+          <div id="" className="link_disabler">
+            <Link
+              to=""
+              style={{ textDecoration: "none", width: "100%" }}
+            >
+              <div className="navlink_container" id="dashboard_link">
+                <Skeleton
+                  animation="wave"
+                  className="skeleton_show1"
+                  height={"22px"}
+                  width={"100%"}
+                  sx={{ margin: "3vh 1rem" }}
+                />
+                <LightTooltip title="Dashboard">
+                  <img
+                    src={manageUser}
+                    className="left_nav_minimize_img skeleton_done1"
+                  />
+                </LightTooltip>
+                <span className="left_nav_minimize skeleton_done1">
+                  Manage Users
+                </span>
+              </div>
+            </Link>
+          </div>
+
+          <div id="link_accountSetting" className="link_disabler">
+            <Link to="/AccountSettingsAdmin" style={{ textDecoration: "none", width: "100%" }}>
+              <div className="navlink_container" id="profile_link">
+                <Skeleton
+                  animation="wave"
+                  className="skeleton_show1"
+                  height={"22px"}
+                  width={"100%"}
+                  sx={{ margin: "3vh 1rem" }}
+                />
+                <LightTooltip title="Account Setting">
+                  <img
+                    src={account_setting}
+                    className="left_nav_minimize_img skeleton_done1"
+                  />
+                </LightTooltip>
+                <span className="left_nav_minimize skeleton_done1">
+                  Account Setting
                 </span>
               </div>
             </Link>

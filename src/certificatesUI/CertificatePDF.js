@@ -19,10 +19,12 @@ export default function CertificatePDF(){
     loadpdsStep5();
   }, []);
 
+  var input_keyForCertificates_ctr=0;
   const input_keyForCertificates = pdsStep5.map((res) => {
     if (res.email_id === email_key) {
+      input_keyForCertificates_ctr++;
       return (
-        <div>
+        <div key={input_keyForCertificates_ctr}>
           <input type="hidden" id="LD_img" value={res.LD_img} />
           <input type="hidden" id="LD_title" value={res.LD_title} />
           <input type="hidden" id="LD_dateFrom" value={res.LD_dateFrom} />
@@ -139,7 +141,7 @@ export default function CertificatePDF(){
   const ldContent = LDtitle.map(() => {
     ld_ctr++;
     return (
-        <div className="th1" style={{fontWeight:"normal"}}>
+        <div className="th1" style={{fontWeight:"normal"}} key={ld_ctr}>
         <div><span style={{textTransform:"Uppercase" }}>{LDtitleFull[ld_ctr]}</span></div>
         <div>
             <div style={{width:"100%",display:"flex",border:"none",justifyContent:"center",fontWeight:"normal",flexDirection:"row"}}>

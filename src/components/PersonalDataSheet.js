@@ -2174,7 +2174,7 @@ export default function PersonalDataSheet() {
                       Download as PDF
                     </button>
 
-                    <button id="Edit_profile_btn" class="link_to_show" onClick={() =>window.location.replace("http://localhost:3000/EditPersonalInformation")} >
+                    <button id="Edit_profile_btn" className="link_to_show" onClick={() =>window.location.replace("http://localhost:3000/EditPersonalInformation")} >
                       <img src={edit_icon} />
                       Edit your profile
                     </button>

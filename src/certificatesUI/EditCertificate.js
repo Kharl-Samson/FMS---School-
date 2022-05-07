@@ -237,7 +237,9 @@ const submitForm=(e)=>{
                             <div className="img_container">
                                 <img src={upload_imgIcon} className="upload_imgIcon certImg_toHide" style={{display:"none"}}/>
                                 <p className="selectText certImg_toHide" style={{display:"none"}}>Select your certificate file</p>
+                                <p className="selectText1 certImg_toHide" style={{textAlign:"center",fontSize:".8rem",color:"red",display:"none"}}>*No special characters and whitespaces for filename</p>
                                 <p className="selectText1 certImg_toHide" style={{display:"none"}}>Only accepts JPG or PNG file</p>
+                                <p className="selectText1 certImg_toHide" style={{textAlign:"center",fontSize:".8rem",display:"none"}}>Valid example : 1st_Seminar.png</p>
                                 <button type="button" onClick={selectFile} className="certImg_toHide" style={{padding:"7px 20px",display:"none"}}>SELECT FILE</button>
                                 <img src="" className="uploaded_certIMG" id="edit_certIMG" style={{display:"block"}}/>
                             </div>

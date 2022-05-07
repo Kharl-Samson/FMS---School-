@@ -25,22 +25,7 @@ export default function AdminDashboard(){
         document.getElementsByClassName("table_dashboard_lisUsers")[0].style.marginTop = "2rem";
     },1000);
 
-    const mq = window.matchMedia("(max-width: 850px)");
-    if (mq.matches) {
-    }
-    else{
-        setTimeout(function(){
-            if(localStorage.getItem('pds_status') ==="Approved"){
-                document.getElementById("profile_notify_container").style.display="none"
-            }
-            else if(localStorage.getItem('pds_status') ==="Pending" && localStorage.getItem('pds_ctr') ==="null"){
-                document.getElementById("profile_notify_container").style.display="flex";
-            }
-            else if(localStorage.getItem('pds_status') ==="Pending" && localStorage.getItem('pds_ctr') ==="off"){
-                document.getElementById("profile_notify_container").style.display="none";
-            }
-        },1000);
-    }
+
 
   //getting the email of user
   let email_key = localStorage.getItem("email");
@@ -54,10 +39,12 @@ export default function AdminDashboard(){
     loadGetUsers();
   }, []);
 
+  var AvatarGroup_ctr = 0;
   const AvatarGroupList = getAllUser.map((res) => {
-    if(email_key !== res.email){
+    AvatarGroup_ctr++;
+    if(email_key !== res.email && res.account_status == "Approved"){
       return (
-        <Avatar alt={res.fname} src={"http://localhost/fms/upload_profile/"+res.profile_photo}
+        <Avatar  key={AvatarGroup_ctr} alt={res.fname} src={"http://localhost/fms/upload_profile/"+res.profile_photo}
         sx={{
             bgcolor: deepOrange[600],
             width: "34px",
@@ -72,9 +59,9 @@ export default function AdminDashboard(){
   var TableGroup_ctr = 0;
   const TableGroupList = getAllUser.map((res) => {
     TableGroup_ctr++;
-    if(email_key !== res.email && TableGroup_ctr<=6){
+    if(email_key !== res.email && TableGroup_ctr<=6 && res.account_status == "Approved"){
         return (
-            <div className='th th_hover'>
+            <div className='th th_hover' key={TableGroup_ctr}>
                 <div style={{display:"flex",alignItems:"center"}}>
                     <img 
                         src={"http://localhost/fms/upload_profile/"+res.profile_photo}
