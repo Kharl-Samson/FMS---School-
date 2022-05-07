@@ -12,9 +12,13 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import log_login from '../images/icons/log_login.svg'
 import ProfileAvatar from './ProfileAvatar';
 import TaskContent from '../taskUI/TaskContent';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link} from "react-router-dom";
 
 export default function RightNavbar(){
 
+    let email_key = localStorage.getItem("email");
 
     //Menu on activity log
     const [anchor_act, setAnchorEl_act] = React.useState(null);
@@ -25,6 +29,41 @@ export default function RightNavbar(){
     const handleClose_act = () => {
       setAnchorEl_act(null);
     };
+
+  //Hook for getting all certificates
+  const [getAllLog, setgetAllLog] = useState([]);
+  const loadgetAllLog = async () => {
+    const result = await axios.get("http://localhost/fms/getAllActivityLog.php");
+    setgetAllLog(result.data.phpresult);
+  };
+  useEffect(() => {
+    loadgetAllLog();
+  }, []);
+
+  var key_log = 0;
+  const activityLogContent = getAllLog.map((res) => {
+    if (res.email_id === email_key && key_log<10) {
+      key_log++;
+      var resDescription = res.description;
+      resDescription = resDescription.substring(0, 20);
+      var dot = "...";
+      res.description.length >= 23 ? dot = "..." : dot = "" ; 
+      return (
+        <div key={key_log} id="link_actLog">
+        <Link to="/ActivityLog" style={{ textDecoration: 'none', color: '#3D3D3D' }}>
+        <div className='activity_box'>
+            <div className='left'><img src={log_login}/></div>
+            <div className='right'>
+                <span>{res.date}</span>
+                <span>{res.time}</span>
+                <span>{resDescription+dot}</span>
+            </div>
+        </div>
+        </Link>
+        </div>
+      );
+    }
+  });
 
 
     return (
@@ -87,40 +126,20 @@ export default function RightNavbar(){
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
+                        <MenuItem style={{display:"none"}}></MenuItem>
+                        <Link to="/ActivityLog" style={{ textDecoration: 'none', color: '#212121' }}>
                         <MenuItem>
                             <ListItemIcon>
                                 <LocalActivityIcon fontSize="small" />
                             </ListItemIcon>
                             View all recent activity
                         </MenuItem>
+                        </Link>
                 </Menu>
             </div>    
 
             <div className='activitylog_content'>
-                <div className='activity_box'>
-                    <div className='left'><img src={log_login}/></div>
-                    <div className='right'>
-                         <span>March 20, 2022</span>
-                         <span>2:20 PM</span>
-                         <span>You logged in</span>
-                    </div>
-                </div>
-                <div className='activity_box'>
-                    <div className='left'><img src={log_login}/></div>
-                    <div className='right'>
-                         <span>March 20, 2022</span>
-                         <span>2:20 PM</span>
-                         <span>You logged in</span>
-                    </div>
-                </div>
-                <div className='activity_box'>
-                    <div className='left'><img src={log_login}/></div>
-                    <div className='right'>
-                         <span>March 20, 2022</span>
-                         <span>2:20 PM</span>
-                         <span>You logged in</span>
-                    </div>
-                </div>
+                {activityLogContent}
             </div>   
 
         </div>

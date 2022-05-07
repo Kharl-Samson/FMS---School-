@@ -203,6 +203,7 @@ export default function TaskContent(){
   const submitForm=(e)=>{
         e.preventDefault();   
             const sendData = {
+                email: localStorage.getItem('email'),
                 id: document.getElementById("id_delete_key").value,
            }     
            //Sending the data to my backend
@@ -241,6 +242,7 @@ export default function TaskContent(){
 
     //Sending the data request to call it on backend
     const sendDataEdit = {
+        email: localStorage.getItem('email'),
         id: document.getElementById("edit_task_id").value,
         title: document.getElementById("edit_task_title").value,
         description: document.getElementById("edit_task_description").value,
@@ -716,6 +718,7 @@ export default function TaskContent(){
                         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                     >
+                        <MenuItem style={{display:"none"}}></MenuItem>
                         <MenuItem onClick={viewAllTask}>
                             <ListItemIcon>
                                 <TaskIcon1 fontSize="small" />

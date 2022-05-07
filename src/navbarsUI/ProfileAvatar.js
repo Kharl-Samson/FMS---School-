@@ -74,6 +74,7 @@ export default function ProfileAvatar(){
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
+             <MenuItem style={{display:"none"}}></MenuItem>
             <Link to="/PersonalInformation" style={{ textDecoration: 'none', color: '#212121' }}>
             <MenuItem>
                 <Avatar 
@@ -87,12 +88,16 @@ export default function ProfileAvatar(){
             </Link>
 
             <Divider />
+
+            <Link to="/ActivityLog" style={{ textDecoration: 'none', color: '#212121' }}>
             <MenuItem>
                 <ListItemIcon>
                     <LocalActivityIcon fontSize="small" />
                 </ListItemIcon>
                 Activity Logs
             </MenuItem>
+            </Link>
+            
             <Link to="/TermsofService" style={{ textDecoration: 'none', color: '#212121' }} target="_blank">
             <MenuItem>
                 <ListItemIcon>

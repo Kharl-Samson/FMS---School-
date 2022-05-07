@@ -467,7 +467,7 @@ const changePasswordForm=(e)=>{
                                             <img src={Password_icon}/>
                                             </LightTooltip>
                                         </div>
-                                        <input type="password" placeholder="Your password here..." name="password" className="password" id="current_password" onKeyUp={toggle_password1} required/>
+                                        <input type="password" placeholder="Your password here" name="password" className="password" id="current_password" onKeyUp={toggle_password1} required/>
                                         <div className="toggle_password">                           
                                             <img src={Open_eye_icon} 
                                                 className="password_toggle_icon open_eye"
@@ -491,7 +491,7 @@ const changePasswordForm=(e)=>{
                                             <img src={Password_icon}/>
                                             </LightTooltip>
                                         </div>
-                                        <input type="password" placeholder="Your new password here..." className="password"  id="new_password"  onKeyUp={() => { toggle_password2(); password_validation();}} required/>
+                                        <input type="password" placeholder="Your new password here" className="password"  id="new_password"  onKeyUp={() => { toggle_password2(); password_validation();}} required/>
                                         <div className="toggle_password">                           
                                             <img src={Open_eye_icon} 
                                                 className="password_toggle_icon open_eye"
@@ -515,7 +515,7 @@ const changePasswordForm=(e)=>{
                                             <img src={Password_icon}/>
                                             </LightTooltip>
                                         </div>
-                                        <input type="password" placeholder="Retype your password here..." name="password" className="password" id="retype_password" onKeyUp={() => { toggle_password3(); password_validation1();}} required/>
+                                        <input type="password" placeholder="Retype your password here" name="password" className="password" id="retype_password" onKeyUp={() => { toggle_password3(); password_validation1();}} required/>
                                         <div className="toggle_password">                           
                                             <img src={Open_eye_icon} 
                                                 className="password_toggle_icon open_eye"

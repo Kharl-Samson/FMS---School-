@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import Skeleton from "@mui/material/Skeleton";
+import axios from "axios";
 
 export default function NavbarAdmin(props) {
   //Tooltip
@@ -59,6 +60,20 @@ export default function NavbarAdmin(props) {
       }
     }
   }, 1200);
+
+  const logoutForm=(e)=>{
+    e.preventDefault();
+    //Sending the data request to call it on backend
+    const sendData = {
+        email:localStorage.getItem('email'),
+    }
+
+    //Sending the data to my backend
+    axios.post('http://localhost/fms/logout.php',sendData)
+    .then((result)=>{
+      navigate(`/`);
+    })    
+}
 
   return (
     <div className="navbar_account_container">
@@ -152,8 +167,8 @@ export default function NavbarAdmin(props) {
         </div>
       </div>
 
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <div className="logout_container navlink_container">
+      <form>
+        <div className="logout_container navlink_container"  onClick={logoutForm}>
           <Skeleton
             animation="wave"
             className="skeleton_show1"
@@ -169,7 +184,7 @@ export default function NavbarAdmin(props) {
           </LightTooltip>
           <span className="left_nav_minimize skeleton_done1">Sign Out</span>
         </div>
-      </Link>
+      </form>
 
       {/* Nav drawer fo smaller device */}
       <div

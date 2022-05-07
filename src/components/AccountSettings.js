@@ -478,11 +478,11 @@ setTimeout(function(){
                             <div className="content">
                                 <div className="left">
                                     <p className="label">First Name : </p>
-                                    <input type="text" defaultValue={localStorage.getItem("fname")} placeholder="Enter your name here..." id="edit_fname" required/>
+                                    <input type="text" className="name_inPut" defaultValue={localStorage.getItem("fname")} placeholder="Enter your name here..." id="edit_fname" required/>
                                 </div>   
                                 <div className="left">
                                     <p className="label">Last Name : </p>
-                                    <input type="text" defaultValue={localStorage.getItem("lname")} placeholder="Enter your name here..." id="edit_lname" required/>
+                                    <input type="text" defaultValue={localStorage.getItem("lname")} placeholder="Enter your name here..." id="edit_lname" className="name_inPut" required/>
                                 </div>    
                                 <div className="left">
                                     <p className="label">Department : </p>
@@ -546,7 +546,7 @@ setTimeout(function(){
                                             <img src={Password_icon}/>
                                             </LightTooltip>
                                         </div>
-                                        <input type="password" placeholder="Your password here..." name="password" className="password" id="current_password" onKeyUp={toggle_password1} required/>
+                                        <input type="password" placeholder="Your password here" name="password" className="password" id="current_password" onKeyUp={toggle_password1} required/>
                                         <div className="toggle_password">                           
                                             <img src={Open_eye_icon} 
                                                 className="password_toggle_icon open_eye"
@@ -570,7 +570,7 @@ setTimeout(function(){
                                             <img src={Password_icon}/>
                                             </LightTooltip>
                                         </div>
-                                        <input type="password" placeholder="Your new password here..." className="password"  id="new_password"  onKeyUp={() => { toggle_password2(); password_validation();}} required/>
+                                        <input type="password" placeholder="Your new password here" className="password"  id="new_password"  onKeyUp={() => { toggle_password2(); password_validation();}} required/>
                                         <div className="toggle_password">                           
                                             <img src={Open_eye_icon} 
                                                 className="password_toggle_icon open_eye"
@@ -594,7 +594,7 @@ setTimeout(function(){
                                             <img src={Password_icon}/>
                                             </LightTooltip>
                                         </div>
-                                        <input type="password" placeholder="Retype your password here..." name="password" className="password" id="retype_password" onKeyUp={() => { toggle_password3(); password_validation1();}} required/>
+                                        <input type="password" placeholder="Retype your password here" name="password" className="password" id="retype_password" onKeyUp={() => { toggle_password3(); password_validation1();}} required/>
                                         <div className="toggle_password">                           
                                             <img src={Open_eye_icon} 
                                                 className="password_toggle_icon open_eye"

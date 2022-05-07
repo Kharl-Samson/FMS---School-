@@ -160,7 +160,7 @@
     border: 1px solid #D8D8D8;
     outline-color: #FFAA28;
 }
-.accountSettings_container .table_container .info_details .content .left input[type="text"]{
+.accountSettings_container .table_container .info_details .content .left .name_inPut{
     width: 70%;
     font-size: 1rem;
     padding: 10px 0;
@@ -321,7 +321,7 @@
     .accountSettings_container .table_container .right .info_details .content .left input[type="email"]{
         width: 100%;
     }
-    .accountSettings_container .table_container .right .info_details .content .left input[type="text"]{
+    .accountSettings_container .table_container .right .info_details .content .left .name_inPut{
         width: 100%;
     }
     .accountSettings_container .table_container .info_details .content .left select{

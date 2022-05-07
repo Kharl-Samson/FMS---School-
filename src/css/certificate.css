@@ -151,6 +151,13 @@
     justify-content: center;
     font-size: .9rem;
 }
+.certificates_container .table_container .top .container:nth-child(3) div form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .certificates_container .table_container .top .container:nth-child(3) div:hover{
     cursor: pointer;
     opacity: 80%;

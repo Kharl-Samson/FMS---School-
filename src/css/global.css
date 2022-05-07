@@ -719,16 +719,23 @@ button:hover{
     overflow-y: scroll;
 }
 .activitylog_content::-webkit-scrollbar {
-    width: 5px;
+    width: 4px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
 }
 .activitylog_content::-webkit-scrollbar-track {
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    background-color: #f9e4c5; ;
 }
-.activitlog_content::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.856);
+.activitylog_content::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    background: #fe8c02;
 }
+.activitylog_content::-webkit-scrollbar-thumb:window-inactive {
+    background: transparent; 
+}
+
 .activitylog_content .activity_box{
     margin: 0% auto;
     margin-bottom: 4%;
@@ -771,12 +778,12 @@ button:hover{
     font-size: .8rem;
     font-weight: 600;
     color: #3D3D3D;
-    line-height: 1.2;
+    line-height: 1.5;
 }
 .activitylog_content .activity_box .right span:nth-child(3){
     font-size: .8rem;
-    color: #8A8A8A;
-    line-height: 1.5;
+    color: #616161;
+    line-height: 1.1;
 }
 
 

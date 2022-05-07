@@ -24,6 +24,7 @@ import CertificatePDF from "./CertificatePDF";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function CertificateTopActions() {
   setTimeout(function () {
@@ -210,6 +211,17 @@ export default function CertificateTopActions() {
     document.getElementById("input_from").value = from;
     document.getElementById("input_to").value = to;
   };
+
+  const downloadCertificateForm=(e)=>{
+    e.preventDefault();
+    //Sending the data request to call it on backend
+    const sendData = {
+        email:localStorage.getItem('email'),
+    }
+    //Sending the data to my backend
+    axios.post('http://localhost/fms/downloadCertificate.php',sendData)
+    .then((result)=>{})    
+  }
 
   return (
     <div className="top">
@@ -430,10 +442,15 @@ export default function CertificateTopActions() {
         </div>
       </div>
       <div className="container">
+
+  
         <div onClick={printDocument}>
+        <form onClick={downloadCertificateForm}>
           <img src={download_yellow}/> Download as PDF
+        </form>  
         </div>
-        
+     
+
         <div>
          <Link to="/UploadCertificate" style={{ textDecoration: 'none' }} className="upload_cert">
             <img src={uploadWhite} /> Upload Certificate

@@ -2111,6 +2111,17 @@ export default function PersonalDataSheet() {
     document.getElementsByClassName("view_pdf_container")[0].style.display =
       "none";
   }
+
+  const downloadProfileForm=(e)=>{
+    e.preventDefault();
+    //Sending the data request to call it on backend
+    const sendData = {
+        email:localStorage.getItem('email'),
+    }
+    //Sending the data to my backend
+    axios.post('http://localhost/fms/downloadPDS.php',sendData)
+    .then((result)=>{})    
+  }
   return (
     <div className="dashboard_container">
       <LeftNavbarFaculty />
@@ -2165,7 +2176,10 @@ export default function PersonalDataSheet() {
 
                 <div className="right">
                   <div className="cover_button">
+
+                    <form onSubmit={downloadProfileForm}>
                     <button
+                      type="submit"
                       onClick={printDocument}
                       onMouseOver={printPDShover}
                       onMouseOut={printPDSRemovehover}
@@ -2173,6 +2187,7 @@ export default function PersonalDataSheet() {
                       <img src={downloadyellow_icon} />
                       Download as PDF
                     </button>
+                    </form>
 
                     <button id="Edit_profile_btn" className="link_to_show" onClick={() =>window.location.replace("http://localhost:3000/EditPersonalInformation")} >
                       <img src={edit_icon} />

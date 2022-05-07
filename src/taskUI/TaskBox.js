@@ -79,6 +79,7 @@ export default function TaskBox(props){
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
     >
+        <MenuItem style={{display:"none"}}></MenuItem>
         <MenuItem  onClick={() => { show_edit_Task();}}>
             <ListItemIcon>
                 <EditIcon fontSize="small" />

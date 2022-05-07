@@ -15,6 +15,7 @@ import UploadCertificate from "./certificatesUI/UploadCertificate";
 import AccountSettings from "./components/AccountSettings";
 import AdminDashboard from "./components/AdminDashboard";
 import AccountSettingsAdmin from "./components/AccountSettingsAdmin";
+import ActivityLog from "./components/ActivityLog";
 
 export default function App() {
   return (
@@ -39,6 +40,8 @@ export default function App() {
 
               <Route path="AdminDashboard" element={<AdminDashboard/>} /> 
               <Route path="AccountSettingsAdmin" element={<AccountSettingsAdmin/>} /> 
+
+              <Route path="ActivityLog" element={<ActivityLog/>} /> 
             </Routes>
         
     </div>
