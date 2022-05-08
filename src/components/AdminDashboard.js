@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { deepOrange } from "@mui/material/colors";
 import DashboardStatisticsFaculty from '../dashboardUI/StatisticsFaculty';
+import RightNavbarAdmin from '../navbarsUI/RightNavbarAdmin';
 
 export default function AdminDashboard(){
 
@@ -120,7 +121,7 @@ export default function AdminDashboard(){
                 
             </div>
             
-            <RightNavbar/>
+            <RightNavbarAdmin/>
 
         </div>
     )

@@ -2,7 +2,7 @@ import React from "react";
 import '../css/login.css';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { orange } from '@mui/material/colors';
 import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
@@ -97,8 +97,8 @@ export default function Login(){
         e.preventDefault();
         //Sending the data request to call it on backend
         const sendData = {
-            email:user.email,
-            password:user.password,
+            email:document.getElementById("email").value,
+            password:document.getElementById("password").value,
         }
 
         //Sending the data to my backend
@@ -144,6 +144,36 @@ export default function Login(){
         })    
     }
 
+
+    var defaultChecked1 = localStorage.getItem("remember_me1");
+    setTimeout(function(){
+        if(localStorage.getItem("remember_me") !="not_checked"){
+            window.localStorage.setItem('remember_me1', "true");
+         }
+         else{
+             window.localStorage.setItem('remember_me1', '');
+
+         }
+    },500);
+ 
+ 
+   function lsRememberMe1() {
+     if (document.getElementById('keep_logA').checked) {
+         window.localStorage.setItem('email_input', document.getElementById("email").value);
+         window.localStorage.setItem('password_input', document.getElementById("password").value);
+         window.localStorage.setItem('remember_me', "checked");
+         window.localStorage.setItem('remember_me1', "true");
+
+     } 
+     else{
+         window.localStorage.setItem('email_input', "");
+         window.localStorage.setItem('password_input', "");
+         window.localStorage.setItem('remember_me', "not_checked");
+         window.localStorage.setItem('remember_me1', '');
+
+     }
+   }
+
     return (
         <div className="login_container" >
 
@@ -178,7 +208,7 @@ export default function Login(){
                                             <img src={Email_icon} className=".for_hover"/>
                                     </LightTooltip>
                                     </div>
-                                    <input type="text" placeholder="Email" name="email" onChange={handleChange} value={user.email} onKeyUp={hide_validation} required/>
+                                    <input type="text" placeholder="Email" name="email"  onKeyUp={hide_validation} id="email" defaultValue={localStorage.getItem("email_input")} required/>
                                 </div>
 
                                 <div className="input_container input_container2">
@@ -187,7 +217,7 @@ export default function Login(){
                                             <img src={Password_icon}/>
                                     </LightTooltip>
                                     </div>
-                                    <input type="password" placeholder="Password" id="password" name="password" onKeyUp={() => { TogglePass(); hide_validation();}} onChange={handleChange} value={user.password} required/>
+                                    <input type="password" placeholder="Password" id="password" name="password" onKeyUp={() => { TogglePass(); hide_validation();}}  defaultValue={localStorage.getItem("password_input")} required/>
 
                                     <div className="toggle_password">
                                     
@@ -217,6 +247,8 @@ export default function Login(){
                                     >
                                             <div className="left">
                                                 <Checkbox
+                                               defaultChecked={defaultChecked1} 
+                                                id="keep_logA"
                                                 {...label}
                                                 sx={{
                                                     color: orange[400],
@@ -242,7 +274,7 @@ export default function Login(){
                                      <p className="text_verifyer"></p>
                                 </div>    
 
-                                <button type="submit" className="sign_in_btn">Sign in</button>
+                                <button type="submit" className="sign_in_btn" onClick={lsRememberMe1} >Sign in</button>
 
                                 <p className="dont_have_account_text">
                                     Don't have an account?&nbsp; 
@@ -287,3 +319,6 @@ export default function Login(){
         </div>
     )
 }
+
+
+

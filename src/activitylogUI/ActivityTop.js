@@ -205,14 +205,6 @@ export default function ActivityTop() {
         </Menu>
       </div>
 
-
-      <div className="container">
-        <div>
-        <form>
-          <img src={download_yellow}/> Download as PDF
-        </form>  
-        </div>
-      </div>
     </div>
   );
 }

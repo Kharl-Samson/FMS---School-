@@ -4,6 +4,8 @@ export default function CertificateRow(props){
 
     function viewCertificate1(){
         document.getElementById("view_certificate_container1").style.display="flex"
+        document.getElementById("imgCert1").src =  "http://localhost/fms/upload_certificate/"+props.LDimage;
+
         document.getElementById("viewCert_img1").src = "http://localhost/fms/upload_certificate/"+props.LDimage;
         document.getElementById("viewCert_title1").textContent = props.LDtitleFull;
         document.getElementById("viewCert_fromTo1").textContent = "( "+props.LDfrom+" ) TO ( "+props.LDto1+" )";

@@ -203,7 +203,7 @@ export default function TableRowCertificate() {
               <div className="view_certificate">
                   <div className="left">
                       <p>Certificate Detail</p>
-                      <img src="" id="viewCert_img1"/>
+                      <img src="" id="viewCert_img1" onClick={view_certificate_enlarge}/>
                   </div>
 
                   <div className="right">
@@ -241,9 +241,20 @@ export default function TableRowCertificate() {
               </div>
         </div>
 
+        {/*View Certificate Large*/}
+        <div className="view_certificate_enlarge" id="view_cert_enlarge1">
+            <img src="" id="imgCert1"/>
+        </div>
+
     </div>
   );
 }
+
+//View Certificate Enlarge
+function view_certificate_enlarge(){
+  document.getElementById("view_cert_enlarge1").style.display="flex";
+}
+
 
 //Close delete certificate modal
 function closeViewModal1(){

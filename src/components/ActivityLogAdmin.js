@@ -11,8 +11,10 @@ import { Link} from "react-router-dom";
 import no_record_icon from "../images/no_record_icon.png";
 import $ from "jquery";
 import moment from "moment";
+import RightNavbarAdmin from "../navbarsUI/RightNavbarAdmin";
+import NavbarAdmin from "../navbarsUI/LeftNavbarAdmin";
 
-export default function ActivityLog() {
+export default function ActivityLogAdmin() {
 
   document.title = "CICT | Faculty Management System";
   let email_key = localStorage.getItem("email"); 
@@ -33,7 +35,6 @@ export default function ActivityLog() {
 
   var key_log = 0;
   const activityLogContent = getAllLog.map((res) => {
-    if (res.email_id === email_key) {
       key_log++;
       return (
         <div className="tr tr_log" key={key_log} id="tr_log">
@@ -60,18 +61,17 @@ export default function ActivityLog() {
             </div>
         </div>
       );
-    }
   });
 
   return (
     <div className="dashboard_container">
-        <LeftNavbarFaculty />
+        <NavbarAdmin/>
 
         <div className="main_content">
-            <NavbarSizer />
+            <NavbarSizer/>
 
             <div className="log_container">
-                <h1>Activity Log</h1>
+                <h1>User Logs</h1>
                 
                 <div className="table_container">
                 <ActivityTop/>
@@ -91,7 +91,7 @@ export default function ActivityLog() {
    
         </div>
 
-        <RightNavbar/>
+        <RightNavbarAdmin/>
     </div>
   );
 }

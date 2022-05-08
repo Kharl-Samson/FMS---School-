@@ -3,6 +3,7 @@ import React from "react";
 export default function CertificateRowMobile(props){
     function viewCertificate2(){
         document.getElementById("view_certificate_container2").style.display="flex"
+        document.getElementById("imgCert2").src =  "http://localhost/fms/upload_certificate/"+props.LDimage;
         document.getElementById("viewCert_img2").src = "http://localhost/fms/upload_certificate/"+props.LDimage;
         document.getElementById("viewCert_title2").textContent = props.LDtitleFull;
         document.getElementById("viewCert_fromTo2").textContent = "( "+props.LDfrom+" ) TO ( "+props.LDto1+" )";

@@ -178,7 +178,7 @@ export default function TableCertificateMobile(){
               <div className="view_certificate">
                   <div className="left">
                       <p>Certificate Detail</p>
-                      <img src="" id="viewCert_img2"/>
+                      <img src="" id="viewCert_img2" onClick={view_certificate_enlarge2}/>
                   </div>
 
                   <div className="right">
@@ -216,9 +216,20 @@ export default function TableCertificateMobile(){
               </div>
             </div>
 
+            {/*View Certificate Large*/}
+            <div className="view_certificate_enlarge" id="view_cert_enlarge2">
+              <img src="" id="imgCert2"/>
+            </div>
+
         </div>
     )
 }
+
+//View Certificate Enlarge
+function view_certificate_enlarge2(){
+  document.getElementById("view_cert_enlarge2").style.display="flex";
+}
+
 
 //Close delete certificate modal
 function closeViewModal2(){

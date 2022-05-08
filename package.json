@@ -19,6 +19,7 @@
     "aos": "^2.3.4",
     "axios": "^0.27.2",
     "date-fns": "^2.28.0",
+    "emailjs-com": "^3.2.0",
     "flat-carousel": "^0.0.1",
     "framer-motion": "^6.3.3",
     "html2canvas": "^1.4.1",

@@ -87,44 +87,7 @@
     margin-left: 8px;
 }
 
-.log_container .table_container .top .container:nth-child(2){
-    height: auto;
-    float: right;
-    width: 350px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: flex-end;
-}
-.log_container .table_container .top .container:nth-child(2) div{
-    height: 35px;
-    width: 47%;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: .9rem;
-}
-.log_container .table_container .top .container:nth-child(2) div form{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.log_container .table_container .top .container:nth-child(2) div:hover{
-    cursor: pointer;
-    opacity: 80%;
-}
-.log_container .table_container .top .container:nth-child(2) div img{
-    height: 45%;
-    margin-right: 5px;
-    width: auto;
-}
-.log_container .table_container .top .container:nth-child(2) div{
-    border: 2px solid #c2c2c2;
-    color: #FFAA28;
-    background-color: #ffff;
-}
+
 
 
 /*Table row*/
@@ -163,13 +126,15 @@
 
 .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr{
     height: auto;
-    padding: 15px 0;
+    padding: 15px 1rem;
     width: 95%;
     margin: 0 auto;
     border-radius: 5px;
     border: 1px solid transparent;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    transition: .5s ease;
 }
 .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr:hover{
     background-color: #ffff;
@@ -179,11 +144,12 @@
 .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(1){
     height: 100%;
     width: 30%;
+    align-items: center;
     display: flex;
 }
 .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(1) .left{
     height: 100%;
-    width: 25%;
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -197,7 +163,7 @@
 }
 .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(1) .right{
     height: 100%;
-    width: 75%;
+    width: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -207,12 +173,13 @@
     line-height: 1.1;
 }
 .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(1) .right p:nth-child(1){
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #3D3D3D;
 }
 .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(1) .right p:nth-child(2){
-    font-size: 1rem;
+    font-size: .9rem;
+    word-break: break-all;
     color: #676767;
 }
 .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(2){
@@ -227,24 +194,24 @@
     line-height: 1.1;
 }
 .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(2) p:nth-child(1){
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #3D3D3D;
 }
 .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(2) p:nth-child(2){
-    font-size: 1rem;
+    font-size: .9rem;
     color: #676767;
 }
 .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(3){
     height: 100%;
-    width: 30%;
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(3) p{
     margin: 0 20px;
-    font-size: 1rem;
+    font-size: .9rem;
     color: #676767;
 }  
 
@@ -276,6 +243,7 @@
 @media screen and (max-width: 850px) {
     .log_container{
         margin-top: 1rem;
+        margin-bottom: 5rem;
     }
     .log_container .table_container .top .container:nth-child(2){
         float: left;
@@ -309,4 +277,37 @@
         width: 100%;
         padding-left: 15%;
     }    
+
+    .log_container .table_container .top .container:nth-child(1) div:nth-child(1){
+        width: 20%;
+    }
+    .log_container .table_container .top .container:nth-child(1) input{
+        width: 80%;
+    }
+    .log_container .table_container .top .container:nth-child(1) .filter_container{
+        display: none;
+    }
+
+
+    .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 0;
+        border-bottom: 1px solid rgb(193, 192, 192);
+        border-radius: 0px;
+    }
+    .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(1){
+        width: 100%;
+        align-items: center;
+    }
+    .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(1) .left img{
+       margin-left: 15px;
+    }
+    .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(2){
+        width: 100%;
+        margin-top: 15px;
+    }
+    .log_container .table_container .actLog_scrollable .tableRow_scrollable_container .tr div:nth-child(3){
+        margin-top: 5px;
+    }
 }

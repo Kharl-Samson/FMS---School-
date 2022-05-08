@@ -17,6 +17,7 @@ import lock_icon from "../images/icons/lock_icon.svg";
 import Password_icon from "../images/icons/password.svg";
 import Open_eye_icon from "../images/icons/open_eye.svg";
 import Close_eye_icon from "../images/icons/close_eye.svg"; 
+import RightNavbarAdmin from "../navbarsUI/RightNavbarAdmin";
 
 export default function AccountSettingsAdmin(){
     document.title = "CICT | Faculty Management System";
@@ -399,11 +400,11 @@ const changePasswordForm=(e)=>{
                             <div className="content">
                                 <div className="left">
                                     <p className="label">First Name : </p>
-                                    <input type="text" defaultValue={localStorage.getItem("fname")} placeholder="Enter your name here..." id="edit_fname" required/>
+                                    <input type="text" defaultValue={localStorage.getItem("fname")} placeholder="Enter your name here..." id="edit_fname" className="name_inPut" required/>
                                 </div>   
                                 <div className="left">
                                     <p className="label">Last Name : </p>
-                                    <input type="text" defaultValue={localStorage.getItem("lname")} placeholder="Enter your name here..." id="edit_lname" required/>
+                                    <input type="text" defaultValue={localStorage.getItem("lname")} placeholder="Enter your name here..." id="edit_lname" className="name_inPut" required/>
                                 </div>    
                                 <div className="left" style={{display:"none"}}>
                                     <p className="label">Department : </p>
@@ -549,7 +550,7 @@ const changePasswordForm=(e)=>{
                 
         </div>
             
-        <RightNavbar/>
+        <RightNavbarAdmin/>
 
         {/*Success Editing Profile Photo */}
         <div className="success_modal_right_side profile_photo_side_modal">
