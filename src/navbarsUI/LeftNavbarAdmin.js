@@ -114,12 +114,12 @@ export default function NavbarAdmin(props) {
             </Link>
           </div>
 
-          <div id="" className="link_disabler">
+          <div id="link_faculty" className="link_disabler">
             <Link
-              to=""
+              to="/Faculty"
               style={{ textDecoration: "none", width: "100%" }}
             >
-              <div className="navlink_container" id="dashboard_link">
+              <div className="navlink_container" id="faculty_link">
                 <Skeleton
                   animation="wave"
                   className="skeleton_show1"

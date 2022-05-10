@@ -53,7 +53,7 @@ export default function DashboardStatisticsFaculty(){
         <div className='statistics_container'>
 
             <div className='box'>          
-            <Link to="" style={{ textDecoration: "none",display:"flex",width:"100%",height:"100%",color:"black"}}>
+            <Link to="/Faculty" style={{ textDecoration: "none",display:"flex",width:"100%",height:"100%",color:"black"}}>
                 <div className='left'>
                     <Skeleton animation="wave" variant="rectangular"  width={"50%"} height={"60%"}  className='skeleton_show'/>
                     <img src={faculty} className='skeleton_done'/>
@@ -68,7 +68,7 @@ export default function DashboardStatisticsFaculty(){
             </div>
            
             <div className='box'>
-            <Link to="" style={{ textDecoration: "none",display:"flex",width:"100%",height:"100%",color:"black"}}>
+            <Link to="/Faculty" style={{ textDecoration: "none",display:"flex",width:"100%",height:"100%",color:"black"}}>
                 <div className='left'>
                     <Skeleton animation="wave" variant="rectangular"  width={"50%"} height={"60%"}  className='skeleton_show'/>
                     <img src={pendingAccount} className='skeleton_done'/>
@@ -83,7 +83,7 @@ export default function DashboardStatisticsFaculty(){
             </div>
 
             <div className='box'>
-            <Link to="" style={{ textDecoration: "none",display:"flex",width:"100%",height:"100%",color:"black"}}>
+            <Link to="/Faculty" style={{ textDecoration: "none",display:"flex",width:"100%",height:"100%",color:"black"}}>
                 <div className='left'>
                     <Skeleton animation="wave" variant="rectangular"  width={"50%"} height={"60%"}  className='skeleton_show'/>
                     <img src={certificate} className='skeleton_done'/>

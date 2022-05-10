@@ -1,10 +1,9 @@
 import React from 'react';
 import '../css/dashboardAdmin.css';
-import DashboardStatistics from '../dashboardUI/Statistics';
+import { Link } from "react-router-dom";
 import WeatherAndBanner from '../dashboardUI/WeatherAndBanner';
 import NavbarAdmin from '../navbarsUI/LeftNavbarAdmin';
 import NavbarSizer from '../navbarsUI/NavbarSizer';
-import RightNavbar from '../navbarsUI/RightNavbar';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import { useEffect, useState } from "react";
@@ -115,7 +114,9 @@ export default function AdminDashboard(){
                 </div>
 
                 <div className='see_all_faculty'>
+                <Link to="/Faculty" style={{ textDecoration: "none",display:"flex",width:"100%",height:"100%",color:"#ffff",alignItems:"center",justifyContent:"center"}}>
                     See All &#62;
+                </Link>    
                 </div> 
 
                 

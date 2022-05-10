@@ -1,0 +1,207 @@
+/*CHOICES PDS PAGE*/
+.choices_faculty_page{
+    height: auto;
+    width: 100%;
+    margin: 0% auto;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #f0d09e;
+    display: flex;
+    justify-content: flex-start;
+}
+.choices_faculty_page div{
+    padding: 10px 25px;
+    font-size: 1.2rem;
+    color: #FFAA28;
+    z-index: 10000;
+    border-bottom: 5px solid transparent;
+}
+.choices_faculty_page div:hover{
+    cursor: pointer;
+    color: #ffc472;
+}
+.choices_faculty_page #active_faculty{
+    font-weight: 600;
+    border-bottom: 5px solid #FFAA28;
+}
+
+.certificates_container .table_container .top .container:nth-child(3){
+    height: auto;
+    float: right;
+    width: 350px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+.certificates_container .table_container .top .container:nth-child(3) div{
+    height: 35px;
+    width: 47%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9rem;
+}
+.certificates_container .table_container .top .container:nth-child(3) div form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.certificates_container .table_container .top .container:nth-child(3) div:hover{
+    cursor: pointer;
+    opacity: 80%;
+}
+.certificates_container .table_container .top .container:nth-child(3) div img{
+    height: 45%;
+    margin-right: 5px;
+    width: auto;
+}
+.certificates_container .table_container .top .container:nth-child(3) div:nth-child(1){
+    border: 2px solid #c2c2c2;
+    color: #FFAA28;
+    background-color: #ffff;
+}
+
+
+.faculty_imageContainer{
+    height: auto;
+    width: 250px;
+    margin: 2rem 2.5rem;
+}
+.faculty_imageContainer .faculty_img{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: .5s ease;
+}
+.faculty_imageContainer .faculty_img:hover{
+    cursor: pointer;
+    transform: scale(1.1)
+}
+.faculty_imageContainer .fName{
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: 600;
+}
+.faculty_imageContainer .fEmail{
+    font-size: .9rem;
+    color: #666666;
+    text-align: center;
+}
+
+/*Table row*/
+#rowTable_forSearch{
+    background-color: #ffff;
+}
+#rowTable_forSearch .header{
+    box-shadow: none;
+}
+#rowTable_forSearch .header .th{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+#rowTable_forSearch .header .th div{
+    padding: 10px 0;
+}
+#rowTable_forSearch .header .th div span{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 20px;
+}
+#rowTable_forSearch .header .th div:nth-child(1){
+    width: 25%;
+
+}
+ #profile_photo{
+    height: 30px;
+    width: 30px;
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 35px;
+}
+#rowTable_forSearch .header .th div:nth-child(2){
+    width: 25%;
+}
+#rowTable_forSearch .header .th div:nth-child(3){
+    width: 25%;
+    display: flex;
+}
+#rowTable_forSearch .header .th div:nth-child(4){
+    width: 25%;
+}
+.th_hover:hover{
+    cursor: pointer;
+    background-color: #eeeeee;
+}
+
+.header1{
+    display: flex;
+    padding: 10px 0;
+}
+.header1 div:nth-child(1){
+    width: 25%;
+}
+
+
+.no_searchFound6{
+    height: 100%;
+    width: 300px;
+    margin: 0% auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #666666;
+}
+.no_searchFound6 img{
+    margin-bottom: 5px;
+    width: 80%;
+    height: auto;
+}
+.no_searchFound7{
+    height: 100%;
+    width: 300px;
+    margin: 0% auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #666666;
+}
+.no_searchFound7 img{
+    margin-bottom: 5px;
+    width: 80%;
+    height: auto;
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 1025px) {
+
+}
+
+@media screen and (max-width: 850px) {
+
+    
+    .choices_pds_page{
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .certificates_container .table_container .top .container:nth-child(3){
+        width: 100%;
+    }
+ 
+}

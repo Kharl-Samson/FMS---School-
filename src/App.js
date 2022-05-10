@@ -17,6 +17,7 @@ import AdminDashboard from "./components/AdminDashboard";
 import AccountSettingsAdmin from "./components/AccountSettingsAdmin";
 import ActivityLog from "./components/ActivityLog";
 import ActivityLogAdmin from "./components/ActivityLogAdmin";
+import Faculty from "./components/Faculty";
 
 export default function App() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
               <Route path="AccountSettings" element={<AccountSettings/>} />   
 
               <Route path="AdminDashboard" element={<AdminDashboard/>} /> 
+              <Route path="Faculty" element={<Faculty/>} /> 
               <Route path="AccountSettingsAdmin" element={<AccountSettingsAdmin/>} /> 
 
               <Route path="ActivityLog" element={<ActivityLog/>} /> 
