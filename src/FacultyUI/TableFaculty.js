@@ -40,15 +40,19 @@ export default function TableRowFaculty() {
 
   return (
     <div id="rowTable_forSearch">
-      <div className="header">
-            <div className="th"><span>Name</span></div>
-            <div className="th"><span>Email Address</span></div>
-            <div className="th"><span>Department</span></div>
-            <div className="th"><span>Action</span></div>
+      <div className="header_faculty">
+            <div className="th th1"><span>Name</span></div>
+            <div className="th th2"><span>Email Address</span></div>
+            <div className="th th3"><span>Department</span></div>
+            <div className="th th4"><span>Employment</span></div>
+            <div className="th th5"><span>Action</span></div>
       </div>
 
-      <div className="tableRow_scrollable_container">
-        {input_keyForUser} 
+      <div className="tableRow_scrollable_container_faculty">
+
+        {input_keyForUser}
+
+        {/*input_keyForUser*/} 
         <div className="no_searchFound7">
               <img src={no_record_icon}/>
               <p>No Certificate Available!</p>

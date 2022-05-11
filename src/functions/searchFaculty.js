@@ -18,4 +18,14 @@ export default function search_faculty() {
     document.getElementsByClassName("no_searchFound6")[0].style.display ="none";
   }
 
+  $("#rowTable_forSearch #facultyRow_desktop").filter(function () {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+  });
+  if ($("#rowTable_forSearch #facultyRow_desktop:visible").length === 0) {
+    document.getElementsByClassName("no_searchFound7")[0].style.display ="flex";
+  }
+  else if ($("#rowTable_forSearch #facultyRow_desktop:visible").length != 0) {
+    document.getElementsByClassName("no_searchFound7")[0].style.display ="none";
+  }
+
 }

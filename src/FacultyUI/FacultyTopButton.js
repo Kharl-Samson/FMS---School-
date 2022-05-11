@@ -36,6 +36,13 @@ export default function FacultyTopActions() {
     else if ($("#gridTable_forSearch #faculty_desktop:visible").length != 0) {
       document.getElementsByClassName("no_searchFound6")[0].style.display ="none";
     }
+
+    if ($("#rowTable_forSearch #facultyRow_desktop:visible").length === 0) {
+      document.getElementsByClassName("no_searchFound7")[0].style.display ="flex";
+    }
+    else if ($("#rowTable_forSearch #facultyRow_desktop:visible").length != 0) {
+      document.getElementsByClassName("no_searchFound7")[0].style.display ="none";
+    }
   }, 1200);
 
   const [anchorEl_open, setAnchorEl_open] = React.useState(null);
@@ -51,10 +58,13 @@ export default function FacultyTopActions() {
       ele[i].checked = false;
     }
     var div = document.getElementsByClassName("faculty_desktop");
+    var div1 = document.getElementsByClassName("facultyRow_desktop");
     for (var i = 0; i < div.length; i++) {
       div[i].style.display = "block";
+      div1[i].style.display = "flex";
     }
     document.getElementsByClassName("no_searchFound6")[0].style.display = "none";
+    document.getElementsByClassName("no_searchFound7")[0].style.display = "none";
     document.getElementById("input_from").value = "";
     document.getElementById("input_to").value = "";
     document.getElementById("span_from").textContent = "dd/mm/yyyy";
@@ -76,15 +86,18 @@ export default function FacultyTopActions() {
       ele[i].checked = false;
     }
     var div = document.getElementsByClassName("faculty_desktop");
+    var div1 = document.getElementsByClassName("facultyRow_desktop");
     for (var i = 0; i < div.length; i++) {
       div[i].style.display = "block";
+      div1[i].style.display = "flex";
     }
     document.getElementsByClassName("no_searchFound6")[0].style.display = "none";
+    document.getElementsByClassName("no_searchFound7")[0].style.display = "none";
     document.getElementById("input_from").value = "";
     document.getElementById("input_to").value = "";
     document.getElementById("span_from").textContent = "dd/mm/yyyy";
     document.getElementById("span_to").textContent = "dd/mm/yyyy";
-    setAnchorEl_open(null);
+
   }
   const [state, setState] = useState([
     {
@@ -113,6 +126,39 @@ export default function FacultyTopActions() {
     document.getElementById("input_from").value = from;
     document.getElementById("input_to").value = to;
   };
+
+  function gridView() {
+    document.getElementsByClassName("no_searchFound6")[0].style.display ="none";
+    document.getElementsByClassName("no_searchFound7")[0].style.display ="none";
+    document.getElementById("grid_icon").src = gridTableYellow;
+    document.getElementById("row_icon").src = rowTableGray;
+    document.getElementById("GridBtn").style.backgroundColor = "#FFFF";
+    document.getElementById("RowBtn").style.backgroundColor = "transparent";
+    document.getElementById("row_table").style.display = "none";
+    document.getElementById("table_containerID").style.backgroundColor ="#ffff";
+    document.getElementById("table_containerID").style.boxShadow ="rgba(0, 0, 0, 0.24) 0px 3px 8px";
+    document.getElementById("grid_table").style.display = "block";
+    if ($("#gridTable_forSearch #faculty_desktop:visible").length === 0) {
+      document.getElementById("faculty_desktop").style.display = "none"
+      document.getElementsByClassName("no_searchFound6")[0].style.display ="flex";
+    }
+  }
+  function rowView() {
+    document.getElementsByClassName("no_searchFound6")[0].style.display ="none";
+    document.getElementsByClassName("no_searchFound7")[0].style.display ="none";
+    document.getElementById("grid_icon").src = gridTableGray;
+    document.getElementById("row_icon").src = rowTableYellow;
+    document.getElementById("GridBtn").style.backgroundColor = "transparent";
+    document.getElementById("RowBtn").style.backgroundColor = "#FFFF";
+    document.getElementById("table_containerID").style.backgroundColor = "transparent";
+    document.getElementById("table_containerID").style.boxShadow = "none";
+    document.getElementById("grid_table").style.display = "none";
+    document.getElementById("row_table").style.display = "block";
+    if ($("#rowTable_forSearch #facultyRow_desktop:visible").length === 0) {
+        document.getElementById("facultyRow_desktop").style.display = "none"
+        document.getElementsByClassName("no_searchFound7")[0].style.display ="flex";
+    }
+  }
 
   return (
     <div className="top">
@@ -303,16 +349,16 @@ export default function FacultyTopActions() {
       <div className="container">
         View :
         <div>
-          <div id="GridBtn">
+          <div id="GridBtn" onClick={gridView}>
             <img id="grid_icon" src={gridTableYellow} />
           </div>
-          <div id="RowBtn">
+          <div id="RowBtn" onClick={rowView}>
             <img id="row_icon" src={rowTableGray} />
           </div>
         </div>
       </div>
       
-      <div className="container">
+      <div className="container" id="f_container3">
         <div>
         <form>
           <img src={download_yellow}/> Download as PDF

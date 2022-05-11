@@ -3,6 +3,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ListItemIcon from "@mui/material/ListItemIcon";
+import CardMembershipIcon from '@mui/icons-material/CardMembership';
+import { useNavigate } from "react-router-dom";
 
 export default function FacultyGrid(props){
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -13,6 +15,21 @@ export default function FacultyGrid(props){
     const handleClose = () => {
       setAnchorEl(null);
     };
+
+    let navigate = useNavigate();
+    function viewFaculty_function(){
+        window.localStorage.setItem('viewFacultyName', props.fName);
+        window.localStorage.setItem('viewFacultyPhoto', props.fImage);
+        window.localStorage.setItem('viewFacultyEmail', props.fEmail);
+        navigate(`/ViewFaculty`);
+    }
+
+    function viewFacultyCertificate_function(){
+        window.localStorage.setItem('viewFacultyName', props.fName);
+        window.localStorage.setItem('viewFacultyPhoto', props.fImage);
+        window.localStorage.setItem('viewFacultyEmail', props.fEmail);
+        navigate(`/ViewFacultyCertificates`);
+    }
 
     return(
         <div className="faculty_imageContainer faculty_desktop" id="faculty_desktop">
@@ -46,11 +63,17 @@ export default function FacultyGrid(props){
                 }}
             >
                 <MenuItem style={{display:"none"}}></MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={viewFaculty_function}>
                     <ListItemIcon>
                         <AccountBoxIcon fontSize="medium" />
                     </ListItemIcon>
                     View personal information
+                </MenuItem>
+                <MenuItem onClick={viewFacultyCertificate_function}>
+                    <ListItemIcon>
+                        <CardMembershipIcon fontSize="medium" />
+                    </ListItemIcon>
+                    View all certifications
                 </MenuItem>
             </Menu>
         </div>

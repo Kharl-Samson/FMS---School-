@@ -2,11 +2,8 @@ import React from "react";
 import '../css/certificate.css';
 import '../css/faculty.css';
 import NavbarSizer from "../navbarsUI/NavbarSizer";
-import TableRowCertificate from "../certificatesUI/TableCertificate";
-import TableCertificateMobile from "../certificatesUI/TableCertificateMobile";
 import no_record_icon from "../images/no_record_icon.png";
 import FacultyTopActions from "../FacultyUI/FacultyTopButton";
-import EditCertificate from "../certificatesUI/EditCertificate";
 import NavbarAdmin from "../navbarsUI/LeftNavbarAdmin";
 import RightNavbarAdmin from "../navbarsUI/RightNavbarAdmin";
 import EachFaculty from "../FacultyUI/EachFaculty";
@@ -45,10 +42,10 @@ export default function Faculty() {
                 
 
                 <div id="active_user_Table" style={{display:"block"}}>
-                    <div className="table_container" id="table_containerID" style={{backgroundColor:"transparent",boxShadow:"none"}}>
+                    <div className="table_container" id="table_containerID">
                         <FacultyTopActions/>
 
-                        <div className="certficate_scrollable" id="grid_table"  style={{display:"none"}}> 
+                        <div className="certficate_scrollable" id="grid_table"> 
                             <EachFaculty/>
                             <div className="no_searchFound6">
                                 <img src={no_record_icon}/>
@@ -56,17 +53,10 @@ export default function Faculty() {
                             </div>
                          </div>
 
-                        <div className="certficate_scrollable1" id="row_table">
+                        <div className="certficate_scrollable1" id="row_table" style={{display:"none"}}>
                             <TableRowFaculty/>
                         </div>
 
-                        <div className="certificate_scrollable_mobile" id="rowMobile_table" style={{display:"none"}}>
-
-                            <div className="no_searchFound2">
-                                <img src={no_record_icon}/>
-                                <p>No Certificate Available!</p>
-                            </div>
-                        </div>  
                     </div>
                 </div>
 

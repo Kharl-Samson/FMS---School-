@@ -68,11 +68,11 @@ export default function AdminDashboard(){
                         id="profile_photo"
                         onError={(e)=>{e.target.onerror = null; e.target.src="http://localhost/fms/upload_profile/default_avatar.png"}}
                     />
-                <span style={{fontWeight:"normal",fontSize:"1rem",marginLeft:"10px",color:"#3D3D3D"}}>{res.fname+" "+res.lname}</span>
+                <span style={{fontWeight:"normal",fontSize:".9rem",marginLeft:"10px",color:"#3D3D3D"}}>{res.fname+" "+res.lname}</span>
                 </div>
-                <div><span style={{fontWeight:"normal",fontSize:"1rem",textDecoration:"underline"}}><a href={"mailto:"+res.email} target="_blank" style={{color:"#3D3D3D"}}>{res.email}</a></span></div>
-                <div style={{justifyContent:"center"}}><span style={{fontWeight:"normal",fontSize:"1rem",color:"#3D3D3D"}}>{res.department}</span></div>
-                <div><span style={{fontWeight:"normal",fontSize:"1rem",color:"#3D3D3D"}}>{res.employment+" EMPLOYEE"}</span></div>
+                <div><span style={{fontWeight:"normal",fontSize:".9rem",textDecoration:"underline"}}><a href={"mailto:"+res.email} target="_blank" style={{color:"#3D3D3D"}}>{res.email}</a></span></div>
+                <div><span style={{fontWeight:"normal",fontSize:".9rem",color:"#3D3D3D"}}>{res.employment+" EMPLOYEE"}</span></div>
+                <div style={{justifyContent:"center"}}><span style={{fontWeight:"normal",fontSize:".9rem",color:"#3D3D3D"}}>{res.department}</span></div>
             </div>
         );
     }
@@ -106,9 +106,9 @@ export default function AdminDashboard(){
                     </div>
                     <div className='th'>
                         <div style={{textIndent:"20px"}}><span>Name</span></div>
-                        <div><span>Email Address</span></div>
+                        <div><span>Email</span></div>
+                        <div><span>Employment</span></div>
                         <div style={{justifyContent:"center"}}><span>Department</span></div>
-                        <div><span>Employment Status</span></div>
                     </div>
                     {TableGroupList}
                 </div>

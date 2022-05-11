@@ -1049,11 +1049,120 @@
 }
 
 
-
-
 /*EDIT CERTIFICATE*/
 #edit_Certificate_Container{
     display: none;
+}
+
+
+
+.certificates_container .top_cover{
+    height: 200px;
+    width: 100%;
+    padding-top: .8rem;
+    border-radius: 5px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 120px;
+}
+.certificates_container .top_cover p{
+    margin: 0;
+    margin-left: 1.3rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #f6f6f6aa;
+}
+.certificates_container .avatar_container{
+    height: 200px;
+    width: 100%;
+    margin-top: 3rem;
+    display: flex;
+}
+.certificates_container .avatar_container .left{
+    display: flex;
+    align-items: flex-end;
+}
+.certificates_container .avatar_container .pds_contact{
+    white-space: nowrap;
+}
+.certificates_container .avatar_container .right{
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.certificates_container .avatar_container .cover_button{
+    height: 2.5rem;
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+.certificates_container .avatar_container .cover_button button{
+    height: 100%;
+    width: auto;
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    border-radius: 5px;
+    border: none;
+    margin-left: 20px;
+}
+.certificates_container .avatar_container .cover_button button:hover{
+    opacity: 70%;
+}
+.certificates_container .avatar_container .cover_button button img{
+    height: 40%;
+    width: auto;
+    margin-right: 10px;
+}
+.certificates_container .avatar_container .cover_button button:nth-child(1){
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    color: #FFAA28;
+}
+.certificates_container .avatar_container .cover_button #Edit_profile_btn{
+    color: #ffff;
+    background-color: #FFAA28;
+}
+
+.certificates_container .avatar_container .view_pdsName{
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-top: .5rem;
+    line-height: 1;
+    color: black;
+}
+.certificates_container .avatar_container .view_pdsEmail{
+    font-size: 1.1rem;
+    color: #3D3D3D;
+    font-weight: normal;
+}
+.certificates_container .avatar_container .view_pdsEmpNo{
+    font-size: .9rem;
+    color: #3D3D3D;
+    font-weight: normal;
+}
+
+
+
+/*RESPONSIVE*/
+@media screen and (max-width: 1025px) {
+    .certificates_container .top_cover{
+        margin-bottom: 180px;
+    }
+    .certificates_container .avatar_container{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .certificates_container .avatar_container .right{
+        margin-top: 1rem;
+        justify-content: flex-start;
+    }
 }
 
 @media screen and (max-width: 875px) {
@@ -1084,10 +1193,40 @@
 @media screen and (max-width: 850px) {
     .certificates_container{
         margin-top: 1rem;
+        padding-bottom: 5rem;
     }
     .certificates_container .table_container .top .container:nth-child(3){
         float: left;
     }
+
+    .certificates_container .top_cover{
+        margin-bottom: 210px;
+    }
+    .certificates_container .avatar_container{
+        height: auto;
+        width: 100%;
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .certificates_container .avatar_container .left{
+        margin-top: -2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .certificates_container .avatar_container p{
+        text-align: center;
+        margin-left: 0px;
+    }
+    .certificates_container .avatar_container .cover_button{
+        justify-content: center;
+        margin-top: .5rem;
+    }
+ 
 }
 
 
@@ -1171,6 +1310,10 @@
     }
     .certificates_container .table_container .top .container:nth-child(3) div:nth-child(1){
         margin-bottom: 10px;
+        width: auto;
+    }
+    .certificates_container .table_container .top .container:nth-child(3) div:nth-child(2){
+        width: auto;
     }
     #fitlerBYdatRange{
         display: none;
@@ -1188,7 +1331,7 @@
         width: 280px;
     }
     .Upload_certificate_form .ceritificate_img .img_container{
-        height: 200px;
+        height: 280px;
     }
 
     .view_certificate_enlarge #imgCert{

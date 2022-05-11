@@ -18,6 +18,8 @@ import AccountSettingsAdmin from "./components/AccountSettingsAdmin";
 import ActivityLog from "./components/ActivityLog";
 import ActivityLogAdmin from "./components/ActivityLogAdmin";
 import Faculty from "./components/Faculty";
+import ViewFacultyInfo from "./FacultyUI/ViewFacultyInfo";
+import ViewFacultyCert from "./FacultyUI/ViewFacultyCert";
 
 export default function App() {
   return (
@@ -42,6 +44,9 @@ export default function App() {
 
               <Route path="AdminDashboard" element={<AdminDashboard/>} /> 
               <Route path="Faculty" element={<Faculty/>} /> 
+              <Route path="ViewFaculty" element={<ViewFacultyInfo/>} /> 
+              <Route path="ViewFacultyCertificates" element={<ViewFacultyCert/>} /> 
+
               <Route path="AccountSettingsAdmin" element={<AccountSettingsAdmin/>} /> 
 
               <Route path="ActivityLog" element={<ActivityLog/>} /> 
