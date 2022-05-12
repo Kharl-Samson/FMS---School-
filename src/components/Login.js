@@ -21,6 +21,7 @@ import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import rightBG from "../images/login/login_img.png";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -287,7 +288,11 @@ export default function Login(){
                             </div>
                         </div>
 
-                        <div className="right right_part">
+                        <div className="right right_part" 
+                            style={{
+                                 background: `url(${rightBG}) no-repeat center center fixed`,
+                                 webkitBackgroundSize: "cover",
+                                 }}>
                              <img src={CICT_Logo} className="cict_logo"/>
                         </div>
                     </div>

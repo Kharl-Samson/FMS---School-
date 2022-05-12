@@ -6,7 +6,7 @@ import { useState } from "react";
 import Grid from '@mui/material/Grid';
 import { Link } from "react-router-dom";
 
-import Home_Icon from "../images/icons/home.svg";
+import rightBG from "../images/login/login_img.png";
 import CICT_Text from "../images/login/cict_bg_text.png";
 import Image_rounder from "../images/login/login_img_rounder.png";
 import Username_icon from "../images/icons/username.svg";
@@ -393,7 +393,12 @@ export default function Register(){
                 
                         </div>
 
-                        <div className="right right_part">
+                        <div className="right right_part"
+                            style={{
+                                background: `url(${rightBG}) no-repeat center center fixed`,
+                                webkitBackgroundSize: "cover",
+                            }}
+                        >
                             <img src={CICT_Logo} className="cict_logo"/>
                         </div>
                     </div>

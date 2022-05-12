@@ -290,7 +290,6 @@ input[type="password"]::-ms-reveal {
     opacity: 70%;
 }
 .login_form_container .login_form > .right_part{
-    background: url('../images/login/login_img.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
