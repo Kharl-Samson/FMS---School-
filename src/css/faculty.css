@@ -87,6 +87,14 @@
     font-size: 1.1rem;
     text-align: center;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.faculty_imageContainer .fName img{
+    height: 24px;
+    width: auto;
+    margin-left: 7px;
 }
 .faculty_imageContainer .fEmail{
     font-size: .9rem;

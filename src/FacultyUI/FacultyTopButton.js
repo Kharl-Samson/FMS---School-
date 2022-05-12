@@ -6,7 +6,6 @@ import MenuItem from "@mui/material/MenuItem";
 import gridTableYellow from "../images/icons/gridTableYellow.svg";
 import rowTableGray from "../images/icons/rowTableGray.svg";
 import download_yellow from "../images/icons/download_yellow.svg";
-import uploadWhite from "../images/icons/uploadWhite.svg";
 import gridTableGray from "../images/icons/gridTableGray.svg";
 import rowTableYellow from "../images/icons/rowTableYellow.svg";
 import $ from "jquery";
@@ -17,12 +16,8 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import moment from "moment";
-
-import filterBy from "../functions/filterCertificate";
-
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import search_faculty from "../functions/searchFaculty";
 import ApplyFilterFaculty from "../functions/ApplyFilterFaculty";
@@ -159,6 +154,18 @@ export default function FacultyTopActions() {
         document.getElementsByClassName("no_searchFound7")[0].style.display ="flex";
     }
   }
+
+  const downloadAllUser=(e)=>{
+    e.preventDefault();
+    //Sending the data request to call it on backend
+    const sendData = {
+        email:localStorage.getItem('email'),
+    }
+    //Sending the data to my backend
+    axios.post('http://localhost/fms/downloadAllUsers.php',sendData)
+    .then((result)=>{})    
+  }
+
 
   return (
     <div className="top">
@@ -359,8 +366,8 @@ export default function FacultyTopActions() {
       </div>
       
       <div className="container" id="f_container3">
-        <div>
-        <form>
+        <div onClick={printDocument}>
+        <form onClick={downloadAllUser}>
           <img src={download_yellow}/> Download as PDF
         </form>  
         </div>
@@ -372,3 +379,61 @@ export default function FacultyTopActions() {
 }
 
 
+//Printing certificate
+function printDocument() {
+  html2canvas(document.querySelector("#ActiveUsers_pdf"), {
+    useCORS: true,
+    allowTaint: true,
+    scrollY: 0,
+  }).then((canvas) => {
+    const image = { type: "png", quality: 0.98 };
+    const margin = [0.5, 0.5];
+    const filename = "ActiveUsers.pdf";
+    var imgWidth = 8.5;
+    var pageHeight = 11;
+    var innerPageWidth = imgWidth - margin[0] * 2;
+    var innerPageHeight = pageHeight - margin[1] * 2;
+    // Calculate the number of pages.
+    var pxFullHeight = canvas.height;
+    var pxPageHeight = Math.floor(canvas.width * (pageHeight / imgWidth));
+    var nPages = Math.ceil(pxFullHeight / pxPageHeight);
+    // Define pageHeight separately so it can be trimmed on the final page.
+    var pageHeight = innerPageHeight;
+    // Create a one-page canvas to split up the full image.
+    var pageCanvas = document.createElement("canvas");
+    var pageCtx = pageCanvas.getContext("2d");
+    pageCanvas.width = canvas.width;
+    pageCanvas.height = pxPageHeight;
+    // Initialize the PDF.
+    var pdf = new jsPDF("p", "in", [8.5, 11]);
+    for (var page = 0; page < nPages; page++) {
+      // Trim the final page to reduce file size.
+      if (page === nPages - 1 && pxFullHeight % pxPageHeight !== 0) {
+        pageCanvas.height = pxFullHeight % pxPageHeight;
+        pageHeight = (pageCanvas.height * innerPageWidth) / pageCanvas.width;
+      }
+      // Display the page.
+      var w = pageCanvas.width;
+      var h = pageCanvas.height;
+      pageCtx.fillStyle = "white";
+      pageCtx.fillRect(0, 0, w, h);
+      pageCtx.drawImage(canvas, 0, page * pxPageHeight, w, h, 0, 0, w, h);
+      // Add the page to the PDF.
+      if (page > 0) pdf.addPage();
+      debugger;
+      var imgData = pageCanvas.toDataURL(
+        "image/" + image.type,
+        image.quality
+      );
+      pdf.addImage(
+        imgData,
+        image.type,
+        margin[1],
+        margin[0],
+        innerPageWidth,
+        pageHeight
+      );
+    }
+    pdf.save(filename);
+  });
+}

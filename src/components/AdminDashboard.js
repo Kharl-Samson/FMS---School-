@@ -99,10 +99,6 @@ export default function AdminDashboard(){
                                 {AvatarGroupList}
                             </AvatarGroup>
                         </div>
-
-                        <div className='right'>
-                            <div className='btn'><span title="Close" onClick={startScrolling}>&#187;</span></div>
-                        </div>
                     </div>
                     <div className='th'>
                         <div style={{textIndent:"20px"}}><span>Name</span></div>
@@ -127,8 +123,3 @@ export default function AdminDashboard(){
         </div>
     )
 }
-
-function startScrolling(){
-    document.querySelector(".see_all_faculty").scrollIntoView()
-}
-   

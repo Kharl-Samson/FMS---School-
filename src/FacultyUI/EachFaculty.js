@@ -33,6 +33,7 @@ export default function EachFaculty() {
             fDep = {res.department}
             fEmp = {res.employment}
             fDate = {res.date_created}
+            fLocker = {res.profile_locked}
         />
       );
     }

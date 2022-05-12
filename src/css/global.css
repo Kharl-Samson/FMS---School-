@@ -431,9 +431,9 @@ button:hover{
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    transition: .3s ease-in;
+    transition: .5s ease-in;
     display: block;
-    margin-right: -100%;
+    margin-right: -200%;
 }
 .dashboard_container .right_navbar_container .right_navbar_top{
     height: auto;

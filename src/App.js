@@ -22,6 +22,9 @@ import ViewFacultyInfo from "./FacultyUI/ViewFacultyInfo";
 import ViewFacultyCert from "./FacultyUI/ViewFacultyCert";
 
 export default function App() {
+  //window.onerror = function(message, url, lineNumber) {  
+   // return true; // prevents browser error messages  
+ // };
   return (
     <div className="App">
             <Routes>

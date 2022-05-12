@@ -113,6 +113,13 @@
     margin-top: .5rem;
     line-height: 1;
     color: black;
+    display: flex;
+    align-items: center;
+}
+.view_pds_container .avatar_container .view_pdsName img{
+    height: 25px;
+    width: auto;
+    margin-left: 7px;
 }
 .view_pds_container .avatar_container .view_pdsEmail{
     font-size: 1.1rem;
@@ -272,6 +279,32 @@
 .view_pdf_container{
     display: none;
 }
+.view_pdf_container1{
+    z-index: -99999;
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+}
+
+
+/*PDS NOT COMPLETE IN SPECIFIC VIEW*/
+.pds_notComplete{
+    margin-top: 10rem;
+    height: auto;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #696868;
+    margin-bottom: 5rem;
+}
+.pds_notComplete img{
+    height: 200px;
+    width: auto;
+    margin-bottom: 10px;
+}
 
 /*RESPONSIVE*/
 @media screen and (max-width: 1025px) {
@@ -302,6 +335,11 @@
     .web_pds_container .row1 .row1_content{
         width: 100%;
         margin-bottom: 20px;  
+    }
+
+    /*PDS NOT COMPLETE IN SPECIFIC VIEW*/
+    .pds_notComplete{
+        margin-top: 12rem;
     }
 }
 
@@ -393,6 +431,12 @@
     .choices_pds_page{
         margin-top: 1rem;
     }
+
+    /*PDS NOT COMPLETE IN SPECIFIC VIEW*/
+    .pds_notComplete{
+        margin-top: 15rem;
+        margin-bottom: 5rem;
+    }    
 }
 
 @media screen and (max-width: 500px) {
@@ -414,5 +458,11 @@
     #top_phoneLD{
         font-size: .9rem;
     }
+
+    /*PDS NOT COMPLETE IN SPECIFIC VIEW*/
+    .pds_notComplete{
+        margin-top: 22rem;
+        margin-bottom: 7rem;
+    }    
  
 }

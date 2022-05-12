@@ -11,6 +11,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import LocalActivityIcon from '@mui/icons-material/LocalActivity';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfileAvatarAdmin(){
     //for getting the initial name in avatar
@@ -27,6 +29,21 @@ export default function ProfileAvatarAdmin(){
     const handleClose = () => {
       setAnchorEl(null);
     };
+
+    let navigate = useNavigate();
+    const logoutForm=(e)=>{
+        e.preventDefault();
+        //Sending the data request to call it on backend
+        const sendData = {
+            email:localStorage.getItem('email'),
+        }
+    
+        //Sending the data to my backend
+        axios.post('http://localhost/fms/logout.php',sendData)
+        .then((result)=>{
+          navigate(`/`);
+        })    
+    }
 
     return(
     <div className='right_navbar_profile'>
@@ -114,14 +131,16 @@ export default function ProfileAvatarAdmin(){
                 Privacy Policy
             </MenuItem>
             </Link>
-            <Link to="/" style={{ textDecoration: 'none', color: '#212121' }}>
+
+            <form onClick={logoutForm}>
             <MenuItem>
                 <ListItemIcon>
                     <Logout fontSize="small" />
                 </ListItemIcon>
                 Sign Out
             </MenuItem>
-            </Link>
+            </form>
+
         </Menu>
     </div>
     )

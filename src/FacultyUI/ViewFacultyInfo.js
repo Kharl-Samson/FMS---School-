@@ -24,15 +24,18 @@ import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import axios from "axios";
 import Skeleton from "@mui/material/Skeleton";
-import PreviewPDS from "../components/PreviewPDS";
+import { useNavigate } from "react-router-dom";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
-import { Link } from "react-router-dom";
 import NavbarAdmin from "../navbarsUI/LeftNavbarAdmin";
 import RightNavbarAdmin from "../navbarsUI/RightNavbarAdmin";
 import PreviewFacultyPDS from "./PreviewFacultyPDS";
+import notYetComplete from "../images/notYetComplete.png";
+import profile_lock from "../images/icons/profile_lock.svg";
+import profile_lockOthers from "../images/profile_lock.png";
 
 export default function ViewFacultyInfo() {
+
   //Tooltip
   const LightTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -81,13 +84,12 @@ export default function ViewFacultyInfo() {
               <img src={personal_info} />
               Personal Information
             </div>
-
             <div className="content">
               <div className="left">
                 <Skeleton animation="wave" className="skeleton_show" />
                 <Skeleton animation="wave" className="skeleton_show" />
                 <div className="span_cont">
-                  <span className="skeleton_done">FIRST NAME</span>
+                  <span className="skeleton_done" id="sp_fname">FIRST NAME</span>
                   <span className="skeleton_done">{res.fname}</span>
                 </div>
                 <Skeleton animation="wave" className="skeleton_show" />
@@ -100,7 +102,7 @@ export default function ViewFacultyInfo() {
                 <Skeleton animation="wave" className="skeleton_show" />
                 <div className="span_cont">
                   <span className="skeleton_done">LAST NAME</span>
-                  <span className="skeleton_done">{res.lname}</span>
+                  <span className="skeleton_done" id="sp_lname">{res.lname}</span>
                 </div>
                 <Skeleton animation="wave" className="skeleton_show" />
                 <Skeleton animation="wave" className="skeleton_show" />
@@ -369,6 +371,12 @@ export default function ViewFacultyInfo() {
           </div>
         </div>
       );
+    }
+    else{
+      document.getElementById("toNoneIfPDSempty").style.display = "none";
+      document.getElementsByClassName("pds_notComplete")[0].style.display = "flex";
+      document.getElementById("PDFView_PDS").style.display = "none";
+      document.getElementById("dl_form").style.display = "none";
     }
   });
 
@@ -2027,8 +2035,10 @@ export default function ViewFacultyInfo() {
     document.getElementById("PDFView_PDS").style.fontWeight = "600";
   }
 
-  function printDocument() {
-    html2canvas(document.querySelector("#convertable_pdf_PDS"), {
+  function printDocument1() {
+    if(localStorage.getItem('isProfileLocked')=="yes"){}
+    else{
+    html2canvas(document.querySelector("#convertable_pdf_PDS1"), {
       useCORS: true,
       allowTaint: true,
       scrollY: 0,
@@ -2083,29 +2093,77 @@ export default function ViewFacultyInfo() {
       }
       pdf.save(filename);
     });
+    }
   }
 
-  function printPDShover() {
-    document.getElementsByClassName("view_pdf_container")[0].style.display =
-      "block";
-  }
-  function printPDSRemovehover() {
-    document.getElementsByClassName("view_pdf_container")[0].style.display =
-      "none";
-  }
 
   const downloadProfileForm=(e)=>{
     e.preventDefault();
-    //Sending the data request to call it on backend
-    const sendData = {
-        email:localStorage.getItem('viewFacultyEmail'),
+
+    if(localStorage.getItem('isProfileLocked')=="yes"){
+      document.getElementById("profileLocked_modal").style.display = "flex";
     }
-    //Sending the data to my backend
-    axios.post('http://localhost/fms/downloadPDS.php',sendData)
-    .then((result)=>{})    
+    else{
+      //Sending the data request to call it on backend
+      const sendData = {
+        email:localStorage.getItem('email'),
+        viewEmail:localStorage.getItem('viewFacultyEmail'),
+        viewName:localStorage.getItem('viewFacultyName'),
+      }
+      //Sending the data to my backend
+      axios.post('http://localhost/fms/downloadPDSforOthers.php',sendData)
+      .then((result)=>{})    
+    }
   }
+
+  let navigate = useNavigate();
+  function viewFacultyCertificate_function(){
+      navigate(`/ViewFacultyCertificates`);
+  }
+
+  //Hook for getting all certificates
+  const [getAllUser, setGetAllUser] = useState([]);
+  const loadGetAllUser = async () => {
+    const result = await axios.get("http://localhost/fms/getAllUser.php");
+    setGetAllUser(result.data.phpresult);
+  };
+  useEffect(() => {
+    loadGetAllUser();
+  }, []);
+
+  var input_keyForGetUser_ctr = 0;
+  const profileLockContent = getAllUser.map((res) => {
+    if (res.email == email_key && res.profile_locked !="") {
+      window.localStorage.setItem('isProfileLocked', "yes");
+      input_keyForGetUser_ctr++;
+      return (
+        <LightTooltip title="This person's profile is locked. It means you can't download his/her information." key={input_keyForGetUser_ctr}>
+          <img src={profile_lock} id="profile_lockIMG"/>
+        </LightTooltip>
+      );
+    }
+    else if (res.email == email_key && res.profile_locked ==""){
+      window.localStorage.setItem('isProfileLocked', "no");
+    }
+  });
+
+  function closeProfileLockModal(){
+    document.getElementById("profileLocked_modal").style.display = "none";
+  }
+
   return (
     <div className="dashboard_container">
+
+            {/*Modal*/ }
+            <div className="modal_container" id="profileLocked_modal">
+              <div className="modal_validation">
+                <img src={profile_lockOthers} className="emailVal_img" style={{boxShadow:"none"}}/>
+                  <h1 className="val_header">Profile is Locked</h1>
+                  <span className="val_subtext">This person's profile is locked. It means you can't download his/her information.</span>
+                  <button className="modal_close_btn" onClick={closeProfileLockModal}>Okay</button>
+              </div>
+            </div>
+
         <NavbarAdmin/>
 
       <div className="main_content">
@@ -2148,6 +2206,7 @@ export default function ViewFacultyInfo() {
                   <div className="pds_contact">
                     <p className="view_pdsName">
                       {localStorage.getItem("viewFacultyName")}
+                      {profileLockContent}
                     </p>
                     <p className="view_pdsEmail">
                       {localStorage.getItem("viewFacultyEmail")}
@@ -2156,19 +2215,17 @@ export default function ViewFacultyInfo() {
                 </div>
                 <div className="right">
                   <div className="cover_button">
-                    <form onSubmit={downloadProfileForm}>
+                    <form onSubmit={downloadProfileForm} id="dl_form">
                     <button
                       type="submit"
-                      onClick={printDocument}
-                      onMouseOver={printPDShover}
-                      onMouseOut={printPDSRemovehover}
+                      onClick={printDocument1}
                     >
                       <img src={downloadyellow_icon} />
                       Download as PDF
                     </button>
                     </form>
 
-                    <button id="Edit_profile_btn" className="link_to_show">
+                    <button id="Edit_profile_btn" className="link_to_show" onClick={viewFacultyCertificate_function} >
                       <img src={certification} />
                       View All certifications
                     </button>
@@ -2177,7 +2234,7 @@ export default function ViewFacultyInfo() {
               </div>
             </div>
 
-            <div className="web_pds_container">
+            <div className="web_pds_container" id="toNoneIfPDSempty">
               <div className="side_tab_container">
                 <LightTooltip title="Basic Information" onClick={pds1_go}>
                   <div className="box active box1go">
@@ -2352,11 +2409,22 @@ export default function ViewFacultyInfo() {
                 {pds_step5 /* Eto yung mga input*/}
               </div>
             </div>
+
+            <div className="pds_notComplete">
+                <img src={notYetComplete}/>
+                <p style={{textAlign:"center"}}>This person is not yet finish with his or her personal information form!</p>
+            </div>
+
+          </div>
+
+          <div className="view_pdf_container1">
+              <PreviewFacultyPDS/>
           </div>
 
           <div className="view_pdf_container">
               <PreviewFacultyPDS/>
           </div>
+
         </div>
       </div>
 

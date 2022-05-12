@@ -8,6 +8,7 @@ import NavbarAdmin from "../navbarsUI/LeftNavbarAdmin";
 import RightNavbarAdmin from "../navbarsUI/RightNavbarAdmin";
 import EachFaculty from "../FacultyUI/EachFaculty";
 import TableRowFaculty from "../FacultyUI/TableFaculty";
+import AllUsersPDF from "../FacultyUI/AllUsersPDF";
 
 
 export default function Faculty() {
@@ -62,8 +63,8 @@ export default function Faculty() {
 
             </div>
 
+            <AllUsersPDF/>
 
-   
         </div>
 
         <RightNavbarAdmin/>

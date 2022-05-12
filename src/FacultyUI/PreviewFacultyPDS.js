@@ -1270,7 +1270,7 @@ export default function PreviewFacultyPDS() {
       </div>
 
       <div className="pds_review_container">
-        <div className="pds_preview" id="convertable_pdf_PDS">
+        <div className="pds_preview" id="convertable_pdf_PDS1">
           <div className="top">
             <div className="left">
               <img src={CICT_Logo} />

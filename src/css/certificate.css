@@ -639,8 +639,8 @@
     align-items: center;
     justify-content: center;
     padding: 5% 0;
-    z-index: -9999999;
-    opacity: 0;
+    z-index: -9999999;/*-9999999*/
+    opacity: 0;/*0*/
 }
 .certificatePDF_container .pdf_container{
     width: 100%;
@@ -978,6 +978,10 @@
     margin-top: 60px;
     object-fit: cover;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.view_certificate_container .view_certificate .left img:hover{
+    cursor: pointer;
+    filter: invert(3%);
 }
 .view_certificate_container .view_certificate .right{
     width: auto;
@@ -1340,5 +1344,5 @@
         -webkit-animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
         animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
     }
-    
+
 }

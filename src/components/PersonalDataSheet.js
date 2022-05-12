@@ -35,6 +35,7 @@ import PreviewPDS from "./PreviewPDS";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { Link } from "react-router-dom";
+import profile_lock from "../images/icons/profile_lock.svg";
 
 export default function PersonalDataSheet() {
   //Tooltip
@@ -2122,6 +2123,30 @@ export default function PersonalDataSheet() {
     axios.post('http://localhost/fms/downloadPDS.php',sendData)
     .then((result)=>{})    
   }
+
+  //Hook for getting all certificates
+  const [getAllUser, setGetAllUser] = useState([]);
+  const loadGetAllUser = async () => {
+    const result = await axios.get("http://localhost/fms/getAllUser.php");
+    setGetAllUser(result.data.phpresult);
+  };
+  useEffect(() => {
+    loadGetAllUser();
+  }, []);
+
+  var input_keyForGetUser_ctr = 0;
+  const profileLockContent = getAllUser.map((res) => {
+    if (res.email == email_key && res.profile_locked !="") {
+      input_keyForGetUser_ctr++;
+      return (
+        <LightTooltip title="Your profile is locked. It means the admin can't download his/her information." key={input_keyForGetUser_ctr}>
+          <img src={profile_lock} id="profile_lockIMG"/>
+        </LightTooltip>
+      );
+    }
+    else if (res.email == email_key && res.profile_locked ==""){}
+  });
+
   return (
     <div className="dashboard_container">
       <LeftNavbarFaculty />
@@ -2167,6 +2192,7 @@ export default function PersonalDataSheet() {
                   <div className="pds_contact">
                     <p className="view_pdsName">
                       {localStorage.getItem("name")}
+                      {profileLockContent}
                     </p>
                     <p className="view_pdsEmail">
                       {localStorage.getItem("email")}
