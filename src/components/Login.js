@@ -7,7 +7,6 @@ import { orange } from '@mui/material/colors';
 import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import { Link } from "react-router-dom";
-
 import CICT_Text from "../images/login/cict_bg_text.png";
 import Image_rounder from "../images/login/login_img_rounder.png";
 import Email_icon from "../images/icons/email.svg";
@@ -16,12 +15,12 @@ import Open_eye_icon from "../images/icons/open_eye.svg";
 import Close_eye_icon from "../images/icons/close_eye.svg"; 
 import CICT_Logo from "../images/login/cict_logo.png";
 import Invalid_icon from "../images/icons/invalid.svg";
-
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import rightBG from "../images/login/login_img.png";
+import loading from "../images/loading.gif";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -101,7 +100,7 @@ export default function Login(){
             email:document.getElementById("email").value,
             password:document.getElementById("password").value,
         }
-
+        document.getElementsByClassName("LoadingContainer")[0].style.display = "flex";
         //Sending the data to my backend
         axios.post('http://localhost/fms/login.php',sendData)
         .then((result)=>{
@@ -116,7 +115,10 @@ export default function Login(){
                 window.localStorage.setItem('pds_ctr', "null");
                 window.localStorage.setItem('profile_locked', result.data.profile_locked);
                 window.localStorage.setItem('profile_photo', result.data.profile_photo);
-                navigate(`/AdminDashboard`);
+                setTimeout(function(){
+                    document.getElementsByClassName("LoadingContainer")[0].style.display = "none";
+                    navigate(`/AdminDashboard`);
+                },1000);     
             }
             else if(result.data.status === "Faculty Login"){ //If response is Faculty Login
                 window.localStorage.setItem('email', result.data.email);
@@ -127,19 +129,28 @@ export default function Login(){
                 window.localStorage.setItem('pds_ctr', "null");
                 window.localStorage.setItem('profile_locked', result.data.profile_locked);
                 window.localStorage.setItem('profile_photo', result.data.profile_photo);
-                navigate(`/FacultyDashboard`);
+                setTimeout(function(){
+                    document.getElementsByClassName("LoadingContainer")[0].style.display = "none";
+                    navigate(`/FacultyDashboard`);
+                },1000)
             }
             else if(result.data.status === "Pending Admin" || result.data.status === "Pending Faculty"){ //If the account is still pending
-                document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
-                document.getElementsByClassName("text_verifyer")[0].innerHTML = "This account is account is not yet approve by the admin.";
-                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
-                document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
+                setTimeout(function(){
+                    document.getElementsByClassName("LoadingContainer")[0].style.display = "none";
+                    document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
+                    document.getElementsByClassName("text_verifyer")[0].innerHTML = "This account is account is not yet approve by the admin.";
+                    document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
+                    document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
+                },500)
             }
             else if(result.data.status === "Invalid"){ //If username or password is invalid
-                document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
-                document.getElementsByClassName("text_verifyer")[0].innerHTML = "Incorrect email or password.";
-                document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
-                document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
+                setTimeout(function(){
+                    document.getElementsByClassName("LoadingContainer")[0].style.display = "none";
+                    document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
+                    document.getElementsByClassName("text_verifyer")[0].innerHTML = "Incorrect email or password.";
+                    document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
+                    document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
+                },500) 
             }
 
         })    
@@ -177,6 +188,11 @@ export default function Login(){
 
     return (
         <div className="login_container" >
+
+            {/*Loading when getting data*/ }
+            <div className="LoadingContainer">
+                <img src={loading}/>
+            </div>
 
             <div className="cict_text_container cict_text_container1">
                 <img src={CICT_Text} className="cict_text cict_text1"/>     

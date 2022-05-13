@@ -20,6 +20,7 @@ import ActivityLogAdmin from "./components/ActivityLogAdmin";
 import Faculty from "./components/Faculty";
 import ViewFacultyInfo from "./FacultyUI/ViewFacultyInfo";
 import ViewFacultyCert from "./FacultyUI/ViewFacultyCert";
+import ForgotPasswordForm from "./components/ForgotPasswordForm";
 
 export default function App() {
   //window.onerror = function(message, url, lineNumber) {  
@@ -31,6 +32,7 @@ export default function App() {
               <Route path="/" element={<Login/>} />
               <Route path="Register" element={<Register/>} />
               <Route path="ForgotPassword" element={<ForgotPassword/>} />
+              <Route path="ForgotPasswordForm" element={<ForgotPasswordForm/>} />
               <Route path="PrivacyPolicy" element={<Privacy_Policy/>} />
               <Route path="TermsOfService" element={<Terms_of_Service/>} />
               

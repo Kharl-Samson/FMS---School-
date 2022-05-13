@@ -305,6 +305,29 @@ input[type="password"]::-ms-reveal {
     height: auto;
 }
 
+
+.LoadingContainer{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.311);
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.LoadingContainer img{
+    height: 90px;
+    width: auto;
+}
+.LoadingContainer p{
+    font-size: 1.3rem;
+    color: #ffff;
+    font-weight: 600;
+}
+
 @-webkit-keyframes scale-up-center {
     0% {
       -webkit-transform: scale(0.5);
