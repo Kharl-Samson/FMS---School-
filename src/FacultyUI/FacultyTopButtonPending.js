@@ -23,7 +23,7 @@ import search_faculty from "../functions/searchFaculty";
 import ApplyFilterFaculty from "../functions/ApplyFilterFaculty";
 import filterFaculty from "../functions/filterFaculty";
 
-export default function FacultyTopActions() {
+export default function FacultyTopButtonPending() {
   setTimeout(function () {
     if ($("#gridTable_forSearch #faculty_desktop:visible").length === 0) {
       document.getElementsByClassName("no_searchFound6")[0].style.display ="flex";
@@ -206,74 +206,10 @@ export default function FacultyTopActions() {
             style={{ display: "flex", flexDirection: "column" }}
             disableRipple
           >
-            <div className="filterCert_container">
-              <div className="left" style={{ pointerEvents: "none" }} id="filterByText">
-                Filter By
-              </div>
-              <div className="right" id="filterByTextRight">
-                <div className="checkbox_container">
-                  <div>
-                    <input
-                      type="radio"
-                      className="cb_filter"
-                      name="cb_filter"
-                      id="Regular"
-                      onClick={filterFaculty}
-                    />
-                    <label for="cb_filter">Regular</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      className="cb_filter"
-                      name="cb_filter"
-                      id="BSIT"
-                      onClick={filterFaculty}
-                    />
-                    <label for="cb_filter">BSIT</label>
-                  </div>
-                </div>
-                <div className="checkbox_container">
-                  <div>
-                    <input
-                      type="radio"
-                      className="cb_filter"
-                      name="cb_filter"
-                      id="PartTime"
-                      onClick={filterFaculty}
-                    />
-                    <label for="cb_filter">Part Time</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      className="cb_filter"
-                      name="cb_filter"
-                      id="BLIS"
-                      onClick={filterFaculty}
-                    />
-                    <label for="cb_filter">BLIS</label>
-                  </div>
-                </div>
-                <div className="checkbox_container">
-                  <div>
-                    <input
-                      type="radio"
-                      className="cb_filter"
-                      name="cb_filter"
-                      id="Temporary"
-                      onClick={filterFaculty}
-                    />
-                    <label for="cb_filter">Temporary</label>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <div
               id="fitlerBYdatRange"
               className="filterCert_container"
-              style={{ borderTop: "1px solid rgb(152, 152, 152)" }}
             >
               <div className="left" style={{ pointerEvents: "none" }}>
                 Date
@@ -353,17 +289,7 @@ export default function FacultyTopActions() {
 
       </div>
 
-      <div className="container">
-        View :
-        <div>
-          <div id="GridBtn" onClick={gridView}>
-            <img id="grid_icon" src={gridTableYellow} />
-          </div>
-          <div id="RowBtn" onClick={rowView}>
-            <img id="row_icon" src={rowTableGray} />
-          </div>
-        </div>
-      </div>
+      <div className="container" style={{display:"none"}}></div>
       
       <div className="container" id="f_container3">
         <div onClick={printDocument}>

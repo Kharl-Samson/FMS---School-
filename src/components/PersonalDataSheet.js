@@ -2045,6 +2045,7 @@ export default function PersonalDataSheet() {
       "5px solid #FFAA28";
     document.getElementById("PDFView_PDS").style.fontWeight = "600";
   }
+  
 
   function printDocument() {
     html2canvas(document.querySelector("#convertable_pdf_PDS"), {
@@ -2100,7 +2101,8 @@ export default function PersonalDataSheet() {
           pageHeight
         );
       }
-      pdf.save(filename);
+      window.open(pdf.output('bloburl'))
+      //pdf.save(filename);
     });
   }
 
@@ -2203,15 +2205,15 @@ export default function PersonalDataSheet() {
                 <div className="right">
                   <div className="cover_button">
 
-                    <form onSubmit={downloadProfileForm}>
+                    <form>
                     <button
-                      type="submit"
+                      type="button"
                       onClick={printDocument}
                       onMouseOver={printPDShover}
                       onMouseOut={printPDSRemovehover}
                     >
                       <img src={downloadyellow_icon} />
-                      Download as PDF
+                      Generate as PDF
                     </button>
                     </form>
 

@@ -31,6 +31,7 @@
     "moment": "^2.29.3",
     "nuka-carousel": "^5.0.15",
     "phil-reg-prov-mun-brgy": "^1.1.0",
+    "print-js": "^1.6.0",
     "radium": "^0.26.2",
     "react-calendar": "^3.7.0",
     "react-carousel-minimal": "^1.4.1",

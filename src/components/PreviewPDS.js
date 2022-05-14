@@ -152,7 +152,7 @@ export default function PreviewPDS() {
               </div>
 
               <div className="zip_preview">
-                <div style={{ textTransform: "none" }}>Zip code</div>
+                <div style={{ textTransform: "none"}}>Zip code</div>
                 <div id="preview_zip">{res.r_zip}</div>
               </div>
 

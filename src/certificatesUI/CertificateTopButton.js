@@ -445,8 +445,8 @@ export default function CertificateTopActions() {
 
   
         <div onClick={printDocument}>
-        <form onClick={downloadCertificateForm}>
-          <img src={download_yellow}/> Download as PDF
+        <form>
+          <img src={download_yellow}/> Generate as PDF
         </form>  
         </div>
      
@@ -521,6 +521,7 @@ function printDocument() {
           pageHeight
         );
       }
-      pdf.save(filename);
+      window.open(pdf.output('bloburl'))
+      //pdf.save(filename);
     });
   }

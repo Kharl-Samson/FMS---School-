@@ -2036,7 +2036,9 @@ export default function ViewFacultyInfo() {
   }
 
   function printDocument1() {
-    if(localStorage.getItem('isProfileLocked')=="yes"){}
+    if(localStorage.getItem('isProfileLocked')=="yes"){
+      document.getElementById("profileLocked_modal").style.display = "flex";
+    }
     else{
     html2canvas(document.querySelector("#convertable_pdf_PDS1"), {
       useCORS: true,
@@ -2091,7 +2093,8 @@ export default function ViewFacultyInfo() {
           pageHeight
         );
       }
-      pdf.save(filename);
+      window.open(pdf.output('bloburl'))
+      //pdf.save(filename);
     });
     }
   }
@@ -2215,13 +2218,13 @@ export default function ViewFacultyInfo() {
                 </div>
                 <div className="right">
                   <div className="cover_button">
-                    <form onSubmit={downloadProfileForm} id="dl_form">
+                    <form id="dl_form">
                     <button
-                      type="submit"
+                      type="button"
                       onClick={printDocument1}
                     >
                       <img src={downloadyellow_icon} />
-                      Download as PDF
+                      Generate as PDF
                     </button>
                     </form>
 

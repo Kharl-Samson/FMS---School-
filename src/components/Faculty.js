@@ -9,6 +9,8 @@ import RightNavbarAdmin from "../navbarsUI/RightNavbarAdmin";
 import EachFaculty from "../FacultyUI/EachFaculty";
 import TableRowFaculty from "../FacultyUI/TableFaculty";
 import AllUsersPDF from "../FacultyUI/AllUsersPDF";
+import FacultyTopButtonPending from "../FacultyUI/FacultyTopButtonPending";
+import TableFacultyPending from "../FacultyUI/TableFacultyPending";
 
 
 export default function Faculty() {
@@ -20,6 +22,34 @@ export default function Faculty() {
         document.getElementById("link_faculty").style.pointerEvents="none";
     },10);
 
+
+    function goToActive() {
+        document.getElementById("active_user_Table").style.display =
+          "block";
+        document.getElementById("pending_user_Table").style.display =
+          "none";
+        document.getElementById("pending_faculty").style.borderBottom =
+          "0px solid #FFAA28";
+        document.getElementById("pending_faculty").style.fontWeight = "normal";
+    
+        document.getElementById("active_faculty").style.borderBottom =
+          "5px solid #FFAA28";
+        document.getElementById("active_faculty").style.fontWeight = "600";
+      }
+      //function go to pdf view
+      function goToPending() {
+        document.getElementById("active_user_Table").style.display =
+          "none";
+        document.getElementById("pending_user_Table").style.display =
+          "block";
+        document.getElementById("active_faculty").style.borderBottom =
+          "0px solid #FFAA28";
+        document.getElementById("active_faculty").style.fontWeight = "normal";
+    
+        document.getElementById("pending_faculty").style.borderBottom =
+          "5px solid #FFAA28";
+        document.getElementById("pending_faculty").style.fontWeight = "600";
+      }
 
 
   return (
@@ -33,10 +63,10 @@ export default function Faculty() {
       
 
                 <div className="choices_faculty_page" style={{zIndex:"0"}}>
-                    <div id="active_faculty" style={{zIndex:"0"}}>
+                    <div id="active_faculty" style={{zIndex:"0"}} onClick={goToActive}>
                         Active Users
                     </div>
-                    <div id="PDFView_PDS" style={{zIndex:"0"}}>
+                    <div id="pending_faculty" style={{zIndex:"0"}} onClick={goToPending}>
                         Pending Users
                     </div>
                 </div>
@@ -45,7 +75,6 @@ export default function Faculty() {
                 <div id="active_user_Table" style={{display:"block"}}>
                     <div className="table_container" id="table_containerID">
                         <FacultyTopActions/>
-
                         <div className="certficate_scrollable" id="grid_table"> 
                             <EachFaculty/>
                             <div className="no_searchFound6">
@@ -57,7 +86,15 @@ export default function Faculty() {
                         <div className="certficate_scrollable1" id="row_table" style={{display:"none"}}>
                             <TableRowFaculty/>
                         </div>
+                    </div>
+                </div>
 
+                <div id="pending_user_Table">
+                    <div className="table_container" id="table_containerID" style={{backgroundColor:"transparent" , boxShadow:"none"}}>
+                            <FacultyTopButtonPending/>
+                        <div className="certficate_scrollable1" id="row_table" style={{display:"block"}}>
+                            <TableFacultyPending/>
+                        </div>
                     </div>
                 </div>
 

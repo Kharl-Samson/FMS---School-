@@ -154,13 +154,13 @@ export default function ViewFacultyCert() {
                 </div>
                 <div className="right">
                   <div className="cover_button">
-                    <form onClick={downloadCertificateUserForm}>
+                    <form>
                     <button
                       onClick={printDocument}
-                      type="submit"
+                      type="button"
                     >
                       <img src={downloadyellow_icon} />
-                      Download as PDF
+                      Generate as PDF
                     </button>
                     </form>
                   </div>
@@ -206,7 +206,9 @@ export default function ViewFacultyCert() {
 
 //Printing certificate
 function printDocument() {
-  if(localStorage.getItem('isProfileLocked')=="yes"){}
+  if(localStorage.getItem('isProfileLocked')=="yes"){
+    document.getElementById("profileLocked_modal").style.display = "flex";
+  }
   else{   
   html2canvas(document.querySelector("#convertableCertUser_pdf"), {
     useCORS: true,
@@ -261,7 +263,8 @@ function printDocument() {
         pageHeight
       );
     }
-    pdf.save(filename);
+    window.open(pdf.output('bloburl'))
+    //pdf.save(filename);
   });
   }
 }
