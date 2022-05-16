@@ -243,8 +243,6 @@ export default function CertificateTopActions() {
   function record() {
     var recognition = new window.webkitSpeechRecognition();
     recognition.lang = "en-GB";
-
-
     document.getElementsByClassName("speech_Modal")[0].style.display="flex";
     document.getElementById("speak_text").textContent = "Speak now"
     setTimeout(function () {

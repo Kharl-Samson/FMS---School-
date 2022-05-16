@@ -20,7 +20,7 @@ export default function EachRowAdmin(props){
             />
         <span style={{fontWeight:"normal",fontSize:".9rem",marginLeft:"10px",color:"#3D3D3D"}}>{props.name}</span>
         </div>
-        <div><span style={{fontWeight:"normal",fontSize:".9rem",textDecoration:"underline"}}><a href={"mailto:"+props.email} target="_blank" style={{color:"#3D3D3D"}}>{props.email}</a></span></div>
+        <div><span style={{fontWeight:"normal",fontSize:".9rem",textDecoration:"underline",color:"#3D3D3D"}}>{props.email}</span></div>
         <div><span style={{fontWeight:"normal",fontSize:".9rem",color:"#3D3D3D"}}>{props.employment}</span></div>
         <div style={{justifyContent:"center"}}><span style={{fontWeight:"normal",fontSize:".9rem",color:"#3D3D3D"}}>{props.department}</span></div>
     </div>
