@@ -24,6 +24,10 @@ import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import micIcon from "../images/mic.png";
+import { styled } from "@mui/material/styles";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import speechRecog from "../images/speechRecog.gif";
 
 export default function TopCertBtn() {
   setTimeout(function () {
@@ -222,6 +226,49 @@ export default function TopCertBtn() {
     .then((result)=>{})    
   }
 
+  //Tooltip
+  const LightTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: theme.palette.common.white,
+      color: "rgba(0, 0, 0, 0.87)",
+      boxShadow: theme.shadows[1],
+      fontSize: ".8rem",
+    },
+  }));
+  function record() {
+    var recognition = new window.webkitSpeechRecognition();
+    recognition.lang = "en-GB";
+
+
+    document.getElementsByClassName("speech_Modal")[0].style.display="flex";
+    document.getElementById("speak_text").textContent = "Speak now"
+    setTimeout(function () {
+      document.getElementById("speak_text").style.marginRight="40px";
+    }, 300);
+    recognition.onresult = function(event) {
+
+      if (event.results[0][0].transcript.indexOf('.') !== -1) {
+        document.getElementById('search_certificate').value = event.results[0][0].transcript.slice(0, -1);
+        document.getElementById("speak_text").textContent = event.results[0][0].transcript.slice(0, -1);
+      } else {
+        document.getElementById('search_certificate').value = event.results[0][0].transcript;
+        document.getElementById("speak_text").textContent = event.results[0][0].transcript;
+      }
+      search_certificate();
+      setTimeout(function () {
+        document.getElementsByClassName("speech_Modal")[0].style.display="none";
+        document.getElementById("speak_text").style.marginRight="140px";
+      }, 500);
+    }
+    recognition.start();
+  }
+  function close_speechModal(){
+      document.getElementsByClassName("speech_Modal")[0].style.display="none";
+  } 
+
+
   return (
     <div className="top">
       <div className="container">
@@ -234,6 +281,11 @@ export default function TopCertBtn() {
           id="search_certificate"
           onKeyUp={search_certificate}
         />
+        <LightTooltip title="Search by voice">
+        <div className="speechRecognition" onClick={record}>
+            <img src={micIcon}/>
+        </div>
+        </LightTooltip>
         <div
           className="filter_container"
           id="basic-button"
@@ -439,6 +491,15 @@ export default function TopCertBtn() {
             <img id="row_icon" src={rowTableGray} />
           </div>
         </div>
+      </div>
+
+      {/*MODAL FOR SPEECH RECOGNITION */}
+      <div className="speech_Modal">
+          <LightTooltip title="Close">
+            <p className="close_speech" onClick={close_speechModal}>&#215;</p>
+          </LightTooltip> 
+          <p id="speak_text">Speak now</p>
+          <img src={speechRecog}/> 
       </div>
 
 

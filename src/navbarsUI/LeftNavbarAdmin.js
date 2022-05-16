@@ -88,7 +88,7 @@ export default function NavbarAdmin(props) {
 
         <div className="nav_part2">
             
-          <div id="link_dashboard" className="link_disabler">
+          <div id="link_dashboard" className="link_disabler link_disablerAdmin">
             <Link
               to="/AdminDashboard"
               style={{ textDecoration: "none", width: "100%" }}
@@ -114,7 +114,7 @@ export default function NavbarAdmin(props) {
             </Link>
           </div>
 
-          <div id="link_faculty" className="link_disabler">
+          <div id="link_faculty" className="link_disabler link_disablerAdmin">
             <Link
               to="/Faculty"
               style={{ textDecoration: "none", width: "100%" }}
@@ -140,7 +140,7 @@ export default function NavbarAdmin(props) {
             </Link>
           </div>
 
-          <div id="link_accountSetting" className="link_disabler">
+          <div id="link_accountSetting" className="link_disabler link_disablerAdmin">
             <Link to="/AccountSettingsAdmin" style={{ textDecoration: "none", width: "100%" }}>
               <div className="navlink_container" id="profile_link">
                 <Skeleton

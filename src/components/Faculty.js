@@ -11,7 +11,8 @@ import TableRowFaculty from "../FacultyUI/TableFaculty";
 import AllUsersPDF from "../FacultyUI/AllUsersPDF";
 import FacultyTopButtonPending from "../FacultyUI/FacultyTopButtonPending";
 import TableFacultyPending from "../FacultyUI/TableFacultyPending";
-
+import $ from "jquery";
+import PendingUsersPDF from "../FacultyUI/PendingUsersPDF";
 
 export default function Faculty() {
 
@@ -24,6 +25,8 @@ export default function Faculty() {
 
 
     function goToActive() {
+        document.getElementById('search_faculty').value = "";
+
         document.getElementById("active_user_Table").style.display =
           "block";
         document.getElementById("pending_user_Table").style.display =
@@ -35,9 +38,31 @@ export default function Faculty() {
         document.getElementById("active_faculty").style.borderBottom =
           "5px solid #FFAA28";
         document.getElementById("active_faculty").style.fontWeight = "600";
+
+
+        if ($("#gridTable_forSearch #faculty_desktop:visible").length === 0) {
+          document.getElementsByClassName("no_searchFound6")[0].style.display ="flex";
+        }
+        else if ($("#gridTable_forSearch #faculty_desktop:visible").length != 0) {
+          document.getElementsByClassName("no_searchFound6")[0].style.display ="none";
+        }
+    
+        if ($("#rowTable_forSearch #facultyRow_desktop:visible").length === 0) {
+          document.getElementsByClassName("no_searchFound7")[0].style.display ="flex";
+        }
+        else if ($("#rowTable_forSearch #facultyRow_desktop:visible").length != 0) {
+          document.getElementsByClassName("no_searchFound7")[0].style.display ="none";
+        }
+
+        var div = document.getElementsByClassName("facultyRow_desktopPending");
+        for (var i = 0; i < div.length; i++) {
+          div[i].style.display = "flex";
+        }
       }
       //function go to pdf view
       function goToPending() {
+        document.getElementById("search_faculty_Pending").value = "";
+
         document.getElementById("active_user_Table").style.display =
           "none";
         document.getElementById("pending_user_Table").style.display =
@@ -49,6 +74,30 @@ export default function Faculty() {
         document.getElementById("pending_faculty").style.borderBottom =
           "5px solid #FFAA28";
         document.getElementById("pending_faculty").style.fontWeight = "600";
+
+        if ($("#rowTable_forSearch_pending #facultyRow_desktopPending:visible").length === 0) {
+          document.getElementsByClassName("no_searchFound8")[0].style.display ="flex";
+        }
+        else if ($("#rowTable_forSearch_pending #facultyRow_desktopPending:visible").length != 0) {
+          document.getElementsByClassName("no_searchFound8")[0].style.display ="none";
+        }
+
+        var ele = document.getElementsByName("cb_filter");
+        for (var i = 0; i < ele.length; i++) {
+          ele[i].checked = false;
+        }
+        var div = document.getElementsByClassName("faculty_desktop");
+        var div1 = document.getElementsByClassName("facultyRow_desktop");
+        for (var i = 0; i < div.length; i++) {
+          div[i].style.display = "block";
+          div1[i].style.display = "flex";
+        }
+        document.getElementsByClassName("no_searchFound6")[0].style.display = "none";
+        document.getElementsByClassName("no_searchFound7")[0].style.display = "none";
+        document.getElementById("input_from").value = "";
+        document.getElementById("input_to").value = "";
+        document.getElementById("span_from").textContent = "dd/mm/yyyy";
+        document.getElementById("span_to").textContent = "dd/mm/yyyy";
       }
 
 
@@ -101,6 +150,7 @@ export default function Faculty() {
             </div>
 
             <AllUsersPDF/>
+            <PendingUsersPDF/>
 
         </div>
 

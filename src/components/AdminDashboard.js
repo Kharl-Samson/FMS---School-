@@ -11,6 +11,8 @@ import axios from "axios";
 import { deepOrange } from "@mui/material/colors";
 import DashboardStatisticsFaculty from '../dashboardUI/StatisticsFaculty';
 import RightNavbarAdmin from '../navbarsUI/RightNavbarAdmin';
+import EachRowAdmin from './EachRowAdmin';
+
 
 export default function AdminDashboard(){
 
@@ -61,24 +63,17 @@ export default function AdminDashboard(){
     TableGroup_ctr++;
     if(email_key !== res.email && TableGroup_ctr<=6 && res.account_status == "Approved"){
         return (
-            <div className='th th_hover' key={TableGroup_ctr}>
-                <div style={{display:"flex",alignItems:"center"}}>
-                    <img 
-                        src={"http://localhost/fms/upload_profile/"+res.profile_photo}
-                        id="profile_photo"
-                        onError={(e)=>{e.target.onerror = null; e.target.src="http://localhost/fms/upload_profile/default_avatar.png"}}
-                    />
-                <span style={{fontWeight:"normal",fontSize:".9rem",marginLeft:"10px",color:"#3D3D3D"}}>{res.fname+" "+res.lname}</span>
-                </div>
-                <div><span style={{fontWeight:"normal",fontSize:".9rem",textDecoration:"underline"}}><a href={"mailto:"+res.email} target="_blank" style={{color:"#3D3D3D"}}>{res.email}</a></span></div>
-                <div><span style={{fontWeight:"normal",fontSize:".9rem",color:"#3D3D3D"}}>{res.employment+" EMPLOYEE"}</span></div>
-                <div style={{justifyContent:"center"}}><span style={{fontWeight:"normal",fontSize:".9rem",color:"#3D3D3D"}}>{res.department}</span></div>
-            </div>
+            <EachRowAdmin
+            key= {TableGroup_ctr}
+            photo = {res.profile_photo}
+            name = {res.fname+" "+res.lname}
+            email = {res.email}
+            employment = {res.employment+" EMPLOYEE"}
+            department = {res.department}
+            />
         );
     }
 });
-
-
 
     return (
         <div className="dashboard_container">

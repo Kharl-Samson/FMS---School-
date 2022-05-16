@@ -41,6 +41,17 @@ export default function NavbarFaculty(props) {
     setAuth(auth);
   }, []);
 
+  const [auth1, setAuth1] = useState("");
+
+  useEffect(() => {
+    var auth1 = localStorage.getItem("pds_status");
+    if (auth1 === "Pending") {
+      document.getElementById("link_certificate").style.pointerEvents="none";
+    }
+    setAuth1(auth1);
+  }, []);
+
+
   const mq = window.matchMedia("(max-width: 850px)");
   //Skeleton show
   setTimeout(function () {

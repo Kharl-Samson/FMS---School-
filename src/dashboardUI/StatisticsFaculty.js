@@ -35,12 +35,16 @@ export default function DashboardStatisticsFaculty(){
 
   var approved = 0;
   var pending = 0;
+  var allUsers = 0;
   for(var i=0 ; i<getAllUser.length ; i++){
       if(getAllUser[i].account_status == "Approved"){
         approved++;
       }
-      else{
+      if(getAllUser[i].account_status == "Pending"){
         pending++;
+      }
+      if(getAllUser[i].account_status == "Approved" || getAllUser[i].account_status == "Pending"){
+        allUsers++
       }
   }
   
@@ -92,7 +96,7 @@ export default function DashboardStatisticsFaculty(){
                       <Skeleton animation="wave" className='skeleton_show' sx={{marginRight:"20px"}}/>
                       <Skeleton animation="wave" className='skeleton_show' sx={{marginRight:"20px"}}/>
                       <p className='skeleton_done p1'>All Users</p>
-                      <p className='skeleton_done p2'>{getAllUser.length}</p>
+                      <p className='skeleton_done p2'>{allUsers}</p>
                 </div>
              </Link>   
             </div>

@@ -1211,6 +1211,46 @@ button:hover{
 }
 
 
+/*SPEECH MODAL*/
+.speech_Modal{
+    height: 100vh;
+    width: 100%;
+    background-color: #ffffff;
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+.speech_Modal .close_speech{
+    font-size: 2.3rem;
+    font-weight: 600;
+    position: fixed;
+    right: 2%;
+    top: 1%;
+    z-index: 99999999999;
+}
+.speech_Modal .close_speech:hover{
+    cursor: pointer;
+    opacity: 80%;
+}
+.speech_Modal #speak_text{
+    font-size: 2rem;
+    color: rgb(103, 103, 103);
+    margin-right: 140px;
+    transition: .3s ease;
+}
+.speech_Modal #speak_text:first-letter {
+    text-transform: uppercase;
+}
+.speech_Modal img{
+    height: 200px;
+    width: auto;
+    transition: .3s ease;
+}
+
+
 /*SKELETON LOAD*/
 .skeleton_done{
     display: none;
@@ -1237,6 +1277,10 @@ button:hover{
  
     .link_disabler{
        width: 25%;
+   
+    }
+    .link_disablerAdmin{
+        width: 33%;
     }
 
     /*SIDE NAVBAR FOR ALL USER*/
@@ -1486,3 +1530,15 @@ button:hover{
 }
 
 
+@media screen and (max-width: 500px){
+    .speech_Modal #speak_text{
+        font-size: 1rem;
+        color: rgb(103, 103, 103);
+        margin-right: 40px;
+    }
+    .speech_Modal img{
+        height: 100px;
+        width: auto;
+    }
+    
+}

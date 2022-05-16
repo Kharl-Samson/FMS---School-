@@ -22,6 +22,7 @@ import ViewFacultyInfo from "./FacultyUI/ViewFacultyInfo";
 import ViewFacultyCert from "./FacultyUI/ViewFacultyCert";
 import ForgotPasswordForm from "./components/ForgotPasswordForm";
 
+
 export default function App() {
   //window.onerror = function(message, url, lineNumber) {  
    // return true; // prevents browser error messages  

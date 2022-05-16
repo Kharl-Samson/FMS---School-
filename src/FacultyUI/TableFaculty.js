@@ -55,7 +55,7 @@ export default function TableRowFaculty() {
         {/*input_keyForUser*/} 
         <div className="no_searchFound7">
               <img src={no_record_icon}/>
-              <p>No Certificate Available!</p>
+              <p>No Faculty Available!</p>
         </div>
       </div>
 

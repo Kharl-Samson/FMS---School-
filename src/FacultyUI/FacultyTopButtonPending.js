@@ -3,11 +3,7 @@ import searchYellow from "../images/icons/searchYellow.svg";
 import filterYellow from "../images/icons/filterYellow.svg";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import gridTableYellow from "../images/icons/gridTableYellow.svg";
-import rowTableGray from "../images/icons/rowTableGray.svg";
 import download_yellow from "../images/icons/download_yellow.svg";
-import gridTableGray from "../images/icons/gridTableGray.svg";
-import rowTableYellow from "../images/icons/rowTableYellow.svg";
 import $ from "jquery";
 import { addDays } from "date-fns";
 import { useState } from "react";
@@ -19,24 +15,21 @@ import moment from "moment";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import axios from "axios";
-import search_faculty from "../functions/searchFaculty";
-import ApplyFilterFaculty from "../functions/ApplyFilterFaculty";
-import filterFaculty from "../functions/filterFaculty";
+import search_facultyPending from "../functions/searchFacultyPending";
+import ApplyFilterFacultyPending from "../functions/ApplyFilterFacultyPending";
+import micIcon from "../images/mic.png";
+import { styled } from "@mui/material/styles";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import speechRecog from "../images/speechRecog.gif";
 
 export default function FacultyTopButtonPending() {
-  setTimeout(function () {
-    if ($("#gridTable_forSearch #faculty_desktop:visible").length === 0) {
-      document.getElementsByClassName("no_searchFound6")[0].style.display ="flex";
-    }
-    else if ($("#gridTable_forSearch #faculty_desktop:visible").length != 0) {
-      document.getElementsByClassName("no_searchFound6")[0].style.display ="none";
-    }
 
-    if ($("#rowTable_forSearch #facultyRow_desktop:visible").length === 0) {
-      document.getElementsByClassName("no_searchFound7")[0].style.display ="flex";
+  setTimeout(function () {
+    if ($("#rowTable_forSearch_pending #facultyRow_desktopPending:visible").length === 0) {
+      document.getElementsByClassName("no_searchFound8")[0].style.display ="flex";
     }
-    else if ($("#rowTable_forSearch #facultyRow_desktop:visible").length != 0) {
-      document.getElementsByClassName("no_searchFound7")[0].style.display ="none";
+    else if ($("#rowTable_forSearch_pending #facultyRow_desktopPending:visible").length != 0) {
+      document.getElementsByClassName("no_searchFound8")[0].style.display ="none";
     }
   }, 1200);
 
@@ -44,22 +37,15 @@ export default function FacultyTopButtonPending() {
   const openTEST = Boolean(anchorEl_open);
   const handleClick = (event) => {
     setAnchorEl_open(event.currentTarget);
-    document.getElementById("basic-menu").style.display = "flex";
+    document.getElementById("basic-menu11").style.display = "flex";
   };
   const handleCloseEffect = () => {
 
-    var ele = document.getElementsByName("cb_filter");
-    for (var i = 0; i < ele.length; i++) {
-      ele[i].checked = false;
-    }
-    var div = document.getElementsByClassName("faculty_desktop");
-    var div1 = document.getElementsByClassName("facultyRow_desktop");
+    var div = document.getElementsByClassName("facultyRow_desktopPending");
     for (var i = 0; i < div.length; i++) {
-      div[i].style.display = "block";
-      div1[i].style.display = "flex";
+      div[i].style.display = "flex";
     }
-    document.getElementsByClassName("no_searchFound6")[0].style.display = "none";
-    document.getElementsByClassName("no_searchFound7")[0].style.display = "none";
+    document.getElementsByClassName("no_searchFound8")[0].style.display = "none";
     document.getElementById("input_from").value = "";
     document.getElementById("input_to").value = "";
     document.getElementById("span_from").textContent = "dd/mm/yyyy";
@@ -76,18 +62,11 @@ export default function FacultyTopButtonPending() {
         },
       ]);
 
-    var ele = document.getElementsByName("cb_filter");
-    for (var i = 0; i < ele.length; i++) {
-      ele[i].checked = false;
-    }
-    var div = document.getElementsByClassName("faculty_desktop");
-    var div1 = document.getElementsByClassName("facultyRow_desktop");
+    var div = document.getElementsByClassName("facultyRow_desktopPending");
     for (var i = 0; i < div.length; i++) {
-      div[i].style.display = "block";
-      div1[i].style.display = "flex";
+      div[i].style.display = "flex";
     }
-    document.getElementsByClassName("no_searchFound6")[0].style.display = "none";
-    document.getElementsByClassName("no_searchFound7")[0].style.display = "none";
+    document.getElementsByClassName("no_searchFound8")[0].style.display = "none";
     document.getElementById("input_from").value = "";
     document.getElementById("input_to").value = "";
     document.getElementById("span_from").textContent = "dd/mm/yyyy";
@@ -122,38 +101,6 @@ export default function FacultyTopButtonPending() {
     document.getElementById("input_to").value = to;
   };
 
-  function gridView() {
-    document.getElementsByClassName("no_searchFound6")[0].style.display ="none";
-    document.getElementsByClassName("no_searchFound7")[0].style.display ="none";
-    document.getElementById("grid_icon").src = gridTableYellow;
-    document.getElementById("row_icon").src = rowTableGray;
-    document.getElementById("GridBtn").style.backgroundColor = "#FFFF";
-    document.getElementById("RowBtn").style.backgroundColor = "transparent";
-    document.getElementById("row_table").style.display = "none";
-    document.getElementById("table_containerID").style.backgroundColor ="#ffff";
-    document.getElementById("table_containerID").style.boxShadow ="rgba(0, 0, 0, 0.24) 0px 3px 8px";
-    document.getElementById("grid_table").style.display = "block";
-    if ($("#gridTable_forSearch #faculty_desktop:visible").length === 0) {
-      document.getElementById("faculty_desktop").style.display = "none"
-      document.getElementsByClassName("no_searchFound6")[0].style.display ="flex";
-    }
-  }
-  function rowView() {
-    document.getElementsByClassName("no_searchFound6")[0].style.display ="none";
-    document.getElementsByClassName("no_searchFound7")[0].style.display ="none";
-    document.getElementById("grid_icon").src = gridTableGray;
-    document.getElementById("row_icon").src = rowTableYellow;
-    document.getElementById("GridBtn").style.backgroundColor = "transparent";
-    document.getElementById("RowBtn").style.backgroundColor = "#FFFF";
-    document.getElementById("table_containerID").style.backgroundColor = "transparent";
-    document.getElementById("table_containerID").style.boxShadow = "none";
-    document.getElementById("grid_table").style.display = "none";
-    document.getElementById("row_table").style.display = "block";
-    if ($("#rowTable_forSearch #facultyRow_desktop:visible").length === 0) {
-        document.getElementById("facultyRow_desktop").style.display = "none"
-        document.getElementsByClassName("no_searchFound7")[0].style.display ="flex";
-    }
-  }
 
   const downloadAllUser=(e)=>{
     e.preventDefault();
@@ -167,6 +114,48 @@ export default function FacultyTopButtonPending() {
   }
 
 
+    //Tooltip
+    const LightTooltip = styled(({ className, ...props }) => (
+      <Tooltip {...props} classes={{ popper: className }} />
+    ))(({ theme }) => ({
+      [`& .${tooltipClasses.tooltip}`]: {
+        backgroundColor: theme.palette.common.white,
+        color: "rgba(0, 0, 0, 0.87)",
+        boxShadow: theme.shadows[1],
+        fontSize: ".8rem",
+      },
+    }));
+    function record() {
+      var recognition = new window.webkitSpeechRecognition();
+      recognition.lang = "en-GB";
+  
+  
+      document.getElementsByClassName("speech_Modal2")[0].style.display="flex";
+      document.getElementsByClassName("speak_text2")[0].textContent = "Speak now"
+      setTimeout(function () {
+        document.getElementsByClassName("speak_text2")[0].style.marginRight="40px";
+      }, 300);
+      recognition.onresult = function(event) {
+  
+        if (event.results[0][0].transcript.indexOf('.') !== -1) {
+          document.getElementById('search_faculty_Pending').value = event.results[0][0].transcript.slice(0, -1);
+          document.getElementsByClassName("speak_text2")[0].textContent = event.results[0][0].transcript.slice(0, -1);
+        } else {
+          document.getElementById('search_faculty_Pending').value = event.results[0][0].transcript;
+          document.getElementsByClassName("speak_text2")[0].textContent = event.results[0][0].transcript;
+        }
+        search_facultyPending();
+        setTimeout(function () {
+          document.getElementsByClassName("speech_Modal2")[0].style.display="none";
+          document.getElementsByClassName("speak_text2")[0].style.marginRight="140px";
+        }, 500);
+      }
+      recognition.start();
+    }
+    function close_speechModal(){
+        document.getElementsByClassName("speech_Modal2")[0].style.display="none";
+    } 
+
   return (
     <div className="top">
       <div className="container">
@@ -176,13 +165,18 @@ export default function FacultyTopButtonPending() {
         <input
           type="text"
           placeholder="Find faculty"
-          id="search_faculty"
-          onKeyUp={search_faculty}
+          id="search_faculty_Pending"
+          onKeyUp={search_facultyPending}
         />
+        <LightTooltip title="Search by voice">
+        <div className="speechRecognition" onClick={record}>
+            <img src={micIcon}/>
+        </div>
+        </LightTooltip>
         <div
           className="filter_container"
           id="basic-button"
-          aria-controls={openTEST ? "basic-menu" : undefined}
+          aria-controls={openTEST ? "basic-menu11" : undefined}
           aria-haspopup="true"
           aria-expanded={openTEST ? "true" : undefined}
           onClick={handleClick}
@@ -192,7 +186,7 @@ export default function FacultyTopButtonPending() {
         </div>
         <Menu
           disableRipple
-          id="basic-menu"
+          id="basic-menu11"
           anchorEl={anchorEl_open}
           open={openTEST}
           onClose={handleCloseEffect}
@@ -229,7 +223,7 @@ export default function FacultyTopButtonPending() {
                   <div
                     className="date_range"
                     id="basic-button1"
-                    aria-controls={openTEST1 ? "basic-menu" : undefined}
+                    aria-controls={openTEST1 ? "basic-menu11" : undefined}
                     aria-haspopup="true"
                     aria-expanded={openTEST1 ? "true" : undefined}
                     onClick={handleClick1}
@@ -240,7 +234,7 @@ export default function FacultyTopButtonPending() {
                   <div
                     className="date_range"
                     id="basic-button1"
-                    aria-controls={openTEST1 ? "basic-menu" : undefined}
+                    aria-controls={openTEST1 ? "basic-menu11" : undefined}
                     aria-haspopup="true"
                     aria-expanded={openTEST1 ? "true" : undefined}
                     onClick={handleClick1}
@@ -251,7 +245,7 @@ export default function FacultyTopButtonPending() {
 
                 <Menu
                   disableRipple
-                  id="basic-menu1"
+                  id="basic-menu1a"
                   anchorEl={anchorEl_open1}
                   open={openTEST1}
                   onClose={handleCloseEffect1}
@@ -281,7 +275,7 @@ export default function FacultyTopButtonPending() {
               </div>
               <div className="right">
                 <span onClick={handleCloseEffect}>Cancel</span>
-                <span onClick={ApplyFilterFaculty}>Apply</span>
+                <span onClick={ApplyFilterFacultyPending}>Apply</span>
               </div>
             </div>
           </MenuItem>
@@ -292,7 +286,7 @@ export default function FacultyTopButtonPending() {
       <div className="container" style={{display:"none"}}></div>
       
       <div className="container" id="f_container3">
-        <div onClick={printDocument}>
+        <div onClick={printDocumentPending}>
         <form>
           <img src={download_yellow}/> Generate as PDF
         </form>  
@@ -300,14 +294,23 @@ export default function FacultyTopButtonPending() {
       </div>
 
 
+      {/*MODAL FOR SPEECH RECOGNITION */}
+      <div className="speech_Modal speech_Modal2">
+          <LightTooltip title="Close">
+            <p className="close_speech" onClick={close_speechModal}>&#215;</p>
+          </LightTooltip> 
+          <p id="speak_text" className="speak_text2">Speak now</p>
+          <img src={speechRecog}/> 
+      </div>
+
     </div>
   );
 }
 
 
 //Printing certificate
-function printDocument() {
-  html2canvas(document.querySelector("#ActiveUsers_pdf"), {
+function printDocumentPending() {
+  html2canvas(document.querySelector("#PendingUsers_pdf"), {
     useCORS: true,
     allowTaint: true,
     scrollY: 0,

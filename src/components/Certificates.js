@@ -20,8 +20,6 @@ export default function Certificates() {
         document.getElementById("link_certificate").style.pointerEvents="none";
     },10);
 
-
-
   return (
     <div className="dashboard_container">
         <LeftNavbarFaculty />

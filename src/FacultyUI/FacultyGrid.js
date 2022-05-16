@@ -48,8 +48,6 @@ export default function FacultyGrid(props){
     }
 
 
-
-
     return(
         <div className="faculty_imageContainer faculty_desktop" id="faculty_desktop">
 
