@@ -93,9 +93,12 @@ export default function ForgotPassword(){
         <div className="login_container">
             {/*Loading when getting data*/ }
             <div className="LoadingContainer">
-                <img src={loading}/>
+                <div className="mid">
+                    <img src={loading}/>
+                    <span>This may take a while. Please wait...</span>
+                </div>
             </div>
-
+            
             {/*Modal*/ }
             <div className="modal_container" id="email_modal">
               <div className="modal_validation">

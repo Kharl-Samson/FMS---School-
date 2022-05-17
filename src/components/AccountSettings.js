@@ -17,6 +17,7 @@ import lock_icon from "../images/icons/lock_icon.svg";
 import Password_icon from "../images/icons/password.svg";
 import Open_eye_icon from "../images/icons/open_eye.svg";
 import Close_eye_icon from "../images/icons/close_eye.svg"; 
+import ProfileNotifyer from './NotifyerProfile';
 
 export default function AccountSettings(){
     document.title = "CICT | Faculty Management System";
@@ -629,6 +630,8 @@ setTimeout(function(){
         </div>
             
         <RightNavbar/>
+
+        <ProfileNotifyer/>
 
         {/*Success Editing Profile Photo */}
         <div className="success_modal_right_side profile_photo_side_modal">

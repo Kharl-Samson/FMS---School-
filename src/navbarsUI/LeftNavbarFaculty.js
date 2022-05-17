@@ -15,6 +15,7 @@ import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import Skeleton from "@mui/material/Skeleton";
 import axios from "axios";
+import ProfileNotifyer from '../components/NotifyerProfile';
 
 export default function NavbarFaculty(props) {
   //Tooltip
@@ -41,15 +42,27 @@ export default function NavbarFaculty(props) {
     setAuth(auth);
   }, []);
 
-  const [auth1, setAuth1] = useState("");
 
-  useEffect(() => {
+  const mq1 = window.matchMedia("(max-width: 850px)");
+  function clickCert(){
     var auth1 = localStorage.getItem("pds_status");
-    if (auth1 === "Pending") {
-      document.getElementById("link_certificate").style.pointerEvents="none";
+
+    if (mq1.matches) {
     }
-    setAuth1(auth1);
-  }, []);
+    else{
+
+      if (auth1 === "Pending") {
+        document.getElementById("profile_notify_container").style.display="flex";
+      }
+      else{
+        navigate(`/Certificates`);
+      }
+    }
+  
+  }
+
+
+
 
 
   const mq = window.matchMedia("(max-width: 850px)");
@@ -151,8 +164,7 @@ export default function NavbarFaculty(props) {
             </Link>
           </div>
 
-          <div id="link_certificate" className="link_disabler">
-            <Link to="/Certificates" style={{ textDecoration: "none", width: "100%" }}>
+          <div id="link_certificate" className="link_disabler" onClick={clickCert}>
               <div
                 className="navlink_container nav_part3"
                 id="certificate_link"
@@ -174,7 +186,6 @@ export default function NavbarFaculty(props) {
                   Certificates
                 </span>
               </div>
-            </Link>
           </div>
 
           <div id="link_accountSetting" className="link_disabler">
@@ -229,6 +240,7 @@ export default function NavbarFaculty(props) {
       >
         <img src={Menu_icon} />
       </div>
+
     </div>
   );
 }

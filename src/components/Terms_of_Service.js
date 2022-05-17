@@ -10,6 +10,10 @@ import Image_rounder from "../images/login/login_img_rounder.png";
 
 export default function Terms_of_Service(){
     document.title = "CICT | Terms Of Service";
+
+    function closeWin() {
+        window.close();
+    }
     return(
         <div className="Guideline_container">
            
@@ -92,9 +96,7 @@ export default function Terms_of_Service(){
                             </div>   
                             <div className="upper"></div>
                             <center>
-                                <Link to="/" style={{ textDecoration: 'none' }}>
-                                    <button className="agree_button">I Agree</button>
-                               </Link> 
+                                    <button className="agree_button" onClick={closeWin}>I Agree</button>
                             </center>
                         </div>
                     </Box>

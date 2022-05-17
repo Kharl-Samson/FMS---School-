@@ -22,6 +22,7 @@ import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import rightBG from "../images/login/login_img.png";
 import loading from "../images/loading.gif";
 
+
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Login(){
@@ -191,7 +192,10 @@ export default function Login(){
 
             {/*Loading when getting data*/ }
             <div className="LoadingContainer">
-                <img src={loading}/>
+                <div className="mid">
+                    <img src={loading}/>
+                    <span>This may take a while. Please wait...</span>
+                </div>
             </div>
 
             <div className="cict_text_container cict_text_container1">

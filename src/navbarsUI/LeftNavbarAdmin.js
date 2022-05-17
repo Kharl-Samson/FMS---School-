@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import OpenRightNavbar from "../functions/OpenRightNavbar";
 import CICT_Logo from "../images/login/cict_logo.png";
 import Dashboard_icon from "../images/icons/dashboard.svg";
-import Profile_icon from "../images/icons/profile.svg";
 import account_setting from "../images/icons/account_setting.svg";
 import manageUser from "../images/icons/manageUser.svg";
 import Logout_icon from "../images/icons/logout.svg";

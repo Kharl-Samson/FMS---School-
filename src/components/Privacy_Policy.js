@@ -10,6 +10,10 @@ import Image_rounder from "../images/login/login_img_rounder.png";
 
 export default function Privacy_Policy(){
     document.title = "CICT | Privacy Policy";
+    function closeWin() {
+        window.close();
+    }
+
     return(
         <div className="Guideline_container">
            
@@ -104,9 +108,7 @@ export default function Privacy_Policy(){
                         </div>
                         
                         <div className="upper"></div>
-                        <Link to="/" style={{ textDecoration: 'none' }}>
-                            <button className="agree_button">I Agree</button>
-                        </Link>
+                        <button className="agree_button" onClick={closeWin}>I Agree</button>
 
                     </div>
                     </Box>
@@ -137,3 +139,4 @@ export default function Privacy_Policy(){
         </div>
     )
 }
+

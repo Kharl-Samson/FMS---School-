@@ -50,11 +50,32 @@ import Logout_icon from "../images/icons/logout.svg";
 import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import Skeleton from "@mui/material/Skeleton";
+import mr_robot from "../images/Robot.gif";
+import hand_mouse from "../images/icons/hand_mouse.png";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export default function CreatePersonalDataSheet() {
   document.title = "CICT | Personal Information";
+
+  const mq1 = window.matchMedia("(max-width: 850px)");
+  function clickCert(){
+    var auth1 = localStorage.getItem("pds_status");
+
+    if (mq1.matches) {
+    }
+    else{
+
+      if (auth1 === "Pending") {
+        document.getElementById("profile_notify_container").style.display="flex";
+      }
+      else{
+        navigate(`/Certificates`);
+      }
+    }
+  
+  }
+
   setTimeout(function () {
     document.getElementById("pds_link").classList.add("nav_active");
     var left_nav_minimize =
@@ -2039,8 +2060,93 @@ export default function CreatePersonalDataSheet() {
     }
   }, 1200);
 
+
+  let firstName = localStorage.getItem("name").split(" ")[0];
+  function closeNotifyer() {
+    window.localStorage.setItem("pds_ctr", "off");
+    document.getElementById("profile_notify_container").style.display = "none";
+  }
+
   return (
     <div className="dashboard_container" style={{ backgroundColor: "#FFAA28" }}>
+
+<div
+      className="profile_notify_container"
+      id="profile_notify_container"
+      onClick={closeNotifyer}
+    >
+      <div
+        className="navbar_account_container"
+        style={{ backgroundColor: "transparent" }}
+      >
+        <div>
+          <div
+            className="navbar_logo_container nav_part1"
+            style={{ visibility: "hidden" }}
+          >
+            <img src={CICT_Logo} className="cict_logo" />
+            <div className="cict_text left_nav_minimize">
+              <span>CICT</span>
+            </div>
+          </div>
+          <div className="nav_line nav_part1"></div>
+
+          <div className="nav_part2">
+            <Link
+              to=""
+              style={{
+                textDecoration: "none",
+                width: "25%",
+                visibility: "hidden",
+              }}
+            >
+              <div className="navlink_container" id="dashboard_link">
+                <LightTooltip title="Dashboard">
+                  <img src={Dashboard_icon} className="left_nav_minimize_img" />
+                </LightTooltip>
+                <span className="left_nav_minimize">Dashboard</span>
+              </div>
+            </Link>
+
+            <Link
+              to="/PersonalInformation"
+              style={{ textDecoration: "none", width: "25%" }}
+            >
+              <div
+                className="navlink_container nav_active_notifier"
+                id="pds_link"
+                style={{
+                  backgroundColor: "#FFFF",
+                  borderLeft: "5px solid #FFAA28",
+                }}
+              >
+                <LightTooltip title="My Profile">
+                  <img src={Profile_icon} className="left_nav_minimize_img" />
+                </LightTooltip>
+                <span className="left_nav_minimize">My Profile</span>
+              </div>
+            </Link>
+            <center>
+              <img src={hand_mouse} className="hand_mouse" />
+            </center>
+            <div className="robot_container">
+              <div className="left">
+                <img src={mr_robot} />
+              </div>
+              <div className="right">
+                <div className="convo_box">
+                  <p>Hey {firstName}! &#128522;</p>
+                  <p id="typewriter">It seems that your profile is not yet complete. You can go to My Profile page and finish your account setup!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="main_content_profile_notify"></div>
+    </div>
+
       <div className="navbar_account_container">
         <div>
           <div className="navbar_logo_container nav_part1">
@@ -2098,8 +2204,7 @@ export default function CreatePersonalDataSheet() {
               </Link>
             </div>
 
-            <div id="link_certificate" className="link_disabler">
-              <Link to="/Certificates" style={{ textDecoration: "none", width: "100%" }}>
+            <div id="link_certificate" className="link_disabler" onClick={clickCert}>
                 <div
                   className="navlink_container nav_part3"
                   id="certificate_link"
@@ -2118,7 +2223,6 @@ export default function CreatePersonalDataSheet() {
                     />
                   </LightTooltip>
                 </div>
-              </Link>
             </div>
 
             <div id="link_accountSetting" className="link_disabler">

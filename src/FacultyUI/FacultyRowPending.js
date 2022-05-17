@@ -123,7 +123,10 @@ const submitDeclineForm=(e)=>{
 
         {/*Loading when getting data*/ }
         <div className="LoadingContainer">
-            <img src={loading}/>
+            <div className="mid">
+                <img src={loading}/>
+                <span>This may take a while. Please wait...</span>
+            </div>
         </div>
 
 

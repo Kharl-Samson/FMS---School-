@@ -318,9 +318,27 @@ input[type="password"]::-ms-reveal {
     align-items: center;
     justify-content: center;
 }
-.LoadingContainer img{
-    height: 90px;
+.LoadingContainer .mid{
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.621);
+    width: 100%;
+    padding: 20px 0;
+}
+.LoadingContainer span{
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #ffff;
+    margin-right: 20px;
+    line-height: 1.2;
+}
+.LoadingContainer .mid img{
+    height: 60px;
     width: auto;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 .LoadingContainer p{
     font-size: 1.3rem;
