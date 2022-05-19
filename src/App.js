@@ -21,16 +21,19 @@ import Faculty from "./components/Faculty";
 import ViewFacultyInfo from "./FacultyUI/ViewFacultyInfo";
 import ViewFacultyCert from "./FacultyUI/ViewFacultyCert";
 import ForgotPasswordForm from "./components/ForgotPasswordForm";
+import AdminLogin from "./components/AdminLogin";
+import ContentSetting from "./components/ContentSetting";
 
 
 export default function App() {
   //window.onerror = function(message, url, lineNumber) {  
-   // return true; // prevents browser error messages  
+    //return true; // prevents browser error messages  
  // };
   return (
     <div className="App">
             <Routes>
               <Route path="/" element={<Login/>} />
+              <Route path="/AdminLogin" element={<AdminLogin/>} />
               <Route path="Register" element={<Register/>} />
               <Route path="ForgotPassword" element={<ForgotPassword/>} />
               <Route path="ForgotPasswordForm" element={<ForgotPasswordForm/>} />
@@ -53,7 +56,8 @@ export default function App() {
               <Route path="ViewFaculty" element={<ViewFacultyInfo/>} /> 
               <Route path="ViewFacultyCertificates" element={<ViewFacultyCert/>} /> 
 
-              <Route path="AccountSettingsAdmin" element={<AccountSettingsAdmin/>} /> 
+              <Route path="AccountSettingsAdmin" element={<AccountSettingsAdmin/>} />              
+              <Route path="ContentSetting" element={<ContentSetting/>} /> 
 
               <Route path="ActivityLog" element={<ActivityLog/>} /> 
               <Route path="ActivityLogAdmin" element={<ActivityLogAdmin/>} /> 

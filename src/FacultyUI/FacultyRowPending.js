@@ -149,7 +149,7 @@ const submitDeclineForm=(e)=>{
                 <p title="Close" className='close_modal' onClick={closeDeleteModal}>&#215;</p>
                 <div className='top'>
                     <img src={continueYellow} style={{marginLeft:"25px"}}/>
-                    Confirm action
+                    Confirm Action
                 </div>
                 <p className='title'>Are you sure you want to accept this faculty? </p>
         
@@ -158,7 +158,7 @@ const submitDeclineForm=(e)=>{
                     <input type="hidden" id="id_delete_key" value=""/>
                     <input type="hidden" id="id_name_key" value=""/>
                     <button type="button" onClick={closeDeleteModal}>Cancel</button>
-                    <button type="submit" style={{backgroundColor:"#f4b24c"}}>Accept</button>
+                    <button type="submit" style={{backgroundColor:"#f4b24c"}}>OK</button>
                 </div>
                 </form>
                 </div>
@@ -170,7 +170,7 @@ const submitDeclineForm=(e)=>{
                 <p title="Close" className='close_modal' onClick={closeDeleteModal1}>&#215;</p>
                 <div className='top'>
                     <img src={DeleteIconModal} style={{marginLeft:"25px"}}/>
-                    Confirm action
+                    Confirm Action
                 </div>
                 <p className='title'>Are you sure you want to decline this faculty? </p>
         
@@ -179,7 +179,7 @@ const submitDeclineForm=(e)=>{
                     <input type="hidden" id="id_delete_key1" value=""/>
                     <input type="hidden" id="id_name_key1" value=""/>
                     <button type="button" onClick={closeDeleteModal1}>Cancel</button>
-                    <button type="submit" style={{backgroundColor:"#F16262"}}>Decline</button>
+                    <button type="submit" style={{backgroundColor:"#F16262"}}>OK</button>
                 </div>
                 </form>
                 </div>

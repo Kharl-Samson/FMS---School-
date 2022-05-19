@@ -47,7 +47,7 @@ export default function Privacy_Policy(){
                     
                         <p>
                             What personal information do we process?
-                            We collect personal information that you voluntarily provide to us when you register and participate in activities on the Services. THe personal information that we collect depends on the context of your interactions with us and the Services. 
+                            We collect personal information that you voluntarily provide to us when you register and participate in activities on the Services. The personal information that we collect depends on the context of your interactions with us and the Services. 
                         </p>
 
                         <p>The personal information we collect may include the following:</p>

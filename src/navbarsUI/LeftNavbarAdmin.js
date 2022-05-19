@@ -14,6 +14,8 @@ import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import Skeleton from "@mui/material/Skeleton";
 import axios from "axios";
+import signOutModal from "../images/icons/signOutModal.svg";
+import editContent from "../images/icons/editContent.svg";
 
 export default function NavbarAdmin(props) {
   //Tooltip
@@ -70,17 +72,37 @@ export default function NavbarAdmin(props) {
     //Sending the data to my backend
     axios.post('http://localhost/fms/logout.php',sendData)
     .then((result)=>{
-      navigate(`/`);
+      navigate(`/AdminLogin`);
     })    
 }
+
+  //Hook for getting web content
+  const [getWebContent, setWebContent] = useState([]);
+  const loadWebContent = async () => {
+    const result = await axios.get("http://localhost/fms/getWebContent.php");
+    setWebContent(result.data.phpresult);
+  };
+  useEffect(() => {
+    loadWebContent();
+  }, []);
+  const webC_LOGO = getWebContent.map((res) => {
+      return (
+        <img src={"http://localhost/fms/web_content/" + res.logo} className="cict_logo"/>
+      );
+  });
+  const webC_abbr = getWebContent.map((res) => {
+    return (
+      <span>{res.abbreviation}</span>
+    );
+});
 
   return (
     <div className="navbar_account_container">
       <div>
         <div className="navbar_logo_container nav_part1">
-          <img src={CICT_Logo} className="cict_logo" />
+          {webC_LOGO}
           <div className="cict_text left_nav_minimize">
-            <span>CICT</span>
+            {webC_abbr}
           </div>
         </div>
         <div className="nav_line nav_part1"></div>
@@ -162,12 +184,35 @@ export default function NavbarAdmin(props) {
             </Link>
           </div>
 
+          <div id="link_contentSetting" className="link_disabler link_disablerAdmin">
+            <Link to="/ContentSetting" style={{ textDecoration: "none", width: "100%" }}>
+              <div className="navlink_container" id="contentS_link">
+                <Skeleton
+                  animation="wave"
+                  className="skeleton_show1"
+                  height={"22px"}
+                  width={"100%"}
+                  sx={{ margin: "3vh 1rem" }}
+                />
+                <LightTooltip title="Account Setting">
+                  <img
+                    src={editContent}
+                    className="left_nav_minimize_img skeleton_done1"
+                  />
+                </LightTooltip>
+                <span className="left_nav_minimize skeleton_done1">
+                  Content Setting
+                </span>
+              </div>
+            </Link>
+          </div>
+
 
         </div>
       </div>
 
-      <form>
-        <div className="logout_container navlink_container"  onClick={logoutForm}>
+
+        <div className="logout_container navlink_container" onClick={openModal}>
           <Skeleton
             animation="wave"
             className="skeleton_show1"
@@ -183,7 +228,7 @@ export default function NavbarAdmin(props) {
           </LightTooltip>
           <span className="left_nav_minimize skeleton_done1">Sign Out</span>
         </div>
-      </form>
+
 
       {/* Nav drawer fo smaller device */}
       <div
@@ -193,6 +238,34 @@ export default function NavbarAdmin(props) {
       >
         <img src={Menu_icon} />
       </div>
+
+            {/*Accept Modal*/}
+            <div className="modal_container logout_modalAdmin">
+                <div className="modal_validation_version2">             
+                <p title="Close" className='close_modal' onClick={closeDeleteModal}>&#215;</p>
+                <div className='top'>
+                    <img src={signOutModal} />
+                    Confirm Action
+                </div>
+                <p className='title'>Are you sure you want to sign out this account? </p>
+        
+                <form style={{width: "100%"}} onSubmit={logoutForm}>
+                <div className='bot'>
+                    <button type="button" onClick={closeDeleteModal}>Cancel</button>
+                    <button type="submit" style={{backgroundColor:"#f4b24c",color:"#ffff",marginLeft:"5px"}}>Sign Out</button>
+                </div>
+                </form>
+                </div>
+            </div>
+
     </div>
   );
+}
+//Close modal
+function closeDeleteModal(){
+  document.getElementsByClassName("logout_modalAdmin")[0].style.display = "none"
+}
+//Open modal
+function openModal(){
+  document.getElementsByClassName("logout_modalAdmin")[0].style.display = "flex"
 }

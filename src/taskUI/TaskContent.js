@@ -130,7 +130,9 @@ export default function TaskContent(){
     var profileLocked_modal = document.getElementById("profileLocked_modal");
     var accept_faculty_modal_container = document.getElementsByClassName("accept_faculty_modal_container")[0];
     var decline_faculty_modal_container = document.getElementsByClassName("decline_faculty_modal_container")[0];
-
+    var logout_modalAdmin = document.getElementsByClassName("logout_modalAdmin")[0];
+    var delete_account = document.getElementsByClassName("delete_account")[0];
+    
     function CloseAllTask(){
         document.getElementsByClassName("see_all_task_container")[0].style.bottom = "-100%";
         setTimeout(function(){
@@ -191,6 +193,12 @@ export default function TaskContent(){
         else if (event.target == decline_faculty_modal_container) {
             decline_faculty_modal_container.style.display = "none";
         }
+        else if (event.target == logout_modalAdmin) {
+            logout_modalAdmin.style.display = "none";
+        }
+        else if (event.target == delete_account) {
+            delete_account.style.display = "none";
+        }   
     }
 
   setTimeout(function(){

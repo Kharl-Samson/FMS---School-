@@ -2,7 +2,7 @@ import React from "react";
 import '../css/login.css';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Grid from '@mui/material/Grid';
 import { Link } from "react-router-dom";
 
@@ -263,6 +263,25 @@ export default function Register(){
         }
     }
 
+  //Hook for getting web content
+  const [getWebContent, setWebContent] = useState([]);
+  const loadWebContent = async () => {
+    const result = await axios.get("http://localhost/fms/getWebContent.php");
+    setWebContent(result.data.phpresult);
+  };
+  useEffect(() => {
+    loadWebContent();
+  }, []);
+  const webC_LOGO = getWebContent.map((res) => {
+      return (
+        <img src={"http://localhost/fms/web_content/" + res.logo} className="cict_logo"/>
+      );
+  });
+  const webC_abbr = getWebContent.map((res) => {
+    return (
+        <span style={{whiteSpace: "nowrap" }}>{res.abbreviation} © 2022</span>
+    );
+});
     return (
         <div className="login_container">
     
@@ -399,7 +418,7 @@ export default function Register(){
                                 webkitBackgroundSize: "cover",
                             }}
                         >
-                            <img src={CICT_Logo} className="cict_logo"/>
+                           {webC_LOGO}
                         </div>
                     </div>
 
@@ -422,7 +441,7 @@ export default function Register(){
                         <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Privacy Policy</span>
                     </Link>
                     <Link to="" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}}>
-                         <span style={{whiteSpace: "nowrap" }}>CICT © 2022</span>
+                         {webC_abbr}
                     </Link>
                 </Grid>                                                    
             </div>

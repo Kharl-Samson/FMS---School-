@@ -18,6 +18,10 @@ import Password_icon from "../images/icons/password.svg";
 import Open_eye_icon from "../images/icons/open_eye.svg";
 import Close_eye_icon from "../images/icons/close_eye.svg"; 
 import ProfileNotifyer from './NotifyerProfile';
+import trashWhite from "../images/icons/trashWhite.svg";
+import DeleteIconModal from '../images/icons/delete_icon_modal.svg';
+import {useNavigate} from 'react-router-dom';
+import loading from "../images/loading.gif";
 
 export default function AccountSettings(){
     document.title = "CICT | Faculty Management System";
@@ -410,8 +414,34 @@ setTimeout(function(){
     }
     
 },500);
+    let navigate = useNavigate(); //Para mag direct sa specific page
+ //Getting the value of all input when submitting the form
+ const deleteAccountForm=(e)=>{
+    e.preventDefault();   
+        const sendData = {
+            email: localStorage.getItem('email'),
+       }     
+       //Sending the data to my backend
+       document.getElementsByClassName("LoadingContainer")[0].style.display = "flex";
+       axios.post('http://localhost/fms/deleteAccount.php',sendData)
+       .then((result)=>{                   
+            setTimeout(function(){
+                document.getElementsByClassName("LoadingContainer")[0].style.display = "none";
+                navigate(`/`); 
+            },2000)
+
+    })//End of axios      
+}
     return(
         <div className="dashboard_container">
+
+            {/*Loading when getting data*/ }
+            <div className="LoadingContainer">
+                <div className="mid">
+                    <img src={loading}/>
+                    <span>This may take a while. Please wait...</span>
+                </div>
+            </div>
 
         <LeftNavbarFaculty/>  
             
@@ -451,6 +481,13 @@ setTimeout(function(){
                             <button type="submit">Save</button>
                         </div>
                         </form>
+
+                        <div className="info_details info_details1" id="to_removePadding" style={{boxShadow:"none"}}>
+                            <button id="dlt_btn" onClick={openDeleteModal}>
+                                <img src={trashWhite}/>
+                                Delete my account
+                            </button>
+                        </div>
 
                         <div className="info_details info_details1">
                         <form onSubmit={lockedAccountForm}>
@@ -645,6 +682,25 @@ setTimeout(function(){
             </div>
         </div>
 
+            {/*Decline Modal*/}
+            <div className="modal_container delete_account" id="deleteAcc_modal">
+                <div className="modal_validation_version2">             
+                <p title="Close" className='close_modal' onClick={closeDeleteAcc}>&#215;</p>
+                <div className='top'>
+                    <img src={DeleteIconModal}/>
+                    Confirm Action
+                </div>
+                <p className='title' style={{maxWidth:"90%"}}>Are you sure you want to permanently delete your account? </p>
+        
+                <form style={{width: "100%"}} onSubmit={deleteAccountForm}>
+                <div className='bot'>
+                    <button type="button" onClick={closeDeleteAcc}>Cancel</button>
+                    <button type="submit" style={{backgroundColor:"#F16262"}}>OK</button>
+                </div>
+                </form>
+                </div>
+            </div>
+
         </div>
     )
 }
@@ -673,3 +729,13 @@ setTimeout(function(){
                 document.getElementsByClassName("edit_email")[1].style.border = "1px solid red";   
         }
     }
+
+//Close modal
+function closeDeleteAcc(){
+    document.getElementsByClassName("delete_account")[0].style.display = "none"
+  }
+  //Open modal
+  function openDeleteModal(){
+    document.getElementsByClassName("delete_account")[0].style.display = "flex"
+  }
+  

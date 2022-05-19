@@ -2,6 +2,7 @@ import React from "react";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import DeleteIcon from '@mui/icons-material/Delete';
 import ListItemIcon from "@mui/material/ListItemIcon";
 import CardMembershipIcon from '@mui/icons-material/CardMembership';
 import { useNavigate } from "react-router-dom";
@@ -47,6 +48,11 @@ export default function FacultyGrid(props){
         navigate(`/ViewFacultyCertificates`);
     }
 
+    function deleteAccShow(){
+        setAnchorEl(null);
+        document.getElementById("keyDel").value = props.fEmail;
+        document.getElementById("deleteAcc_modal").style.display="flex";
+    }
 
     return(
         <div className="faculty_imageContainer faculty_desktop" id="faculty_desktop">
@@ -100,6 +106,12 @@ export default function FacultyGrid(props){
                         <CardMembershipIcon fontSize="medium" />
                     </ListItemIcon>
                     View all certifications
+                </MenuItem>
+                <MenuItem onClick={deleteAccShow}>
+                    <ListItemIcon>
+                        <DeleteIcon fontSize="medium" />
+                    </ListItemIcon>
+                    Delete Account
                 </MenuItem>
             </Menu>
         </div>

@@ -31,7 +31,7 @@
 }
 .accountSettings_container .table_container .left #profile_photo{
     margin-top: 2rem;
-    height: 410px;
+    height: 300px;
     width: 300px;
     border-radius: 5px;
     object-fit: cover;
@@ -150,15 +150,27 @@
 .accountSettings_container .table_container .info_details .content .left .label{
     font-size: 1rem;
 }
-.accountSettings_container .table_container .info_details .content .left input[type="email"]{
-    width: 70%;
+.accountSettings_container .table_container .info_details .content .left textarea{
+    width: 94%;
+    padding: 10px 3%;
     font-size: 1rem;
-    padding: 10px 0;
     text-indent: 15px;
     background-color: #f3f2f2;
     border-radius: 5px;
     border: 1px solid #D8D8D8;
     outline-color: #FFAA28;
+    resize: none;
+}
+.accountSettings_container .table_container .info_details .content .left input{
+    width: 94%;
+    padding: 10px 3%;
+    font-size: 1rem;
+    text-indent: 15px;
+    background-color: #f3f2f2;
+    border-radius: 5px;
+    border: 1px solid #D8D8D8;
+    outline-color: #FFAA28;
+    resize: none;
 }
 .accountSettings_container .table_container .info_details .content .left .name_inPut{
     width: 70%;
@@ -180,7 +192,7 @@
     border: 1px solid #D8D8D8;
     outline-color: #FFAA28;
 }
-.accountSettings_container .table_container .info_details .content #save_btn{
+.accountSettings_container .table_container  #save_btn{
     margin-top: 20px;
     width: 100%;
     height: auto;
@@ -192,105 +204,14 @@
     color: #ffff;
     font-size: 1rem;
     border-radius: 5px;
+    margin-bottom: 2rem;
 }
-.accountSettings_container .table_container .info_details .content #save_btn:hover{
+.accountSettings_container .table_container  #save_btn:hover{
     opacity: 90%;
 }
 
 
-.input_container{
-    height: 6vh;
-    width: 100%;
-    background-color: #f3f2f2;
-    border: 1px solid #D8D8D8;
-    border-radius: 8px;
-    display: flex;
-}
-.input_container:hover{
-    border: 1px solid #FFAA28;
-}
-.input_container > .icon_container{
-    width: 10%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.input_container > .icon_container > img{
-    height: 40%;
-    width: auto;
-}
-.input_container  .password{
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    width: 80%;
-}
-.input_container2 .toggle_password{
-    width: 10%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.input_container2 .toggle_password img{
-    height: 35%;
-    width: auto;
-    visibility: hidden;
-}
-.input_container2 .toggle_password .close_eye{
-   display: none;
-}
-.input_container2 .toggle_password img:hover{
-    cursor: pointer;
-    opacity: 40%;
-}
 
-.lock_profile{
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-.lock_profile input[type="checkbox"]{
-    width: 20px;
-    height: 20px;
-}
-.lock_profile span{
-    margin-left: 5px;
-    font-size: 1rem;
-}
-#lock_profile_note{
-    font-size: .8rem;
-    margin: 0;
-    margin-top: 10px;
-    padding: 0;
-    line-height: 1.1;
-    color: #818181;
-}
-
-#to_removePadding{
-    padding: 0;
-    width: 100%;
-}
-#dlt_btn{
-    font-size: 1rem;
-    border: none;
-    color: #ffff;
-    background-color: rgb(243, 69, 69);
-    width: 100%;
-    border-radius: 7px;
-    padding: 10px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#dlt_btn img{
-    height: 20px;
-    width: auto;
-    margin-right: 10px;
-}
 @media screen and (max-width: 850px) {
     .accountSettings_container{
         margin-top: 1rem;
@@ -306,7 +227,7 @@
         align-items: center;
     }
     .accountSettings_container .table_container .left #profile_photo{
-        height: 390px;
+        height: 280px;
         width: 280px;
     }
     .accountSettings_container .table_container .right{
@@ -338,9 +259,7 @@
         justify-content: space-between;
         margin-top: 20px;
     }
-    .accountSettings_container .table_container .right .info_details .content .left input[type="email"]{
-        width: 100%;
-    }
+
     .accountSettings_container .table_container .right .info_details .content .left .name_inPut{
         width: 100%;
     }

@@ -4,6 +4,8 @@ import slider1 from '../images/image_slider1.png';
 import slider2 from '../images/image_slider2.png';
 import slider3   from '../images/image_slider3.png';
 import Skeleton from '@mui/material/Skeleton';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function WeatherAndBanner(){
 
@@ -77,6 +79,39 @@ export default function WeatherAndBanner(){
       }
    },1000);
 
+  //Hook for getting web content
+  const [getWebContent, setWebContent] = useState([]);
+  const loadWebContent = async () => {
+    const result = await axios.get("http://localhost/fms/getWebContent.php");
+    setWebContent(result.data.phpresult);
+  };
+  useEffect(() => {
+    loadWebContent();
+  }, []);
+  const webC_Name = getWebContent.map((res) => {
+      return (
+        <p style={{fontSize : "1.7rem"}}>{res.name}</p>
+      );
+  });
+  const webC_Vision = getWebContent.map((res) => {
+    return (
+      <p>{res.vision}</p>
+    );
+});
+
+const webC_Mission = getWebContent.map((res) => {
+  return (
+    <p>{res.mission}</p>
+  );
+});
+
+
+const webC_abbr = getWebContent.map((res) => {
+  return (
+    <span>{res.abbreviation}</span>
+  );
+});
+
 
     return(
         <div className='top_dashboard_content minimizer_adjuster'>
@@ -101,23 +136,23 @@ export default function WeatherAndBanner(){
             </div>
 
             <div className="slideshow-container slideshow-container1 mySlides" style={{ backgroundImage: `url(${slider1})`}}>
-                <p style={{fontSize : "1.7rem"}}>College of Information and Communications Technology</p>
+                {webC_Name}
                 <div className='line'>
                     <div style={{backgroundColor: "#ffff"}}></div> <div></div> <div></div>
                 </div>
             </div>
 
             <div className="slideshow-container slideshow-container2 mySlides" style={{ backgroundImage: `url(${slider2})`}}>
-                <p>CICT Vision</p>
-                <p>Bulacan State University exists to provide highly competent, ethical and service-oriented professionals that contribute to the sustainable socio-economic growth and development of the nation.</p>
+                <p>{webC_abbr} Vision</p>
+                {webC_Vision}
                 <div className='line'>
                     <div></div> <div style={{backgroundColor: "#ffff"}}></div> <div></div>
                 </div>
             </div>
 
             <div className="slideshow-container slideshow-container3 mySlides" style={{ backgroundImage: `url(${slider3})`}}>
-                <p>CICT Mission</p>
-                <p>Bulacan State University is a progressive knowledge-generating institution globally recognized for excellent instruction,    pioneering research, and responsive community engagements.</p>
+                <p>{webC_abbr} Mission</p>
+                {webC_Mission}
             <div className='line'>
                     <div></div> <div></div> <div  style={{backgroundColor: "#ffff"}}></div>
                 </div>

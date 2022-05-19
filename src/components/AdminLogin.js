@@ -26,9 +26,7 @@ import moment from "moment";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-export default function Login(){
-
-
+export default function AdminLogin(){
     //Tooltip
     const LightTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }}/>
@@ -133,8 +131,8 @@ export default function Login(){
         .then((result)=>{
              
 
-            if(result.data.status === "Faculty Login" && localStorage.getItem("locked_account_ctr") != 5 ){ //If response is Faculty Login
-                window.localStorage.setItem('locked_account_ctr', 0);
+            if(result.data.status === "Admin Login" && localStorage.getItem("locked_account_ctr") != 5 ){ //If response is Admin Login
+                window.localStorage.setItem('locked_account_ctr', 0);   
                 window.localStorage.setItem('time_remover', "NO");     
                 window.localStorage.setItem('email', result.data.email);
                 window.localStorage.setItem('fname', result.data.fname);
@@ -146,10 +144,10 @@ export default function Login(){
                 window.localStorage.setItem('profile_photo', result.data.profile_photo);
                 setTimeout(function(){
                     document.getElementsByClassName("LoadingContainer")[0].style.display = "none";
-                    navigate(`/FacultyDashboard`);
+                    navigate(`/AdminDashboard`);
                 },1000)
             }
-            else if(result.data.status === "Admin Login"){ //If response is Faculty Login
+            else if(result.data.status === "Faculty Login"){ //If response is Faculty Login
                 setTimeout(function(){
                     if(localStorage.getItem("locked_account_ctr") < 5){
                         lockCTR++;
@@ -162,7 +160,7 @@ export default function Login(){
                     document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
                 },500) 
             }
-            else if(result.data.status === "Pending Admin" || result.data.status === "Pending Faculty"){ //If the account is still pending
+            else if(result.data.status === "Pending Admin"){ //If the account is still pending
                 setTimeout(function(){
                     document.getElementsByClassName("LoadingContainer")[0].style.display = "none";
                     document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
@@ -218,7 +216,7 @@ export default function Login(){
      }
    }
 
-  //Hook for getting web content
+     //Hook for getting web content
   const [getWebContent, setWebContent] = useState([]);
   const loadWebContent = async () => {
     const result = await axios.get("http://localhost/fms/getWebContent.php");
@@ -227,7 +225,7 @@ export default function Login(){
   useEffect(() => {
     loadWebContent();
   }, []);
-  const webC_LOGO = getWebContent.map((res) => { 
+  const webC_LOGO = getWebContent.map((res) => {
       return (
         <img src={"http://localhost/fms/web_content/" + res.logo} className="cict_logo"/>
       );
@@ -271,8 +269,8 @@ export default function Login(){
                     <div className="login_form">
                         <div className="left">
                             <div className="left_container">
-                                <h1>Welcome Back</h1>
-                                <span className="subtext">Login to your account</span>
+                                <h1>Admin Login</h1>
+                                <span className="subtext">It's nice to see you again</span>
 
                                 <div className="input_container input_container1">
                                     <div className="icon_container">
@@ -346,15 +344,7 @@ export default function Login(){
                                      <p className="text_verifyer"></p>
                                 </div>    
 
-                                <button type="submit" className="sign_in_btn" onClick={lsRememberMe1} >Sign in</button>
-                                
-                                <p className="dont_have_account_text">
-                                    Don't have an account?&nbsp; 
-
-                                    <Link to="/Register" style={{ textDecoration: 'none' }}>
-                                        <span>Sign up</span>
-                                    </Link>
-                                </p>
+                                <button type="submit" className="sign_in_btn" onClick={lsRememberMe1} style={{marginBottom:"2rem"}}>Sign in</button>
 
                             </div>
                         </div>
@@ -364,7 +354,7 @@ export default function Login(){
                                  background: `url(${rightBG}) no-repeat center center fixed`,
                                  webkitBackgroundSize: "cover",
                                  }}>
-                                {webC_LOGO} 
+                                {webC_LOGO}
                         </div>
                     </div>
 
@@ -387,7 +377,7 @@ export default function Login(){
                         <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Privacy Policy</span>
                     </Link>
                     <Link to="" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}}>
-                            {webC_abbr}
+                    {webC_abbr}
                     </Link>
                 </Grid>                                                    
             </div>
@@ -411,11 +401,4 @@ export default function Login(){
 function closeModal(){
     document.getElementById("accLocked_Modal").style.display="none";
 }
-document.addEventListener("keyup", function(event) {
-    if (event.keyCode === 120) {
-        var win = window.open('http://localhost:3000/AdminLogin', '_blank');
-            if (win) {
-                win.focus();
-            } 
-    }
-});
+
