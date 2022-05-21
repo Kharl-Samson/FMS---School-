@@ -87,12 +87,14 @@ export default function NavbarAdmin(props) {
   }, []);
   const webC_LOGO = getWebContent.map((res) => {
       return (
-        <img src={"http://localhost/fms/web_content/" + res.logo} className="cict_logo"/>
+        <img src={"http://localhost/fms/web_content/" + res.logo}
+        onError={(e)=>{e.target.onerror = null; e.target.src="http://localhost/fms/web_content/cict_logo.png"}} 
+        className="cict_logo skeleton_done1"/>
       );
   });
   const webC_abbr = getWebContent.map((res) => {
     return (
-      <span>{res.abbreviation}</span>
+      <span className="skeleton_done1">{res.abbreviation === "" ? "CICT" : res.abbreviation}</span>
     );
 });
 
@@ -100,9 +102,23 @@ export default function NavbarAdmin(props) {
     <div className="navbar_account_container">
       <div>
         <div className="navbar_logo_container nav_part1">
+          <Skeleton
+            animation="wave"
+            variant="circular"
+            className="skeleton_show1"
+            height={"50px"}
+            width={"50px"}
+            sx={{ marginRight: "5%" }}
+          />
           {webC_LOGO}
           <div className="cict_text left_nav_minimize">
-            {webC_abbr}
+          <Skeleton
+            animation="wave"
+            className="skeleton_show1"
+            height={"60px"}
+            width={"109px"}
+          />
+          {webC_abbr}
           </div>
         </div>
         <div className="nav_line nav_part1"></div>

@@ -32,7 +32,7 @@ const submitForm=(e)=>{
             name:document.getElementById("id_name_key").value,
         }
         //console.log(sendData)
-        document.getElementsByClassName("LoadingContainer")[0].style.display = "flex";
+        document.getElementById("LoadingContainerPending").style.display = "flex";
         document.getElementsByClassName("accept_faculty_modal_container")[0].style.display = "none";
             //Sending the data to my backend
             axios.post('http://localhost/fms/acceptFaculty.php',sendData)
@@ -45,7 +45,7 @@ const submitForm=(e)=>{
                     alert("sql error")
                 }
                 else if(result.data.status === "Mailer Correct" ){
-                    document.getElementsByClassName("LoadingContainer")[0].style.display = "none";    
+                    document.getElementById("LoadingContainerPending").style.display = "none";  
                     document.getElementsByClassName("accept_side_modal")[0].style.display = "flex"; 
                     setTimeout(function(){
                         document.getElementsByClassName("accept_side_modal")[0].style.right = "2%"; 
@@ -80,7 +80,7 @@ const submitDeclineForm=(e)=>{
         name:document.getElementById("id_name_key1").value,
     }
     //console.log(sendData)
-    document.getElementsByClassName("LoadingContainer")[0].style.display = "flex";
+    document.getElementById("LoadingContainerPending").style.display = "flex";
     document.getElementsByClassName("decline_faculty_modal_container")[0].style.display = "none";
         //Sending the data to my backend
         axios.post('http://localhost/fms/declineFaculty.php',sendData)
@@ -93,7 +93,7 @@ const submitDeclineForm=(e)=>{
                 alert("sql error")
             }
             else if(result.data.status === "Mailer Correct" ){
-                document.getElementsByClassName("LoadingContainer")[0].style.display = "none";    
+                document.getElementById("LoadingContainerPending").style.display = "none";
                 document.getElementsByClassName("accept_side_modal")[0].style.display = "flex"; 
                 setTimeout(function(){
                     document.getElementsByClassName("accept_side_modal")[0].style.right = "2%"; 
@@ -122,7 +122,7 @@ const submitDeclineForm=(e)=>{
     <div className={'header1 header1_pending facultyRow_desktopPending '+props.fClass} id="facultyRow_desktopPending">
 
         {/*Loading when getting data*/ }
-        <div className="LoadingContainer">
+        <div className="LoadingContainer" id="LoadingContainerPending">
             <div className="mid">
                 <img src={loading}/>
                 <span>This may take a while. Please wait...</span>

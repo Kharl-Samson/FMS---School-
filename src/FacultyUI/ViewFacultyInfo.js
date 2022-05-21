@@ -74,9 +74,11 @@ export default function ViewFacultyInfo() {
   let email_key = localStorage.getItem("viewFacultyEmail");
   //Task box container using map
   var key_pds_A = 0;
+  var stopperCTR = 0;
   const pds_step1 = pdsStep1.map((res) => {
     key_pds_A++;
     if (res.email_id === email_key) {
+      stopperCTR++;
       return (
         <div className="row1" key={key_pds_A}>
           <div className="box row1_content">
@@ -371,12 +373,6 @@ export default function ViewFacultyInfo() {
           </div>
         </div>
       );
-    }
-    else{
-      document.getElementById("toNoneIfPDSempty").style.display = "none";
-      document.getElementsByClassName("pds_notComplete")[0].style.display = "flex";
-      document.getElementById("PDFView_PDS").style.display = "none";
-      document.getElementById("dl_form").style.display = "none";
     }
   });
 
@@ -2237,6 +2233,7 @@ export default function ViewFacultyInfo() {
               </div>
             </div>
 
+{stopperCTR === 1 ?
             <div className="web_pds_container" id="toNoneIfPDSempty">
               <div className="side_tab_container">
                 <LightTooltip title="Basic Information" onClick={pds1_go}>
@@ -2412,11 +2409,12 @@ export default function ViewFacultyInfo() {
                 {pds_step5 /* Eto yung mga input*/}
               </div>
             </div>
-
-            <div className="pds_notComplete">
-                <img src={notYetComplete}/>
-                <p style={{textAlign:"center"}}>This person is not yet finish with his or her personal information form!</p>
-            </div>
+ :             
+<div className="pds_notComplete" style={{display:"flex"}}>
+  <img src={notYetComplete}/>
+  <p style={{textAlign:"center"}}>This person is not yet finish with his or her personal information form!</p>
+</div>
+}
 
           </div>
 

@@ -48,14 +48,14 @@ function removeFile(){
     document.getElementById("profile_photo_btn").style.display = "none";
     document.getElementById("profile_photo_inpText").value = "";
     document.getElementById("profile_photo_inpFile").value = null;
-    document.getElementById("profile_photo").src = photoURL;
+    document.getElementById("profile_photo1").src = document.getElementById("removeIMGsrc").value;
 }
 
 /* eslint no-restricted-globals:0 */
 function loadfile(event){
     document.getElementById("profile_photo_btn").style.display = "flex";
     document.getElementById("profile_photo_inpText").value = document.getElementById("profile_photo_inpFile").files[0].name;
-    var output=document.getElementById("profile_photo");
+    var output=document.getElementById("profile_photo1");
     output.src=URL.createObjectURL(event.target.files[0]);
 };
 
@@ -112,11 +112,14 @@ function closingSuccessModalRight(){
   }, []);
   const myFormImg = getWebContent.map((res) => { 
       return (
+        <div> 
         <img 
         src={"http://localhost/fms/web_content/" + res.logo}
-        id="profile_photo"
+        id="profile_photo1"
         onError={(e)=>{e.target.onerror = null; e.target.src="http://localhost/fms/web_content/default_img.jpg"}}
       />
+      <input type="hidden" id="removeIMGsrc" value={"http://localhost/fms/web_content/" + res.logo}/>
+      </div> 
       );
   });
 

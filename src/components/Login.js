@@ -136,6 +136,8 @@ export default function Login(){
             if(result.data.status === "Faculty Login" && localStorage.getItem("locked_account_ctr") != 5 ){ //If response is Faculty Login
                 window.localStorage.setItem('locked_account_ctr', 0);
                 window.localStorage.setItem('time_remover', "NO");     
+                window.localStorage.setItem('department', result.data.department);
+                window.localStorage.setItem('employment', result.data.employment);
                 window.localStorage.setItem('email', result.data.email);
                 window.localStorage.setItem('fname', result.data.fname);
                 window.localStorage.setItem('lname', result.data.lname);
@@ -191,12 +193,11 @@ export default function Login(){
 
     var defaultChecked1 = localStorage.getItem("remember_me1");
     setTimeout(function(){
-        if(localStorage.getItem("remember_me") !="not_checked"){
+        if(localStorage.getItem("remember_me") !="not_checked" && localStorage.getItem("remember_me") != null){
             window.localStorage.setItem('remember_me1', "true");
          }
          else{
              window.localStorage.setItem('remember_me1', '');
-
          }
     },500);
  

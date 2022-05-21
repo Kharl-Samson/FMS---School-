@@ -23,6 +23,7 @@ import ViewFacultyCert from "./FacultyUI/ViewFacultyCert";
 import ForgotPasswordForm from "./components/ForgotPasswordForm";
 import AdminLogin from "./components/AdminLogin";
 import ContentSetting from "./components/ContentSetting";
+import TestPDF from "./components/TestPDF";
 
 
 export default function App() {
@@ -61,6 +62,8 @@ export default function App() {
 
               <Route path="ActivityLog" element={<ActivityLog/>} /> 
               <Route path="ActivityLogAdmin" element={<ActivityLogAdmin/>} /> 
+
+              <Route path="Test" element={<TestPDF/>} /> 
             </Routes>
         
     </div>

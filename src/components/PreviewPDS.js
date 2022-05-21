@@ -3,6 +3,7 @@ import CICT_Logo from "../images/login/cict_logo.png";
 import datasheet_info from "../images/icons/datasheet_info.svg";
 import { useState } from "react";
 import axios from "axios";
+import bulsu_icon from "../images/bulsu_icon.png";
 
 export default function PreviewPDS() {
   //getting the email of user
@@ -1271,14 +1272,17 @@ export default function PreviewPDS() {
 
       <div className="pds_review_container">
         <div className="pds_preview" id="convertable_pdf_PDS">
+
           <div className="top">
-            <div className="left">
-              <img src={CICT_Logo} />
-            </div>
-            <div className="right">
-              <p>College of Information</p>
-              <p>and Communication Technology</p>
-            </div>
+              <div>
+                  <p className="nameOfschool">Bulacan State University</p>
+                  <div className="header">COLLEGE OF INFORMATION AND</div>
+                  <div className="header1">COMMUNICATION TECHNOLOGY</div>
+              </div>
+              <div>
+                  <img src={bulsu_icon} style={{marginRight:"30px"}}/> 
+                  <img src={CICT_Logo}/> 
+              </div>
           </div>
 
           {/*Step 1*/}

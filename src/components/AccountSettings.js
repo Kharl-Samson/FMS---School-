@@ -423,6 +423,7 @@ setTimeout(function(){
        }     
        //Sending the data to my backend
        document.getElementsByClassName("LoadingContainer")[0].style.display = "flex";
+       document.getElementsByClassName("delete_account")[0].style.display = "none"
        axios.post('http://localhost/fms/deleteAccount.php',sendData)
        .then((result)=>{                   
             setTimeout(function(){

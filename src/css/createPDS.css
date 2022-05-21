@@ -498,27 +498,53 @@ input[type=number] {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 .pds_review_container .pds_preview .top{
-    width: 100%;
     height: auto;
-    display: flex;
-    align-items: center;    
-}
-.pds_review_container .pds_preview .top .left{
-    width: auto;
+    width: 95%;
+    margin: 0% auto;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
-.pds_review_container .pds_preview .top .left img{
-    height: 50px;
+.pds_review_container .pds_preview .top img{
+    height: 150px;
     width: auto;
-    margin-right: 10px;
 }
-.pds_review_container .pds_preview .top .right p{
-    font-size: 1.3rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    line-height: 1.1;
+.pds_review_container .pds_preview .header{
+    background-color: #1a2f5f;
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 100px;
+    color: #ffff;
+    width: 350px;
+    padding: 10px 105px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.9rem;
+    white-space: nowrap;
 }
+.pds_review_container .pds_preview .header1{
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 100px;
+    background-color: #ea7411;
+    margin-left: 70px;
+    color: #ffff;
+    width: 370px;
+    padding: 10px 105px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.9rem;
+    white-space: nowrap;
+}
+.pds_review_container .pds_preview .nameOfschool{
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #162d59;
+    margin-top: 5px;
+}
+
 .pds_review_container .information_content{
     margin-top: 2rem;
     height: auto;
