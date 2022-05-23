@@ -2046,7 +2046,7 @@ export default function ViewFacultyInfo() {
       const margin = [0.2, 0.2];
       const filename = "PersonalDataSheet.pdf";
       var imgWidth = 8.5;
-      var pageHeight = 11.43;
+      var pageHeight = document.getElementById("page_Separator").height();
       var innerPageWidth = imgWidth - margin[0] * 2;
       var innerPageHeight = pageHeight - margin[1] * 2;
       // Calculate the number of pages.

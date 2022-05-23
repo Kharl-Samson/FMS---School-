@@ -1344,9 +1344,8 @@ export default function PDSprintable() {
 
         {weContent}
         {pds_step4 /*Eto yung mga input*/}
-
       {/*Step 5*/}
-      <div className="pds_th" >
+      <div className="pds_th" style={{borderTop:"2px solid black"}}>
           <span>V. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING PROGRAMS ATTENDED</span>
           <span style={{fontSize:".75rem",marginTop:"5px",marginBottom:"5px"}}>(Start from the most recent L&D/training program and include only the relevant L&D/training taken for the last five (5) years for Division Chief/Executive/Managerial positions)</span>
       </div>
