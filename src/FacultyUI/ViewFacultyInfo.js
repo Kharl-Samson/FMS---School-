@@ -33,6 +33,7 @@ import PreviewFacultyPDS from "./PreviewFacultyPDS";
 import notYetComplete from "../images/notYetComplete.png";
 import profile_lock from "../images/icons/profile_lock.svg";
 import profile_lockOthers from "../images/profile_lock.png";
+import PDSprintable from "../components/PDSprintable";
 
 export default function ViewFacultyInfo() {
 
@@ -2042,10 +2043,10 @@ export default function ViewFacultyInfo() {
       scrollY: 0,
     }).then((canvas) => {
       const image = { type: "png", quality: 0.98 };
-      const margin = [0.5, 0.5];
+      const margin = [0.2, 0.2];
       const filename = "PersonalDataSheet.pdf";
       var imgWidth = 8.5;
-      var pageHeight = 11;
+      var pageHeight = 11.43;
       var innerPageWidth = imgWidth - margin[0] * 2;
       var innerPageHeight = pageHeight - margin[1] * 2;
       // Calculate the number of pages.
@@ -2060,7 +2061,7 @@ export default function ViewFacultyInfo() {
       pageCanvas.width = canvas.width;
       pageCanvas.height = pxPageHeight;
       // Initialize the PDF.
-      var pdf = new jsPDF("p", "in", [8.5, 11]);
+      var pdf = new jsPDF("p", "in", [8.5, 13]);
       for (var page = 0; page < nPages; page++) {
         // Trim the final page to reduce file size.
         if (page === nPages - 1 && pxFullHeight % pxPageHeight !== 0) {
@@ -2073,6 +2074,7 @@ export default function ViewFacultyInfo() {
         pageCtx.fillStyle = "white";
         pageCtx.fillRect(0, 0, w, h);
         pageCtx.drawImage(canvas, 0, page * pxPageHeight, w, h, 0, 0, w, h);
+
         // Add the page to the PDF.
         if (page > 0) pdf.addPage();
         debugger;
@@ -2419,7 +2421,7 @@ export default function ViewFacultyInfo() {
           </div>
 
           <div className="view_pdf_container1">
-              <PreviewFacultyPDS/>
+              <PDSprintable/>
           </div>
 
           <div className="view_pdf_container">

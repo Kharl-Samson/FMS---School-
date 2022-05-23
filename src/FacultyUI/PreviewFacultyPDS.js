@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import CICT_Logo from "../images/login/cict_logo.png";
 import datasheet_info from "../images/icons/datasheet_info.svg";
 import { useState } from "react";
 import axios from "axios";
+import '../css/previewPDS.css';
+import moment from 'moment';
 
 export default function PreviewFacultyPDS() {
   //getting the email of user
@@ -25,212 +26,179 @@ export default function PreviewFacultyPDS() {
     key_A++;
     if (res.email_id === email_key) {
       return (
-        <div className="information_content" key={key_A}>
-          <div className="header">Personal Information</div>
-
-          <div className="personal name">
-            <div className="box">
-              <span>First Name</span>
-              <span id="preview_fname">{res.fname}</span>
-            </div>
-            <div className="box">
-              <span>Middle Name</span>
-              <span id="preview_mname">{res.mname}</span>
-            </div>
-            <div className="box">
-              <span>Last Name</span>
-              <span id="preview_lname">{res.lname}</span>
-            </div>
-            <div className="box">
-              <span>Name Extension</span>
-              <span id="preview_extension">{res.nameExtension}</span>
-            </div>
-          </div>
-
-          <div className="personal other_personal">
+        <div key={key_A}> 
+        <div className="pds_row">
             <div className="left">
-              <div className="box">
-                <span>Date of Birth</span>
-                <span id="preview_bday">{res.bday}</span>
-              </div>
-              <div className="box">
-                <span>Age</span>
-                <span id="preview_age">{res.age + " years old"}</span>
-              </div>
-              <div className="box">
-                <span>Place of Birth</span>
-                <span id="preview_pob">{res.cob + ", " + res.pob}</span>
-              </div>
-              <div className="box">
-                <span>Gender</span>
-                <span id="preview_gender">{res.gender}</span>
-              </div>
-              <div className="box">
-                <span>Civil Status</span>
-                <span id="preview_civil">{res.civil}</span>
-              </div>
-              <div className="box">
-                <span>Height</span>
-                <span id="preview_height">{res.height + "CM"}</span>
-              </div>
-              <div className="box">
-                <span>Weight</span>
-                <span id="preview_weight">{res.weight + "KG"}</span>
-              </div>
-              <div className="box">
-                <span>Blood Type</span>
-                <span id="preview_blood">{res.blood}</span>
-              </div>
-              <div className="box">
-                <span>GSIS ID NO.</span>
-                <span id="preview_gsis">{res.gsis}</span>
-              </div>
-              <div className="box">
-                <span>PAG-IBIG ID NO.</span>
-                <span id="preview_pagibig">{res.pagibig}</span>
-              </div>
-              <div className="box">
-                <span>PHILHEALTH NO.</span>
-                <span id="preview_philhealth">{res.philhealth}</span>
-              </div>
-              <div className="box">
-                <span>SSS NO.</span>
-                <span id="preview_sss">{res.sss}</span>
-              </div>
-              <div className="box">
-                <span>TIN NO.</span>
-                <span id="preview_tin">{res.tin}</span>
-              </div>
-              <div className="box">
-                <span>EMPLOYEE NO.</span>
-                <span id="preview_empNo">{res.employeNo}</span>
-              </div>
+                <div className="cont"><span>SURNAME</span></div>
+                <div className="cont"><span>FIRST NAME</span></div>
+                <div className="cont"><span>MIDDLE NAME</span></div>
             </div>
-
             <div className="right">
-              <div className="citizenship_preview">
-                <div className="left_citizenship">Citizenship</div>
-                <div className="right_citizenship" id="preview_citizenship">
-                  {res.citizenship}
+                <div className="cont"><span>{res.lname}</span></div>
+                <div className="cont">
+                    <div><span>{res.fname}</span></div>
+                    <div className="name_ex">
+                        <span>NAME EXTENSION (JR., SR)</span>
+                        <span>{res.nameExtension}</span>
+                    </div>
                 </div>
-              </div>
-
-              <div className="address_preview" style={{ marginTop: "2px" }}>
-                <div className="left_address">Resident Address</div>
-                <div className="right_address">
-                  <div className="add1">
-                    <div className="box">
-                      <span>House/Block/Lot No.</span>
-                      <span id="preview_house">{res.r_house}</span>
-                    </div>
-                    <div className="box">
-                      <span>Street</span>
-                      <span id="preview_street">{res.r_street}</span>
-                    </div>
-                  </div>
-                  <div className="add1">
-                    <div className="box">
-                      <span>Subdivision/Village</span>
-                      <span id="preview_subdi">{res.r_subdi}</span>
-                    </div>
-                    <div className="box">
-                      <span>Barangay</span>
-                      <span id="preview_barangay">{res.r_barangay}</span>
-                    </div>
-                  </div>
-                  <div className="add1">
-                    <div className="box">
-                      <span>City/Municipality</span>
-                      <span id="preview_city">{res.r_city}</span>
-                    </div>
-                    <div className="box">
-                      <span>Province</span>
-                      <span id="preview_province">{res.r_province}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="zip_preview">
-                <div style={{ textTransform: "none" }}>Zip code</div>
-                <div id="preview_zip">{res.r_zip}</div>
-              </div>
-
-              <div className="address_preview">
-                <div className="left_address">Pemanent Address</div>
-                <div className="right_address">
-                  <div className="add1">
-                    <div className="box">
-                      <span>House/Block/Lot No.</span>
-                      <span id="preview_house1">{res.p_house}</span>
-                    </div>
-                    <div className="box">
-                      <span>Street</span>
-                      <span id="preview_street1">{res.p_street}</span>
-                    </div>
-                  </div>
-                  <div className="add1">
-                    <div className="box">
-                      <span>Subdivision/Village</span>
-                      <span id="preview_subdi1">{res.p_subdi}</span>
-                    </div>
-                    <div className="box">
-                      <span>Barangay</span>
-                      <span id="preview_barangay1">{res.p_barangay}</span>
-                    </div>
-                  </div>
-                  <div className="add1">
-                    <div className="box">
-                      <span>City/Municipality</span>
-                      <span id="preview_city1">{res.p_city}</span>
-                    </div>
-                    <div className="box">
-                      <span>Province</span>
-                      <span id="preview_province1">{res.p_province}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="zip_preview">
-                <div style={{ textTransform: "none" }}>Zip code</div>
-                <div id="preview_zip1">{res.p_zip}</div>
-              </div>
+                <div className="cont"><span>{res.mname}</span></div>
             </div>
-          </div>
-
-          <div style={{ display: "flex", width: "100%" }}>
-            <div className="box" style={{ width: "50%" }}>
-              <span>Mobile No.</span>
-              <span id="preview_mobile">{res.mobile}</span>
-            </div>
-            <div className="box" style={{ width: "50%" }}>
-              <span>Email Address</span>
-              <span style={{ textTransform: "none" }} id="preview_email">
-                {res.email_id}
-              </span>
-            </div>
-          </div>
-
-          <div style={{ display: "flex", width: "100%" }}>
-            <div
-              className="box"
-              style={{ width: "50%", borderBottom: "2px solid black" }}
-            >
-              <span>Telephone No.</span>
-              <span id="preview_tele">{res.tele}</span>
-            </div>
-            <div
-              className="box"
-              style={{ width: "50%", borderBottom: "2px solid black" }}
-            >
-              <span>Alternate Email Address</span>
-              <span style={{ textTransform: "none" }} id="preview_alEmail">
-                {res.alEmail}
-              </span>
-            </div>
-          </div>
         </div>
+
+        <div className="pds_row1">
+            <div className="row1">
+                <div className="cont">
+                    <span>DATE OF BIRTH</span>
+                    <span>(mm/dd/yyyy)</span>
+                </div>
+                <div className="cont"><span>PLACE OF BIRTH</span></div>
+                <div className="cont"><span>SEX</span></div>
+            </div>
+            <div className="row2">
+                <div className="cont"><span>{moment(res.bday).format('L')}</span></div>
+                <div className="cont"><span>{res.cob + ", " + res.pob}</span></div>
+                <div className="cont"><span>{res.gender}</span></div>
+            </div>
+            <div className="row3">
+                 <span>CITIZENSHIP</span>
+                 <span>If holder of  dual citizenship, please indicate the details.</span>
+            </div>
+            <div className="row4">
+                {res.citizenship}
+            </div>
+        </div>
+
+        <div className="pds_row2">
+            <div className="row1">
+                <div className="cont"><span>CIVIL STATUS</span></div>
+                <div className="cont"><span>HEIGHT (m)</span></div>
+                <div className="cont"><span>WEIGHT (kg)</span></div>
+            </div>
+            <div className="row2">
+                <div className="cont"><span>{res.civil}</span></div>
+                <div className="cont"><span>{res.height + " m"}</span></div>
+                <div className="cont"><span>{res.weight + "kg"}</span></div>
+            </div>
+            <div className="row3">
+                <div className="cont"><span>RESIDENTIAL ADDRESS</span></div>
+                <div className="cont"><span>ZIP CODE</span></div>
+            </div>
+            <div className="row4">
+                <div className="cont">
+                    <div className="left_right">
+                        <div>{res.r_house}</div>
+                        <div>House/Block/Lot No.</div>
+                    </div>
+                    <div className="left_right">
+                        <div>{res.r_street}</div>
+                        <div>Street</div>
+                    </div>
+                </div>
+                <div className="cont">
+                    <div className="left_right">
+                        <div>{res.r_subdi}</div>
+                        <div>Subdivision/Village</div>
+                    </div>
+                    <div className="left_right">
+                        <div>{res.r_barangay}</div>
+                        <div>Barangay</div>
+                    </div>
+                </div>
+                <div className="cont">
+                    <div className="left_right">
+                        <div>{res.r_city}</div>
+                        <div>City/Municipality</div>
+                    </div>
+                    <div className="left_right">
+                        <div>{res.r_province}</div>
+                        <div>Province</div>
+                    </div>
+                </div>
+                <div className="cont">
+                    <div className="zip_code">{res.r_zip}</div>
+                </div>
+            </div>
+        </div>
+
+        <div className="pds_row3">
+            <div className="row1">
+                <div className="cont"><span>BLOOD TYPE</span></div>
+                <div className="cont"><span>GSIS ID NO.</span></div>
+                <div className="cont"><span>PAG-IBIG ID NO.</span></div>
+                <div className="cont"><span>PHILHEALTH NO.</span></div>
+            </div>
+            <div className="row2">
+                <div className="cont"><span>{res.blood}</span></div>
+                <div className="cont"><span>{res.gsis}</span></div>
+                <div className="cont"><span>{res.pagibig}</span></div>
+                <div className="cont"><span>{res.philhealth}</span></div>
+            </div>
+            <div className="row3">
+                <div className="cont"><span>PERMANENT ADDRESS</span></div>
+                <div className="cont"><span>ZIP CODE</span></div>
+            </div>
+
+            <div className="row4">
+                <div className="cont">
+                    <div className="left_right">
+                        <div>{res.p_house}</div>
+                        <div>House/Block/Lot No.</div>
+                    </div>
+                    <div className="left_right">
+                        <div>{res.p_street}</div>
+                        <div>Street</div>
+                    </div>
+                </div>
+                <div className="cont">
+                    <div className="left_right">
+                        <div>{res.p_subdi}</div>
+                        <div>Subdivision/Village</div>
+                    </div>
+                    <div className="left_right">
+                        <div>{res.p_barangay}</div>
+                        <div>Barangay</div>
+                    </div>
+                </div>
+                <div className="cont">
+                    <div className="left_right">
+                        <div>{res.p_city}</div>
+                        <div>City/Municipality</div>
+                    </div>
+                    <div className="left_right">
+                        <div>{res.p_province}</div>
+                        <div>Province</div>
+                    </div>
+                </div>
+                <div className="cont">
+                    <div className="zip_code">{res.p_zip}</div>
+                </div>
+            </div>
+        </div>
+
+        <div className="pds_row4">
+            <div className="row1">
+                <div className="cont"><span>SSS NO.</span></div>
+                <div className="cont"><span>TIN NO.</span></div>
+                <div className="cont"><span>AGENCY EMPLOYEE NO.</span></div>
+            </div>
+            <div className="row2">
+                <div className="cont"><span>{res.sss}</span></div>
+                <div className="cont"><span>{res.tin}</span></div>
+                <div className="cont"><span>{res.employeNo}</span></div>
+            </div>
+            <div className="row3">
+                <div className="cont"><span>TELEPHONE NO.</span></div>
+                <div className="cont"><span>MOBILE NO.</span></div>
+                <div className="cont"><span>E-MAIL ADDRESS</span></div>
+            </div>
+            <div className="row4">
+                <div className="cont"><span style={{textTransform:"uppercase",fontWeight:"600"}}>{res.tele}</span></div>
+                <div className="cont"><span style={{textTransform:"uppercase"}}>{res.mobile}</span></div>
+                <div className="cont"><span><a href={`mailto:'${res.email_id}`}>{res.email_id}</a></span></div>
+            </div>
+        </div>  
+    </div>
       );
     }
   });
@@ -627,34 +595,29 @@ export default function PreviewFacultyPDS() {
   const ElementaryContent = elemName.map(() => {
     elem_ctr++;
     return (
-      <div className="name_of_schooldPreview" key={elemName + elem_ctr}>
-        <div className="box_name" style={{ width: "15.44%" }}>
-          {" "}
-          {elemName[elem_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "15.40%" }}>
-          {" "}
-          Elementary{" "}
-        </div>
-        <div className="box_name" style={{ width: "17.8%" }}>
-          <div style={{ borderRight: "1.5px solid black" }}>
-            <span style={{margin:"0 15px",wordBreak:"break-all"}}>{elemfrom[elem_ctr]}</span>
-          </div>
-          <div><span style={{margin:"0 15px",wordBreak:"break-all"}}>{elemTO[elem_ctr]}</span></div>
-        </div>
-        <div className="box_name" style={{ width: "11.8%" }}>
-          {" "}
-          {elemUNITS[elem_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "9.5%" }}>
-          {" "}
-          {elemYEAR[elem_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "12%" }}>
-          {" "}
-          {elemAWARD[elem_ctr]}{" "}
-        </div>
+    <div className="educ_secRow" key={elemName + elem_ctr}>
+      <div className="row2">
+          <span>{elemName[elem_ctr]}</span>
       </div>
+      <div className="row3">
+          <span>PRIMARY EDUCATION</span>
+      </div>
+      <div className="row4">
+          <div className="bot">
+              <div className="from"><span>{elemfrom[elem_ctr]}</span></div>
+              <div className="to"><span>{elemTO[elem_ctr]}</span></div>
+          </div>
+      </div>
+      <div className="row5">
+          <span>{elemUNITS[elem_ctr]}</span>
+      </div>
+      <div className="row6">
+          <span>{elemYEAR[elem_ctr]}</span>
+      </div>
+      <div className="row7">
+          <span>{elemAWARD[elem_ctr]}</span>
+      </div>
+  </div> 
     );
   });
 
@@ -663,34 +626,29 @@ export default function PreviewFacultyPDS() {
   const SecondaryContent = SecondName.map(() => {
     sec_ctr++;
     return (
-      <div className="name_of_schooldPreview" key={SecondName + sec_ctr}>
-        <div className="box_name" style={{ width: "15.44%" }}>
-          {" "}
-          {SecondName[sec_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "15.40%" }}>
-          {" "}
-          {SecondAttain[sec_ctr]}
-        </div>
-        <div className="box_name" style={{ width: "17.8%" }}>
-          <div style={{ borderRight: "1.5px solid black" }}>
-            <span style={{margin:"0 15px",wordBreak:"break-all"}}>{SecondFrom[sec_ctr]}</span>
-          </div>
-          <div><span style={{margin:"0 15px",wordBreak:"break-all"}}>{SecondTo[sec_ctr]}</span></div>
-        </div>
-        <div className="box_name" style={{ width: "11.8%" }}>
-          {" "}
-          {SecondUnit[sec_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "9.5%" }}>
-          {" "}
-          {SecondYear[sec_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "12%" }}>
-          {" "}
-          {SecondAward[sec_ctr]}{" "}
-        </div>
+    <div className="educ_secRow" key={SecondName + sec_ctr}>
+      <div className="row2">
+          <span>{SecondName[sec_ctr]}</span>
       </div>
+      <div className="row3">
+          <span>{SecondAttain[sec_ctr]}</span>
+      </div>
+      <div className="row4">
+          <div className="bot">
+          <div className="from"><span>{SecondFrom[sec_ctr]}</span></div>
+              <div className="to"><span>{SecondTo[sec_ctr]}</span></div>
+          </div>
+      </div>
+      <div className="row5">
+          <span>{SecondUnit[sec_ctr]}</span>
+      </div>
+      <div className="row6">
+          <span>{SecondYear[sec_ctr]}</span>
+      </div>
+      <div className="row7">
+          <span>{SecondAward[sec_ctr]}</span>
+      </div>
+  </div> 
     );
   });
 
@@ -699,40 +657,29 @@ export default function PreviewFacultyPDS() {
   const VocationalContent = VocationalName.map(() => {
     voc_ctr++;
     return (
-      <div className="name_of_schooldPreview" key={VocationalName + voc_ctr}>
-        <div className="box_name" style={{ width: "15.44%" }}>
-          {" "}
-          {VocationalName[voc_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "15.40%" }}>
-          {" "}
-          {VocationalAttain[voc_ctr]}
-        </div>
-        <div className="box_name" style={{ width: "17.8%" }}>
-          <div style={{ borderRight: "1.5px solid black" }}>
-            <span style={{margin:"0 15px",wordBreak:"break-all"}}>
-              {VocationalFrom[voc_ctr] == "" ? "N/A" : VocationalFrom[voc_ctr]}
-            </span>
-          </div>
-          <div>
-            <span style={{margin:"0 15px",wordBreak:"break-all"}}>
-            {VocationalTo[voc_ctr] == "" ? "N/A" : VocationalTo[voc_ctr]}
-            </span>
-          </div>
-        </div>
-        <div className="box_name" style={{ width: "11.8%" }}>
-          {" "}
-          {VocationalUnit[voc_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "9.5%" }}>
-          {" "}
-          {VocationalYear[voc_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "12%" }}>
-          {" "}
-          {VocationalAward[voc_ctr]}{" "}
-        </div>
+    <div className="educ_secRow" key={VocationalName + voc_ctr}>
+      <div className="row2">
+          <span>{VocationalName[voc_ctr]}</span>
       </div>
+      <div className="row3">
+          <span>{VocationalAttain[voc_ctr]}</span>
+      </div>
+      <div className="row4">
+          <div className="bot">
+          <div className="from"><span>{VocationalFrom[voc_ctr] == "" ? "N/A" : VocationalFrom[voc_ctr]}</span></div>
+              <div className="to"><span>{VocationalTo[voc_ctr] == "" ? "N/A" : VocationalTo[voc_ctr]}</span></div>
+          </div>
+      </div>
+      <div className="row5">
+          <span>{VocationalUnit[voc_ctr]}</span>
+      </div>
+      <div className="row6">
+          <span>{VocationalYear[voc_ctr]}</span>
+      </div>
+      <div className="row7">
+          <span>{VocationalAward[voc_ctr]}</span>
+      </div>
+  </div> 
     );
   });
 
@@ -741,38 +688,29 @@ export default function PreviewFacultyPDS() {
   const CollegeContent = CollegeName.map(() => {
     col_ctr++;
     return (
-      <div className="name_of_schooldPreview" key={CollegeName + col_ctr}>
-        <div className="box_name" style={{ width: "15.44%" }}>
-          {" "}
-          {CollegeName[col_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "15.40%" }}>
-          {" "}
-          {CollegeAttain[col_ctr]}
-        </div>
-        <div className="box_name" style={{ width: "17.8%" }}>
-          <div style={{ borderRight: "1.5px solid black" }}>
-            <span style={{margin:"0 15px",wordBreak:"break-all"}}>
-            {CollegeFrom[col_ctr] == "" ? "N/A" : CollegeFrom[col_ctr]}
-            </span>
-          </div>
-          <div>
-            {CollegeTo[col_ctr] == "" ? "UP TO PRESENT" : CollegeTo[col_ctr]}
-          </div>
-        </div>
-        <div className="box_name" style={{ width: "11.8%" }}>
-          {" "}
-          {CollegeUnit[col_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "9.5%" }}>
-          {" "}
-          {CollegeYear[col_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "12%" }}>
-          {" "}
-          {CollegeAward[col_ctr]}{" "}
-        </div>
+    <div className="educ_secRow" key={CollegeName + col_ctr}>
+      <div className="row2">
+          <span>{CollegeName[col_ctr]}</span>
       </div>
+      <div className="row3">
+          <span>{CollegeAttain[col_ctr]}</span>
+      </div>
+      <div className="row4">
+          <div className="bot">
+          <div className="from"><span>{CollegeFrom[col_ctr] == "" ? "N/A" : CollegeFrom[col_ctr]}</span></div>
+              <div className="to"><span>{CollegeTo[col_ctr] == "" ? "UP TO PRESENT" : CollegeTo[col_ctr]}</span></div>
+          </div>
+      </div>
+      <div className="row5">
+          <span>{CollegeUnit[col_ctr]}</span>
+      </div>
+      <div className="row6">
+          <span>{CollegeYear[col_ctr]}</span>
+      </div>
+      <div className="row7">
+          <span>{CollegeAward[col_ctr]}</span>
+      </div>
+    </div> 
     );
   });
 
@@ -781,36 +719,29 @@ export default function PreviewFacultyPDS() {
   const GraduateContent = GraduateName.map(() => {
     grad_ctr++;
     return (
-      <div className="name_of_schooldPreview" key={GraduateName + grad_ctr}>
-        <div className="box_name" style={{ width: "15.44%" }}>
-          {" "}
-          {GraduateName[grad_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "15.40%" }}>
-          {" "}
-          {GraduateAttain[grad_ctr]}
-        </div>
-        <div className="box_name" style={{ width: "17.8%" }}>
-          <div style={{ borderRight: "1.5px solid black" }}>
-            <span style={{margin:"0 15px",wordBreak:"break-all"}}>
-            {GraduateFrom[grad_ctr] == "" ? "N/A" : GraduateFrom[grad_ctr]}
-            </span>
-          </div>
-          <div>{GraduateTo[grad_ctr] == "" ? "N/A" : GraduateTo[grad_ctr]}</div>
-        </div>
-        <div className="box_name" style={{ width: "11.8%" }}>
-          {" "}
-          {GraduateUnit[grad_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "9.5%" }}>
-          {" "}
-          {GraduateYear[grad_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "12%" }}>
-          {" "}
-          {GraduateAward[grad_ctr]}{" "}
-        </div>
+    <div className="educ_secRow" key={GraduateName + grad_ctr}>
+      <div className="row2">
+          <span>{GraduateName[grad_ctr]}</span>
       </div>
+      <div className="row3">
+          <span>{GraduateAttain[grad_ctr]}</span>
+      </div>
+      <div className="row4">
+          <div className="bot">
+          <div className="from"><span>{GraduateFrom[grad_ctr] == "" ? "N/A" : GraduateFrom[grad_ctr]}</span></div>
+              <div className="to"><span>{GraduateTo[grad_ctr] == "" ? "N/A" : GraduateTo[grad_ctr]}</span></div>
+          </div>
+      </div>
+      <div className="row5">
+          <span>{GraduateUnit[grad_ctr]}</span>
+      </div>
+      <div className="row6">
+          <span>{GraduateYear[grad_ctr]}</span>
+      </div>
+      <div className="row7">
+          <span>{GraduateAward[grad_ctr]}</span>
+      </div>
+    </div> 
     );
   });
 
@@ -903,26 +834,26 @@ export default function PreviewFacultyPDS() {
   const cseContent = CseBoard.map(() => {
     cse_ctr++;
     return (
-      <div className="CSE_content" key={cse_ctr}>
-        <div className="CSE_box" style={{ width: "20%" }}>
-          {CseBoard[cse_ctr]}
-        </div>
-        <div className="CSE_box" style={{ width: "15%" }}>
-          {CseRating[cse_ctr]}
-        </div>
-        <div className="CSE_box" style={{ width: "15%" }}>
-          {CseDateExam[cse_ctr] == "" ? "N/A" : CseDateExam[cse_ctr]}
-        </div>
-        <div className="CSE_box" style={{ width: "20%" }}>
-          {CsePlaceExam[cse_ctr]}
-        </div>
-        <div className="CSE_box" style={{ width: "17.2%" }}>
-          <div>{CseLicense[cse_ctr]}</div>
-          <div style={{ borderLeft: "1px solid black" }}>
-            {CseDateVal[cse_ctr] == "" ? "N/A" : CseDateVal[cse_ctr]}
-          </div>
-        </div>
+    <div className="pds_cse_row pds_cse_row1" key={cse_ctr}>
+      <div className="row1">
+          <span>{CseBoard[cse_ctr]}</span>
       </div>
+      <div className="row2">
+          <span>{CseRating[cse_ctr]}</span>
+      </div>
+      <div className="row3">
+          <span>{CseDateExam[cse_ctr] == "" ? "N/A" : CseDateExam[cse_ctr]}</span>
+      </div>
+      <div className="row4">
+          <span>{CsePlaceExam[cse_ctr]}</span>
+      </div>
+      <div className="row5">
+          <div className="bot_cse">
+              <div className="lr_cse"><span>{CseLicense[cse_ctr]}</span></div>
+              <div className="lr_cse"><span>{CseDateVal[cse_ctr] == "" ? "N/A" : CseDateVal[cse_ctr]}</span></div>
+          </div>
+      </div>
+  </div>
     );
   });
 
@@ -1034,34 +965,32 @@ export default function PreviewFacultyPDS() {
   const weContent = wePosition.map(() => {
     we_ctr++;
     return (
-      <div className="WE_content" key={we_ctr}>
-        <div className="WE_box" style={{ width: "15%" }}>
-          <div style={{ display: "flex" }}>
-            <div>{weFrom[we_ctr] == "" ? "N/A" : weFrom[we_ctr]}</div>
-            <div style={{ borderLeft: "1.5px solid black" }}>
-              {weTo[we_ctr] == "" ? "N/A" : weTo[we_ctr]}
-            </div>
+    <div className="pds_we_row pds_we_row1" key={we_ctr}>
+      <div className="row1">
+          <div className="bot bot1">
+              <div className="from"><span>{weFrom[we_ctr] == "" ? "N/A" : moment(weFrom[we_ctr]).format('L')}</span></div>
+              <div className="to"><span>{weTo[we_ctr] == "" ? "N/A" : moment(weTo[we_ctr]).format('L')}</span></div>
           </div>
-        </div>
-        <div className="WE_box" style={{ width: "15%" }}>
-          {wePosition[we_ctr]}
-        </div>
-        <div className="WE_box" style={{ width: "18.1%" }}>
-          {weDepartment[we_ctr]}
-        </div>
-        <div className="WE_box" style={{ width: "8%" }}>
-          {weMonthly[we_ctr]}
-        </div>
-        <div className="WE_box" style={{ width: "10%" }}>
-          {weSalary[we_ctr]}
-        </div>
-        <div className="WE_box" style={{ width: "10%" }}>
-          {weAppoint[we_ctr]}
-        </div>
-        <div className="WE_box" style={{ width: "6%" }}>
-          {weGov[we_ctr]}
-        </div>
       </div>
+      <div className="row2">
+          <span>{wePosition[we_ctr]}</span>
+      </div>
+      <div className="row3">
+          <span>{weDepartment[we_ctr]}</span>
+      </div>
+      <div className="row4">
+          <span>{weMonthly[we_ctr]}</span>
+      </div>
+      <div className="row5">
+          <span>{weSalary[we_ctr]}</span>
+      </div>
+      <div className="row6">
+          <span>{weAppoint[we_ctr]}</span>
+      </div>
+      <div className="row7">
+          <span>{weGov[we_ctr]}</span>
+      </div>
+  </div>
     );
   });
 
@@ -1173,367 +1102,288 @@ export default function PreviewFacultyPDS() {
 
     if (resultYear <= 5) {
       return (
-        <div className="LD_content" key={ld_ctr}>
-          <div className="LD_box" style={{ width: "20%",textTransform:"Uppercase" }}>
-            {ldTitle[ld_ctr]}
-          </div>
-          <div className="LD_box" style={{ width: "15%" }}>
-            <div style={{ display: "flex" }}>
-              <div
-                style={{
-                  fontSize: ".8rem",
-                  wordBreak: "break-all",
-                  padding: "0 5px",
-                }}
-              >
-                {ldFrom[ld_ctr] == "" ? "N/A" : ldFrom[ld_ctr]}
-              </div>
-              <div
-                style={{
-                  borderLeft: "1.5px solid black",
-                  fontSize: ".8rem",
-                  wordBreak: "break-all",
-                  padding: "0 5px",
-                }}
-              >
-                {ldTo[ld_ctr] == "" ? "N/A" : ldTo[ld_ctr]}
-              </div>
+        <div className="pds_cert_row pds_cert_row1" key={ld_ctr}>
+            <div className="row1">
+                <span>{ldTitle[ld_ctr]}</span>
             </div>
-          </div>
-          <div className="LD_box" style={{ width: "8%" }}>
-            {" "}
-            {ldHours[ld_ctr] == "" ? "N/A" : ldHours[ld_ctr] + " HR/S"}
-          </div>
-          <div className="LD_box" style={{ width: "13%" }}>
-            {ldType[ld_ctr]}
-          </div>
-          <div className="LD_box" style={{ width: "11.6%" }}>
-            {ldCoverage[ld_ctr]}
-          </div>
-          <div className="LD_box" style={{ width: "17%" }}>
-            {ldSponsor[ld_ctr]}
-          </div>
+            <div className="row2">
+                <div className="bot">
+                    <div className="from"><span>{ldFrom[ld_ctr] == "" ? "N/A" : moment(ldFrom[ld_ctr]).format('L')}</span></div>
+                    <div className="to"><span>{ldTo[ld_ctr] == "" ? "N/A" : moment(ldTo[ld_ctr]).format('L')}</span></div>
+                </div>
+            </div>
+            <div className="row3">
+                <span>{ldHours[ld_ctr] == "" ? "N/A" : ldHours[ld_ctr] + " HR/S"}</span>
+            </div>
+            <div className="row4">
+                <span>{ldType[ld_ctr]}</span>
+            </div>
+            <div className="row5">
+                <span>{ldCoverage[ld_ctr]}</span>
+            </div>
         </div>
       );
     } else {
       return (
-        <div className="LD_content" key="{key4}">
-          <div className="LD_box" style={{ width: "20%" }}>
-            N/A
-          </div>
-          <div className="LD_box" style={{ width: "15%" }}>
-            <div style={{ display: "flex" }}>
-              <div
-                style={{
-                  fontSize: ".8rem",
-                  wordBreak: "break-all",
-                  padding: "0 5px",
-                }}
-              >
-                N/A
-              </div>
-              <div
-                style={{
-                  borderLeft: "1.5px solid black",
-                  fontSize: ".8rem",
-                  wordBreak: "break-all",
-                  padding: "0 5px",
-                }}
-              >
-                N/A
-              </div>
+        <div className="pds_cert_row pds_cert_row1" key={ld_ctr}>
+            <div className="row1">
+                <span>N/A</span>
             </div>
-          </div>
-          <div className="LD_box" style={{ width: "8%" }}>
-            N/A
-          </div>
-          <div className="LD_box" style={{ width: "13%" }}>
-            N/A
-          </div>
-          <div className="LD_box" style={{ width: "11.6%" }}>
-            N/A
-          </div>
-          <div className="LD_box" style={{ width: "17%" }}>
-            {" "}
-            N/A
-          </div>
+            <div className="row2">
+                <div className="bot">
+                    <div className="from"><span>N/A</span></div>
+                    <div className="to"><span>N/A</span></div>
+                </div>
+            </div>
+            <div className="row3">
+                <span>N/A</span>
+            </div>
+            <div className="row4">
+                <span>N/A</span>
+            </div>
+            <div className="row5">
+                <span>N/A</span>
+            </div>
         </div>
       );
     }
   });
 
+
   return (
     <div className="step_content preview_pds">
-      <div className="info_div" style={{ fontSize: "1.5rem" }}>
-        <img src={datasheet_info} />
-        Personal Information
+    <div className="info_div" style={{ fontSize: "1.5rem" }}>
+      <img src={datasheet_info} />
+      Personal Information
+    </div>
+
+    <div className="pds_review_container">
+      <div className="pds_preview">
+
+
+      <div className="pds_header">
+          <p className="pds_header_p">CS Form No. 212</p>
+          <p className="pds_header_p">Revised 2017</p>
+          <div className="pds_text">PERSONAL DATA SHEET</div>
+          <p className="pds_warning">WARNING: Any misrepresentation made in the Personal Data Sheet and the Work Experience Sheet shall cause the filing of administrative/criminal case/s against the person concerned.</p>
       </div>
 
-      <div className="pds_review_container">
-        <div className="pds_preview" id="convertable_pdf_PDS1">
-          <div className="top">
-            <div className="left">
-              <img src={CICT_Logo} />
-            </div>
-            <div className="right">
-              <p>College of Information</p>
-              <p>and Communication Technology</p>
-            </div>
-          </div>
+      <div className="pds_th">
+          <span>I. PERSONAL INFORMATION</span>
+      </div>
 
-          {/*Step 1*/}
-          {pds_step1}
+        {/*Step 1*/}
+        {pds_step1}
 
-          {/*Step 2*/}
-          <div className="information_content" style={{ marginTop: "3rem" }}>
-            <div className="header">Educational Background</div>
+      <div className="pds_th">
+          <span>II. EDUCATIONAL BACKGROUND</span>
+      </div>
 
-            <div className="education_content">
-              <div
-                className="educ_level"
-                style={{ width: "13%"}}
-              >
-                LEVEL
-              </div>
-              <div
-                className="educ_name"
-                style={{ width: "13%" }}
-              >
-                <span>NAME OF SCHOOL</span> <span>(Write in full)</span>
-              </div>
-              <div
-                className="educ_name"
-                style={{ width: "13%" }}
-              >
-                <span>BASIC EDUCATION / DEGREE / COURSE</span>{" "}
-                <span>(Write in full)</span>
-              </div>
-              <div
-                className="educ_level"
-                style={{ width: "15%" }}
-              >
-                <span>PERIOD OF ATTENDANCE</span>
-                <div className="educ_period">
-                  <div style={{ borderRight: "1.5px solid black" }}>From</div>
-                  <div>To</div>
-                </div>
-              </div>
-              <div
-                className="educ_name"
-                style={{ width: "10%" }}
-              >
-                <span>HIGHEST LEVEL UNIT EARNED</span>{" "}
-                <span>(If not graduated)</span>
-              </div>
-              <div
-                className="educ_year"
-                style={{ width: "8%" }}
-              >
-                YEAR GRADUATED
-              </div>
-
-              <div
-                className="educ_name1"
-                style={{
-                  width: "10.1%"
-                }}
-              >
-                SCHOLARSHIP / ACADEMIC HONORS RECEIVED
-              </div>
-            </div>
-
-            <div className="education_content">
-              <div
-                className="educ_level"
-                style={{ width: "13%" }}
-              >
-                ELEMENTARY
-              </div>
-              <div className="educ_name_content">{ElementaryContent}</div>
-            </div>
-
-            <div className="education_content">
-              <div
-                className="educ_level"
-                style={{ width: "13%" }}
-              >
-                SECONDARY
-              </div>
-              <div className="educ_name_content">{SecondaryContent}</div>
-            </div>
-
-            <div className="education_content">
-              <div
-                className="educ_level"
-                style={{ width: "13%" }}
-              >
-                VOCATIONAL / TRADE / COURSE
-              </div>
-              <div className="educ_name_content">{VocationalContent}</div>
-            </div>
-
-            <div className="education_content">
-              <div
-                className="educ_level"
-                style={{ width: "13%" }}
-              >
-                College
-              </div>
-              <div className="educ_name_content">{CollegeContent}</div>
-            </div>
-
-            <div className="education_content">
-              <div
-                className="educ_level"
-                style={{ width: "13%" }}
-              >
-                Graduate Studies
-              </div>
-              <div className="educ_name_content">{GraduateContent}</div>
-            </div>
-          </div>
-
-          {pds_step2 /* Eto yung mga input*/}
-
-          {/*Step 3*/}
-          <div className="information_content" style={{ marginTop: "3rem" }}>
-            <div className="header">Civil Service Eligibility</div>
-          </div>
-
-          <div className="CSE_content">
-            <div className="headers" style={{ width: "20%" }}>
-              CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/ CSEE
-              BARANGAY ELIGIBILITY / DRIVER'S LICENSE
-            </div>
-            <div className="headers" style={{ width: "15%" }}>
-              <span>Rating</span>
-              <span>(If Applicable)</span>
-            </div>
-            <div className="headers" style={{ width: "15%" }}>
-              DATE OF EXAMINATION / CONFERMENT
-            </div>
-            <div className="headers" style={{ width: "20%" }}>
-              PLACE OF EXAMINATION / CONFERMENT
-            </div>
-            <div
-              className="headers"
-              style={{ width: "17.2%", padding: "0 10px" }}
-            >
-              <div>LICENSE (if applicable)</div>
-              <div style={{ display: "flex", marginTop: "20px" }}>
-                <div>Number</div>
-                <div style={{ borderLeft: "1.5px solid black" }}>
-                  Date of Validity
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {cseContent}
-          {pds_step3 /*Eto yung mga input*/}
-
-          {/*Step 4*/}
-          <div className="information_content" style={{ marginTop: "3rem" }}>
-            <div className="header">Work Experience</div>
-          </div>
-
-          <div className="WE_content">
-            <div className="headers" style={{ width: "15%" }}>
-              <div>INCLUSIVE DATES (mm/dd/yyyy)</div>
-              <div style={{ display: "flex", marginTop: "20px" }}>
-                <div>From</div>
-                <div style={{ borderLeft: "1.5px solid black" }}>To</div>
-              </div>
-            </div>
-            <div className="headers" style={{ width: "15%" }}>
-              POSITION TITLE (Write in full/Do not abbreviate)
-            </div>
-            <div className="headers" style={{ width: "18.1%" }}>
-              <span>DEPARTMENT / AGENCY / OFFICE / COMPANY</span>
-              <span>(Write in full/Do not abbreviate)</span>
-            </div>
-            <div className="headers" style={{ width: "8%" }}>
-              MONTHLY SALARY
-            </div>
-            <div className="headers" style={{ width: "10%" }}>
-              SALARY/ JOB/ PAY GRADE (if applicable)& STEP (Format "00-0")/
-              INCREMENT
-            </div>
-            <div className="headers" style={{ width: "10%" }}>
-              STATUS OF APPOINTMENT
-            </div>
-            <div className="headers" style={{ width: "6%" }}>
-              GOV'T SERVICE (Y/N)
-            </div>
-          </div>
-
-          {weContent}
-          {pds_step4 /*Eto yung mga input*/}
-
-          {/*Step 5*/}
-          <div className="information_content" style={{ marginTop: "3rem" }}>
-            <div className="header" style={{ fontSize: "1.1rem" }}>
-              LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING PROGRAMS
-              ATTENDED
-              <p
-                        style={{
-                          fontSize: ".7rem",
-                          margin: "5px auto",
-                          width:"95%",
-                          textIndent:"0",
-                          fontWeight:"normal"
-                        }}
-                      >
-                        (Start from the most recent L&D/training program and
-                        include only the relevant L&D/training taken for the
-                        last five (5) years for Division
-                        Chief/ Executive/ Managerial positions)
-                      </p>
-            </div>
-          </div>
-
-          <div className="LD_content">
-            <div className="headers" style={{ width: "20%" }}>
-              <span>
-                TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS/TRAINING
-                PROGRAMS
-              </span>
+      <div className="pds_educatiion_row">
+          <div className="row1"><span>LEVEL</span></div>
+          <div className="row2">
+              <span>NAME OF SCHOOL</span>
               <span>(Write in full)</span>
-            </div>
-            <div className="headers" style={{ width: "15%" }}>
-              <div>INCLUSIVE DATES OF ATTENDANCE (mm/dd/yyyy)</div>
-              <div style={{ display: "flex", marginTop: "20px" }}>
-                <div>From</div>
-                <div style={{ borderLeft: "1.5px solid black" }}>To</div>
+          </div>
+          <div className="row3">
+              <span>BASIC EDUCATION / DEGREE / COURSE</span>
+              <span>(Write in full)</span>
+          </div>
+          <div className="row4">
+              <div className="top1"><span>PERIOD OF ATTENDANCE</span></div>
+              <div className="bot">
+                  <div className="from">From</div>
+                  <div className="to">To</div>
               </div>
-            </div>
-            <div className="headers" style={{ width: "8%" }}>
-              NUMBER OF HOURS
-            </div>
-            <div className="headers" style={{ width: "13%" }}>
-              TYPE OF LD (Managerial / Supervisory / Technical / Etc)
-            </div>
-            <div className="headers" style={{ width: "11.6%" }}>
-              COVERAGE (International / National / Regional / Local)
-            </div>
-            <div className="headers" style={{ width: "17%" }}>
+          </div>
+          <div className="row5">
+              <span>HIGHEST LEVEL / UNITS EARNED</span>
+              <span>(If not graduated)</span>
+          </div>
+          <div className="row6">
+              <span>YEAR GRADUATED</span>
+          </div>
+          <div className="row7">
+              <span>SCHOLARSHIP / ACADEMIC HONORS RECEIVED</span>
+          </div>
+      </div>
+
+      {/*Step 2*/}
+
+      {/*ELEMENTARY*/}
+      <div className="pds_educatiion_row pds_educatiion_row1">
+          <div className="left">
+              <div className="row1" style={{borderRight:"none"}}>
+                  <span>ELEMENTARY</span>
+              </div>
+          </div>
+          <div className="right">
+              {ElementaryContent}
+          </div>
+      </div>
+      {/*SECONDARY*/}
+      <div className="pds_educatiion_row pds_educatiion_row1">
+          <div className="left">
+              <div className="row1" style={{borderRight:"none"}}>
+                  <span>SECONDARY</span>
+              </div>
+          </div>
+          <div className="right">
+              {SecondaryContent}
+          </div>
+      </div>
+      {/*VOCATIONAL*/}
+      <div className="pds_educatiion_row pds_educatiion_row1">
+          <div className="left">
+              <div className="row1" style={{borderRight:"none"}}>
+                  <span>VOCATIONAL / TRADE COURSE</span>
+              </div>
+          </div>
+          <div className="right">
+              {VocationalContent}
+          </div>
+      </div>
+      {/*COLLEGE*/}
+      <div className="pds_educatiion_row pds_educatiion_row1">
+          <div className="left">
+              <div className="row1" style={{borderRight:"none"}}>
+                  <span>COLLEGE</span>
+              </div>
+          </div>
+          <div className="right">
+              {CollegeContent}
+          </div>
+      </div>
+      {/*GRADUATE STUDIES*/}
+      <div className="pds_educatiion_row pds_educatiion_row1">
+          <div className="left">
+              <div className="row1" style={{borderRight:"none"}}>
+                  <span>GRADUATE STUDIES</span>
+              </div>
+          </div>
+          <div className="right">
+              {GraduateContent}
+          </div>
+      </div>
+
+
+        {pds_step2 /* Eto yung mga input*/}
+
+      {/*Step 3*/}
+      <div className="pds_th">
+          <span>III. CIVIL SERVICE ELIGIBILITY</span>
+      </div>
+
+      <div className="pds_cse_row">
+          <div className="row1">
+              <span>CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/ CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE</span>
+          </div>
+          <div className="row2">
+              <span>RATING</span>
+              <span>(If Applicable)</span>
+          </div>
+          <div className="row3">
+              <span>DATE OF EXAMINATION / CONFERMENT</span>
+          </div>
+          <div className="row4">
+              <span>PLACE OF EXAMINATION / CONFERMENT</span>
+          </div>
+          <div className="row5">
+              <div className="top_cse">
+                  <span>LICENSE (if applicable)</span>
+              </div>
+              <div className="bot_cse">
+                  <div className="lr_cse"><span>NUMBER</span></div>
+                  <div className="lr_cse"><span>Date of Validity</span></div>
+              </div>
+          </div>
+      </div>
+
+        {cseContent}
+        {pds_step3 /*Eto yung mga input*/}
+
+      {/*Step 4*/}
+      <div className="pds_th">
+          <span>IV. WORK EXPERIENCE</span>
+          <span style={{fontSize:".8rem",marginTop:"5px"}}>(Include private employment. Start from your recent work) Description of duties should be indicated in the attached Work Experience sheet.</span>
+      </div>
+
+      <div className="pds_we_row">
+          <div className="row1">
+              <div className="top1"><span>INCLUSIVE DATES  (mm/dd/yyyy)</span></div>
+              <div className="bot">
+                  <div className="from"><span>From</span></div>
+                  <div className="to"><span>To</span></div>
+              </div>
+          </div>
+          <div className="row2">
+              <span>POSITION TITLE</span>
+              <span>(Write in full / Do not abbreviate)</span>
+          </div>
+          <div className="row3">
+              <span>DEPARTMENT / AGENCY / OFFICE / COMPANY</span>
+              <span>(Write in full / Do not abbreviate)</span>
+          </div>
+          <div className="row4">
+              <span>MONTHLY SALARY</span>
+          </div>
+          <div className="row5">
+              <span>SALARY/ JOB/ PAY GRADE (if applicable) & STEP  (Format "00-0")/ INCREMENT</span>
+          </div>
+          <div className="row6">
+              <span>STATUS OF APPOINTMENT</span>
+          </div>
+          <div className="row7">
+              <span>GOV'T SERVICE</span>
+              <span>(Y/ N)</span>
+          </div>
+      </div>
+
+        {weContent}
+        {pds_step4 /*Eto yung mga input*/}
+
+      {/*Step 5*/}
+      <div className="pds_th">
+          <span>V. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING PROGRAMS ATTENDED</span>
+          <span style={{fontSize:".75rem",marginTop:"5px",marginBottom:"5px"}}>(Start from the most recent L&D/training program and include only the relevant L&D/training taken for the last five (5) years for Division Chief/Executive/Managerial positions)</span>
+      </div>
+
+      <div className="pds_cert_row">
+          <div className="row1">
+              <span>TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS / TRAINING PROGRAMS</span>
+              <span>(Write in full)</span>
+          </div>
+          <div className="row2">
+              <div className="top1"><span>INCLUSIVE DATES OF ATTENDANCE  (mm/dd/yyyy)</span></div>
+              <div className="bot">
+                  <div className="from"><span>From</span></div>
+                  <div className="to"><span>To</span></div>
+              </div>
+          </div>
+          <div className="row3">
+              <span>NUMBER OF HOURS</span>
+          </div>
+          <div className="row4">
+              <span>Type of LD (Managerial / Supervisory / Technical / etc)</span>
+          </div>
+          <div className="row5">
               <span>CONDUCTED/ SPONSORED BY</span>
               <span>(Write in full)</span>
-            </div>
           </div>
-
-          {ldContent}
-          {pds_step5 /*Eto yung mga input*/}
-        </div>
       </div>
 
-      <p className="p_consent" style={{ visibility: "hidden" }}>
-        By accepting, you acknowledge that you have read this form, understood
-        its contents, and consent to the processing of your data for the
-        purposes indicated in this Consent Form. If not, your data will not be
-        used by Bulacan State University as long as your authorization to deny
-        access has not been reversed.
-      </p>
+        {ldContent}
+        {pds_step5 /*Eto yung mga input*/}
+      </div>
     </div>
-  );
+
+    <p className="p_consent" style={{ visibility: "hidden" }}>
+      By accepting, you acknowledge that you have read this form, understood
+      its contents, and consent to the processing of your data for the
+      purposes indicated in this Consent Form. If not, your data will not be
+      used by Bulacan State University as long as your authorization to deny
+      access has not been reversed.
+    </p>
+  </div>
+);
 }

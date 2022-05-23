@@ -6,14 +6,12 @@ import "../css/pds.css";
 import LeftNavbarFaculty from "../navbarsUI/LeftNavbarFaculty";
 import NavbarSizer from "../navbarsUI/NavbarSizer";
 import RightNavbar from "../navbarsUI/RightNavbar";
-
 import Avatar from "@mui/material/Avatar";
 import { deepOrange } from "@mui/material/colors";
-
 import cover_banner from "../images/pds_cover.png";
 import edit_icon from "../images/icons/edit.svg";
 import downloadyellow_icon from "../images/icons/download_yellow.svg";
-
+import PDSprintable from "../components/PDSprintable";
 import basic_info from "../images/icons/basic_info.svg";
 import education_info from "../images/icons/education_info.svg";
 import service_info from "../images/icons/service_info.svg";
@@ -26,7 +24,6 @@ import addressYellow from "../images/icons/addressYellow.svg";
 import educationYellow from "../images/icons/educationYellow.svg";
 import cseYellow from "../images/icons/cseYellow.svg";
 import workYellow from "../images/icons/workYellow.svg";
-
 import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import axios from "axios";
@@ -2047,17 +2044,21 @@ export default function PersonalDataSheet() {
   }
   
 
-  function printDocument() {
-    html2canvas(document.querySelector("#convertable_pdf_PDS"), {
+  function printDocument1() {
+    if(localStorage.getItem('isProfileLocked')=="yes"){
+      document.getElementById("profileLocked_modal").style.display = "flex";
+    }
+    else{
+    html2canvas(document.querySelector("#convertable_pdf_PDS1"), {
       useCORS: true,
       allowTaint: true,
       scrollY: 0,
     }).then((canvas) => {
       const image = { type: "png", quality: 0.98 };
-      const margin = [0.5, 0.5];
+      const margin = [0.2, 0.2];
       const filename = "PersonalDataSheet.pdf";
       var imgWidth = 8.5;
-      var pageHeight = 11;
+      var pageHeight = 11.43;
       var innerPageWidth = imgWidth - margin[0] * 2;
       var innerPageHeight = pageHeight - margin[1] * 2;
       // Calculate the number of pages.
@@ -2072,7 +2073,7 @@ export default function PersonalDataSheet() {
       pageCanvas.width = canvas.width;
       pageCanvas.height = pxPageHeight;
       // Initialize the PDF.
-      var pdf = new jsPDF("p", "in", [8.5, 11]);
+      var pdf = new jsPDF("p", "in", [8.5, 13]);
       for (var page = 0; page < nPages; page++) {
         // Trim the final page to reduce file size.
         if (page === nPages - 1 && pxFullHeight % pxPageHeight !== 0) {
@@ -2085,6 +2086,7 @@ export default function PersonalDataSheet() {
         pageCtx.fillStyle = "white";
         pageCtx.fillRect(0, 0, w, h);
         pageCtx.drawImage(canvas, 0, page * pxPageHeight, w, h, 0, 0, w, h);
+
         // Add the page to the PDF.
         if (page > 0) pdf.addPage();
         debugger;
@@ -2104,15 +2106,7 @@ export default function PersonalDataSheet() {
       window.open(pdf.output('bloburl'))
       //pdf.save(filename);
     });
-  }
-
-  function printPDShover() {
-    document.getElementsByClassName("view_pdf_container")[0].style.display =
-      "block";
-  }
-  function printPDSRemovehover() {
-    document.getElementsByClassName("view_pdf_container")[0].style.display =
-      "none";
+    }
   }
 
   const downloadProfileForm=(e)=>{
@@ -2208,9 +2202,7 @@ export default function PersonalDataSheet() {
                     <form>
                     <button
                       type="button"
-                      onClick={printDocument}
-                      onMouseOver={printPDShover}
-                      onMouseOut={printPDSRemovehover}
+                      onClick={printDocument1}
                     >
                       <img src={downloadyellow_icon} />
                       Generate as PDF
@@ -2403,6 +2395,10 @@ export default function PersonalDataSheet() {
                 {pds_step5 /* Eto yung mga input*/}
               </div>
             </div>
+          </div>
+
+          <div className="view_pdf_container1">
+              <PDSprintable/>
           </div>
 
           <div className="view_pdf_container">

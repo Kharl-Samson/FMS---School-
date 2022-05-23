@@ -5,9 +5,9 @@ import axios from "axios";
 import '../css/previewPDS.css';
 import moment from 'moment';
 
-export default function PreviewPDS() {
+export default function PDSprintable() {
   //getting the email of user
-  let email_key = localStorage.getItem("email");
+  let email_key = localStorage.getItem("viewFacultyEmail");
 
   //Hook for getting pds1
   const [pdsStep1, setpdsStep1] = useState([]);
@@ -1149,240 +1149,246 @@ export default function PreviewPDS() {
     }
   });
 
+
   return (
     <div className="step_content preview_pds">
-      <div className="info_div" style={{ fontSize: "1.5rem" }}>
-        <img src={datasheet_info} />
-        Personal Information
-      </div>
-
-      <div className="pds_review_container">
-        <div className="pds_preview" id="convertable_pdf_PDS">
-
-
-        <div className="pds_header">
-            <p className="pds_header_p">CS Form No. 212</p>
-            <p className="pds_header_p">Revised 2017</p>
-            <div className="pds_text">PERSONAL DATA SHEET</div>
-            <p className="pds_warning">WARNING: Any misrepresentation made in the Personal Data Sheet and the Work Experience Sheet shall cause the filing of administrative/criminal case/s against the person concerned.</p>
-        </div>
-
-        <div className="pds_th">
-            <span>I. PERSONAL INFORMATION</span>
-        </div>
-
-          {/*Step 1*/}
-          {pds_step1}
-
-        <div className="pds_th">
-            <span>II. EDUCATIONAL BACKGROUND</span>
-        </div>
-
-        <div className="pds_educatiion_row">
-            <div className="row1"><span>LEVEL</span></div>
-            <div className="row2">
-                <span>NAME OF SCHOOL</span>
-                <span>(Write in full)</span>
-            </div>
-            <div className="row3">
-                <span>BASIC EDUCATION / DEGREE / COURSE</span>
-                <span>(Write in full)</span>
-            </div>
-            <div className="row4">
-                <div className="top1"><span>PERIOD OF ATTENDANCE</span></div>
-                <div className="bot">
-                    <div className="from">From</div>
-                    <div className="to">To</div>
-                </div>
-            </div>
-            <div className="row5">
-                <span>HIGHEST LEVEL / UNITS EARNED</span>
-                <span>(If not graduated)</span>
-            </div>
-            <div className="row6">
-                <span>YEAR GRADUATED</span>
-            </div>
-            <div className="row7">
-                <span>SCHOLARSHIP / ACADEMIC HONORS RECEIVED</span>
-            </div>
-        </div>
-
-        {/*Step 2*/}
-
-        {/*ELEMENTARY*/}
-        <div className="pds_educatiion_row pds_educatiion_row1">
-            <div className="left">
-                <div className="row1" style={{borderRight:"none"}}>
-                    <span>ELEMENTARY</span>
-                </div>
-            </div>
-            <div className="right">
-                {ElementaryContent}
-            </div>
-        </div>
-        {/*SECONDARY*/}
-        <div className="pds_educatiion_row pds_educatiion_row1">
-            <div className="left">
-                <div className="row1" style={{borderRight:"none"}}>
-                    <span>SECONDARY</span>
-                </div>
-            </div>
-            <div className="right">
-                {SecondaryContent}
-            </div>
-        </div>
-        {/*VOCATIONAL*/}
-        <div className="pds_educatiion_row pds_educatiion_row1">
-            <div className="left">
-                <div className="row1" style={{borderRight:"none"}}>
-                    <span>VOCATIONAL / TRADE COURSE</span>
-                </div>
-            </div>
-            <div className="right">
-                {VocationalContent}
-            </div>
-        </div>
-        {/*COLLEGE*/}
-        <div className="pds_educatiion_row pds_educatiion_row1">
-            <div className="left">
-                <div className="row1" style={{borderRight:"none"}}>
-                    <span>COLLEGE</span>
-                </div>
-            </div>
-            <div className="right">
-                {CollegeContent}
-            </div>
-        </div>
-        {/*GRADUATE STUDIES*/}
-        <div className="pds_educatiion_row pds_educatiion_row1">
-            <div className="left">
-                <div className="row1" style={{borderRight:"none"}}>
-                    <span>GRADUATE STUDIES</span>
-                </div>
-            </div>
-            <div className="right">
-                {GraduateContent}
-            </div>
-        </div>
-
-
-          {pds_step2 /* Eto yung mga input*/}
-
-        {/*Step 3*/}
-        <div className="pds_th">
-            <span>III. CIVIL SERVICE ELIGIBILITY</span>
-        </div>
-
-        <div className="pds_cse_row">
-            <div className="row1">
-                <span>CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/ CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE</span>
-            </div>
-            <div className="row2">
-                <span>RATING</span>
-                <span>(If Applicable)</span>
-            </div>
-            <div className="row3">
-                <span>DATE OF EXAMINATION / CONFERMENT</span>
-            </div>
-            <div className="row4">
-                <span>PLACE OF EXAMINATION / CONFERMENT</span>
-            </div>
-            <div className="row5">
-                <div className="top_cse">
-                    <span>LICENSE (if applicable)</span>
-                </div>
-                <div className="bot_cse">
-                    <div className="lr_cse"><span>NUMBER</span></div>
-                    <div className="lr_cse"><span>Date of Validity</span></div>
-                </div>
-            </div>
-        </div>
-
-          {cseContent}
-          {pds_step3 /*Eto yung mga input*/}
-
-        {/*Step 4*/}
-        <div className="pds_th">
-            <span>IV. WORK EXPERIENCE</span>
-            <span style={{fontSize:".8rem",marginTop:"5px"}}>(Include private employment. Start from your recent work) Description of duties should be indicated in the attached Work Experience sheet.</span>
-        </div>
-
-        <div className="pds_we_row">
-            <div className="row1">
-                <div className="top1"><span>INCLUSIVE DATES  (mm/dd/yyyy)</span></div>
-                <div className="bot">
-                    <div className="from"><span>From</span></div>
-                    <div className="to"><span>To</span></div>
-                </div>
-            </div>
-            <div className="row2">
-                <span>POSITION TITLE</span>
-                <span>(Write in full / Do not abbreviate)</span>
-            </div>
-            <div className="row3">
-                <span>DEPARTMENT / AGENCY / OFFICE / COMPANY</span>
-                <span>(Write in full / Do not abbreviate)</span>
-            </div>
-            <div className="row4">
-                <span>MONTHLY SALARY</span>
-            </div>
-            <div className="row5">
-                <span>SALARY/ JOB/ PAY GRADE (if applicable) & STEP  (Format "00-0")/ INCREMENT</span>
-            </div>
-            <div className="row6">
-                <span>STATUS OF APPOINTMENT</span>
-            </div>
-            <div className="row7">
-                <span>GOV'T SERVICE</span>
-                <span>(Y/ N)</span>
-            </div>
-        </div>
-
-          {weContent}
-          {pds_step4 /*Eto yung mga input*/}
-
-        {/*Step 5*/}
-        <div className="pds_th">
-            <span>V. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING PROGRAMS ATTENDED</span>
-            <span style={{fontSize:".75rem",marginTop:"5px",marginBottom:"5px"}}>(Start from the most recent L&D/training program and include only the relevant L&D/training taken for the last five (5) years for Division Chief/Executive/Managerial positions)</span>
-        </div>
-
-        <div className="pds_cert_row">
-            <div className="row1">
-                <span>TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS / TRAINING PROGRAMS</span>
-                <span>(Write in full)</span>
-            </div>
-            <div className="row2">
-                <div className="top1"><span>INCLUSIVE DATES OF ATTENDANCE  (mm/dd/yyyy)</span></div>
-                <div className="bot">
-                    <div className="from"><span>From</span></div>
-                    <div className="to"><span>To</span></div>
-                </div>
-            </div>
-            <div className="row3">
-                <span>NUMBER OF HOURS</span>
-            </div>
-            <div className="row4">
-                <span>Type of LD (Managerial / Supervisory / Technical / etc)</span>
-            </div>
-            <div className="row5">
-                <span>CONDUCTED/ SPONSORED BY</span>
-                <span>(Write in full)</span>
-            </div>
-        </div>
-
-          {ldContent}
-          {pds_step5 /*Eto yung mga input*/}
-        </div>
-      </div>
-
-      <p className="p_consent" style={{ visibility: "hidden" }}>
-        By accepting, you acknowledge that you have read this form, understood
-        its contents, and consent to the processing of your data for the
-        purposes indicated in this Consent Form. If not, your data will not be
-        used by Bulacan State University as long as your authorization to deny
-        access has not been reversed.
-      </p>
+    <div className="info_div" style={{ fontSize: "1.5rem" }}>
+      <img src={datasheet_info} />
+      Personal Information
     </div>
-  );
+
+    <div className="pds_review_container">
+      <div className="pds_preview" id="convertable_pdf_PDS1" > 
+
+
+<div id="page_Separator">   
+      <div className="pds_header">
+          <p className="pds_header_p">CS Form No. 212</p>
+          <p className="pds_header_p">Revised 2017</p>
+          <div className="pds_text">PERSONAL DATA SHEET</div>
+          <p className="pds_warning">WARNING: Any misrepresentation made in the Personal Data Sheet and the Work Experience Sheet shall cause the filing of administrative/criminal case/s against the person concerned.</p>
+      </div>
+
+      <div className="pds_th">
+          <span>I. PERSONAL INFORMATION</span>
+      </div>
+
+        {/*Step 1*/}
+        {pds_step1}
+
+      <div className="pds_th">
+          <span>II. EDUCATIONAL BACKGROUND</span>
+      </div>
+
+      <div className="pds_educatiion_row">
+          <div className="row1"><span>LEVEL</span></div>
+          <div className="row2">
+              <span>NAME OF SCHOOL</span>
+              <span>(Write in full)</span>
+          </div>
+          <div className="row3">
+              <span>BASIC EDUCATION / DEGREE / COURSE</span>
+              <span>(Write in full)</span>
+          </div>
+          <div className="row4">
+              <div className="top1"><span>PERIOD OF ATTENDANCE</span></div>
+              <div className="bot">
+                  <div className="from">From</div>
+                  <div className="to">To</div>
+              </div>
+          </div>
+          <div className="row5">
+              <span>HIGHEST LEVEL / UNITS EARNED</span>
+              <span>(If not graduated)</span>
+          </div>
+          <div className="row6">
+              <span>YEAR GRADUATED</span>
+          </div>
+          <div className="row7">
+              <span>SCHOLARSHIP / ACADEMIC HONORS RECEIVED</span>
+          </div>
+      </div>
+
+      {/*Step 2*/}
+
+      {/*ELEMENTARY*/}
+      <div className="pds_educatiion_row pds_educatiion_row1">
+          <div className="left">
+              <div className="row1" style={{borderRight:"none"}}>
+                  <span>ELEMENTARY</span>
+              </div>
+          </div>
+          <div className="right">
+              {ElementaryContent}
+          </div>
+      </div>
+      {/*SECONDARY*/}
+      <div className="pds_educatiion_row pds_educatiion_row1">
+          <div className="left">
+              <div className="row1" style={{borderRight:"none"}}>
+                  <span>SECONDARY</span>
+              </div>
+          </div>
+          <div className="right">
+              {SecondaryContent}
+          </div>
+      </div>
+      {/*VOCATIONAL*/}
+      <div className="pds_educatiion_row pds_educatiion_row1">
+          <div className="left">
+              <div className="row1" style={{borderRight:"none"}}>
+                  <span>VOCATIONAL / TRADE COURSE</span>
+              </div>
+          </div>
+          <div className="right">
+              {VocationalContent}
+          </div>
+      </div>
+      {/*COLLEGE*/}
+      <div className="pds_educatiion_row pds_educatiion_row1">
+          <div className="left">
+              <div className="row1" style={{borderRight:"none"}}>
+                  <span>COLLEGE</span>
+              </div>
+          </div>
+          <div className="right">
+              {CollegeContent}
+          </div>
+      </div>
+      {/*GRADUATE STUDIES*/}
+      <div className="pds_educatiion_row pds_educatiion_row1">
+          <div className="left">
+              <div className="row1" style={{borderRight:"none"}}>
+                  <span>GRADUATE STUDIES</span>
+              </div>
+          </div>
+          <div className="right">
+              {GraduateContent}
+          </div>
+      </div>
+
+
+        {pds_step2 /* Eto yung mga input*/}
+</div>
+
+<div id="page_Separator"> 
+      {/*Step 3*/}
+      <div className="pds_th" style={{borderTop:"2px solid black"}}>
+          <span>III. CIVIL SERVICE ELIGIBILITY</span>
+      </div>
+
+      <div className="pds_cse_row">
+          <div className="row1">
+              <span>CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/ CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE</span>
+          </div>
+          <div className="row2">
+              <span>RATING</span>
+              <span>(If Applicable)</span>
+          </div>
+          <div className="row3">
+              <span>DATE OF EXAMINATION / CONFERMENT</span>
+          </div>
+          <div className="row4">
+              <span>PLACE OF EXAMINATION / CONFERMENT</span>
+          </div>
+          <div className="row5">
+              <div className="top_cse">
+                  <span>LICENSE (if applicable)</span>
+              </div>
+              <div className="bot_cse">
+                  <div className="lr_cse"><span>NUMBER</span></div>
+                  <div className="lr_cse"><span>Date of Validity</span></div>
+              </div>
+          </div>
+      </div>
+
+        {cseContent}
+        {pds_step3 /*Eto yung mga input*/}
+
+      {/*Step 4*/}
+      <div className="pds_th">
+          <span>IV. WORK EXPERIENCE</span>
+          <span style={{fontSize:".8rem",marginTop:"5px"}}>(Include private employment. Start from your recent work) Description of duties should be indicated in the attached Work Experience sheet.</span>
+      </div>
+
+      <div className="pds_we_row">
+          <div className="row1">
+              <div className="top1"><span>INCLUSIVE DATES  (mm/dd/yyyy)</span></div>
+              <div className="bot">
+                  <div className="from"><span>From</span></div>
+                  <div className="to"><span>To</span></div>
+              </div>
+          </div>
+          <div className="row2">
+              <span>POSITION TITLE</span>
+              <span>(Write in full / Do not abbreviate)</span>
+          </div>
+          <div className="row3">
+              <span>DEPARTMENT / AGENCY / OFFICE / COMPANY</span>
+              <span>(Write in full / Do not abbreviate)</span>
+          </div>
+          <div className="row4">
+              <span>MONTHLY SALARY</span>
+          </div>
+          <div className="row5">
+              <span>SALARY/ JOB/ PAY GRADE (if applicable) & STEP  (Format "00-0")/ INCREMENT</span>
+          </div>
+          <div className="row6">
+              <span>STATUS OF APPOINTMENT</span>
+          </div>
+          <div className="row7">
+              <span>GOV'T SERVICE</span>
+              <span>(Y/ N)</span>
+          </div>
+      </div>
+
+        {weContent}
+        {pds_step4 /*Eto yung mga input*/}
+
+      {/*Step 5*/}
+      <div className="pds_th" >
+          <span>V. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING PROGRAMS ATTENDED</span>
+          <span style={{fontSize:".75rem",marginTop:"5px",marginBottom:"5px"}}>(Start from the most recent L&D/training program and include only the relevant L&D/training taken for the last five (5) years for Division Chief/Executive/Managerial positions)</span>
+      </div>
+
+      <div className="pds_cert_row">
+          <div className="row1">
+              <span>TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS / TRAINING PROGRAMS</span>
+              <span>(Write in full)</span>
+          </div>
+          <div className="row2">
+              <div className="top1"><span>INCLUSIVE DATES OF ATTENDANCE  (mm/dd/yyyy)</span></div>
+              <div className="bot">
+                  <div className="from"><span>From</span></div>
+                  <div className="to"><span>To</span></div>
+              </div>
+          </div>
+          <div className="row3">
+              <span>NUMBER OF HOURS</span>
+          </div>
+          <div className="row4">
+              <span>Type of LD (Managerial / Supervisory / Technical / etc)</span>
+          </div>
+          <div className="row5">
+              <span>CONDUCTED/ SPONSORED BY</span>
+              <span>(Write in full)</span>
+          </div>
+      </div>
+
+        {ldContent}
+        {pds_step5 /*Eto yung mga input*/}
+</div>       
+
+      </div>
+    </div>
+
+    <p className="p_consent" style={{ visibility: "hidden" }}>
+      By accepting, you acknowledge that you have read this form, understood
+      its contents, and consent to the processing of your data for the
+      purposes indicated in this Consent Form. If not, your data will not be
+      used by Bulacan State University as long as your authorization to deny
+      access has not been reversed.
+    </p>
+  </div>
+);
 }
