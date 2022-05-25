@@ -2043,6 +2043,12 @@ export default function PersonalDataSheet() {
     document.getElementById("PDFView_PDS").style.fontWeight = "600";
   }
   
+  var doc = new jsPDF();
+  var specialElementHandlers = {
+      '#convertable_pdf_PDS1': function (element, renderer) {
+          return true;
+      }
+  };
 
   function printDocument1() {
     if(localStorage.getItem('isProfileLocked')=="yes"){

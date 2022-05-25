@@ -74,7 +74,7 @@ function validatorPDS5(){
         document.getElementById("preview_pob").textContent = document.getElementById("cob_pds").value.toUpperCase()+" , "+document.getElementById("cityOfBirth_pds").value.toUpperCase();
         document.getElementById("preview_gender").textContent = document.getElementById("gender_pds").value.toUpperCase();
         document.getElementById("preview_civil").textContent = document.getElementById("civil_pds").value.toUpperCase();
-        document.getElementById("preview_height").textContent = document.getElementById("height_pds").value.toUpperCase()+" CM"
+        document.getElementById("preview_height").textContent = document.getElementById("height_pds").value.toUpperCase()+" M"
         document.getElementById("preview_weight").textContent = document.getElementById("weight_pds").value.toUpperCase()+" KG"
         document.getElementById("preview_blood").textContent = document.getElementById("blood_pds").value.toUpperCase();
         document.getElementById("preview_gsis").textContent = document.getElementById("gsis_pds").value.toUpperCase();

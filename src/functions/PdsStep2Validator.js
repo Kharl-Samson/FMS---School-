@@ -16,7 +16,10 @@ function validatorPDS2(){
     v_EdateTo.length != e_DateTo.length ? list_of_errors += "- Date attended (To) cannot be blank (Elementary). <br/>" : list_of_errors += ""
     
     for(var z = 0; z < e_DateFrom.length; z++) {
-        if(e_DateFrom[z].value >= e_DateTo[z].value && e_DateFrom[z].value !=="" && e_DateTo[z].value !==""){
+        if(e_DateFrom[z].value == "N/A" || e_DateTo[z].value== "N/A"){
+            continue;
+        }
+        else if(e_DateFrom[z].value >= e_DateTo[z].value && e_DateFrom[z].value !=="" && e_DateTo[z].value !==""){
             list_of_errors +="- Entry("+(z+1)+") Date From and To are invalid range (Elementary). <br/>";
         }
         else{
@@ -54,7 +57,10 @@ function validatorPDS2(){
     v_SdateTo.length != s_DateTo.length ? list_of_errors += "- Date attended (To) cannot be blank (Secondary). <br/>" : list_of_errors += ""
 
     for(var z = 0; z < s_DateFrom.length; z++) {
-        if(s_DateFrom[z].value >= s_DateTo[z].value && s_DateFrom[z].value !=="" && s_DateTo[z].value !==""){
+        if(s_DateFrom[z].value == "N/A" || s_DateTo[z].value== "N/A"){
+            continue;
+        }
+        else if(s_DateFrom[z].value >= s_DateTo[z].value && s_DateFrom[z].value !=="" && s_DateTo[z].value !==""){
             list_of_errors +="- Entry("+(z+1)+") Date From and To are invalid range (Secondary). <br/>";
         }
         else{
@@ -85,15 +91,18 @@ function validatorPDS2(){
     v_Vattain .length !=v_Attain.length ? list_of_errors += "- Basic Education/Degree/Course cannot be blank (Vocational). <br/>" : list_of_errors += ""
 
     const v_DateFrom = document.getElementsByName("vocational_dateFromPDS[]");
-    //const v_VdateFrom = Array.from(v_DateFrom).filter( input => input.value !== "");
-    //v_VdateFrom.length != v_DateFrom.length ? list_of_errors += "- Date attended (From) cannot be blank (Vocational). <br/>" : list_of_errors += ""
+    const v_VdateFrom = Array.from(v_DateFrom).filter( input => input.value !== "");
+    v_VdateFrom.length != v_DateFrom.length ? list_of_errors += "- Date attended (From) cannot be blank (Vocational). <br/>" : list_of_errors += ""
 
     const v_DateTo = document.getElementsByName("vocational_dateToPDS[]");
-    //const v_VdateTo = Array.from(v_DateTo).filter( input => input.value !== "");
-   // v_VdateTo.length != v_DateTo.length ? list_of_errors += "- Date attended (To) cannot be blank (Vocational). <br/>" : list_of_errors += ""
+    const v_VdateTo = Array.from(v_DateTo).filter( input => input.value !== "");
+    v_VdateTo.length != v_DateTo.length ? list_of_errors += "- Date attended (To) cannot be blank (Vocational). <br/>" : list_of_errors += ""
 
     for(var z = 0; z < v_DateFrom.length; z++) {
-        if(v_DateFrom[z].value >= v_DateTo[z].value && v_DateFrom[z].value !=="" && v_DateTo[z].value !==""){
+        if(v_DateFrom[z].value == "N/A" || v_DateTo[z].value== "N/A"){
+            continue;
+        }
+        else if(v_DateFrom[z].value > v_DateTo[z].value && v_DateFrom[z].value !=="" && v_DateTo[z].value !==""){
             list_of_errors +="- Entry("+(z+1)+") Date From and To are invalid range (Vocational). <br/>";
         }
         else{
@@ -127,11 +136,14 @@ function validatorPDS2(){
     v_CdateFrom.length != c_DateFrom.length ? list_of_errors += "- Date attended (From) cannot be blank (College). <br/>" : list_of_errors += ""
 
     const c_DateTo = document.getElementsByName("college_dateToPDS[]");
-    //const v_CdateTo = Array.from(c_DateTo).filter( input => input.value !== "");
-    //v_CdateTo.length != c_DateTo.length ? list_of_errors += "- Date attended (To) cannot be blank (College). <br/>" : list_of_errors += ""
+    const v_CdateTo = Array.from(c_DateTo).filter( input => input.value !== "");
+    v_CdateTo.length != c_DateTo.length ? list_of_errors += "- Date attended (To) cannot be blank (College). <br/>" : list_of_errors += ""
 
     for(var z = 0; z < c_DateFrom.length; z++) {
-        if(c_DateFrom[z].value >= c_DateTo[z].value && c_DateFrom[z].value !=="" && c_DateTo[z].value !==""){
+        if(c_DateFrom[z].value == "N/A" || c_DateTo[z].value== "N/A"){
+            continue;
+        }
+        else if(c_DateFrom[z].value >= c_DateTo[z].value && c_DateFrom[z].value !=="" && c_DateTo[z].value !==""){
             list_of_errors +="- Entry("+(z+1)+") Date From and To are invalid range (College). <br/>";
         }
         else{
@@ -163,15 +175,18 @@ function validatorPDS2(){
     v_Gattain .length !=g_Attain.length ? list_of_errors += "- Basic Education/Degree/Course cannot be blank (Graduate Studies). <br/>" : list_of_errors += ""
 
     const g_DateFrom = document.getElementsByName("graduate_dateFromPDS[]");
-    //const v_GdateFrom = Array.from(g_DateFrom).filter( input => input.value !== "");
-   //v_GdateFrom.length != g_DateFrom.length ? list_of_errors += "- Date attended (From) cannot be blank (Graduate Studies). <br/>" : list_of_errors += ""
+    const v_GdateFrom = Array.from(g_DateFrom).filter( input => input.value !== "");
+   v_GdateFrom.length != g_DateFrom.length ? list_of_errors += "- Date attended (From) cannot be blank (Graduate Studies). <br/>" : list_of_errors += ""
 
     const g_DateTo = document.getElementsByName("graduate_dateToPDS[]");
-    //const v_GdateTo = Array.from(g_DateTo).filter( input => input.value !== "");
-    //v_GdateTo.length != g_DateTo.length ? list_of_errors += "- Date attended (To) cannot be blank (Graduate Studies). <br/>" : list_of_errors += ""
+    const v_GdateTo = Array.from(g_DateTo).filter( input => input.value !== "");
+    v_GdateTo.length != g_DateTo.length ? list_of_errors += "- Date attended (To) cannot be blank (Graduate Studies). <br/>" : list_of_errors += ""
 
     for(var z = 0; z < g_DateFrom.length; z++) {
-        if(g_DateFrom[z].value >= g_DateTo[z].value && g_DateFrom[z].value !=="" && g_DateTo[z].value !==""){
+        if(g_DateFrom[z].value == "N/A" || g_DateTo[z].value== "N/A"){
+            continue;
+        }
+        else if(g_DateFrom[z].value > g_DateTo[z].value && g_DateFrom[z].value !=="" && g_DateTo[z].value !==""){
             list_of_errors +="- Entry("+(z+1)+") Date From and To are invalid range (Graduate Studies). <br/>";
         }
         else{

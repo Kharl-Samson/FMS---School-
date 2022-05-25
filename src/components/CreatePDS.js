@@ -1723,34 +1723,29 @@ export default function CreatePersonalDataSheet() {
   const ElementaryContent = elemName.map(() => {
     elem_ctr++;
     return (
-      <div className="name_of_schooldPreview" key={elemName + elem_ctr}>
-        <div className="box_name" style={{ width: "15.44%" }}>
-          {" "}
-          {elemName[elem_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "15.40%" }}>
-          {" "}
-          Elementary{" "}
-        </div>
-        <div className="box_name" style={{ width: "17.8%" }}>
-          <div style={{ borderRight: "1.5px solid black" }}>
-            {elemfrom[elem_ctr]}
-          </div>
-          <div>{elemTO[elem_ctr]}</div>
-        </div>
-        <div className="box_name" style={{ width: "11.8%" }}>
-          {" "}
-          {elemUNITS[elem_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "9.5%" }}>
-          {" "}
-          {elemYEAR[elem_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "12%" }}>
-          {" "}
-          {elemAWARD[elem_ctr]}{" "}
-        </div>
+    <div className="educ_secRow" key={elemName + elem_ctr}>
+      <div className="row2">
+          <span>{elemName[elem_ctr]}</span>
       </div>
+      <div className="row3">
+          <span>PRIMARY EDUCATION</span>
+      </div>
+      <div className="row4">
+          <div className="bot">
+              <div className="from"><span>{elemfrom[elem_ctr]}</span></div>
+              <div className="to"><span>{elemTO[elem_ctr]}</span></div>
+          </div>
+      </div>
+      <div className="row5">
+          <span>{elemUNITS[elem_ctr]}</span>
+      </div>
+      <div className="row6">
+          <span>{elemYEAR[elem_ctr]}</span>
+      </div>
+      <div className="row7">
+          <span>{elemAWARD[elem_ctr]}</span>
+      </div>
+  </div> 
     );
   });
 
@@ -1759,34 +1754,29 @@ export default function CreatePersonalDataSheet() {
   const SecondaryContent = SecondName.map(() => {
     sec_ctr++;
     return (
-      <div className="name_of_schooldPreview" key={SecondName + sec_ctr}>
-        <div className="box_name" style={{ width: "15.44%" }}>
-          {" "}
-          {SecondName[sec_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "15.40%" }}>
-          {" "}
-          {SecondAttain[sec_ctr]}
-        </div>
-        <div className="box_name" style={{ width: "17.8%" }}>
-          <div style={{ borderRight: "1.5px solid black" }}>
-            {SecondFrom[sec_ctr]}
-          </div>
-          <div>{SecondTo[sec_ctr]}</div>
-        </div>
-        <div className="box_name" style={{ width: "11.8%" }}>
-          {" "}
-          {SecondUnit[sec_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "9.5%" }}>
-          {" "}
-          {SecondYear[sec_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "12%" }}>
-          {" "}
-          {SecondAward[sec_ctr]}{" "}
-        </div>
+      <div className="educ_secRow" key={SecondName + sec_ctr}>
+      <div className="row2">
+          <span>{SecondName[sec_ctr]}</span>
       </div>
+      <div className="row3">
+          <span>{SecondAttain[sec_ctr]}</span>
+      </div>
+      <div className="row4">
+          <div className="bot">
+              <div className="from"><span>{SecondFrom[sec_ctr]}</span></div>
+              <div className="to"><span>{SecondTo[sec_ctr]}</span></div>
+          </div>
+      </div>
+      <div className="row5">
+          <span>{SecondUnit[sec_ctr]}</span>
+      </div>
+      <div className="row6">
+          <span>{SecondYear[sec_ctr]}</span>
+      </div>
+      <div className="row7">
+          <span>{SecondAward[sec_ctr]}</span>
+      </div>
+  </div> 
     );
   });
 
@@ -1795,36 +1785,29 @@ export default function CreatePersonalDataSheet() {
   const VocationalContent = VocationalName.map(() => {
     voc_ctr++;
     return (
-      <div className="name_of_schooldPreview" key={VocationalName + voc_ctr}>
-        <div className="box_name" style={{ width: "15.44%" }}>
-          {" "}
-          {VocationalName[voc_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "15.40%" }}>
-          {" "}
-          {VocationalAttain[voc_ctr]}
-        </div>
-        <div className="box_name" style={{ width: "17.8%" }}>
-          <div style={{ borderRight: "1.5px solid black" }}>
-            {VocationalFrom[voc_ctr] == "" ? "N/A" : VocationalFrom[voc_ctr]}
-          </div>
-          <div>
-            {VocationalTo[voc_ctr] == "" ? "N/A" : VocationalTo[voc_ctr]}
-          </div>
-        </div>
-        <div className="box_name" style={{ width: "11.8%" }}>
-          {" "}
-          {VocationalUnit[voc_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "9.5%" }}>
-          {" "}
-          {VocationalYear[voc_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "12%" }}>
-          {" "}
-          {VocationalAward[voc_ctr]}{" "}
-        </div>
+      <div className="educ_secRow" key={VocationalName + voc_ctr}>
+      <div className="row2">
+          <span>{VocationalName[voc_ctr]}</span>
       </div>
+      <div className="row3">
+          <span>{VocationalAttain[voc_ctr]}</span>
+      </div>
+      <div className="row4">
+          <div className="bot">
+              <div className="from"><span>{VocationalFrom[voc_ctr] == "" ? "N/A" : VocationalFrom[voc_ctr]}</span></div>
+              <div className="to"><span>{VocationalTo[voc_ctr] == "" ? "N/A" : VocationalTo[voc_ctr]}</span></div>
+          </div>
+      </div>
+      <div className="row5">
+          <span>{VocationalUnit[voc_ctr]}</span>
+      </div>
+      <div className="row6">
+          <span>{VocationalYear[voc_ctr]}</span>
+      </div>
+      <div className="row7">
+          <span>{VocationalAward[voc_ctr]}</span>
+      </div>
+  </div> 
     );
   });
 
@@ -1833,36 +1816,29 @@ export default function CreatePersonalDataSheet() {
   const CollegeContent = CollegeName.map(() => {
     col_ctr++;
     return (
-      <div className="name_of_schooldPreview" key={CollegeName + col_ctr}>
-        <div className="box_name" style={{ width: "15.44%" }}>
-          {" "}
-          {CollegeName[col_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "15.40%" }}>
-          {" "}
-          {CollegeAttain[col_ctr]}
-        </div>
-        <div className="box_name" style={{ width: "17.8%" }}>
-          <div style={{ borderRight: "1.5px solid black" }}>
-            {CollegeFrom[col_ctr] == "" ? "N/A" : CollegeFrom[col_ctr]}
-          </div>
-          <div>
-            {CollegeTo[col_ctr] == "" ? "UP TO PRESENT" : CollegeTo[col_ctr]}
-          </div>
-        </div>
-        <div className="box_name" style={{ width: "11.8%" }}>
-          {" "}
-          {CollegeUnit[col_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "9.5%" }}>
-          {" "}
-          {CollegeYear[col_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "12%" }}>
-          {" "}
-          {CollegeAward[col_ctr]}{" "}
-        </div>
+      <div className="educ_secRow" key={CollegeName + col_ctr}>
+      <div className="row2">
+          <span>{CollegeName[col_ctr]}</span>
       </div>
+      <div className="row3">
+          <span>{CollegeAttain[col_ctr]}</span>
+      </div>
+      <div className="row4">
+          <div className="bot">
+              <div className="from"><span>{CollegeFrom[col_ctr] == "" ? "N/A" : CollegeFrom[col_ctr]}</span></div>
+              <div className="to"><span>{CollegeTo[col_ctr] == "" ? "UP TO PRESENT" : CollegeTo[col_ctr]}</span></div>
+          </div>
+      </div>
+      <div className="row5">
+          <span>{CollegeUnit[col_ctr]}</span>
+      </div>
+      <div className="row6">
+          <span>{CollegeYear[col_ctr]}</span>
+      </div>
+      <div className="row7">
+          <span>{CollegeAward[col_ctr]}</span>
+      </div>
+  </div> 
     );
   });
 
@@ -1871,34 +1847,29 @@ export default function CreatePersonalDataSheet() {
   const GraduateContent = GraduateName.map(() => {
     grad_ctr++;
     return (
-      <div className="name_of_schooldPreview" key={GraduateName + grad_ctr}>
-        <div className="box_name" style={{ width: "15.44%" }}>
-          {" "}
-          {GraduateName[grad_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "15.40%" }}>
-          {" "}
-          {GraduateAttain[grad_ctr]}
-        </div>
-        <div className="box_name" style={{ width: "17.8%" }}>
-          <div style={{ borderRight: "1.5px solid black" }}>
-            {GraduateFrom[grad_ctr] == "" ? "N/A" : GraduateFrom[grad_ctr]}
-          </div>
-          <div>{GraduateTo[grad_ctr] == "" ? "N/A" : GraduateTo[grad_ctr]}</div>
-        </div>
-        <div className="box_name" style={{ width: "11.8%" }}>
-          {" "}
-          {GraduateUnit[grad_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "9.5%" }}>
-          {" "}
-          {GraduateYear[grad_ctr]}{" "}
-        </div>
-        <div className="box_name" style={{ width: "12%" }}>
-          {" "}
-          {GraduateAward[grad_ctr]}{" "}
-        </div>
+      <div className="educ_secRow" key={GraduateName + grad_ctr}>
+      <div className="row2">
+          <span>{GraduateName[grad_ctr]}</span>
       </div>
+      <div className="row3">
+          <span>{GraduateAttain[grad_ctr]}</span>
+      </div>
+      <div className="row4">
+          <div className="bot">
+              <div className="from"><span>{GraduateFrom[grad_ctr] == "" ? "N/A" : GraduateFrom[grad_ctr]}</span></div>
+              <div className="to"><span>{GraduateTo[grad_ctr] == "" ? "N/A" : GraduateTo[grad_ctr]}</span></div>
+          </div>
+      </div>
+      <div className="row5">
+          <span>{GraduateUnit[grad_ctr]}</span>
+      </div>
+      <div className="row6">
+          <span>{GraduateYear[grad_ctr]}</span>
+      </div>
+      <div className="row7">
+          <span>{GraduateAward[grad_ctr]}</span>
+      </div>
+  </div> 
     );
   });
 
@@ -1907,26 +1878,26 @@ export default function CreatePersonalDataSheet() {
   const cseContent = CseBoard.map(() => {
     cse_ctr++;
     return (
-      <div className="CSE_content" key="{key2}">
-        <div className="CSE_box" style={{ width: "20%" }}>
-          {CseBoard[cse_ctr]}
-        </div>
-        <div className="CSE_box" style={{ width: "15%" }}>
-          {CseRating[cse_ctr]}
-        </div>
-        <div className="CSE_box" style={{ width: "15%" }}>
-          {CseDateExam[cse_ctr] == "" ? "N/A" : CseDateExam[cse_ctr]}
-        </div>
-        <div className="CSE_box" style={{ width: "20%" }}>
-          {CsePlaceExam[cse_ctr]}
-        </div>
-        <div className="CSE_box" style={{ width: "17.2%" }}>
-          <div>{CseLicense[cse_ctr]}</div>
-          <div style={{ borderLeft: "1px solid black" }}>
-            {CseDateVal[cse_ctr] == "" ? "N/A" : CseDateVal[cse_ctr]}
-          </div>
-        </div>
+      <div className="pds_cse_row pds_cse_row1" key={cse_ctr}>
+      <div className="row1">
+          <span>{CseBoard[cse_ctr]}</span>
       </div>
+      <div className="row2">
+          <span>{CseRating[cse_ctr]}</span>
+      </div>
+      <div className="row3">
+          <span>{CseDateExam[cse_ctr] == "" ? "N/A" : CseDateExam[cse_ctr]}</span>
+      </div>
+      <div className="row4">
+          <span>{CsePlaceExam[cse_ctr]}</span>
+      </div>
+      <div className="row5">
+          <div className="bot_cse">
+              <div className="lr_cse"><span>{CseLicense[cse_ctr]}</span></div>
+              <div className="lr_cse"><span>{CseDateVal[cse_ctr] == "" ? "N/A" : CseDateVal[cse_ctr]}</span></div>
+          </div>
+      </div>
+  </div>
     );
   });
 
@@ -1935,34 +1906,32 @@ export default function CreatePersonalDataSheet() {
   const weContent = wePosition.map(() => {
     we_ctr++;
     return (
-      <div className="WE_content" key="{key3}">
-        <div className="WE_box" style={{ width: "15%" }}>
-          <div style={{ display: "flex" }}>
-            <div>{weFrom[we_ctr] == "" ? "N/A" : weFrom[we_ctr]}</div>
-            <div style={{ borderLeft: "1.5px solid black" }}>
-              {weTo[we_ctr] == "" ? "N/A" : weTo[we_ctr]}
-            </div>
+      <div className="pds_we_row pds_we_row1" key={we_ctr}>
+      <div className="row1">
+          <div className="bot bot1">
+              <div className="from"><span>{weFrom[we_ctr] == "" ? "N/A" : moment(weFrom[we_ctr]).format('L')}</span></div>
+              <div className="to"><span>{weTo[we_ctr] == "" ? "N/A" : moment(weTo[we_ctr]).format('L')}</span></div>
           </div>
-        </div>
-        <div className="WE_box" style={{ width: "15%" }}>
-          {wePosition[we_ctr]}
-        </div>
-        <div className="WE_box" style={{ width: "18.1%" }}>
-          {weDepartment[we_ctr]}
-        </div>
-        <div className="WE_box" style={{ width: "8%" }}>
-          {weMonthly[we_ctr]}
-        </div>
-        <div className="WE_box" style={{ width: "10%" }}>
-          {weSalary[we_ctr]}
-        </div>
-        <div className="WE_box" style={{ width: "10%" }}>
-          {weAppoint[we_ctr]}
-        </div>
-        <div className="WE_box" style={{ width: "6%" }}>
-          {weGov[we_ctr]}
-        </div>
       </div>
+      <div className="row2">
+          <span>{wePosition[we_ctr]}</span>
+      </div>
+      <div className="row3">
+          <span>{weDepartment[we_ctr]}</span>
+      </div>
+      <div className="row4">
+          <span>{weMonthly[we_ctr]}</span>
+      </div>
+      <div className="row5">
+          <span>{weSalary[we_ctr]}</span>
+      </div>
+      <div className="row6">
+          <span>{weAppoint[we_ctr]}</span>
+      </div>
+      <div className="row7">
+          <span>{weGov[we_ctr]}</span>
+      </div>
+  </div>
     );
   });
 
@@ -1971,47 +1940,26 @@ export default function CreatePersonalDataSheet() {
   const ldContent = ldTitle.map(() => {
     ld_ctr++;
     return (
-      <div className="LD_content" key="{key4}">
-        <div className="LD_box" style={{ width: "20%" }}>
-          {ldTitle[ld_ctr]}
-        </div>
-        <div className="LD_box" style={{ width: "15%" }}>
-          <div style={{ display: "flex" }}>
-            <div
-              style={{
-                fontSize: ".8rem",
-                wordBreak: "break-all",
-                padding: "0 5px",
-              }}
-            >
-              {ldFrom[ld_ctr] == "" ? "N/A" : ldFrom[ld_ctr]}
-            </div>
-            <div
-              style={{
-                borderLeft: "1.5px solid black",
-                fontSize: ".8rem",
-                wordBreak: "break-all",
-                padding: "0 5px",
-              }}
-            >
-              {ldTo[ld_ctr] == "" ? "N/A" : ldTo[ld_ctr]}
-            </div>
-          </div>
-        </div>
-        <div className="LD_box" style={{ width: "8%" }}>
-          {" "}
-          {ldHours[ld_ctr] == "" ? "N/A" : ldHours[ld_ctr] + " HR/S"}
-        </div>
-        <div className="LD_box" style={{ width: "13%" }}>
-          {ldType[ld_ctr]}
-        </div>
-        <div className="LD_box" style={{ width: "11.6%" }}>
-          {ldCoverage[ld_ctr]}
-        </div>
-        <div className="LD_box" style={{ width: "17%" }}>
-          {ldSponsor[ld_ctr]}
-        </div>
+      <div className="pds_cert_row pds_cert_row1" key={ld_ctr}>
+      <div className="row1">
+          <span>{ldTitle[ld_ctr]}</span>
       </div>
+      <div className="row2">
+          <div className="bot">
+              <div className="from"><span>{ldFrom[ld_ctr] == "" ? "N/A" : moment(ldFrom[ld_ctr]).format('L')}</span></div>
+              <div className="to"><span>{ldTo[ld_ctr] == "" ? "N/A" : moment(ldTo[ld_ctr]).format('L')}</span></div>
+          </div>
+      </div>
+      <div className="row3">
+          <span>{ldHours[ld_ctr] == "" ? "N/A" : ldHours[ld_ctr] + " HR/S"}</span>
+      </div>
+      <div className="row4">
+          <span>{ldType[ld_ctr]}</span>
+      </div>
+      <div className="row5">
+          <span>{ldCoverage[ld_ctr]}</span>
+      </div>
+  </div>
     );
   });
 
@@ -2522,7 +2470,7 @@ export default function CreatePersonalDataSheet() {
                   variant="outlined"
                   color="warning"
                   className="pds_input"
-                  placeholder="(cm) Fields with * are required"
+                  placeholder="(m) Fields with * are required"
                   id="height_pds"
                   required
                   type="number"
@@ -3101,30 +3049,38 @@ export default function CreatePersonalDataSheet() {
                     color="warning"
                     className="pds_inputEduc"
                     required
-                    value="Elementary"
+                    value="Primary Education"
                     disabled
                   />
-                  <TextField
-                    required
-                    onChange={getAllElementaryInput}
-                    name="elem_dateFromPDS[]"
+                  <Autocomplete
+                    options={attendYear}
                     className="pds_inputEducSemi5"
-                    label="Date Attended (From)"
-                    color="warning"
-                    type="date"
-                    inputProps={{ min: "1950-01-01", max: maxDateInput }}
-                    InputLabelProps={{ shrink: true }}
+                    onChange={getAllElementaryInput}
+                    renderInput={(params) => (
+                      <TextField
+                        required
+                        color="warning"
+                        placeholder="Choose N/A if Not Applicable"
+                        {...params}
+                        label="Date Attended (From)"
+                        name="elem_dateFromPDS[]"
+                      />
+                    )}
                   />
-                  <TextField
-                    required
-                    onChange={getAllElementaryInput}
-                    name="elem_dateToPDS[]"
+                  <Autocomplete
+                    options={attendYear}
                     className="pds_inputEducSemi5"
-                    label="Date Attended (To)"
-                    color="warning"
-                    type="date"
-                    inputProps={{ min: "1950-01-01", max: maxDateInput }}
-                    InputLabelProps={{ shrink: true }}
+                    onChange={getAllElementaryInput}
+                    renderInput={(params) => (
+                      <TextField
+                        required
+                        color="warning"
+                        placeholder="Choose N/A if Not Applicable"
+                        {...params}
+                        label="Date Attended (To)"
+                        name="elem_dateToPDS[]"
+                      />
+                    )}
                   />
                   <TextField
                     onChange={getAllElementaryInput}
@@ -3226,27 +3182,35 @@ export default function CreatePersonalDataSheet() {
                       />
                     )}
                   />
-                  <TextField
-                    required
-                    onChange={getAllElementaryInput}
-                    name="second_dateFromPDS[]"
+                  <Autocomplete
+                    options={attendYear}
                     className="pds_inputEducSemi5"
-                    label="Date Attended (From)"
-                    color="warning"
-                    type="date"
-                    inputProps={{ min: "1950-01-01", max: maxDateInput }}
-                    InputLabelProps={{ shrink: true }}
+                    onChange={getAllElementaryInput}
+                    renderInput={(params) => (
+                      <TextField
+                        required
+                        color="warning"
+                        placeholder="Choose N/A if Not Applicable"
+                        {...params}
+                        label="Date Attended (From)"
+                        name="second_dateFromPDS[]"
+                      />
+                    )}
                   />
-                  <TextField
-                    required
-                    onChange={getAllElementaryInput}
-                    name="second_dateToPDS[]"
+                  <Autocomplete
+                    options={attendYear}
                     className="pds_inputEducSemi5"
-                    label="Date Attended (To)"
-                    color="warning"
-                    type="date"
-                    inputProps={{ min: "1950-01-01", max: maxDateInput }}
-                    InputLabelProps={{ shrink: true }}
+                    onChange={getAllElementaryInput}
+                    renderInput={(params) => (
+                      <TextField
+                        required
+                        color="warning"
+                        placeholder="Choose N/A if Not Applicable"
+                        {...params}
+                        label="Date Attended (To)"
+                        name="second_dateToPDS[]"
+                      />
+                    )}
                   />
                   <TextField
                     onChange={getAllElementaryInput}
@@ -3347,26 +3311,35 @@ export default function CreatePersonalDataSheet() {
                     onChange={getAllElementaryInput}
                     name="vocational_attainmentPDS[]"
                   />
-
-                  <TextField
-                    onChange={getAllElementaryInput}
-                    name="vocational_dateFromPDS[]"
+                  <Autocomplete
+                    options={attendYear}
                     className="pds_inputEducSemi5"
-                    label="Date Attended (From) [Leave blank if N/A]"
-                    color="warning"
-                    type="date"
-                    inputProps={{ min: "1950-01-01", max: maxDateInput }}
-                    InputLabelProps={{ shrink: true }}
+                    onChange={getAllElementaryInput}
+                    renderInput={(params) => (
+                      <TextField
+                        required
+                        color="warning"
+                        placeholder="Choose N/A if Not Applicable"
+                        {...params}
+                        label="Date Attended (From)"
+                        name="vocational_dateFromPDS[]"
+                      />
+                    )}
                   />
-                  <TextField
-                    onChange={getAllElementaryInput}
-                    name="vocational_dateToPDS[]"
+                  <Autocomplete
+                    options={attendYear}
                     className="pds_inputEducSemi5"
-                    label="Date Attended (To) [Leave blank if N/A]"
-                    color="warning"
-                    type="date"
-                    inputProps={{ min: "1950-01-01", max: maxDateInput }}
-                    InputLabelProps={{ shrink: true }}
+                    onChange={getAllElementaryInput}
+                    renderInput={(params) => (
+                      <TextField
+                        required
+                        color="warning"
+                        placeholder="Choose N/A if Not Applicable"
+                        {...params}
+                        label="Date Attended (To)"
+                        name="vocational_dateToPDS[]"
+                      />
+                    )}
                   />
                   <TextField
                     onChange={getAllElementaryInput}
@@ -3484,26 +3457,35 @@ export default function CreatePersonalDataSheet() {
                     name="college_attainmentPDS[]"
                     required
                   />
-                  <TextField
-                    required
-                    onChange={getAllElementaryInput}
-                    name="college_dateFromPDS[]"
+                  <Autocomplete
+                    options={attendYear}
                     className="pds_inputEducSemi5"
-                    label="Date Attended (From)"
-                    color="warning"
-                    type="date"
-                    inputProps={{ min: "1950-01-01", max: maxDateInput }}
-                    InputLabelProps={{ shrink: true }}
+                    onChange={getAllElementaryInput}
+                    renderInput={(params) => (
+                      <TextField
+                        required
+                        color="warning"
+                        placeholder="Choose N/A if Not Applicable"
+                        {...params}
+                        label="Date Attended (From)"
+                        name="college_dateFromPDS[]"
+                      />
+                    )}
                   />
-                  <TextField
-                    onChange={getAllElementaryInput}
-                    name="college_dateToPDS[]"
+                  <Autocomplete
+                    options={attendYear}
                     className="pds_inputEducSemi5"
-                    label="Date Attended (To) [Leave blank if date is up to present]"
-                    color="warning"
-                    type="date"
-                    inputProps={{ min: "1950-01-01", max: maxDateInput }}
-                    InputLabelProps={{ shrink: true }}
+                    onChange={getAllElementaryInput}
+                    renderInput={(params) => (
+                      <TextField
+                        required
+                        color="warning"
+                        placeholder="Choose N/A if Not Applicable"
+                        {...params}
+                        label="Date Attended (To)"
+                        name="college_dateToPDS[]"
+                      />
+                    )}
                   />
                   <TextField
                     onChange={getAllElementaryInput}
@@ -3604,26 +3586,35 @@ export default function CreatePersonalDataSheet() {
                     onChange={getAllElementaryInput}
                     name="graduate_attainmentPDS[]"
                   />
-
-                  <TextField
-                    onChange={getAllElementaryInput}
-                    name="graduate_dateFromPDS[]"
+                  <Autocomplete
+                    options={attendYear}
                     className="pds_inputEducSemi5"
-                    label="Date Attended (From) [Leave blank if N/A]"
-                    color="warning"
-                    type="date"
-                    inputProps={{ min: "1950-01-01", max: maxDateInput }}
-                    InputLabelProps={{ shrink: true }}
+                    onChange={getAllElementaryInput}
+                    renderInput={(params) => (
+                      <TextField
+                        required
+                        color="warning"
+                        placeholder="Choose N/A if Not Applicable"
+                        {...params}
+                        label="Date Attended (From)"
+                        name="graduate_dateFromPDS[]"
+                      />
+                    )}
                   />
-                  <TextField
-                    onChange={getAllElementaryInput}
-                    name="graduate_dateToPDS[]"
+                  <Autocomplete
+                    options={attendYear}
                     className="pds_inputEducSemi5"
-                    label="Date Attended (To) [Leave blank if N/A]"
-                    color="warning"
-                    type="date"
-                    inputProps={{ min: "1950-01-01", max: maxDateInput }}
-                    InputLabelProps={{ shrink: true }}
+                    onChange={getAllElementaryInput}
+                    renderInput={(params) => (
+                      <TextField
+                        required
+                        color="warning"
+                        placeholder="Choose N/A if Not Applicable"
+                        {...params}
+                        label="Date Attended (To)"
+                        name="graduate_dateToPDS[]"
+                      />
+                    )}
                   />
                   <TextField
                     onChange={getAllElementaryInput}
@@ -4249,6 +4240,8 @@ export default function CreatePersonalDataSheet() {
               <input type="hidden" id="ldCoverage_Input" />
               <input type="hidden" id="ldSponsor_Input" />
 
+
+              {/*STEP 6*/}
               <p className="step_text">Finalization</p>
               <p className="step_desc">Review your personal information</p>
 
@@ -4259,505 +4252,387 @@ export default function CreatePersonalDataSheet() {
 
               <div className="pds_review_container">
                 <div className="pds_preview">
-                  <div className="top">
-                    <div className="left">
-                      <img src={CICT_Logo} />
-                    </div>
-                    <div className="right">
-                      <p>College of Information</p>
-                      <p>and Communication Technology</p>
-                    </div>
+                  
+
+                {/*Step 1*/}
+                <div className="pds_header">
+                  <p className="pds_header_p">CS Form No. 212</p>
+                  <p className="pds_header_p">Revised 2017</p>
+                  <div className="pds_text">PERSONAL DATA SHEET</div>
+                  <p className="pds_warning">WARNING: Any misrepresentation made in the Personal Data Sheet and the Work Experience Sheet shall cause the filing of administrative/criminal case/s against the person concerned.</p>
+                </div>
+
+                <div className="pds_th">
+                  <span>I. PERSONAL INFORMATION</span>
+                </div>
+
+                <div className="pds_row">
+                  <div className="left">
+                    <div className="cont"><span>SURNAME</span></div>
+                    <div className="cont"><span>FIRST NAME</span></div>
+                    <div className="cont"><span>MIDDLE NAME</span></div>
                   </div>
-
-                  {/*Step 1*/}
-                  <div className="information_content">
-                    <div className="header">Personal Information</div>
-
-                    <div className="personal name">
-                      <div className="box">
-                        <span>First Name</span>
-                        <span id="preview_fname"></span>
-                      </div>
-                      <div className="box">
-                        <span>Middle Name</span>
-                        <span id="preview_mname"></span>
-                      </div>
-                      <div className="box">
-                        <span>Last Name</span>
-                        <span id="preview_lname"></span>
-                      </div>
-                      <div className="box">
-                        <span>Name Extension</span>
+                  <div className="right">
+                    <div className="cont"><span id="preview_lname"></span></div>
+                    <div className="cont">
+                        <div><span id="preview_fname"></span></div>
+                        <div className="name_ex">
+                        <span>NAME EXTENSION (JR., SR)</span>
                         <span id="preview_extension"></span>
-                      </div>
-                    </div>
-
-                    <div className="personal other_personal">
-                      <div className="left">
-                        <div className="box">
-                          <span>Date of Birth</span>
-                          <span id="preview_bday"></span>
-                        </div>
-                        <div className="box">
-                          <span>Age</span>
-                          <span id="preview_age"></span>
-                        </div>
-                        <div className="box">
-                          <span>Place of Birth</span>
-                          <span id="preview_pob"></span>
-                        </div>
-                        <div className="box">
-                          <span>Gender</span>
-                          <span id="preview_gender"></span>
-                        </div>
-                        <div className="box">
-                          <span>Civil Status</span>
-                          <span id="preview_civil"></span>
-                        </div>
-                        <div className="box">
-                          <span>Height</span>
-                          <span id="preview_height"></span>
-                        </div>
-                        <div className="box">
-                          <span>Weight</span>
-                          <span id="preview_weight"></span>
-                        </div>
-                        <div className="box">
-                          <span>Blood Type</span>
-                          <span id="preview_blood"></span>
-                        </div>
-                        <div className="box">
-                          <span>GSIS ID NO.</span>
-                          <span id="preview_gsis"></span>
-                        </div>
-                        <div className="box">
-                          <span>PAG-IBIG ID NO.</span>
-                          <span id="preview_pagibig"></span>
-                        </div>
-                        <div className="box">
-                          <span>PHILHEALTH NO.</span>
-                          <span id="preview_philhealth"></span>
-                        </div>
-                        <div className="box">
-                          <span>SSS NO.</span>
-                          <span id="preview_sss"></span>
-                        </div>
-                        <div className="box">
-                          <span>TIN NO.</span>
-                          <span id="preview_tin"></span>
-                        </div>
-                        <div className="box">
-                          <span>EMPLOYEE NO.</span>
-                          <span id="preview_empNo"></span>
-                        </div>
-                      </div>
-
-                      <div className="right">
-                        <div className="citizenship_preview">
-                          <div className="left_citizenship">Citizenship</div>
-                          <div
-                            className="right_citizenship"
-                            id="preview_citizenship"
-                          ></div>
-                        </div>
-
-                        <div
-                          className="address_preview"
-                          style={{ marginTop: "2px" }}
-                        >
-                          <div className="left_address">Resident Address</div>
-                          <div className="right_address">
-                            <div className="add1">
-                              <div className="box">
-                                <span>House/Block/Lot No.</span>
-                                <span id="preview_house"></span>
-                              </div>
-                              <div className="box">
-                                <span>Street</span>
-                                <span id="preview_street"></span>
-                              </div>
-                            </div>
-                            <div className="add1">
-                              <div className="box">
-                                <span>Subdivision/Village</span>
-                                <span id="preview_subdi"></span>
-                              </div>
-                              <div className="box">
-                                <span>Barangay</span>
-                                <span id="preview_barangay"></span>
-                              </div>
-                            </div>
-                            <div className="add1">
-                              <div className="box">
-                                <span>City/Municipality</span>
-                                <span id="preview_city"></span>
-                              </div>
-                              <div className="box">
-                                <span>Province</span>
-                                <span id="preview_province"></span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="zip_preview">
-                          <div style={{ textTransform: "none" }}>Zip code</div>
-                          <div id="preview_zip">3003</div>
-                        </div>
-
-                        <div className="address_preview">
-                          <div className="left_address">Pemanent Address</div>
-                          <div className="right_address">
-                            <div className="add1">
-                              <div className="box">
-                                <span>House/Block/Lot No.</span>
-                                <span id="preview_house1"></span>
-                              </div>
-                              <div className="box">
-                                <span>Street</span>
-                                <span id="preview_street1"></span>
-                              </div>
-                            </div>
-                            <div className="add1">
-                              <div className="box">
-                                <span>Subdivision/Village</span>
-                                <span id="preview_subdi1"></span>
-                              </div>
-                              <div className="box">
-                                <span>Barangay</span>
-                                <span id="preview_barangay1"></span>
-                              </div>
-                            </div>
-                            <div className="add1">
-                              <div className="box">
-                                <span>City/Municipality</span>
-                                <span id="preview_city1"></span>
-                              </div>
-                              <div className="box">
-                                <span>Province</span>
-                                <span id="preview_province1"></span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="zip_preview">
-                          <div style={{ textTransform: "none" }}>Zip code</div>
-                          <div id="preview_zip1"></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div style={{ display: "flex", width: "100%" }}>
-                      <div className="box" style={{ width: "50%" }}>
-                        <span>Mobile No.</span>
-                        <span id="preview_mobile"></span>
-                      </div>
-                      <div className="box" style={{ width: "50%" }}>
-                        <span>Email Address</span>
-                        <span
-                          style={{ textTransform: "none" }}
-                          id="preview_email"
-                        ></span>
-                      </div>
-                    </div>
-
-                    <div style={{ display: "flex", width: "100%" }}>
-                      <div
-                        className="box"
-                        style={{
-                          width: "50%",
-                          borderBottom: "2px solid black",
-                        }}
-                      >
-                        <span>Telephone No.</span>
-                        <span id="preview_tele"></span>
-                      </div>
-                      <div
-                        className="box"
-                        style={{
-                          width: "50%",
-                          borderBottom: "2px solid black",
-                        }}
-                      >
-                        <span>Alternate Email Address</span>
-                        <span
-                          style={{ textTransform: "none" }}
-                          id="preview_alEmail"
-                        ></span>
-                      </div>
                     </div>
                   </div>
-
-                  {/*Step 2*/}
-                  <div
-                    className="information_content"
-                    style={{ marginTop: "3rem" }}
-                  >
-                    <div className="header">Educational Background</div>
-
-                    <div className="education_content">
-                      <div
-                        className="educ_level"
-                        style={{
-                          width: "13%",
-                        }}
-                      >
-                        LEVEL
-                      </div>
-                      <div
-                        className="educ_name"
-                        style={{
-                          width: "13%",
-                        }}
-                      >
-                        <span>NAME OF SCHOOL</span> <span>(Write in full)</span>
-                      </div>
-                      <div
-                        className="educ_name"
-                        style={{
-                          width: "13%",
-                        }}
-                      >
-                        <span>BASIC EDUCATION / DEGREE / COURSE</span>{" "}
-                        <span>(Write in full)</span>
-                      </div>
-                      <div
-                        className="educ_level"
-                        style={{
-                          width: "15%",
-                        }}
-                      >
-                        <span>PERIOD OF ATTENDANCE</span>
-                        <div className="educ_period">
-                          <div style={{ borderRight: "1.5px solid black" }}>
-                            From
-                          </div>
-                          <div>To</div>
-                        </div>
-                      </div>
-                      <div
-                        className="educ_name"
-                        style={{
-                          width: "10%",
-                        }}
-                      >
-                        <span>HIGHEST LEVEL UNIT EARNED</span>{" "}
-                        <span>(If not graduated)</span>
-                      </div>
-                      <div
-                        className="educ_year"
-                        style={{
-                          width: "8%",
-                        }}
-                      >
-                        YEAR GRADUATED
-                      </div>
-
-                      <div
-                        className="educ_name1"
-                        style={{
-                          width: "10.1%",
-                        }}
-                      >
-                        SCHOLARSHIP / ACADEMIC HONORS RECEIVED
-                      </div>
-                    </div>
-
-                    <div className="education_content">
-                      <div
-                        className="educ_level"
-                        style={{
-                          width: "13%",
-                        }}
-                      >
-                        ELEMENTARY
-                      </div>
-                      <div className="educ_name_content">
-                        {ElementaryContent}
-                      </div>
-                    </div>
-
-                    <div className="education_content">
-                      <div
-                        className="educ_level"
-                        style={{
-                          width: "13%",
-                        }}
-                      >
-                        SECONDARY
-                      </div>
-                      <div className="educ_name_content">
-                        {SecondaryContent}
-                      </div>
-                    </div>
-
-                    <div className="education_content">
-                      <div
-                        className="educ_level"
-                        style={{
-                          width: "13%",
-                        }}
-                      >
-                        VOCATIONAL / TRADE / COURSE
-                      </div>
-                      <div className="educ_name_content">
-                        {VocationalContent}
-                      </div>
-                    </div>
-
-                    <div className="education_content">
-                      <div
-                        className="educ_level"
-                        style={{
-                          width: "13%",
-                        }}
-                      >
-                        College
-                      </div>
-                      <div className="educ_name_content">{CollegeContent}</div>
-                    </div>
-
-                    <div className="education_content">
-                      <div
-                        className="educ_level"
-                        style={{
-                          width: "13%",
-                        }}
-                      >
-                        Graduate Studies
-                      </div>
-                      <div className="educ_name_content">{GraduateContent}</div>
-                    </div>
-                  </div>
-
-                  {/*Step 3*/}
-                  <div
-                    className="information_content"
-                    style={{ marginTop: "3rem" }}
-                  >
-                    <div className="header">Civil Service Eligibility</div>
-                  </div>
-
-                  <div className="CSE_content">
-                    <div className="headers" style={{ width: "20%" }}>
-                      CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/
-                      CES/ CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE
-                    </div>
-                    <div className="headers" style={{ width: "15%" }}>
-                      <span>Rating</span>
-                      <span>(If Applicable)</span>
-                    </div>
-                    <div className="headers" style={{ width: "15%" }}>
-                      DATE OF EXAMINATION / CONFERMENT
-                    </div>
-                    <div className="headers" style={{ width: "20%" }}>
-                      PLACE OF EXAMINATION / CONFERMENT
-                    </div>
-                    <div
-                      className="headers"
-                      style={{ width: "17.2%", padding: "0 10px" }}
-                    >
-                      <div>LICENSE (if applicable)</div>
-                      <div style={{ display: "flex", marginTop: "20px" }}>
-                        <div>Number</div>
-                        <div style={{ borderLeft: "1.5px solid black" }}>
-                          Date of Validity
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {cseContent}
-
-                  {/*Step 4*/}
-                  <div
-                    className="information_content"
-                    style={{ marginTop: "3rem" }}
-                  >
-                    <div className="header">Work Experience</div>
-                  </div>
-
-                  <div className="WE_content">
-                    <div className="headers" style={{ width: "15%" }}>
-                      <div>INCLUSIVE DATES (mm/dd/yyyy)</div>
-                      <div style={{ display: "flex", marginTop: "20px" }}>
-                        <div>From</div>
-                        <div style={{ borderLeft: "1.5px solid black" }}>
-                          To
-                        </div>
-                      </div>
-                    </div>
-                    <div className="headers" style={{ width: "15%" }}>
-                      POSITION TITLE (Write in full/Do not abbreviate)
-                    </div>
-                    <div className="headers" style={{ width: "18.1%" }}>
-                      <span>DEPARTMENT / AGENCY / OFFICE / COMPANY</span>
-                      <span>(Write in full/Do not abbreviate)</span>
-                    </div>
-                    <div className="headers" style={{ width: "8%" }}>
-                      MONTHLY SALARY
-                    </div>
-                    <div className="headers" style={{ width: "10%" }}>
-                      SALARY/ JOB/ PAY GRADE (if applicable)& STEP (Format
-                      "00-0")/ INCREMENT
-                    </div>
-                    <div className="headers" style={{ width: "10%" }}>
-                      STATUS OF APPOINTMENT
-                    </div>
-                    <div className="headers" style={{ width: "6%" }}>
-                      GOV'T SERVICE (Y/N)
-                    </div>
-                  </div>
-
-                  {weContent}
-
-                  {/*Step 5*/}
-                  <div
-                    className="information_content"
-                    style={{ marginTop: "3rem" }}
-                  >
-                    <div className="header" style={{ fontSize: "1.1rem" }}>
-                      LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING
-                      PROGRAMS ATTENDED
-                    </div>
-                  </div>
-
-                  <div className="LD_content">
-                    <div className="headers" style={{ width: "20%" }}>
-                      <span>
-                        TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS/TRAINING
-                        PROGRAMS
-                      </span>
-                      <span>(Write in full)</span>
-                    </div>
-                    <div className="headers" style={{ width: "15%" }}>
-                      <div>INCLUSIVE DATES OF ATTENDANCE (mm/dd/yyyy)</div>
-                      <div style={{ display: "flex", marginTop: "20px" }}>
-                        <div>From</div>
-                        <div style={{ borderLeft: "1.5px solid black" }}>
-                          To
-                        </div>
-                      </div>
-                    </div>
-                    <div className="headers" style={{ width: "8%" }}>
-                      NUMBER OF HOURS
-                    </div>
-                    <div className="headers" style={{ width: "13%" }}>
-                      TYPE OF LD (Managerial / Supervisory / Technical / Etc)
-                    </div>
-                    <div className="headers" style={{ width: "11.6%" }}>
-                      COVERAGE (International / National / Regional / Local)
-                    </div>
-                    <div className="headers" style={{ width: "17%" }}>
-                      <span>CONDUCTED/ SPONSORED BY</span>
-                      <span>(Write in full)</span>
-                    </div>
-                  </div>
-
-                  {ldContent}
+                  <div className="cont"><span id="preview_mname"></span></div>
                 </div>
               </div>
+
+              <div className="pds_row1">
+                <div className="row1">
+                  <div className="cont">
+                    <span>DATE OF BIRTH</span>
+                    <span>(mm/dd/yyyy)</span>
+                  </div>
+                  <div className="cont"><span>PLACE OF BIRTH</span></div>
+                  <div className="cont"><span>SEX</span></div>
+                </div>
+
+                <div className="row2">
+                  <div className="cont"><span id="preview_bday"></span></div>
+                  <div className="cont"><span id="preview_pob"></span></div>
+                  <div className="cont"><span id="preview_gender"></span></div>
+                </div>
+
+                <div className="row3">
+                  <span>CITIZENSHIP</span>
+                  <span>If holder of  dual citizenship, please indicate the details.</span>
+                </div>
+                <div className="row4" id="preview_citizenship"></div>
+              </div>                      
+
+              <div className="pds_row2">
+                <div className="row1">
+                    <div className="cont"><span>CIVIL STATUS</span></div>
+                    <div className="cont"><span>HEIGHT (m)</span></div>
+                    <div className="cont"><span>WEIGHT (kg)</span></div>
+                </div>
+                <div className="row2">
+                    <div className="cont"><span id="preview_civil"></span></div>
+                    <div className="cont"><span id="preview_height"></span></div>
+                    <div className="cont"><span id="preview_weight"></span></div>
+                    <div className="cont" style={{display:"none"}}><span id="preview_age"></span></div>
+                    <div className="cont" style={{display:"none"}}><span id="preview_alEmail"></span></div>
+                </div>
+                <div className="row3">
+                    <div className="cont"><span>RESIDENTIAL ADDRESS</span></div>
+                    <div className="cont"><span>ZIP CODE</span></div>
+                </div>
+                <div className="row4">
+                    <div className="cont">
+                        <div className="left_right">
+                          <div id="preview_house"></div>
+                          <div>House/Block/Lot No.</div>
+                        </div>
+                        <div className="left_right">
+                          <div id="preview_street"></div>
+                          <div>Street</div>
+                        </div>
+                    </div>
+                    <div className="cont">
+                      <div className="left_right">
+                        <div id="preview_subdi"></div>
+                        <div>Subdivision/Village</div>
+                      </div>
+                      <div className="left_right">
+                        <div id="preview_barangay"></div>
+                        <div>Barangay</div>
+                      </div>
+                  </div>
+                  <div className="cont">
+                    <div className="left_right">
+                        <div id="preview_city"></div>
+                        <div>City/Municipality</div>
+                    </div>
+                    <div className="left_right">
+                        <div id="preview_province"></div>
+                        <div>Province</div>
+                    </div>
+                  </div>
+                  <div className="cont">
+                    <div className="zip_code" id="preview_zip"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pds_row3">
+                  <div className="row1">
+                    <div className="cont"><span>BLOOD TYPE</span></div>
+                    <div className="cont"><span>GSIS ID NO.</span></div>
+                    <div className="cont"><span>PAG-IBIG ID NO.</span></div>
+                    <div className="cont"><span>PHILHEALTH NO.</span></div>
+                  </div>
+                  <div className="row2">
+                    <div className="cont"><span id="preview_blood"></span></div>
+                    <div className="cont"><span id="preview_gsis"></span></div>
+                    <div className="cont"><span id="preview_pagibig"></span></div>
+                    <div className="cont"><span id="preview_philhealth"></span></div>
+                  </div>
+                  <div className="row3">
+                    <div className="cont"><span>PERMANENT ADDRESS</span></div>
+                    <div className="cont"><span>ZIP CODE</span></div>
+                  </div>
+                  <div className="row4">
+                    <div className="cont">
+                      <div className="left_right">
+                        <div id="preview_house1"></div>
+                        <div>House/Block/Lot No.</div>
+                      </div>
+                      <div className="left_right">
+                        <div id="preview_street1"></div>
+                        <div>Street</div>
+                      </div>
+                    </div>
+                    <div className="cont">
+                      <div className="left_right">
+                        <div id="preview_subdi1"></div>
+                        <div>Subdivision/Village</div>
+                      </div>
+                      <div className="left_right">
+                        <div id="preview_barangay1"></div>
+                        <div>Barangay</div>
+                      </div>
+                    </div>
+                    <div className="cont">
+                      <div className="left_right">
+                          <div id="preview_city1"></div>
+                          <div>City/Municipality</div>
+                      </div>
+                      <div className="left_right">
+                        <div id="preview_province1"></div>
+                        <div>Province</div>
+                      </div>
+                    </div>
+                    <div className="cont">
+                      <div className="zip_code" id="preview_zip1"></div>
+                    </div>
+                  </div>
+              </div> 
+
+              <div className="pds_row4">
+                  <div className="row1">
+                      <div className="cont"><span>SSS NO.</span></div>
+                      <div className="cont"><span>TIN NO.</span></div>
+                      <div className="cont"><span>AGENCY EMPLOYEE NO.</span></div>
+                  </div>
+                  <div className="row2">
+                      <div className="cont"><span id="preview_sss"></span></div>
+                      <div className="cont"><span id="preview_tin"></span></div>
+                      <div className="cont"><span id="preview_empNo"></span></div>
+                  </div>
+                  <div className="row3">
+                      <div className="cont"><span>TELEPHONE NO.</span></div>
+                      <div className="cont"><span>MOBILE NO.</span></div>
+                      <div className="cont"><span>E-MAIL ADDRESS</span></div>
+                  </div>
+                  <div className="row4">
+                      <div className="cont"><span style={{textTransform:"uppercase",fontWeight:"600"}} id="preview_tele"></span></div>
+                      <div className="cont"><span style={{textTransform:"uppercase"}} id="preview_mobile"></span></div>
+                      <div className="cont"><span id="preview_email"></span></div>
+                  </div>
+              </div>                      
+
+              {/*Step 2*/}
+              <div className="pds_th">
+                <span>II. EDUCATIONAL BACKGROUND</span>
+              </div>
+
+              <div className="pds_educatiion_row">
+                <div className="row1"><span>LEVEL</span></div>
+                <div className="row2">
+                  <span>NAME OF SCHOOL</span>
+                  <span>(Write in full)</span>
+                </div>
+                <div className="row3">
+                  <span>BASIC EDUCATION / DEGREE / COURSE</span>
+                  <span>(Write in full)</span>
+                </div>
+                <div className="row4">
+                  <div className="top1"><span>PERIOD OF ATTENDANCE</span></div>
+                  <div className="bot">
+                    <div className="from">From</div>
+                    <div className="to">To</div>
+                  </div>
+                </div>
+                <div className="row5">
+                  <span>HIGHEST LEVEL / UNITS EARNED</span>
+                  <span>(If not graduated)</span>
+                </div>
+                <div className="row6">
+                  <span>YEAR GRADUATED</span>
+                </div>
+                <div className="row7">
+                  <span>SCHOLARSHIP / ACADEMIC HONORS RECEIVED</span>
+                </div>
+              </div>
+
+              {/*ELEMENTARY*/}
+              <div className="pds_educatiion_row pds_educatiion_row1">
+                <div className="left">
+                  <div className="row1" style={{borderRight:"none"}}>
+                    <span>ELEMENTARY</span>
+                  </div>
+                </div>
+                <div className="right">
+                  {ElementaryContent}
+                </div>
+              </div>
+              {/*SECONDARY*/}
+              <div className="pds_educatiion_row pds_educatiion_row1">
+                <div className="left">
+                  <div className="row1" style={{borderRight:"none"}}>
+                    <span>SECONDARY</span>
+                  </div>
+                </div>
+                <div className="right">
+                  {SecondaryContent}
+                </div>
+              </div>
+              {/*VOCATIONAL*/}
+              <div className="pds_educatiion_row pds_educatiion_row1">
+                  <div className="left">
+                      <div className="row1" style={{borderRight:"none"}}>
+                          <span>VOCATIONAL / TRADE COURSE</span>
+                      </div>
+                  </div>
+                  <div className="right">
+                      {VocationalContent}
+                  </div>
+              </div>
+              {/*COLLEGE*/}
+              <div className="pds_educatiion_row pds_educatiion_row1">
+                  <div className="left">
+                      <div className="row1" style={{borderRight:"none"}}>
+                          <span>COLLEGE</span>
+                      </div>
+                  </div>
+                  <div className="right">
+                      {CollegeContent}
+                  </div>
+              </div>
+              {/*GRADUATE STUDIES*/}
+              <div className="pds_educatiion_row pds_educatiion_row1">
+                  <div className="left">
+                      <div className="row1" style={{borderRight:"none"}}>
+                          <span>GRADUATE STUDIES</span>
+                      </div>
+                  </div>
+                  <div className="right">
+                      {GraduateContent}
+                  </div>
+              </div>
+
+            {/*Step 3*/}
+            <div className="pds_th">
+              <span>III. CIVIL SERVICE ELIGIBILITY</span>
+            </div>
+
+            <div className="pds_cse_row">
+              <div className="row1">
+                <span>CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/ CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE</span>
+              </div>
+              <div className="row2">
+                <span>RATING</span>
+                <span>(If Applicable)</span>
+              </div>
+              <div className="row3">
+                <span>DATE OF EXAMINATION / CONFERMENT</span>
+              </div>
+              <div className="row4">
+                <span>PLACE OF EXAMINATION / CONFERMENT</span>
+              </div>
+              <div className="row5">
+                <div className="top_cse">
+                    <span>LICENSE (if applicable)</span>
+                </div>
+                <div className="bot_cse">
+                    <div className="lr_cse"><span>NUMBER</span></div>
+                    <div className="lr_cse"><span>Date of Validity</span></div>
+                </div>
+              </div>
+            </div>
+
+            {cseContent}
+
+            {/*Step 4*/}
+            <div className="pds_th">
+              <span>IV. WORK EXPERIENCE</span>
+              <span style={{fontSize:".8rem",marginTop:"5px"}}>(Include private employment. Start from your recent work) Description of duties should be indicated in the attached Work Experience sheet.</span>
+            </div>
+
+            <div className="pds_we_row">
+                <div className="row1">
+                    <div className="top1"><span>INCLUSIVE DATES  (mm/dd/yyyy)</span></div>
+                    <div className="bot">
+                        <div className="from"><span>From</span></div>
+                        <div className="to"><span>To</span></div>
+                    </div>
+                </div>
+                <div className="row2">
+                    <span>POSITION TITLE</span>
+                    <span>(Write in full / Do not abbreviate)</span>
+                </div>
+                <div className="row3">
+                    <span>DEPARTMENT / AGENCY / OFFICE / COMPANY</span>
+                    <span>(Write in full / Do not abbreviate)</span>
+                </div>
+                <div className="row4">
+                    <span>MONTHLY SALARY</span>
+                </div>
+                <div className="row5">
+                    <span>SALARY/ JOB/ PAY GRADE (if applicable) & STEP  (Format "00-0")/ INCREMENT</span>
+                </div>
+                <div className="row6">
+                    <span>STATUS OF APPOINTMENT</span>
+                </div>
+                <div className="row7">
+                    <span>GOV'T SERVICE</span>
+                    <span>(Y/ N)</span>
+                </div>
+            </div>
+            
+            {weContent}
+
+            {/*Step 5*/}
+            <div className="pds_th">
+              <span>V. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING PROGRAMS ATTENDED</span>
+              <span style={{fontSize:".75rem",marginTop:"5px",marginBottom:"5px"}}>(Start from the most recent L&D/training program and include only the relevant L&D/training taken for the last five (5) years for Division Chief/Executive/Managerial positions)</span>
+            </div>
+
+            <div className="pds_cert_row">
+                <div className="row1">
+                    <span>TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS / TRAINING PROGRAMS</span>
+                    <span>(Write in full)</span>
+                </div>
+                <div className="row2">
+                    <div className="top1"><span>INCLUSIVE DATES OF ATTENDANCE  (mm/dd/yyyy)</span></div>
+                    <div className="bot">
+                        <div className="from"><span>From</span></div>
+                        <div className="to"><span>To</span></div>
+                    </div>
+                </div>
+                <div className="row3">
+                    <span>NUMBER OF HOURS</span>
+                </div>
+                <div className="row4">
+                    <span>Type of LD (Managerial / Supervisory / Technical / etc)</span>
+                </div>
+                <div className="row5">
+                    <span>CONDUCTED/ SPONSORED BY</span>
+                    <span>(Write in full)</span>
+                </div>
+            </div>
+
+            {ldContent}
+            </div>
+          </div>
 
               <p className="p_consent" style={{ visibility: "hidden" }}>
                 By accepting, you acknowledge that you have read this form,
@@ -4932,6 +4807,15 @@ export default function CreatePersonalDataSheet() {
   );
 }
 
+
+
+//Attend year
+var today1 = moment().format("L");
+today1 = today1.split("/");
+var attendYear = ["N/A"];
+for (let i = today1[2]; i >= 1950; i--) {
+  attendYear.push(i.toString());
+}
 //LandD Category
 const LandDCategory = [
   { label: "N/A" },
@@ -4965,6 +4849,7 @@ for (let i = today[2]; i >= 1950; i--) {
 }
 //Secondary Attainment
 const secondaryAttainment = [
+  { label: "N/A" },
   { label: "Junior High School" },
   { label: "Senior High School" },
 ];

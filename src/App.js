@@ -25,11 +25,12 @@ import AdminLogin from "./components/AdminLogin";
 import ContentSetting from "./components/ContentSetting";
 import TestPDF from "./components/TestPDF";
 
-
 export default function App() {
   //window.onerror = function(message, url, lineNumber) {  
     //return true; // prevents browser error messages  
  // };
+
+
   return (
     <div className="App">
             <Routes>

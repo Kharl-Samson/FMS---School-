@@ -43,6 +43,7 @@ import Skeleton from "@mui/material/Skeleton";
 
 export default function EditPersonalDataSheet() {
   document.title = "CICT | Edit Personal Information";
+  document.querySelector("link[rel='shortcut icon']").href = CICT_Logo;
   setTimeout(function () {
     document.getElementById("pds_link").classList.add("nav_active");
     var left_nav_minimize =
@@ -1514,7 +1515,7 @@ export default function EditPersonalDataSheet() {
           <input
             type="text"
             placeholder="Fields with * are required"
-            value="Elementary"
+            value="Primary Education"
             className="add_inp11"
             disabled
           />
@@ -1522,28 +1523,48 @@ export default function EditPersonalDataSheet() {
 
         <div className="dateSchool_input">
           <label>Date Attended (From) *</label>
-          <input
-            type="date"
-            defaultValue={elemfrom[elem_ctr]}
+          <select
+            className="add_inp11"
             name="elem_dateFromPDS[]"
             onChange={getAllElementaryInput}
-            className="add_inp11"
-            min="1950-01-01"
-            max={maxDateInput}
-          />
+          >
+            {attendYear &&
+              attendYear.length > 0 &&
+              attendYear.map((item) =>
+                item == elemfrom[elem_ctr] ? (
+                  <option key={item} value={item} selected>
+                    {item}
+                  </option>
+                ) : (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                )
+              )}
+          </select>
         </div>
 
         <div className="dateSchool_input">
           <label>Date Attended (To) *</label>
-          <input
-            type="date"
-            defaultValue={elemTO[elem_ctr]}
+          <select
+            className="add_inp11"
             name="elem_dateToPDS[]"
             onChange={getAllElementaryInput}
-            className="add_inp11"
-            min="1950-01-01"
-            max={maxDateInput}
-          />
+          >
+            {attendYear &&
+              attendYear.length > 0 &&
+              attendYear.map((item) =>
+                item == elemTO[elem_ctr] ? (
+                  <option key={item} value={item} selected>
+                    {item}
+                  </option>
+                ) : (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                )
+              )}
+          </select>
         </div>
 
         <div className="dateSchool_input">
@@ -1640,29 +1661,50 @@ export default function EditPersonalDataSheet() {
 
         <div className="dateSchool_input">
           <label>Date Attended (From) *</label>
-          <input
-            type="date"
-            defaultValue={SecondFrom[sec_ctr]}
+          <select
+            className="add_inp11"
             name="second_dateFromPDS[]"
             onChange={getAllElementaryInput}
-            className="add_inp11"
-            min="1950-01-01"
-            max={maxDateInput}
-          />
+          >
+            {attendYear &&
+              attendYear.length > 0 &&
+              attendYear.map((item) =>
+                item == SecondFrom[sec_ctr] ? (
+                  <option key={item} value={item} selected>
+                    {item}
+                  </option>
+                ) : (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                )
+              )}
+          </select>
         </div>
 
         <div className="dateSchool_input">
           <label>Date Attended (To) *</label>
-          <input
-            type="date"
-            defaultValue={SecondTo[sec_ctr]}
+          <select
+            className="add_inp11"
             name="second_dateToPDS[]"
             onChange={getAllElementaryInput}
-            className="add_inp11"
-            min="1950-01-01"
-            max={maxDateInput}
-          />
+          >
+            {attendYear &&
+              attendYear.length > 0 &&
+              attendYear.map((item) =>
+                item == SecondTo[sec_ctr] ? (
+                  <option key={item} value={item} selected>
+                    {item}
+                  </option>
+                ) : (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                )
+              )}
+          </select>
         </div>
+
 
         <div className="dateSchool_input">
           <label>Highest Level / Units Earned (If not graduated)</label>
@@ -1747,28 +1789,48 @@ export default function EditPersonalDataSheet() {
 
         <div className="dateSchool_input">
           <label>Date Attended (From)</label>
-          <input
-            type="date"
-            defaultValue={VocationalFrom[voc_ctr]}
+          <select
+            className="add_inp11"
             name="vocational_dateFromPDS[]"
             onChange={getAllElementaryInput}
-            className="add_inp11"
-            min="1950-01-01"
-            max={maxDateInput}
-          />
+          >
+            {attendYear &&
+              attendYear.length > 0 &&
+              attendYear.map((item) =>
+                item == VocationalFrom[voc_ctr] ? (
+                  <option key={item} value={item} selected>
+                    {item}
+                  </option>
+                ) : (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                )
+              )}
+          </select>
         </div>
 
         <div className="dateSchool_input">
           <label>Date Attended (To)</label>
-          <input
-            type="date"
-            defaultValue={VocationalTo[voc_ctr]}
+          <select
+            className="add_inp11"
             name="vocational_dateToPDS[]"
             onChange={getAllElementaryInput}
-            className="add_inp11"
-            min="1950-01-01"
-            max={maxDateInput}
-          />
+          >
+            {attendYear &&
+              attendYear.length > 0 &&
+              attendYear.map((item) =>
+                item == VocationalFrom[voc_ctr] ? (
+                  <option key={item} value={item} selected>
+                    {item}
+                  </option>
+                ) : (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                )
+              )}
+          </select>
         </div>
 
         <div className="dateSchool_input">
@@ -1854,30 +1916,48 @@ export default function EditPersonalDataSheet() {
 
         <div className="dateSchool_input">
           <label>Date Attended (From) *</label>
-          <input
-            type="date"
-            defaultValue={CollegeFrom[col_ctr]}
+          <select
+            className="add_inp11"
             name="college_dateFromPDS[]"
             onChange={getAllElementaryInput}
-            className="add_inp11"
-            min="1950-01-01"
-            max={maxDateInput}
-          />
+          >
+            {attendYear &&
+              attendYear.length > 0 &&
+              attendYear.map((item) =>
+                item == CollegeFrom[col_ctr] ? (
+                  <option key={item} value={item} selected>
+                    {item}
+                  </option>
+                ) : (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                )
+              )}
+          </select>
         </div>
 
         <div className="dateSchool_input">
-          <label>
-            Date Attended (To) [Leave blank if date is up to present]
-          </label>
-          <input
-            type="date"
-            defaultValue={CollegeTo[col_ctr]}
+          <label>Date Attended (To) *</label>
+          <select
+            className="add_inp11"
             name="college_dateToPDS[]"
             onChange={getAllElementaryInput}
-            className="add_inp11"
-            min="1950-01-01"
-            max={maxDateInput}
-          />
+          >
+            {attendYear &&
+              attendYear.length > 0 &&
+              attendYear.map((item) =>
+                item == CollegeFrom[col_ctr] ? (
+                  <option key={item} value={item} selected>
+                    {item}
+                  </option>
+                ) : (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                )
+              )}
+          </select>
         </div>
 
         <div className="dateSchool_input">
@@ -1963,30 +2043,48 @@ export default function EditPersonalDataSheet() {
 
         <div className="dateSchool_input">
           <label>Date Attended (From)</label>
-          <input
-            type="date"
-            defaultValue={GraduateFrom[grad_ctr]}
+          <select
+            className="add_inp11"
             name="graduate_dateFromPDS[]"
             onChange={getAllElementaryInput}
-            className="add_inp11"
-            min="1950-01-01"
-            max={maxDateInput}
-          />
+          >
+            {attendYear &&
+              attendYear.length > 0 &&
+              attendYear.map((item) =>
+                item == GraduateFrom[grad_ctr] ? (
+                  <option key={item} value={item} selected>
+                    {item}
+                  </option>
+                ) : (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                )
+              )}
+          </select>
         </div>
 
         <div className="dateSchool_input">
-          <label>
-            Date Attended (To) [Leave blank if date is up to present]
-          </label>
-          <input
-            type="date"
-            defaultValue={GraduateTo[grad_ctr]}
+          <label>Date Attended (To)</label>
+          <select
+            className="add_inp11"
             name="graduate_dateToPDS[]"
             onChange={getAllElementaryInput}
-            className="add_inp11"
-            min="1950-01-01"
-            max={maxDateInput}
-          />
+          >
+            {attendYear &&
+              attendYear.length > 0 &&
+              attendYear.map((item) =>
+                item == GraduateTo[grad_ctr] ? (
+                  <option key={item} value={item} selected>
+                    {item}
+                  </option>
+                ) : (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                )
+              )}
+          </select>
         </div>
 
         <div className="dateSchool_input">
@@ -2668,7 +2766,7 @@ export default function EditPersonalDataSheet() {
                       <input
                         type="text"
                         placeholder="Fields with * are required"
-                        value="Elementary"
+                        value="Primary Education"
                         className="add_inp11"
                         disabled
                       />
@@ -2676,23 +2774,38 @@ export default function EditPersonalDataSheet() {
 
                     <div className="dateSchool_input">
                       <label>Date Attended (From) *</label>
-                      <input
-                        type="date"
+                      <select
+                        className="add_inp11"
                         name="elem_dateFromPDS[]"
                         onChange={getAllElementaryInput}
-                        className="add_inp11"
-                      />
+                      >
+                      {attendYear &&
+                        attendYear.length > 0 &&
+                        attendYear.map((item) =>
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                        )}
+                      </select>
                     </div>
 
                     <div className="dateSchool_input">
                       <label>Date Attended (To) *</label>
-                      <input
-                        type="date"
+                      <select
+                        className="add_inp11"
                         name="elem_dateToPDS[]"
                         onChange={getAllElementaryInput}
-                        className="add_inp11"
-                      />
+                      >
+                      {attendYear &&
+                        attendYear.length > 0 &&
+                        attendYear.map((item) =>
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                        )}
+                      </select>
                     </div>
+
 
                     <div className="dateSchool_input">
                       <label>
@@ -2743,7 +2856,7 @@ export default function EditPersonalDataSheet() {
                 <input
                   type="hidden"
                   id="attainELEM_handler"
-                  value="Elementary"
+                  value="Primary Education"
                 />
                 <input type="hidden" id="dateFromELEM_handler" value=" |:| " />
                 <input type="hidden" id="dateToELEM_handler" value=" |:| " />
@@ -2807,27 +2920,37 @@ export default function EditPersonalDataSheet() {
                     </div>
 
                     <div className="dateSchool_input">
-                      <label>Date Attended (From) *</label>
-                      <input
-                        type="date"
+                    <label>Date Attended (From) *</label>
+                      <select
+                        className="add_inp11"
                         name="second_dateFromPDS[]"
                         onChange={getAllElementaryInput}
-                        className="add_inp11"
-                        min="1950-01-01"
-                        max={maxDateInput}
-                      />
+                      >
+                      {attendYear &&
+                        attendYear.length > 0 &&
+                        attendYear.map((item) =>
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                        )}
+                      </select>
                     </div>
 
                     <div className="dateSchool_input">
-                      <label>Date Attended (To) *</label>
-                      <input
-                        type="date"
+                    <label>Date Attended (To) *</label>
+                      <select
+                        className="add_inp11"
                         name="second_dateToPDS[]"
                         onChange={getAllElementaryInput}
-                        className="add_inp11"
-                        min="1950-01-01"
-                        max={maxDateInput}
-                      />
+                      >
+                      {attendYear &&
+                        attendYear.length > 0 &&
+                        attendYear.map((item) =>
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                        )}
+                      </select>
                     </div>
 
                     <div className="dateSchool_input">
@@ -2952,27 +3075,37 @@ export default function EditPersonalDataSheet() {
                     </div>
 
                     <div className="dateSchool_input">
-                      <label>Date Attended (From)</label>
-                      <input
-                        type="date"
+                    <label>Date Attended (From)</label>
+                      <select
+                        className="add_inp11"
                         name="vocational_dateFromPDS[]"
                         onChange={getAllElementaryInput}
-                        className="add_inp11"
-                        min="1950-01-01"
-                        max={maxDateInput}
-                      />
+                      >
+                      {attendYear &&
+                        attendYear.length > 0 &&
+                        attendYear.map((item) =>
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                        )}
+                      </select>
                     </div>
 
                     <div className="dateSchool_input">
-                      <label>Date Attended (To)</label>
-                      <input
-                        type="date"
+                    <label>Date Attended (To)</label>
+                      <select
+                        className="add_inp11"
                         name="vocational_dateToPDS[]"
                         onChange={getAllElementaryInput}
-                        className="add_inp11"
-                        min="1950-01-01"
-                        max={maxDateInput}
-                      />
+                      >
+                      {attendYear &&
+                        attendYear.length > 0 &&
+                        attendYear.map((item) =>
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                        )}
+                      </select>
                     </div>
 
                     <div className="dateSchool_input">
@@ -3105,29 +3238,36 @@ export default function EditPersonalDataSheet() {
 
                     <div className="dateSchool_input">
                       <label>Date Attended (From) *</label>
-                      <input
-                        type="date"
+                      <select
+                        className="add_inp11"
                         name="college_dateFromPDS[]"
                         onChange={getAllElementaryInput}
-                        className="add_inp11"
-                        min="1950-01-01"
-                        max={maxDateInput}
-                      />
+                      >
+                      {attendYear &&
+                        attendYear.length > 0 &&
+                        attendYear.map((item) =>
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                        )}
+                      </select>
                     </div>
-
+ 
                     <div className="dateSchool_input">
-                      <label>
-                        Date Attended (To) [Leave blank if date is up to
-                        present]
-                      </label>
-                      <input
-                        type="date"
+                      <label>Date Attended (To) *</label>
+                      <select
+                        className="add_inp11"
                         name="college_dateToPDS[]"
                         onChange={getAllElementaryInput}
-                        className="add_inp11"
-                        min="1950-01-01"
-                        max={maxDateInput}
-                      />
+                      >
+                      {attendYear &&
+                        attendYear.length > 0 &&
+                        attendYear.map((item) =>
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                        )}
+                      </select>
                     </div>
 
                     <div className="dateSchool_input">
@@ -3250,29 +3390,36 @@ export default function EditPersonalDataSheet() {
 
                     <div className="dateSchool_input">
                       <label>Date Attended (From)</label>
-                      <input
-                        type="date"
+                      <select
+                        className="add_inp11"
                         name="graduate_dateFromPDS[]"
                         onChange={getAllElementaryInput}
-                        className="add_inp11"
-                        min="1950-01-01"
-                        max={maxDateInput}
-                      />
+                      >
+                      {attendYear &&
+                        attendYear.length > 0 &&
+                        attendYear.map((item) =>
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                        )}
+                      </select>
                     </div>
 
                     <div className="dateSchool_input">
-                      <label>
-                        Date Attended (To) [Leave blank if date is up to
-                        present]
-                      </label>
-                      <input
-                        type="date"
+                      <label>Date Attended (To)</label>
+                      <select
+                        className="add_inp11"
                         name="graduate_dateToPDS[]"
                         onChange={getAllElementaryInput}
-                        className="add_inp11"
-                        min="1950-01-01"
-                        max={maxDateInput}
-                      />
+                      >
+                      {attendYear &&
+                        attendYear.length > 0 &&
+                        attendYear.map((item) =>
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                        )}
+                      </select>
                     </div>
 
                     <div className="dateSchool_input">
@@ -3834,6 +3981,13 @@ export default function EditPersonalDataSheet() {
   );
 }
 
+//Attend year
+var today1 = moment().format("L");
+today1 = today1.split("/");
+var attendYear = ["N/A"];
+for (let i = today1[2]; i >= 1950; i--) {
+  attendYear.push(i.toString());
+}
 //LandD Category
 const LandDCategory = [
   { label: "N/A" },
