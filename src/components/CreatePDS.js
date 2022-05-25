@@ -2470,7 +2470,7 @@ export default function CreatePersonalDataSheet() {
                   variant="outlined"
                   color="warning"
                   className="pds_input"
-                  placeholder="(m) Fields with * are required"
+                  placeholder="(cm) Fields with * are required"
                   id="height_pds"
                   required
                   type="number"

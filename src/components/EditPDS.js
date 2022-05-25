@@ -1947,7 +1947,7 @@ export default function EditPersonalDataSheet() {
             {attendYear &&
               attendYear.length > 0 &&
               attendYear.map((item) =>
-                item == CollegeFrom[col_ctr] ? (
+                item == CollegeTo[col_ctr] ? (
                   <option key={item} value={item} selected>
                     {item}
                   </option>
