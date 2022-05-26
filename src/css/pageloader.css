@@ -58,10 +58,10 @@
     flex-direction: column;
     padding-right: 10px;
     transition: 2s ease-in;
-    margin-top: -100px;
+    margin-top: -140px;
 }
 .pageLoader_container .page_container .column2 .img4{
-    margin-top: 0px;
+    margin-top: 0x;
     height: 35%;
     width: 280px;
 }

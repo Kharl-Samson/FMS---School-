@@ -37,7 +37,7 @@ export default function NavbarAdmin(props) {
   useEffect(() => {
     var auth = localStorage.getItem("email");
     if (auth === null) {
-      navigate(`/`);
+      navigate(`/AdminLogin`);
     }
     setAuth(auth);
   }, []);

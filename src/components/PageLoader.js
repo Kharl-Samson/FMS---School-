@@ -19,10 +19,9 @@ import img16 from "../images/loader/16.png";
 
 export default function PageLoader(){
 
-
     setTimeout(function () {
         document.getElementsByClassName("column1")[0].style.marginBottom="0";
-        document.getElementsByClassName("column2")[0].style.marginTop="0";
+        document.getElementsByClassName("column2")[0].style.marginTop="-40px";
         document.getElementsByClassName("column3")[0].style.marginBottom="0";
         document.getElementsByClassName("column4")[0].style.marginTop="0";
         document.getElementsByClassName("column5")[0].style.marginTop="0";
