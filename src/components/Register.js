@@ -17,7 +17,7 @@ import CICT_Logo from "../images/login/cict_logo.png";
 import Email_icon from "../images/icons/email.svg";
 import Invalid_icon from "../images/icons/invalid.svg";
 import Valid_icon from "../images/icons/valid.svg";
-
+import PageLoader from "../components/PageLoader";
 import validator from 'validator'
 import axios from "axios";
 import ModalValidation from "./ModalValidation";
@@ -30,6 +30,16 @@ import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Register(){
+    setTimeout(function () {
+        document.getElementById("pageLoader_container").style.opacity="100%";
+    }, 10);
+    setTimeout(function () {
+        document.getElementById("pageLoader_container").style.opacity="0";
+    }, 3000);
+    setTimeout(function () {
+        document.getElementById("pageLoader_container").style.display="none";
+    }, 3500);
+
     //Tooltip
     const LightTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }}/>
@@ -284,7 +294,8 @@ export default function Register(){
 });
     return (
         <div className="login_container">
-    
+                <PageLoader/>
+
             <div className="cict_text_container cict_text_container1">
                 <img src={CICT_Text} className="cict_text cict_text1"/>     
             </div>

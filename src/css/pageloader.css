@@ -1,0 +1,193 @@
+.pageLoader_container{
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    opacity: 100%;
+    z-index: 999999;
+    transition: .5s ease-in;
+}
+
+.pageLoader_container .page_container{
+    height: 100vh;
+    width: auto;
+    display: flex;
+    align-items: center;
+    transform: rotate(-7deg);
+}
+.pageLoader_container .page_container .column1{
+    height: 130vh;
+    width: 280px;
+    margin-left: -10%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-right: 10px;
+    transition: 2s ease-in;
+    margin-bottom: -100px;
+}
+.pageLoader_container .page_container .column1 .img1{
+    height: 30%;
+    width: 280px;
+    margin-top: -140px;
+}
+.loader_img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.pageLoader_container .page_container .column1 .img2{
+    margin-top: 10px;
+    height: 30%;
+    width: 280px;
+}
+.pageLoader_container .page_container .column1 .img3{
+    margin-top: 10px;
+    height: 40%;
+    width: 280px;
+}
+.pageLoader_container .page_container .column2{
+    height: 130vh;
+    width: 280px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-right: 10px;
+    transition: 2s ease-in;
+    margin-top: -100px;
+}
+.pageLoader_container .page_container .column2 .img4{
+    margin-top: 0px;
+    height: 35%;
+    width: 280px;
+}
+.pageLoader_container .page_container .column2 .img5{
+    margin-top: 10px;
+    height: 35%;
+    width: 280px;
+}
+.pageLoader_container .page_container .column2 .img6{
+    margin-top: 10px;
+    height: 35%;
+    width: 280px;
+}
+.pageLoader_container .page_container .column3{
+    height: 130vh;
+    width: 350px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-right: 10px;
+    transition: 2s ease-in;
+    margin-bottom: -100px;
+}
+.pageLoader_container .page_container .column3 .img7{
+    margin-top: 10px;
+    height: 25%;
+    width: 350px;
+}
+.pageLoader_container .page_container .column3 .img8{
+    margin-top: 10px;
+    height: 35%;
+    width: 350px;
+}
+.pageLoader_container .page_container .column3 .img9{
+    margin-top: 10px;
+    height: 35%;
+    width: 350px;
+}
+.pageLoader_container .page_container .column4{
+    height: 130vh;
+    width: 300px;
+    display: flex;
+    align-items: flex-start;
+    padding-right: 10px;
+    flex-direction: column;
+    transition: 2s ease-in;
+    margin-top: -100px;
+}
+.pageLoader_container .page_container .column4 .img10{
+    margin-top: 10px;
+    height: 40%;
+    width: 300px;
+}
+.pageLoader_container .page_container .column4 .img11{
+    margin-top: 10px;
+    height: 30%;
+    width: 300px;
+}
+.pageLoader_container .page_container .column4 .img12{
+    margin-top: 10px;
+    height: 30%;
+    width: 300px;
+}
+.pageLoader_container .page_container .column5{
+    height: 130vh;
+    width: 300px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    transition: 2s ease-in;
+    margin-bottom: -100px;
+}
+.pageLoader_container .page_container .column5 .img13{
+    margin-top: 10px;
+    height: 50%;
+    width: 300px;
+}
+
+.logo_container{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo_container .box_content{
+    width: 400px;
+    height: 280px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+}
+.logo_container .box_content img:nth-child(1){
+    height: 130px;
+    width: 130px;
+    -webkit-animation:spin 2s linear;
+    -moz-animation:spin 2s linear;
+    animation:spin 2s linear;
+}
+.logo_container .box_content img:nth-child(2){
+    height: auto;
+    width: 200px;
+    opacity: 0%;
+    transition: 2s ease-in;
+}
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); 
+    } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+

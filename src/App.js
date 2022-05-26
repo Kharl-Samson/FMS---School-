@@ -24,6 +24,7 @@ import ForgotPasswordForm from "./components/ForgotPasswordForm";
 import AdminLogin from "./components/AdminLogin";
 import ContentSetting from "./components/ContentSetting";
 import TestPDF from "./components/TestPDF";
+import PageLoader from "./components/PageLoader";
 
 export default function App() {
   //window.onerror = function(message, url, lineNumber) {  
@@ -34,6 +35,7 @@ export default function App() {
   return (
     <div className="App">
             <Routes>
+              <Route path="/PageLoader" element={<PageLoader/>} />
               <Route path="/" element={<Login/>} />
               <Route path="/AdminLogin" element={<AdminLogin/>} />
               <Route path="Register" element={<Register/>} />
