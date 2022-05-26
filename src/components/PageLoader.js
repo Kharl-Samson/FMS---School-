@@ -64,15 +64,16 @@ return(
                 <div className="img11"><img src={img11} className="loader_img"/></div>
                 <div className="img12"><img src={img12} className="loader_img"/></div>
             </div>
-            <div className="column5">
-                <div className="img13"><img src={img13} className="loader_img"/></div>
-                <div className="img13"><img src={img14} className="loader_img"/></div>
-            </div>
             <div className="column6">
                 <div className="img1"><img src={img1} className="loader_img"/></div>
                 <div className="img2"><img src={img2} className="loader_img"/></div>
                 <div className="img3"><img src={img3} className="loader_img"/></div>
             </div>
+            <div className="column5">
+                <div className="img13"><img src={img13} className="loader_img"/></div>
+                <div className="img13"><img src={img14} className="loader_img"/></div>
+            </div>
+
         </div>
     </div>
 )
