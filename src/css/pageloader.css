@@ -133,7 +133,7 @@
     align-items: flex-start;
     flex-direction: column;
     transition: 2s ease-in;
-    margin-bottom: -100px;
+    margin-top: -100px;
 }
 .pageLoader_container .page_container .column5 .img13{
     margin-top: 10px;
@@ -148,7 +148,7 @@
     flex-direction: column;
     padding-right: 10px;
     transition: 2s ease-in;
-    margin-top: -100px;
+    margin-bottom: -100px;
 }
 .pageLoader_container .page_container .column6 .img1{
     height: 40%;
