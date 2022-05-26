@@ -68,6 +68,7 @@ input[type="password"]::-ms-reveal {
     margin-left: 5%;
 	-webkit-animation: slide-left1 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	animation: slide-left1 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-delay: 3.1s;
 }
 @-webkit-keyframes slide-left1 {
     0% {
@@ -93,6 +94,7 @@ input[type="password"]::-ms-reveal {
     margin-left: -10%;
     -webkit-animation: slide-right1 01s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	animation: slide-right1 01s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-delay: 3.1s;
 }
 @-webkit-keyframes slide-right1 {
     0% {
@@ -154,6 +156,7 @@ input[type="password"]::-ms-reveal {
     justify-content: center;
     -webkit-animation: scale-up-center .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	animation: scale-up-center .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation-delay: 3.1s;
 }
 .login_form_container .login_form{
     height: auto;
@@ -412,6 +415,7 @@ input[type="password"]::-ms-reveal {
 .register_form_container{
 	-webkit-animation: flip-vertical-bck 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) reverse ;
 	animation: flip-vertical-bck 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) reverse ;
+    animation-delay: 3.1s;
 }
 @-webkit-keyframes flip-vertical-bck {
     0% {
@@ -487,8 +491,29 @@ input[type="password"]::-ms-reveal {
 
 /*FORGOT PASSWORD*/
 .forgot_password_container{
-    -webkit-animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: slide-left11 .4s cubic-bezier(0.455, 0.030, 0.515, 0.955) reverse ;
+	animation: slide-left11 .4s cubic-bezier(0.455, 0.030, 0.515, 0.955) reverse ;
+    animation-delay: 3.1s;
+}
+@-webkit-keyframes slide-left11 {
+    0% {
+        -webkit-transform: translateZ(0) rotateY(0);
+        transform: translateZ(0) rotateY(0);
+      }
+      100% {
+        -webkit-transform: translateZ(-260px) rotateY(-180deg);
+        transform: translateZ(-260px) rotateY(-180deg);
+      }
+  }
+  @keyframes slide-left11 {
+    0% {
+        -webkit-transform: translateZ(0) rotateY(0);
+        transform: translateZ(0) rotateY(0);
+      }
+      100% {
+        -webkit-transform: translateZ(-260px) rotateY(-180deg);
+        transform: translateZ(-260px) rotateY(-180deg);
+      }
 }
 
 .login_form_container .login_form > .left .left_container .forgot_header{
