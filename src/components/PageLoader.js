@@ -26,6 +26,7 @@ export default function PageLoader(){
         document.getElementsByClassName("column3")[0].style.marginBottom="0";
         document.getElementsByClassName("column4")[0].style.marginTop="0";
         document.getElementsByClassName("column5")[0].style.marginBottom="0";
+        document.getElementsByClassName("column6")[0].style.marginTop="0";
         document.getElementById("right_text_loader").style.opacity="100%";
     }, 100);
 
