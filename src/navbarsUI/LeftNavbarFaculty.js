@@ -17,6 +17,7 @@ import Skeleton from "@mui/material/Skeleton";
 import axios from "axios";
 import ProfileNotifyer from '../components/NotifyerProfile';
 import signOutModal from "../images/icons/signOutModal.svg";
+import loading from "../images/loading.gif";
 
 export default function NavbarFaculty(props) {
   //Tooltip
@@ -64,9 +65,6 @@ export default function NavbarFaculty(props) {
   }
 
 
-
-
-
   const mq = window.matchMedia("(max-width: 850px)");
   //Skeleton show
   setTimeout(function () {
@@ -95,10 +93,15 @@ export default function NavbarFaculty(props) {
         email:localStorage.getItem('email'),
     }
 
+    document.getElementsByClassName("LoadingContainer")[0].style.display = "flex";
+    document.getElementsByClassName("logout_modalAdmin")[0].style.display = "none";
     //Sending the data to my backend
     axios.post('http://localhost/fms/logout.php',sendData)
     .then((result)=>{
-      navigate(`/`);
+      setTimeout(function(){
+         document.getElementsByClassName("LoadingContainer")[0].style.display = "none";
+         navigate(`/`);
+      },1000)
     })    
 }
 
@@ -125,6 +128,15 @@ const webC_abbr = getWebContent.map((res) => {
 });
   return (
     <div className="navbar_account_container">
+
+            {/*Loading when getting data*/ }
+            <div className="LoadingContainer">
+                <div className="mid">
+                    <img src={loading}/>
+                    <span>This may take a while. Please wait...</span>
+                </div>
+            </div>
+
       <div>
         <div className="navbar_logo_container nav_part1">
         <Skeleton

@@ -23,10 +23,23 @@ import rightBG from "../images/login/login_img.png";
 import loading from "../images/loading.gif";
 import locked_accIcon from "../images/icons/locked_accIcon.png";
 import moment from "moment";
+import PageLoader from "../components/PageLoader";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function AdminLogin(){
+
+    setTimeout(function () {
+        document.getElementById("pageLoader_container").style.opacity="100%";
+    }, 10);
+    setTimeout(function () {
+        document.getElementById("pageLoader_container").style.opacity="0";
+    }, 3000);
+    setTimeout(function () {
+        document.getElementById("pageLoader_container").style.display="none";
+    }, 3500);
+
+
     //Tooltip
     const LightTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }}/>
@@ -238,6 +251,7 @@ export default function AdminLogin(){
 
     return (
         <div className="login_container" >
+            <PageLoader/>
 
             {/*Loading when getting data*/ }
             <div className="LoadingContainer">

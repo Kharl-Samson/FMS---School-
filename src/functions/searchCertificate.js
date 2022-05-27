@@ -38,4 +38,8 @@
         document.getElementsByClassName("no_searchFound2")[0].style.display ="none";
     }
 
+    $("#gridTable_forSearchPDF #certDesktopPDF").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+    });
+
   }

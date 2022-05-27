@@ -219,7 +219,7 @@ function printDocument() {
     const margin = [0.5, 0.5];
     const filename = "MyCertificates.pdf";
     var imgWidth = 8.5;
-    var pageHeight = 11;
+    var pageHeight = 14;
     var innerPageWidth = imgWidth - margin[0] * 2;
     var innerPageHeight = pageHeight - margin[1] * 2;
     // Calculate the number of pages.
@@ -234,7 +234,7 @@ function printDocument() {
     pageCanvas.width = canvas.width;
     pageCanvas.height = pxPageHeight;
     // Initialize the PDF.
-    var pdf = new jsPDF("p", "in", [8.5, 11]);
+    var pdf = new jsPDF("p", "in", [8.5, 14]);
     for (var page = 0; page < nPages; page++) {
       // Trim the final page to reduce file size.
       if (page === nPages - 1 && pxFullHeight % pxPageHeight !== 0) {

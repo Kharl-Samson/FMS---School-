@@ -4,6 +4,7 @@ export default function ApplyFilter() {
   var div = document.getElementsByClassName("certDesktop");  
   var div1 = document.getElementsByClassName("certTABLEDesktop");
   var div2 = document.getElementsByClassName("certTABLEMobile");
+  var div3 = document.getElementsByClassName("certDesktopPDF");
 
     if (document.getElementById("input_from").value !== "" && document.getElementById("input_to").value !== "") {
       for (var i = 0; i < div.length; i++) {
@@ -13,10 +14,12 @@ export default function ApplyFilter() {
             div[i].style.display = "block";
             div1[i].style.display = "flex";
             div2[i].style.display = "block";
+            div3[i].style.display = "flex";
           } else {
             div[i].style.display = "none";
             div1[i].style.display = "none";
             div2[i].style.display = "none";
+            div3[i].style.display = "none";
           }
         }
 

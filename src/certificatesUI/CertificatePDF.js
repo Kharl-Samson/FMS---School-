@@ -3,6 +3,7 @@ import CICT_Logo from "../images/login/cict_logo.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import bulsu_icon from "../images/bulsu_icon.png";
+import moment from 'moment';
 
 export default function CertificatePDF(){
    
@@ -65,10 +66,14 @@ export default function CertificatePDF(){
   const [LDto, setLDto] = useState([]);
   const loadLDto = async () => {
     var inputLDto = document.getElementById("LD_dateTo").value;
-    var replaceTo = inputLDto.replace(/-/g, "/");
+    var replaceTo = inputLDto.replace(/-/g, "-");
     var sliceinputLDto = replaceTo.slice(0, -5);
     const inputLDto_Array = sliceinputLDto.split(" |:| ");
-    setLDto(inputLDto_Array);
+    const newArray1 = [];
+    for(var i=0 ; i<inputLDto_Array .length ; i++){
+         newArray1.push(moment(inputLDto_Array [i]).format('LL'))
+    }
+    setLDto(newArray1);
   };
   const [LDhours, setLDhours] = useState([]);
   const loadLDhours = async () => {
@@ -141,13 +146,13 @@ export default function CertificatePDF(){
   const ldContent = LDtitle.map(() => {
     ld_ctr++;
     return (
-        <div className="th1" style={{fontWeight:"normal"}} key={ld_ctr}>
+        <div className="th1 certDesktopPDF" style={{fontWeight:"normal"}} key={ld_ctr} id="certDesktopPDF">
         <div><span style={{textTransform:"Uppercase" }}>{LDtitleFull[ld_ctr]}</span></div>
         <div>
             <div style={{width:"100%",display:"flex",border:"none",justifyContent:"center",fontWeight:"normal",flexDirection:"row"}}>
                 <span style={{margin:"7px",wordBreak:"break-all"}}>{LDfrom[ld_ctr]}</span>
                 <span style={{margin:"0px"}}>-</span>
-                <span style={{margin:"7px",wordBreak:"break-all"}}>{LDto[ld_ctr]}</span>
+                <span style={{margin:"7px",wordBreak:"break-all"}}>{LDto1[ld_ctr]}</span>
             </div>
         </div>
         <div>
@@ -162,12 +167,26 @@ export default function CertificatePDF(){
         <div>
             <span>{LDcoverage[ld_ctr]}</span>
         </div>
+
+
+        <p style={{display:"none"}}>{LDtitleFull[ld_ctr]}</p>
+        <p style={{display:"none"}}>{LDtitle[ld_ctr]}</p>
+        <p style={{display:"none"}}>{LDfrom[ld_ctr]}</p>
+        <p style={{display:"none"}}>{LDto[ld_ctr]}</p>
+        <p style={{display:"none"}}>{LDto1[ld_ctr]}</p>
+        <p style={{display:"none"}}>{LDhours[ld_ctr]}</p>
+        <p style={{display:"none"}}>{LDtype[ld_ctr]}</p>
+        <p style={{display:"none"}}>{LDsponsor[ld_ctr]}</p>
+        <p style={{display:"none"}}>{LDcoverage[ld_ctr]}</p>
+        <p style={{display:"none"}}>{LDcategory[ld_ctr]}</p>
+        <input type="hidden" value={LDto1[ld_ctr]} className="inputDateKey_hidden"/>
+
     </div>
     );
   });
 
     return(
-        <div className="certificatePDF_container">
+        <div className="certificatePDF_container" id="gridTable_forSearchPDF">
             <div className="pdf_container" id="convertable_pdf">
 
                 <div className="top">
