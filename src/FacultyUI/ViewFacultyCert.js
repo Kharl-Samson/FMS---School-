@@ -22,6 +22,7 @@ import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import profile_lock from "../images/icons/profile_lock.svg";
 import profile_lockOthers from "../images/profile_lock.png";
+import moment from "moment";
 
 export default function ViewFacultyCert() {
     //Tooltip
@@ -210,16 +211,22 @@ function printDocument() {
     document.getElementById("profileLocked_modal").style.display = "flex";
   }
   else{   
+  document.getElementById("namePrinted").textContent = localStorage.getItem('viewFacultyName');
+  document.getElementById("emailPrinted").textContent = localStorage.getItem('viewFacultyEmail');
+  document.getElementById("depPrinted").textContent = localStorage.getItem('viewFacultyDep');
+  document.getElementById("generatedPrint").textContent = localStorage.getItem('name');
+  document.getElementById("datePrint").textContent = moment().format('LL');  
+  document.getElementById("timePrint").textContent = moment().format('LTS');
   html2canvas(document.querySelector("#convertableCertUser_pdf"), {
     useCORS: true,
     allowTaint: true,
     scrollY: 0,
   }).then((canvas) => {
     const image = { type: "png", quality: 0.98 };
-    const margin = [0.5, 0.5];
+    const margin = [0, 0];
     const filename = "MyCertificates.pdf";
     var imgWidth = 8.5;
-    var pageHeight = 14;
+    var pageHeight = 13.5;
     var innerPageWidth = imgWidth - margin[0] * 2;
     var innerPageHeight = pageHeight - margin[1] * 2;
     // Calculate the number of pages.

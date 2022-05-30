@@ -38,6 +38,7 @@ export default function FacultyGrid(props){
         window.localStorage.setItem('viewFacultyName', props.fName);
         window.localStorage.setItem('viewFacultyPhoto', props.fImage);
         window.localStorage.setItem('viewFacultyEmail', props.fEmail);
+        window.localStorage.setItem('viewFacultyDep', props.fDep);
         navigate(`/ViewFaculty`);
     }
 
@@ -45,6 +46,7 @@ export default function FacultyGrid(props){
         window.localStorage.setItem('viewFacultyName', props.fName);
         window.localStorage.setItem('viewFacultyPhoto', props.fImage);
         window.localStorage.setItem('viewFacultyEmail', props.fEmail);
+        window.localStorage.setItem('viewFacultyDep', props.fDep);
         navigate(`/ViewFacultyCertificates`);
     }
 

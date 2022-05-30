@@ -500,14 +500,14 @@ export default function CertificateTopActions() {
       <div className="container">
 
   
-        <div onClick={printDocument}>
+        <div onClick={printDocument} className="f_hover">
         <form>
           <img src={download_yellow}/> Generate as PDF
         </form>  
         </div>
      
 
-        <div>
+        <div className="f_hover">
          <Link to="/UploadCertificate" style={{ textDecoration: 'none' }} className="upload_cert">
             <img src={uploadWhite} /> Upload Certificate
           </Link>
@@ -534,16 +534,23 @@ export default function CertificateTopActions() {
 
 //Printing certificate
 function printDocument() {
+    document.getElementById("namePrinted").textContent = localStorage.getItem('name');
+    document.getElementById("emailPrinted").textContent = localStorage.getItem('email');
+    document.getElementById("depPrinted").textContent = localStorage.getItem('department');
+    document.getElementById("generatedPrint").textContent = localStorage.getItem('name');
+    document.getElementById("datePrint").textContent = moment().format('LL');  
+    document.getElementById("timePrint").textContent = moment().format('LTS');
+    
     html2canvas(document.querySelector("#convertable_pdf"), {
       useCORS: true,
       allowTaint: true,
       scrollY: 0,
     }).then((canvas) => {
       const image = { type: "png", quality: 0.98 };
-      const margin = [0.5, 0.5];
+      const margin = [0, 0];
       const filename = "MyCertificates.pdf";
       var imgWidth = 8.5;
-      var pageHeight = 14;
+      var pageHeight = 13.5;
       var innerPageWidth = imgWidth - margin[0] * 2;
       var innerPageHeight = pageHeight - margin[1] * 2;
       // Calculate the number of pages.

@@ -7,6 +7,7 @@ input[type="password"]::-ms-reveal {
     width: 100%;
     background-color: #FFAA28;
     overflow: hidden;
+    z-index: 99999999;
 }
 /*HOME CONTAINER BTN*/
 .home_container_btn{

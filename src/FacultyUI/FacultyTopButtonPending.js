@@ -308,18 +308,21 @@ export default function FacultyTopButtonPending() {
 }
 
 
-//Printing certificate
+//Printing user pending
 function printDocumentPending() {
+  document.getElementById("generatedPrint1").textContent = localStorage.getItem('name');
+  document.getElementById("datePrint1").textContent = moment().format('LL');  
+  document.getElementById("timePrint1").textContent = moment().format('LTS');
   html2canvas(document.querySelector("#PendingUsers_pdf"), {
     useCORS: true,
     allowTaint: true,
     scrollY: 0,
   }).then((canvas) => {
     const image = { type: "png", quality: 0.98 };
-    const margin = [0.5, 0.5];
-    const filename = "ActiveUsers.pdf";
+    const margin = [0, 0];
+    const filename = "PedningUsers.pdf";
     var imgWidth = 8.5;
-    var pageHeight = 11;
+    var pageHeight = 10.5;
     var innerPageWidth = imgWidth - margin[0] * 2;
     var innerPageHeight = pageHeight - margin[1] * 2;
     // Calculate the number of pages.

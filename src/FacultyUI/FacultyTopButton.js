@@ -441,16 +441,19 @@ export default function FacultyTopActions() {
 
 //Printing certificate
 function printDocument() {
+  document.getElementById("generatedPrint").textContent = localStorage.getItem('name');
+  document.getElementById("datePrint").textContent = moment().format('LL');  
+  document.getElementById("timePrint").textContent = moment().format('LTS');
   html2canvas(document.querySelector("#ActiveUsers_pdf"), {
     useCORS: true,
     allowTaint: true,
     scrollY: 0,
   }).then((canvas) => {
     const image = { type: "png", quality: 0.98 };
-    const margin = [0.5, 0.5];
+    const margin = [0, 0];
     const filename = "ActiveUsers.pdf";
     var imgWidth = 8.5;
-    var pageHeight = 11;
+    var pageHeight = 10.5;
     var innerPageWidth = imgWidth - margin[0] * 2;
     var innerPageHeight = pageHeight - margin[1] * 2;
     // Calculate the number of pages.
