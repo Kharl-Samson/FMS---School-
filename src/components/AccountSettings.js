@@ -585,7 +585,7 @@ setTimeout(function(){
                                             <img src={Password_icon}/>
                                             </LightTooltip>
                                         </div>
-                                        <input type="password" placeholder="Your password here" name="password" className="password" id="current_password" onKeyUp={toggle_password1} required/>
+                                        <input type="password" placeholder="Your password here" name="password" className="password" id="current_password" onKeyUp={toggle_password1} required style={{border:"none",textIndent:"0",paddingLeft:"0"}}/>
                                         <div className="toggle_password">                           
                                             <img src={Open_eye_icon} 
                                                 className="password_toggle_icon open_eye"
@@ -609,7 +609,7 @@ setTimeout(function(){
                                             <img src={Password_icon}/>
                                             </LightTooltip>
                                         </div>
-                                        <input type="password" placeholder="Your new password here" className="password"  id="new_password"  onKeyUp={() => { toggle_password2(); password_validation();}} required/>
+                                        <input type="password" placeholder="Your new password here" className="password"  id="new_password"  onKeyUp={() => { toggle_password2(); password_validation();}} required style={{border:"none",textIndent:"0",paddingLeft:"0"}}/>
                                         <div className="toggle_password">                           
                                             <img src={Open_eye_icon} 
                                                 className="password_toggle_icon open_eye"
@@ -633,7 +633,7 @@ setTimeout(function(){
                                             <img src={Password_icon}/>
                                             </LightTooltip>
                                         </div>
-                                        <input type="password" placeholder="Retype your password here" name="password" className="password" id="retype_password" onKeyUp={() => { toggle_password3(); password_validation1();}} required/>
+                                        <input type="password" placeholder="Retype your password here" name="password" className="password" id="retype_password" onKeyUp={() => { toggle_password3(); password_validation1();}} required style={{border:"none",textIndent:"0",paddingLeft:"0"}}/>
                                         <div className="toggle_password">                           
                                             <img src={Open_eye_icon} 
                                                 className="password_toggle_icon open_eye"

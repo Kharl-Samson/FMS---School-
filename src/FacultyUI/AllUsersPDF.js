@@ -42,7 +42,7 @@ export default function AllUsersPDF(){
         <div className="certificatePDF_container">
             <div className="pdf_container" id="ActiveUsers_pdf">
 
-                <div className="top">
+                <div className="top" style={{marginBottom:"70px"}}>
                   <img src={pdf_header}/>
                 </div>
 

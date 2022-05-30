@@ -41,7 +41,7 @@ export default function PendingUsersPDF(){
         <div className="certificatePDF_container">
             <div className="pdf_container" id="PendingUsers_pdf">
 
-                <div className="top">
+                <div className="top" style={{marginBottom:"70px"}}>
                   <img src={pdf_header}/>
                 </div>
 

@@ -23,14 +23,11 @@ import ViewFacultyCert from "./FacultyUI/ViewFacultyCert";
 import ForgotPasswordForm from "./components/ForgotPasswordForm";
 import AdminLogin from "./components/AdminLogin";
 import ContentSetting from "./components/ContentSetting";
-import TestPDF from "./components/TestPDF";
 
 export default function App() {
-  //window.onerror = function(message, url, lineNumber) {  
-    //return true; // prevents browser error messages  
- // };
-
-
+  window.onerror = function(message, url, lineNumber) {  
+    return true; // prevents browser error messages  
+ };
   return (
     <div className="App">
             <Routes>
@@ -63,8 +60,6 @@ export default function App() {
 
               <Route path="ActivityLog" element={<ActivityLog/>} /> 
               <Route path="ActivityLogAdmin" element={<ActivityLogAdmin/>} /> 
-
-              <Route path="Test" element={<TestPDF/>} /> 
             </Routes>
         
     </div>
