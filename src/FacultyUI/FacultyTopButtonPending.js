@@ -286,7 +286,7 @@ export default function FacultyTopButtonPending() {
       <div className="container" style={{display:"none"}}></div>
       
       <div className="container" id="f_container3">
-        <div onClick={printDocumentPending}>
+        <div onClick={printDocumentPending} style={{border: "1.5px solid #c2c2c2"}}>
         <form>
           <img src={download_yellow}/> Generate as PDF
         </form>  

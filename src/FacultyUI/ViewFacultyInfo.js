@@ -34,6 +34,7 @@ import notYetComplete from "../images/notYetComplete.png";
 import profile_lock from "../images/icons/profile_lock.svg";
 import profile_lockOthers from "../images/profile_lock.png";
 import PDSprintable from "../components/PDSprintable";
+import Permanent_address from "../images/icons/Permanent_address.svg";
 
 export default function ViewFacultyInfo() {
 
@@ -465,7 +466,7 @@ export default function ViewFacultyInfo() {
 
           <div className="box row1_content">
             <div className="top">
-              <img src={addressYellow} />
+              <img src={Permanent_address} />
               Permanent Address
             </div>
 
@@ -941,14 +942,14 @@ export default function ViewFacultyInfo() {
       <div key={elemName + elem_ctr}>
         <p
           style={{
-            fontWeight: "bold",
+            fontWeight: "700",
             color: "#FFAA28",
-            fontSize: "1.4rem",
+            fontSize: "1.2rem",
             marginLeft: "10%",
             marginTop: "10px",
           }}
         >
-          Elementary
+          ELEMENTARY
         </p>
         <div className="content">
           <div className="left">
@@ -1006,14 +1007,14 @@ export default function ViewFacultyInfo() {
       <div key={SecondName + sec_ctr}>
         <p
           style={{
-            fontWeight: "bold",
+            fontWeight: "700",
             color: "#FFAA28",
-            fontSize: "1.4rem",
+            fontSize: "1.2rem",
             marginLeft: "10%",
             marginTop: "10px",
           }}
         >
-          Secondary
+          SECONDARY
         </p>
         <div className="content">
           <div className="left">
@@ -1073,14 +1074,14 @@ export default function ViewFacultyInfo() {
       <div key={voc_ctr}>
         <p
           style={{
-            fontWeight: "bold",
+            fontWeight: "700",
             color: "#FFAA28",
-            fontSize: "1.4rem",
+            fontSize: "1.2rem",
             marginLeft: "10%",
             marginTop: "10px",
           }}
         >
-          Vocational
+          VOCATIONAL
         </p>
         <div className="content">
           <div className="left">
@@ -1154,14 +1155,14 @@ export default function ViewFacultyInfo() {
       <div key={col_ctr}>
         <p
           style={{
-            fontWeight: "bold",
+            fontWeight: "700",
             color: "#FFAA28",
-            fontSize: "1.4rem",
+            fontSize: "1.2rem",
             marginLeft: "10%",
             marginTop: "10px",
           }}
         >
-          College
+          COLLEGE
         </p>
         <div className="content">
           <div className="left">
@@ -1223,14 +1224,14 @@ export default function ViewFacultyInfo() {
       <div key={grad_ctr}>
         <p
           style={{
-            fontWeight: "bold",
+            fontWeight: "700",
             color: "#FFAA28",
-            fontSize: "1.4rem",
+            fontSize: "1.2rem",
             marginLeft: "10%",
             marginTop: "10px",
           }}
         >
-          Graduate Studies
+          GRADUATE STUDIES
         </p>
         <div className="content">
           <div className="left">
@@ -1381,9 +1382,9 @@ export default function ViewFacultyInfo() {
       <div key={cse_ctr}>
         <p
           style={{
-            fontWeight: "bold",
+            fontWeight: "700",
             color: "#FFAA28",
-            fontSize: "1.4rem",
+            fontSize: "1.2rem",
             marginLeft: "10%",
             marginTop: "10px",
           }}
@@ -1559,9 +1560,9 @@ export default function ViewFacultyInfo() {
       <div key={we_ctr}>
         <p
           style={{
-            fontWeight: "bold",
+            fontWeight: "700",
             color: "#FFAA28",
-            fontSize: "1.4rem",
+            fontSize: "1.2rem",
             marginLeft: "10%",
             marginTop: "10px",
           }}
@@ -1727,9 +1728,9 @@ export default function ViewFacultyInfo() {
         <div key={ld_ctr}>
           <p
             style={{
-              fontWeight: "bold",
+              fontWeight: "700",
               color: "#FFAA28",
-              fontSize: "1.4rem",
+              fontSize: "1.2rem",
               marginLeft: "10%",
               marginTop: "10px",
             }}
@@ -1790,9 +1791,9 @@ export default function ViewFacultyInfo() {
         <div key={ld_ctr}>
           <p
             style={{
-              fontWeight: "bold",
+              fontWeight: "700",
               color: "#FFAA28",
-              fontSize: "1.4rem",
+              fontSize: "1.2rem",
               marginLeft: "10%",
               marginTop: "10px",
             }}
@@ -2014,7 +2015,7 @@ export default function ViewFacultyInfo() {
     document.getElementById("PDFView_PDS").style.fontWeight = "normal";
 
     document.getElementById("WebView_PDS").style.borderBottom =
-      "5px solid #FFAA28";
+      "3px solid #FFAA28";
     document.getElementById("WebView_PDS").style.fontWeight = "600";
   }
   //function go to pdf view
@@ -2028,7 +2029,7 @@ export default function ViewFacultyInfo() {
     document.getElementsByClassName("view_pdf_container")[0].style.display =
       "block";
     document.getElementById("PDFView_PDS").style.borderBottom =
-      "5px solid #FFAA28";
+      "3px solid #FFAA28";
     document.getElementById("PDFView_PDS").style.fontWeight = "600";
   }
 
@@ -2394,9 +2395,11 @@ export default function ViewFacultyInfo() {
                       </div>
                       <p
                         style={{
-                          fontSize: ".8rem",
+                          fontSize: ".75rem",
                           margin: "10px 5%",
                           fontStyle: "Italic",
+                          color: "#8a8a8a",
+                          letterSpacing: ".02rem",
                         }}
                       >
                         (Start from the most recent L&D/training program and

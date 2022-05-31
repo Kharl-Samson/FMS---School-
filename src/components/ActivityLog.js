@@ -55,7 +55,7 @@ export default function ActivityLog() {
                 <p>{res.description}</p>
             </div>
             <div>
-                <p>{res.date+" "+res.time}</p>
+                <p style={{fontSize:".9rem",fontWeight:"600",lineHeight:"1.1"}}>{res.date+" "+res.time}</p>
                 <input type="hidden" value={moment(res.date).format("L")} className="inputDateKey_hidden"/>
             </div>
         </div>
@@ -81,7 +81,7 @@ export default function ActivityLog() {
                         {activityLogContent}
                         <div className="no_searchFound5">
                             <img src={no_record_icon}/>
-                            <p>No Certificate Available!</p>
+                            <p>No Activity logs found!</p>
                         </div>
                     </div>
                 </div>

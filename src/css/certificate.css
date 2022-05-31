@@ -42,7 +42,7 @@
     width: 10%;
     display: flex;
     align-items: center;
-    border: 2px solid #c2c2c2;
+    border: 1.5px solid #c2c2c2;
     border-right: none;
     justify-content: center;
     border-top-left-radius: 5px;
@@ -55,7 +55,7 @@
 }
 .certificates_container .table_container .top .container:nth-child(1) input{
     height: 100%;
-    border: 2px solid #c2c2c2;
+    border: 1.5px solid #c2c2c2;
     width: 55%;
     background-color: transparent;
     outline: none;
@@ -69,8 +69,8 @@
     height: 100%;
     width: 10%;
     background-color: #ffff;
-    border-top: 2px solid #c2c2c2;
-    border-bottom: 2px solid #c2c2c2;
+    border-top: 1.5px solid #c2c2c2;
+    border-bottom: 1.5px solid #c2c2c2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,7 +91,7 @@
     align-items: center;
     color: #434343;
     justify-content: center;
-    border: 2px solid #c2c2c2;
+    border: 1.5px solid #c2c2c2;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     background-color: #ffff;
@@ -188,12 +188,12 @@
     width: auto;
 }
 .certificates_container .table_container .top .container:nth-child(3) div:nth-child(1){
-    border: 2px solid #c2c2c2;
+    border: 1.5px solid #c2c2c2;
     color: #FFAA28;
     background-color: #ffff;
 }
 .certificates_container .table_container .top .container:nth-child(3) div:nth-child(2){
-    border: 2px solid #FFAA28;
+    border: 1.5px solid #FFAA28;
     background-color: #FFAA28;
 }
 .certificates_container .table_container .top .container:nth-child(3) div:nth-child(2) .upload_cert{
@@ -276,8 +276,10 @@
     font-size: 1.1rem;
 }
 .certificates_container .for_boxShadow .btn_container div:nth-child(1) p:nth-child(2){
-    font-size: .9rem;
-    color: #666666;
+    font-size: .88rem;
+    color: #8a8a8a;
+    font-weight: 500;
+    margin-top: .2rem
 }
 .certificates_container .for_boxShadow .btn_container div:nth-child(2){
     width: 20%;

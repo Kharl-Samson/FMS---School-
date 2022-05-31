@@ -500,14 +500,14 @@ export default function CertificateTopActions() {
       <div className="container">
 
   
-        <div onClick={printDocument} className="f_hover">
+        <div onClick={printDocument} className="f_hover" style={{border: "1.5px solid #c2c2c2"}}>
         <form>
           <img src={download_yellow}/> Generate as PDF
         </form>  
         </div>
      
 
-        <div className="f_hover">
+        <div className="f_hover" style={{border: "1.5px solid #FFAA28"}}>
          <Link to="/UploadCertificate" style={{ textDecoration: 'none' }} className="upload_cert">
             <img src={uploadWhite} /> Upload Certificate
           </Link>

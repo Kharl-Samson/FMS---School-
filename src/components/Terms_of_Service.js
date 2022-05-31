@@ -96,7 +96,7 @@ export default function Terms_of_Service(){
                             </div>   
                             <div className="upper"></div>
                             <center>
-                                    <button className="agree_button" onClick={closeWin}>I Agree</button>
+                                    <button className="agree_button" onClick={closeWin}>Close</button>
                             </center>
                         </div>
                     </Box>

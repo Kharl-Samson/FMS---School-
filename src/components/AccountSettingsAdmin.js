@@ -393,7 +393,7 @@ const changePasswordForm=(e)=>{
                     <div className="right">
                         <div className="info_details">
                         <form onSubmit={editAccountNameForm}>
-                            <div className="top">
+                            <div className="top" style={{marginTop:"10px"}}>
                                 <span>Personal Details</span>
                                 <img src={edit_profileIcon}/>
                             </div>
@@ -455,7 +455,7 @@ const changePasswordForm=(e)=>{
 
                         <div className="info_details" style={{marginTop:"40px",marginBottom:"40px"}}>
                         <form onSubmit={changePasswordForm}>
-                            <div className="top">
+                            <div className="top" style={{marginTop:"10px"}}>
                                 <span>Change Password</span>
                                 <img src={edit_profileIcon}/>
                             </div>

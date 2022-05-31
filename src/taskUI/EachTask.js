@@ -19,7 +19,7 @@ function EachTask(props){
    }
     return (
         <div className='task_box'>
-            <span>{props.time}</span>
+            <span style={{fontWeight:"500",textTransform:"uppercase"}}>{props.time}</span>
             <div className='task_description' onClick={ClickSpecificTask}>
                 <div className='top' style={{textTransform: "uppercase"}}>
                     <div className='task_icon'><img src={TaskIcon}/></div>

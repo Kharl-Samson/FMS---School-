@@ -244,7 +244,7 @@ const submitForm=(e)=>{
                                 <img src="" className="uploaded_certIMG" id="edit_certIMG" style={{display:"block"}}/>
                             </div>
 
-                            <div id="selectFile_sub" style={{display:"flex"}}>
+                            <div id="selectFile_sub" style={{display:"flex",justifyContent:"center"}}>
                                 <button type="button" onClick={removeFile} style={{marginRight:"10px",border:"2px solid #fb4f46", color:"#ffff",backgroundColor:"#fb4f46"}}>REMOVE FILE</button>
                                 <button type="button" onClick={selectFile} >SELECT FILE</button>
                                 <input type="file" accept="image/png, image/jpeg" id="edit_image_file" name="imgLD[]" onChange={() => { loadfile(event);}}/>

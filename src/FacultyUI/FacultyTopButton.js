@@ -417,7 +417,7 @@ export default function FacultyTopActions() {
       </div>
       
       <div className="container" id="f_container3">
-        <div onClick={printDocument}>
+        <div onClick={printDocument} style={{border: "1.5px solid #c2c2c2"}}>
         <form>
           <img src={download_yellow}/> Generate as PDF
         </form>  

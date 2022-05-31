@@ -108,7 +108,7 @@ export default function Privacy_Policy(){
                         </div>
                         
                         <div className="upper"></div>
-                        <button className="agree_button" onClick={closeWin}>I Agree</button>
+                        <button className="agree_button" onClick={closeWin}>Close</button>
 
                     </div>
                     </Box>

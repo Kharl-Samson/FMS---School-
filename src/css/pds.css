@@ -274,7 +274,7 @@
 }
 .choices_pds_page #WebView_PDS{
     font-weight: 600;
-    border-bottom: 5px solid #FFAA28;
+    border-bottom: 3px solid #FFAA28;
 }
 .view_pdf_container{
     display: none;

@@ -922,7 +922,7 @@ export default function TaskContent(){
                 <div className="modal_validation_version2">             
                 <p title="Close" className='close_modal' onClick={closeDeleteModal}>&#215;</p>
                 <div className='top'>
-                    <img src={DeleteIconModal} style={{marginLeft:"25px"}}/>
+                    <img src={DeleteIconModal}/>
                     Delete
                 </div>
                 <p className='title'>Are you sure you want to continue? </p>
