@@ -4719,7 +4719,13 @@ export default function CreatePersonalDataSheet() {
               type="button"
               className="next_stepper next_stepper1"
               style={{ display: "none" }}
-              onMouseOver={sameAddressFunction}
+              onMouseOver={() => {
+                sameAddressFunction();
+                getAllElementaryInput();
+                getAllCSEinput();
+                getAllWEinput();
+                getAllLDinput();
+              }}
               onClick={validatorPDS1}
             >
               Next &nbsp;&nbsp;&nbsp; &#8594;
@@ -4728,7 +4734,13 @@ export default function CreatePersonalDataSheet() {
               type="button"
               className="next_stepper next_stepper2"
               style={{ display: "none" }}
-              onMouseOver={getAllElementaryInput}
+              onMouseOver={() => {
+                sameAddressFunction();
+                getAllElementaryInput();
+                getAllCSEinput();
+                getAllWEinput();
+                getAllLDinput();
+              }}
               onClick={validatorPDS2}
             >
               Next &nbsp;&nbsp;&nbsp; &#8594;
@@ -4737,7 +4749,13 @@ export default function CreatePersonalDataSheet() {
               type="button"
               className="next_stepper next_stepper3"
               style={{ display: "none" }}
-              onMouseOver={getAllCSEinput}
+              onMouseOver={() => {
+                sameAddressFunction();
+                getAllElementaryInput();
+                getAllCSEinput();
+                getAllWEinput();
+                getAllLDinput();
+              }}
               onClick={validatorPDS3}
             >
               Next &nbsp;&nbsp;&nbsp; &#8594;
@@ -4746,7 +4764,13 @@ export default function CreatePersonalDataSheet() {
               type="button"
               className="next_stepper next_stepper4"
               style={{ display: "none" }}
-              onMouseOver={getAllWEinput}
+              onMouseOver={() => {
+                sameAddressFunction();
+                getAllElementaryInput();
+                getAllCSEinput();
+                getAllWEinput();
+                getAllLDinput();
+              }}
               onClick={validatorPDS4}
             >
               Next &nbsp;&nbsp;&nbsp; &#8594;
@@ -4755,7 +4779,13 @@ export default function CreatePersonalDataSheet() {
               type="button"
               className="next_stepper next_stepper5"
               style={{ display: "none" }}
-              onMouseOver={getAllLDinput}
+              onMouseOver={() => {
+                sameAddressFunction();
+                getAllElementaryInput();
+                getAllCSEinput();
+                getAllWEinput();
+                getAllLDinput();
+              }}
               onClick={validatorPDS5}
             >
               Next &nbsp;&nbsp;&nbsp; &#8594;

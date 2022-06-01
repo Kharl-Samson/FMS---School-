@@ -24,11 +24,21 @@ export default function ProfileNotifyer() {
     },
   }));
 
-
   function closeNotifyer() {
     window.localStorage.setItem("pds_ctr", "off");
     document.getElementById("profile_notify_container").style.display = "none";
   }
+
+  setTimeout(function () {
+    document.getElementById("typewriter1").style.width="100%";
+  }, 1300);
+  setTimeout(function () {
+    document.getElementById("typewriter2").style.width="100%";
+  }, 2300);
+  setTimeout(function () {
+    document.getElementById("typewriter3").style.width="100%";
+  }, 3300);
+
 
   return (
     <div
@@ -97,7 +107,9 @@ export default function ProfileNotifyer() {
               <div className="right">
                 <div className="convo_box">
                   <p>Hey {firstName}! &#128522;</p>
-                  <p id="typewriter">It seems that your profile is not yet complete. You can go to My Profile page and finish your account setup!</p>
+                  <p id="typewriter1">It seems that your profile is not yet complete.</p>
+                  <p id="typewriter2">You can go to My Profile page and finish your</p>
+                  <p id="typewriter3">account setup!</p>
                 </div>
               </div>
             </div>
