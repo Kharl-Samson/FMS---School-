@@ -3155,7 +3155,7 @@ export default function EditPersonalDataSheet() {
                     <div className="dateSchool_input" style={{ width: "100%" }}>
                       <label>Scholarships/Academic Honors Received</label>
                       <input
-                        type="hidden"
+                        type="text"
                         placeholder="(ex. 1st honorable mention) Type N/A if Not Applicable"
                         name="vocational_awardsPDS[]"
                         onChange={getAllElementaryInput}

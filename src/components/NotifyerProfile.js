@@ -24,22 +24,6 @@ export default function ProfileNotifyer() {
     },
   }));
 
-  var i = 0;
-  var txt =
-    "It seems that your profile is not yet complete. You can go to My Profile page and finish your account setup!";
-  var speed = 30;
-
-  function typeWriter() {
-    if (i < txt.length) {
-      document.getElementById("typewriter").innerHTML += txt.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
-    }
-  }
-
-  setTimeout(function () {
-    typeWriter();
-  }, 500);
 
   function closeNotifyer() {
     window.localStorage.setItem("pds_ctr", "off");
@@ -113,7 +97,7 @@ export default function ProfileNotifyer() {
               <div className="right">
                 <div className="convo_box">
                   <p>Hey {firstName}! &#128522;</p>
-                  <p id="typewriter"></p>
+                  <p id="typewriter">It seems that your profile is not yet complete. You can go to My Profile page and finish your account setup!</p>
                 </div>
               </div>
             </div>
