@@ -25,7 +25,7 @@ export default function FacultyDashboard(){
 //Loading the icon in the tab
 getWebContent.map((res) => { 
     document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
-    document.title = res.abbreviation+" | Faculty Management System";
+    document.title = res.abbreviation+" | Dashboard";
 });
   
 
