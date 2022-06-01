@@ -1344,6 +1344,23 @@
     }
 }
 @media screen and (max-width: 500px) {
+    .certificates_container .avatar_container .cover_button{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+    .certificates_container .avatar_container .cover_button button{
+        height: 6vh;
+        margin: 0;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #table_containerID{
+        margin-top: 19rem;
+    }
+
     .certificates_container{
         padding-bottom: 15vh;
     }

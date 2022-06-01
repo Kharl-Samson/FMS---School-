@@ -8,10 +8,26 @@ import LeftNavbarFaculty from '../navbarsUI/LeftNavbarFaculty';
 import NavbarSizer from '../navbarsUI/NavbarSizer';
 import RightNavbar from '../navbarsUI/RightNavbar';
 import ProfileNotifyer from './NotifyerProfile';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function FacultyDashboard(){
 
-    document.title = "CICT | Faculty Management System";
+  //Hook for getting web content
+  const [getWebContent, setWebContent] = useState([]);
+  const loadWebContent = async () => {
+    const result = await axios.get("http://localhost/fms/getWebContent.php");
+    setWebContent(result.data.phpresult);
+  };
+  useEffect(() => {
+    loadWebContent();
+  }, []);
+//Loading the icon in the tab
+getWebContent.map((res) => { 
+    document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
+    document.title = res.abbreviation+" | Faculty Management System";
+});
+  
 
     setTimeout(function(){
         document.getElementById("dashboard_link").classList.add('nav_active');

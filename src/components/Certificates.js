@@ -10,10 +10,7 @@ import no_record_icon from "../images/no_record_icon.png";
 import CertificateTopActions from "../certificatesUI/CertificateTopButton";
 import EditCertificate from "../certificatesUI/EditCertificate";
 
-
 export default function Certificates() {
-
-    document.title = "CICT | Faculty Management System";
 
     setTimeout(function(){
         document.getElementById("certificate_link").classList.add('nav_active');

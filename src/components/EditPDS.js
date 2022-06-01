@@ -42,8 +42,22 @@ import Skeleton from "@mui/material/Skeleton";
 
 
 export default function EditPersonalDataSheet() {
-  document.title = "CICT | Edit Personal Information";
-  document.querySelector("link[rel='shortcut icon']").href = CICT_Logo;
+
+    //Hook for getting web content
+    const [getWebContent, setWebContent] = useState([]);
+    const loadWebContent = async () => {
+      const result = await axios.get("http://localhost/fms/getWebContent.php");
+      setWebContent(result.data.phpresult);
+    };
+    useEffect(() => {
+      loadWebContent();
+    }, []);
+    //Loading the icon in the tab
+    getWebContent.map((res) => { 
+        document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
+        document.title = res.abbreviation+" | Edit Personal Information";
+    });
+
   setTimeout(function () {
     document.getElementById("pds_link").classList.add("nav_active");
     var left_nav_minimize =

@@ -13,10 +13,23 @@ import DashboardStatisticsFaculty from '../dashboardUI/StatisticsFaculty';
 import RightNavbarAdmin from '../navbarsUI/RightNavbarAdmin';
 import EachRowAdmin from './EachRowAdmin';
 
-
 export default function AdminDashboard(){
 
-    document.title = "CICT | Faculty Management System";
+//Hook for getting web content
+  const [getWebContent, setWebContent] = useState([]);
+  const loadWebContent = async () => {
+    const result = await axios.get("http://localhost/fms/getWebContent.php");
+    setWebContent(result.data.phpresult);
+  };
+  useEffect(() => {
+    loadWebContent();
+  }, []);
+//Loading the icon in the tab
+getWebContent.map((res) => { 
+    document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
+    document.title = res.abbreviation+" | Dashboard";
+});
+  
 
     setTimeout(function(){
         document.getElementById("dashboard_link").classList.add('nav_active');

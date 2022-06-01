@@ -44,8 +44,6 @@ export default function ForgotPassword(){
         },
     }));    
 
-    document.title = "CICT | Forgot Password";
-
 
         //Getting the value of all input when submitting the form
         const submitForm=(e)=>{
@@ -120,6 +118,12 @@ export default function ForgotPassword(){
         <span style={{whiteSpace: "nowrap" }}>{res.abbreviation} © 2022</span>
     );
 });
+
+    //Loading the icon in the tab
+    getWebContent.map((res) => { 
+        document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
+        document.title = res.abbreviation+" | Forgot Password";
+    });
     return (
         <div className="login_container">
                 <PageLoader/>

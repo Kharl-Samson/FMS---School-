@@ -7,13 +7,37 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Link } from "react-router-dom";
 import Image_rounder from "../images/login/login_img_rounder.png";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Terms_of_Service(){
-    document.title = "CICT | Terms Of Service";
+
 
     function closeWin() {
         window.close();
     }
+
+  //Hook for getting web content
+  const [getWebContent, setWebContent] = useState([]);
+  const loadWebContent = async () => {
+    const result = await axios.get("http://localhost/fms/getWebContent.php");
+    setWebContent(result.data.phpresult);
+  };
+  useEffect(() => {
+    loadWebContent();
+  }, []);
+  const webC_abbr = getWebContent.map((res) => {
+    return (
+        <span style={{whiteSpace: "nowrap" }}>{res.abbreviation} © 2022</span>
+    );
+  });
+//Loading the icon in the tab
+getWebContent.map((res) => { 
+    document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
+    document.title = res.abbreviation+" | Terms of Service";
+});
+
+
     return(
         <div className="Guideline_container">
            
@@ -117,7 +141,7 @@ export default function Terms_of_Service(){
                         <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Privacy Policy</span>
                     </Link>
                     <Link to="" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}}>
-                         <span style={{whiteSpace: "nowrap" }}>CICT © 2022</span>
+                         <span style={{whiteSpace: "nowrap" }}>{webC_abbr}</span>
                     </Link>
                 </Grid>                                                    
                 </div>

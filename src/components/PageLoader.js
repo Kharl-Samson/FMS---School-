@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 import '../css/pageloader.css';
 import img1 from "../images/loader/1.jpg";
 import img2 from "../images/loader/2.jpg";
@@ -14,7 +14,7 @@ import img12 from "../images/loader/12.jpg";
 import img13 from "../images/loader/13.jpg";
 import img14 from "../images/loader/14.jpg";
 import img15 from "../images/loader/15.jpg";
-import CICT_Logo from "../images/login/cict_logo.png";
+import axios from "axios"
 import img16 from "../images/loader/16.png";
 
 export default function PageLoader(){
@@ -29,6 +29,21 @@ export default function PageLoader(){
         document.getElementById("right_text_loader").style.opacity="100%";
     }, 100);
 
+  //Hook for getting web content
+  const [getWebContent, setWebContent] = useState([]);
+  const loadWebContent = async () => {
+    const result = await axios.get("http://localhost/fms/getWebContent.php");
+    setWebContent(result.data.phpresult);
+  };
+  useEffect(() => {
+    loadWebContent();
+  }, []);
+  const webC_LOGO = getWebContent.map((res) => { 
+      return (
+        <img src={"http://localhost/fms/web_content/" + res.logo} id="left_img_loader"/>
+      );
+  });
+
 return(
     <div className="pageLoader_container" id="pageLoader_container"> 
 
@@ -37,7 +52,7 @@ return(
                 style={{
                     backgroundImage: `url(${img15})`,
             }}>
-                    <img src={CICT_Logo}/>
+                    {webC_LOGO}
                     <img src={img16} id="right_text_loader"/>
             </div>
         </div>

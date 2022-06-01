@@ -78,7 +78,7 @@ export default function RightNavbar(){
                     <span className='span1_right_nav'>&#187;</span>
                 </div>
                 
-                <div className='theme_toggle' id="theme_toggle" style={{ backgroundImage: `url(${LightThemeBG})` }} >
+                <div className='theme_toggle' id="theme_toggle" style={{ backgroundImage: `url(${LightThemeBG})`,visibility:"hidden" }} >
                     <div className='circle' id="circle" onClick={theme_toggle}></div>
                 </div>
 

@@ -18,9 +18,23 @@ import Password_icon from "../images/icons/password.svg";
 import Open_eye_icon from "../images/icons/open_eye.svg";
 import Close_eye_icon from "../images/icons/close_eye.svg"; 
 import RightNavbarAdmin from "../navbarsUI/RightNavbarAdmin";
+import { useEffect, useState } from "react";
 
 export default function AccountSettingsAdmin(){
-    document.title = "CICT | Faculty Management System";
+    //Hook for getting web content
+    const [getWebContent, setWebContent] = useState([]);
+    const loadWebContent = async () => {
+      const result = await axios.get("http://localhost/fms/getWebContent.php");
+      setWebContent(result.data.phpresult);
+    };
+    useEffect(() => {
+      loadWebContent();
+    }, []);
+  //Loading the icon in the tab
+  getWebContent.map((res) => { 
+      document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
+      document.title = res.abbreviation+" | Account Setting";
+  });
 
     var photoURL =  "http://localhost/fms/upload_profile/" + localStorage.getItem("profile_photo");
 

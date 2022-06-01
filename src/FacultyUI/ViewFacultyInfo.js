@@ -57,7 +57,20 @@ export default function ViewFacultyInfo() {
     localStorage.getItem("viewFacultyPhoto");
 
 
-  document.title = "CICT | "+localStorage.getItem("viewFacultyName");
+//Hook for getting web content
+const [getWebContent, setWebContent] = useState([]);
+const loadWebContent = async () => {
+  const result = await axios.get("http://localhost/fms/getWebContent.php");
+  setWebContent(result.data.phpresult);
+};
+useEffect(() => {
+  loadWebContent();
+}, []);
+//Loading the icon in the tab
+getWebContent.map((res) => { 
+  document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
+  document.title = res.abbreviation+" | "+localStorage.getItem("viewFacultyName");
+});
 
 
   //Hook for getting pds1

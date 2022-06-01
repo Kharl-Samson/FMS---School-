@@ -52,10 +52,7 @@ export default function Login(){
         },
     }));
 
-    //Loading the icon in the tab
-    document.querySelector("link[rel='shortcut icon']").href = CICT_Logo;
-    document.title = "CICT | Sign in or Sign up";
-  
+
     //Para maclear email sa local storage
     localStorage.removeItem("email");
     localStorage.removeItem("pds_ctr");
@@ -248,11 +245,17 @@ export default function Login(){
     return (
         <span style={{whiteSpace: "nowrap" }}>{res.abbreviation} © 2022</span>
     );
-});
+  });
+
+  //Loading the icon in the tab
+  getWebContent.map((res) => { 
+        document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
+        document.title = res.abbreviation+" | Sign in or Sign up";
+  });
+
 
     return (
         <div className="login_container" >
-
             <PageLoader/>
 
             {/*Loading when getting data*/ }

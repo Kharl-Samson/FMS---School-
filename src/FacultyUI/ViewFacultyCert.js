@@ -23,6 +23,8 @@ import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import profile_lock from "../images/icons/profile_lock.svg";
 import profile_lockOthers from "../images/profile_lock.png";
 import moment from "moment";
+import profile_white from "../images/icons/profile_white.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function ViewFacultyCert() {
     //Tooltip
@@ -43,8 +45,22 @@ export default function ViewFacultyCert() {
     "http://localhost/fms/upload_profile/" +
     localStorage.getItem("viewFacultyPhoto");
 
+//Hook for getting web content
+const [getWebContent, setWebContent] = useState([]);
+const loadWebContent = async () => {
+  const result = await axios.get("http://localhost/fms/getWebContent.php");
+  setWebContent(result.data.phpresult);
+};
+useEffect(() => {
+  loadWebContent();
+}, []);
+//Loading the icon in the tab
+getWebContent.map((res) => { 
+  document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
+  document.title = res.abbreviation+" | "+localStorage.getItem("viewFacultyName");
+});
 
-    document.title = "CICT | "+localStorage.getItem("viewFacultyName");
+
 
     const downloadCertificateUserForm=(e)=>{
       e.preventDefault();
@@ -100,6 +116,11 @@ export default function ViewFacultyCert() {
 
   function closeProfileLockModal(){
     document.getElementById("profileLocked_modal").style.display = "none";
+  }
+
+  let navigate = useNavigate();
+  function viewFacultyInformation_function(){
+      navigate(`/ViewFaculty`);
   }
 
   return (
@@ -164,6 +185,11 @@ export default function ViewFacultyCert() {
                       Generate as PDF
                     </button>
                     </form>
+
+                    <button id="Edit_profile_btn" className="link_to_show"  onClick={viewFacultyInformation_function}>
+                      <img src={profile_white} />
+                      Profile Information
+                    </button>
                   </div>
                 </div>
               </div>

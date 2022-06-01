@@ -5,7 +5,6 @@ import Container from '@mui/material/Container';
 import { useEffect, useState } from "react";
 import Grid from '@mui/material/Grid';
 import { Link } from "react-router-dom";
-
 import rightBG from "../images/login/login_img.png";
 import CICT_Text from "../images/login/cict_bg_text.png";
 import Image_rounder from "../images/login/login_img_rounder.png";
@@ -17,12 +16,11 @@ import CICT_Logo from "../images/login/cict_logo.png";
 import Email_icon from "../images/icons/email.svg";
 import Invalid_icon from "../images/icons/invalid.svg";
 import Valid_icon from "../images/icons/valid.svg";
-
+import PageLoader from "../components/PageLoader";
 import validator from 'validator'
 import axios from "axios";
 import ModalValidation from "./ModalValidation";
-import Alert from '@mui/material/Alert';
-import Stack from '@mui/material/Stack';
+
 
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
@@ -30,6 +28,17 @@ import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function ForgotPasswordForm(){
+
+    setTimeout(function () {
+        document.getElementById("pageLoader_container").style.opacity="100%";
+    }, 10);
+    setTimeout(function () {
+        document.getElementById("pageLoader_container").style.opacity="0";
+    }, 3000);
+    setTimeout(function () {
+        document.getElementById("pageLoader_container").style.display="none";
+    }, 3500);
+
     //Tooltip
     const LightTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }}/>
@@ -42,7 +51,6 @@ export default function ForgotPasswordForm(){
         },
     }));
     
-    document.title = "CICT | Change Password";
 
     //Para matoggle yung password
     const [open,setOpen] = useState(false)
@@ -229,10 +237,18 @@ export default function ForgotPasswordForm(){
     return (
         <span style={{whiteSpace: "nowrap" }}>{res.abbreviation} © 2022</span>
     );
-});
+   });
+
+    //Loading the icon in the tab
+    getWebContent.map((res) => { 
+        document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
+        document.title = res.abbreviation+" | Change Password";
+    });
     return (
         <div className="login_container">
     
+            <PageLoader/>
+
             <p id="email_key" style={{display:"none"}}>{myArrayLocation[1]}</p>
 
             <div className="cict_text_container cict_text_container1">

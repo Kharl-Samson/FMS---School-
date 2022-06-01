@@ -21,7 +21,7 @@
 }
 .choices_faculty_page #active_faculty{
     font-weight: 600;
-    border-bottom: 5px solid #FFAA28;
+    border-bottom: 3px solid #FFAA28;
 }
 
 .certificates_container .table_container .top .container:nth-child(3){

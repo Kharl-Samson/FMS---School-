@@ -13,10 +13,27 @@ import FacultyTopButtonPending from "../FacultyUI/FacultyTopButtonPending";
 import TableFacultyPending from "../FacultyUI/TableFacultyPending";
 import $ from "jquery";
 import PendingUsersPDF from "../FacultyUI/PendingUsersPDF";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Faculty() {
 
-    document.title = "CICT | Faculty Management System";
+//Hook for getting web content
+const [getWebContent, setWebContent] = useState([]);
+const loadWebContent = async () => {
+  const result = await axios.get("http://localhost/fms/getWebContent.php");
+  setWebContent(result.data.phpresult);
+};
+useEffect(() => {
+  loadWebContent();
+}, []);
+//Loading the icon in the tab
+getWebContent.map((res) => { 
+  document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
+  document.title = res.abbreviation+" | Manage Users";
+});
+
+
 
     setTimeout(function(){
         document.getElementById("faculty_link").classList.add('nav_active');
@@ -36,7 +53,7 @@ export default function Faculty() {
         document.getElementById("pending_faculty").style.fontWeight = "normal";
     
         document.getElementById("active_faculty").style.borderBottom =
-          "5px solid #FFAA28";
+          "3px solid #FFAA28";
         document.getElementById("active_faculty").style.fontWeight = "600";
 
 
@@ -72,7 +89,7 @@ export default function Faculty() {
         document.getElementById("active_faculty").style.fontWeight = "normal";
     
         document.getElementById("pending_faculty").style.borderBottom =
-          "5px solid #FFAA28";
+          "3px solid #FFAA28";
         document.getElementById("pending_faculty").style.fontWeight = "600";
 
         if ($("#rowTable_forSearch_pending #facultyRow_desktopPending:visible").length === 0) {

@@ -196,14 +196,14 @@
     justify-content: center;
     margin: 0 10px;
 }
-.logo_container .box_content img:nth-child(1){
+.logo_container .box_content #left_img_loader{
     height: 130px;
     width: 130px;
     -webkit-animation:spin 2s linear;
     -moz-animation:spin 2s linear;
     animation:spin 2s linear;
 }
-.logo_container .box_content img:nth-child(2){
+.logo_container .box_content #right_text_loader{
     height: auto;
     width: 200px;
     opacity: 0%;

@@ -17,7 +17,6 @@ import { useEffect, useState } from "react";
 import RightNavbarAdmin from "../navbarsUI/RightNavbarAdmin";
 
 export default function ContentSetting(){
-    document.title = "CICT | Faculty Management System";
 
     var photoURL =  "http://localhost/fms/upload_profile/" + localStorage.getItem("profile_photo");
 
@@ -110,6 +109,12 @@ function closingSuccessModalRight(){
   useEffect(() => {
     loadWebContent();
   }, []);
+//Loading the icon in the tab
+getWebContent.map((res) => { 
+    document.querySelector("link[rel='shortcut icon']").href = "http://localhost/fms/web_content/"+res.logo;
+    document.title = res.abbreviation+" | Content Setting";
+});
+
   const myFormImg = getWebContent.map((res) => { 
       return (
         <div> 
@@ -130,7 +135,7 @@ function closingSuccessModalRight(){
             <span>College Name</span>
             <img src={edit_profileIcon}/>
         </div>
-        <div className="content">
+        <div className="content" style={{marginBottom:"10px"}}>
             <div className="left">
                 <textarea required placeholder="College name here" style={{height:"6rem"}} id="col_name">{res.name}</textarea>
             </div>    
@@ -147,7 +152,7 @@ const myFormImg2 = getWebContent.map((res) => {
             <span>College Abbreviation</span>
             <img src={edit_profileIcon}/>
         </div>
-        <div className="content">
+        <div className="content" style={{marginBottom:"10px"}}>
             <div className="left">
                 <input type="text" placeholder="Abbreviation here" defaultValue={res.abbreviation} id="col_Ab" required minlength="3" maxlength="8"/>
             </div>      
@@ -162,7 +167,7 @@ const myFormImg2 = getWebContent.map((res) => {
 
 const myFormImg3 = getWebContent.map((res) => { 
     return (                  
-        <div className="info_details" style={{marginTop:"0px",marginBottom:"40px"}}>
+        <div className="info_details" style={{marginTop:"0px",marginBottom:"40px",paddingBottom:"10px"}}>
             <div className="top">
                 <span>Vision</span>
                 <img src={edit_profileIcon}/>
@@ -178,7 +183,7 @@ const myFormImg3 = getWebContent.map((res) => {
 
 const myFormImg4 = getWebContent.map((res) => { 
     return (                  
-    <div className="info_details" style={{marginTop:"0px"}}>
+    <div className="info_details" style={{marginTop:"0px",paddingBottom:"10px"}}>
         <div className="top">
             <span>Mission</span>
             <img src={edit_profileIcon}/>
