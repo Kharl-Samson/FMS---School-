@@ -1161,12 +1161,23 @@ export default function PDSprintable() {
       <div className="pds_preview" id="convertable_pdf_PDS1" > 
 
 
-<div id="page_Separator">   
+<div id="page_Separator1" className="page_Separator">   
       <div className="pds_header">
           <p className="pds_header_p">CS Form No. 212</p>
           <p className="pds_header_p">Revised 2017</p>
           <div className="pds_text">PERSONAL DATA SHEET</div>
           <p className="pds_warning">WARNING: Any misrepresentation made in the Personal Data Sheet and the Work Experience Sheet shall cause the filing of administrative/criminal case/s against the person concerned.</p>
+          <p className="pds_warning">READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA SHEET (PDS) BEFORE ACCOMPLISHING THE PDS FORM.</p>
+
+          <div className="pds_trip">
+            <div className="pds_warning1">Print legibly.&nbsp;&nbsp;Tick appropriate boxes&nbsp;(&nbsp;<div id="box"></div>&nbsp;with "<b>&#10003;</b>" and use separate sheet if necessary. Indicate N/A if not applicable.)</div>
+
+            <div className="pds_warning2">
+              <div className="left">&nbsp;1. CS ID No.</div>
+              <div className="right">(Do not fill up. For CSC use only)&nbsp;</div>
+            </div>
+
+          </div>
       </div>
 
       <div className="pds_th">
@@ -1181,7 +1192,9 @@ export default function PDSprintable() {
       </div>
 
       <div className="pds_educatiion_row">
-          <div className="row1"><span>LEVEL</span></div>
+          <div className="row1">
+            <div style={{fontSize:".8rem",marginTop:"-50px",marginLeft:"-80px",position:"absolute"}}>22.</div>
+            <span>LEVEL</span></div>
           <div className="row2">
               <span>NAME OF SCHOOL</span>
               <span>(Write in full)</span>
@@ -1267,11 +1280,24 @@ export default function PDSprintable() {
           </div>
       </div>
 
+      <div className="separate_sheet">
+        (Continue on separate sheet if necessary)
+      </div>
+      <div className="separate_sheet1">
+        <div className="row1">SIGNATURE</div>
+        <div className="row2"></div>
+        <div className="row3">DATE</div>
+        <div className="row4">{moment().format('LL')}</div>
+      </div>
+
+      <div className="pds_footer">
+        CS FORM 212 (Revised 2017), Page 1 of 3
+      </div>
 
         {pds_step2 /* Eto yung mga input*/}
 </div>
 
-<div id="page_Separator"> 
+<div id="page_Separator2" className="page_Separator"> 
       {/*Step 3*/}
       <div className="pds_th" style={{borderTop:"2px solid black"}}>
           <span>III. CIVIL SERVICE ELIGIBILITY</span>
@@ -1279,6 +1305,7 @@ export default function PDSprintable() {
 
       <div className="pds_cse_row">
           <div className="row1">
+              <div style={{fontSize:".8rem",marginTop:"-60px",marginLeft:"-190px",position:"absolute"}}>23.</div>
               <span>CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/ CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE</span>
           </div>
           <div className="row2">
@@ -1313,6 +1340,7 @@ export default function PDSprintable() {
 
       <div className="pds_we_row">
           <div className="row1">
+              <div style={{fontSize:".8rem",marginTop:"5px",marginLeft:"-95px",position:"absolute"}}>24.</div>
               <div className="top1"><span>INCLUSIVE DATES  (mm/dd/yyyy)</span></div>
               <div className="bot">
                   <div className="from"><span>From</span></div>
@@ -1344,14 +1372,32 @@ export default function PDSprintable() {
 
         {weContent}
         {pds_step4 /*Eto yung mga input*/}
+
+      <div className="separate_sheet">
+        (Continue on separate sheet if necessary)
+      </div>
+      <div className="separate_sheet1">
+        <div className="row1" style={{width:"130px"}}>SIGNATURE</div>
+        <div className="row2"></div>
+        <div className="row3">DATE</div>
+        <div className="row4" style={{width:"322px"}}>{moment().format('LL')}</div>
+      </div>
+
+      <div className="pds_footer">
+        CS FORM 212 (Revised 2017), Page 2 of 3
+      </div>
+</div>     
+
+<div id="page_Separator3" className="page_Separator"> 
       {/*Step 5*/}
-      <div className="pds_th" style={{borderTop:"none"}}>
+      <div className="pds_th" style={{borderTop:"2px solid black"}}>
           <span>V. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING PROGRAMS ATTENDED</span>
           <span style={{fontSize:".75rem",marginTop:"5px",marginBottom:"5px"}}>(Start from the most recent L&D/training program and include only the relevant L&D/training taken for the last five (5) years for Division Chief/Executive/Managerial positions)</span>
       </div>
 
       <div className="pds_cert_row">
           <div className="row1">
+              <div style={{fontSize:".8rem",marginTop:"-60px",marginLeft:"-190px",position:"absolute"}}>25.</div>
               <span>TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS / TRAINING PROGRAMS</span>
               <span>(Write in full)</span>
           </div>
@@ -1376,7 +1422,21 @@ export default function PDSprintable() {
 
         {ldContent}
         {pds_step5 /*Eto yung mga input*/}
-</div>       
+
+      <div className="pds_end">       
+          SUBSCRIBED AND SWORN to before me this&nbsp;&nbsp;&nbsp; <span></span>&nbsp;&nbsp;, affiant exhibiting his/her validly issued government ID as indicated above.
+      </div>  
+      <div className="pds_end1">       
+          <div className="box">
+              <div className="bot">Person Administering Oath</div>
+          </div>
+      </div>  
+
+
+      <div className="pds_footer">
+        CS FORM 212 (Revised 2017), Page 3 of 3
+      </div>
+  </div>   
 
       </div>
     </div>

@@ -29,9 +29,9 @@ export default function PDSprintable1() {
         <div key={key_A}> 
         <div className="pds_row">
             <div className="left">
-                <div className="cont"><span>SURNAME</span></div>
-                <div className="cont"><span>FIRST NAME</span></div>
-                <div className="cont"><span>MIDDLE NAME</span></div>
+                <div className="cont"><span>2. SURNAME</span></div>
+                <div className="cont"><span>&nbsp;&nbsp;&nbsp;&nbsp;FIRST NAME</span></div>
+                <div className="cont"><span>&nbsp;&nbsp;&nbsp;&nbsp;MIDDLE NAME</span></div>
             </div>
             <div className="right">
                 <div className="cont"><span>{res.lname}</span></div>
@@ -49,11 +49,11 @@ export default function PDSprintable1() {
         <div className="pds_row1">
             <div className="row1">
                 <div className="cont">
-                    <span>DATE OF BIRTH</span>
-                    <span>(mm/dd/yyyy)</span>
+                    <span>3. DATE OF BIRTH</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;(mm/dd/yyyy)</span>
                 </div>
-                <div className="cont"><span>PLACE OF BIRTH</span></div>
-                <div className="cont"><span>SEX</span></div>
+                <div className="cont"><span>4. PLACE OF BIRTH</span></div>
+                <div className="cont"><span>5. SEX</span></div>
             </div>
             <div className="row2">
                 <div className="cont"><span>{moment(res.bday).format('L')}</span></div>
@@ -61,7 +61,7 @@ export default function PDSprintable1() {
                 <div className="cont"><span>{res.gender}</span></div>
             </div>
             <div className="row3">
-                 <span>CITIZENSHIP</span>
+                 <span>16. CITIZENSHIP</span>
                  <span>If holder of  dual citizenship, please indicate the details.</span>
             </div>
             <div className="row4">
@@ -71,9 +71,9 @@ export default function PDSprintable1() {
 
         <div className="pds_row2">
             <div className="row1">
-                <div className="cont"><span>CIVIL STATUS</span></div>
-                <div className="cont"><span>HEIGHT (m)</span></div>
-                <div className="cont"><span>WEIGHT (kg)</span></div>
+                <div className="cont"><span>6. CIVIL STATUS</span></div>
+                <div className="cont"><span>7. HEIGHT (m)</span></div>
+                <div className="cont"><span>8. WEIGHT (kg)</span></div>
             </div>
             <div className="row2">
                 <div className="cont"><span>{res.civil}</span></div>
@@ -81,7 +81,7 @@ export default function PDSprintable1() {
                 <div className="cont"><span>{res.weight + "kg"}</span></div>
             </div>
             <div className="row3">
-                <div className="cont"><span>RESIDENTIAL ADDRESS</span></div>
+                <div className="cont"><span>17. RESIDENTIAL ADDRESS</span></div>
                 <div className="cont"><span>ZIP CODE</span></div>
             </div>
             <div className="row4">
@@ -123,10 +123,10 @@ export default function PDSprintable1() {
 
         <div className="pds_row3">
             <div className="row1">
-                <div className="cont"><span>BLOOD TYPE</span></div>
-                <div className="cont"><span>GSIS ID NO.</span></div>
-                <div className="cont"><span>PAG-IBIG ID NO.</span></div>
-                <div className="cont"><span>PHILHEALTH NO.</span></div>
+                <div className="cont"><span>9. BLOOD TYPE</span></div>
+                <div className="cont"><span>10. GSIS ID NO.</span></div>
+                <div className="cont"><span>11. PAG-IBIG ID NO.</span></div>
+                <div className="cont"><span>12. PHILHEALTH NO.</span></div>
             </div>
             <div className="row2">
                 <div className="cont"><span>{res.blood}</span></div>
@@ -135,7 +135,7 @@ export default function PDSprintable1() {
                 <div className="cont"><span>{res.philhealth}</span></div>
             </div>
             <div className="row3">
-                <div className="cont"><span>PERMANENT ADDRESS</span></div>
+                <div className="cont"><span>18. PERMANENT ADDRESS</span></div>
                 <div className="cont"><span>ZIP CODE</span></div>
             </div>
 
@@ -178,9 +178,9 @@ export default function PDSprintable1() {
 
         <div className="pds_row4">
             <div className="row1">
-                <div className="cont"><span>SSS NO.</span></div>
-                <div className="cont"><span>TIN NO.</span></div>
-                <div className="cont"><span>AGENCY EMPLOYEE NO.</span></div>
+                <div className="cont"><span>13. SSS NO.</span></div>
+                <div className="cont"><span>14. TIN NO.</span></div>
+                <div className="cont"><span style={{fontSize:".75rem"}}>15. AGENCY EMPLOYEE NO.</span></div>
             </div>
             <div className="row2">
                 <div className="cont"><span>{res.sss}</span></div>
@@ -188,9 +188,9 @@ export default function PDSprintable1() {
                 <div className="cont"><span>{res.employeNo}</span></div>
             </div>
             <div className="row3">
-                <div className="cont"><span>TELEPHONE NO.</span></div>
-                <div className="cont"><span>MOBILE NO.</span></div>
-                <div className="cont"><span>E-MAIL ADDRESS</span></div>
+                <div className="cont"><span>19. TELEPHONE NO.</span></div>
+                <div className="cont"><span>20. MOBILE NO.</span></div>
+                <div className="cont"><span>21. E-MAIL ADDRESS</span></div>
             </div>
             <div className="row4">
                 <div className="cont"><span style={{textTransform:"uppercase",fontWeight:"600"}}>{res.tele}</span></div>
@@ -1161,12 +1161,23 @@ export default function PDSprintable1() {
       <div className="pds_preview" id="convertable_pdf_PDS1" > 
 
 
-<div id="page_Separator">   
+<div id="page_Separator1" className="page_Separator">   
       <div className="pds_header">
           <p className="pds_header_p">CS Form No. 212</p>
           <p className="pds_header_p">Revised 2017</p>
           <div className="pds_text">PERSONAL DATA SHEET</div>
           <p className="pds_warning">WARNING: Any misrepresentation made in the Personal Data Sheet and the Work Experience Sheet shall cause the filing of administrative/criminal case/s against the person concerned.</p>
+          <p className="pds_warning">READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA SHEET (PDS) BEFORE ACCOMPLISHING THE PDS FORM.</p>
+
+          <div className="pds_trip">
+            <div className="pds_warning1">Print legibly.&nbsp;&nbsp;Tick appropriate boxes&nbsp;(&nbsp;<div id="box"></div>&nbsp;with "<b>&#10003;</b>" and use separate sheet if necessary. Indicate N/A if not applicable.)</div>
+
+            <div className="pds_warning2">
+              <div className="left">&nbsp;1. CS ID No.</div>
+              <div className="right">(Do not fill up. For CSC use only)&nbsp;</div>
+            </div>
+
+          </div>
       </div>
 
       <div className="pds_th">
@@ -1181,7 +1192,9 @@ export default function PDSprintable1() {
       </div>
 
       <div className="pds_educatiion_row">
-          <div className="row1"><span>LEVEL</span></div>
+          <div className="row1">
+            <div style={{fontSize:".8rem",marginTop:"-50px",marginLeft:"-80px",position:"absolute"}}>22.</div>
+            <span>LEVEL</span></div>
           <div className="row2">
               <span>NAME OF SCHOOL</span>
               <span>(Write in full)</span>
@@ -1267,11 +1280,24 @@ export default function PDSprintable1() {
           </div>
       </div>
 
+      <div className="separate_sheet">
+        (Continue on separate sheet if necessary)
+      </div>
+      <div className="separate_sheet1">
+        <div className="row1">SIGNATURE</div>
+        <div className="row2"></div>
+        <div className="row3">DATE</div>
+        <div className="row4">{moment().format('LL')}</div>
+      </div>
+
+      <div className="pds_footer">
+        CS FORM 212 (Revised 2017), Page 1 of 3
+      </div>
 
         {pds_step2 /* Eto yung mga input*/}
 </div>
 
-<div id="page_Separator"> 
+<div id="page_Separator2" className="page_Separator"> 
       {/*Step 3*/}
       <div className="pds_th" style={{borderTop:"2px solid black"}}>
           <span>III. CIVIL SERVICE ELIGIBILITY</span>
@@ -1279,6 +1305,7 @@ export default function PDSprintable1() {
 
       <div className="pds_cse_row">
           <div className="row1">
+              <div style={{fontSize:".8rem",marginTop:"-60px",marginLeft:"-190px",position:"absolute"}}>23.</div>
               <span>CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/ CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE</span>
           </div>
           <div className="row2">
@@ -1313,6 +1340,7 @@ export default function PDSprintable1() {
 
       <div className="pds_we_row">
           <div className="row1">
+              <div style={{fontSize:".8rem",marginTop:"5px",marginLeft:"-95px",position:"absolute"}}>24.</div>
               <div className="top1"><span>INCLUSIVE DATES  (mm/dd/yyyy)</span></div>
               <div className="bot">
                   <div className="from"><span>From</span></div>
@@ -1344,14 +1372,32 @@ export default function PDSprintable1() {
 
         {weContent}
         {pds_step4 /*Eto yung mga input*/}
+
+      <div className="separate_sheet">
+        (Continue on separate sheet if necessary)
+      </div>
+      <div className="separate_sheet1">
+        <div className="row1" style={{width:"130px"}}>SIGNATURE</div>
+        <div className="row2"></div>
+        <div className="row3">DATE</div>
+        <div className="row4" style={{width:"322px"}}>{moment().format('LL')}</div>
+      </div>
+
+      <div className="pds_footer">
+        CS FORM 212 (Revised 2017), Page 2 of 3
+      </div>
+</div>     
+
+<div id="page_Separator3" className="page_Separator"> 
       {/*Step 5*/}
-      <div className="pds_th" style={{borderTop:"none"}}>
+      <div className="pds_th" style={{borderTop:"2px solid black"}}>
           <span>V. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING PROGRAMS ATTENDED</span>
           <span style={{fontSize:".75rem",marginTop:"5px",marginBottom:"5px"}}>(Start from the most recent L&D/training program and include only the relevant L&D/training taken for the last five (5) years for Division Chief/Executive/Managerial positions)</span>
       </div>
 
       <div className="pds_cert_row">
           <div className="row1">
+              <div style={{fontSize:".8rem",marginTop:"-60px",marginLeft:"-190px",position:"absolute"}}>25.</div>
               <span>TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS / TRAINING PROGRAMS</span>
               <span>(Write in full)</span>
           </div>
@@ -1376,7 +1422,21 @@ export default function PDSprintable1() {
 
         {ldContent}
         {pds_step5 /*Eto yung mga input*/}
-</div>       
+
+      <div className="pds_end">       
+          SUBSCRIBED AND SWORN to before me this&nbsp;&nbsp;&nbsp; <span></span>&nbsp;&nbsp;, affiant exhibiting his/her validly issued government ID as indicated above.
+      </div>  
+      <div className="pds_end1">       
+          <div className="box">
+              <div className="bot">Person Administering Oath</div>
+          </div>
+      </div>  
+
+
+      <div className="pds_footer">
+        CS FORM 212 (Revised 2017), Page 3 of 3
+      </div>
+  </div>   
 
       </div>
     </div>
