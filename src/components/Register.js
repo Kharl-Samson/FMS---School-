@@ -5,7 +5,6 @@ import Container from '@mui/material/Container';
 import { useEffect, useState } from "react";
 import Grid from '@mui/material/Grid';
 import { Link } from "react-router-dom";
-
 import rightBG from "../images/login/login_img.png";
 import CICT_Text from "../images/login/cict_bg_text.png";
 import Image_rounder from "../images/login/login_img_rounder.png";
@@ -23,13 +22,14 @@ import axios from "axios";
 import ModalValidation from "./ModalValidation";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Register(){
+
+    //Timer of page loader
     setTimeout(function () {
         document.getElementById("pageLoader_container").style.opacity="100%";
     }, 10);
@@ -53,13 +53,14 @@ export default function Register(){
     }));
     
 
-    //Para matoggle yung password
+    //Use state css in password toggle password
     const [open,setOpen] = useState(false)
     const pass = {
       toggle:{
         visibility: open ? "visible" : "hidden",
       }
     };
+
     function TogglePass(){
         if(document.getElementById("password").value == ""){
             setOpen(false); //Pag wala laman password input mag set sa false para mag hide toggle icon
@@ -68,25 +69,27 @@ export default function Register(){
             setOpen(true);  
         }
     } 
-    //Para maview yung password sa input form
+    //To show the password value in input form
     function show_pass(){
         document.getElementById('password').type = 'text';
         document.getElementsByClassName("open_eye")[0].style.display = "none"
         document.getElementsByClassName("close_eye")[0].style.display = "flex"
     }
-    //Para mahide yung password sa input form
+    //To hide the password value in input form
     function hide_pass(){
         document.getElementById('password').type = 'password';
         document.getElementsByClassName("open_eye")[0].style.display = "flex"
         document.getElementsByClassName("close_eye")[0].style.display = "none"
     }
-    //Para matoggle yung sa confirm password
+
+    //Use state css in password toggle retype password
     const [open1,setOpen1] = useState(false)
     const pass1 = {
         toggle:{
           visibility: open1 ? "visible" : "hidden",
         }
     };
+
     function TogglePass1(){
         if(document.getElementById("confirm_password").value == ""){
             setOpen1(false); //Pag wala laman password input mag set sa false para mag hide toggle icon
@@ -95,20 +98,21 @@ export default function Register(){
             setOpen1(true);
         }
     }
-   //Para maview yung password sa input form
+
+    //To show the password value in input form
     function show_pass1(){
         document.getElementById('confirm_password').type = 'text';
         document.getElementsByClassName("open_eye")[1].style.display = "none"
         document.getElementsByClassName("close_eye")[1].style.display = "flex"
     }
-   //Para mahide yung password sa input form
+   //To hide the password value in input form
     function hide_pass1(){
         document.getElementById('confirm_password').type = 'password';
         document.getElementsByClassName("open_eye")[1].style.display = "flex"
         document.getElementsByClassName("close_eye")[1].style.display = "none"
     }
 
-    //Para mavalidate email
+    //Email validation function
     function email_validation(){
         if (validator.isEmail(document.getElementById("email").value)) { //Pag valid email
                 document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
@@ -133,9 +137,9 @@ export default function Register(){
         }
     }
 
-    //Pang validate ng password
+    //Password Validation function
     function password_validation(){
-        if (validator.isStrongPassword(document.getElementById('password').value, { //Pag valid password
+        if (validator.isStrongPassword(document.getElementById('password').value, { //If password is valid
             minLength: 8, minLowercase: 1,
             minUppercase: 1, minNumbers: 1, minSymbols: 1
           })) {          
@@ -144,7 +148,7 @@ export default function Register(){
                 document.getElementsByClassName("img_verifyer")[0].src = Valid_icon;
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "Your password is valid.";
                 document.getElementsByClassName("password_container")[0].style.border = "1px solid #D8D8D8";
-          } else { //Pag maiksi or madali yung password
+          } else { //If password is not strong
                 document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "Your password is not strong.";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
@@ -152,7 +156,7 @@ export default function Register(){
                 document.getElementsByClassName("password_container")[0].style.border = "1px solid red";      
           }
           
-          if(document.getElementById("password").value === "" ){ //Pag wala value yung password sa input form
+          if(document.getElementById("password").value === "" ){ //If password value is empty in form
                 document.getElementsByClassName("form_handler_container")[0].style.display = "none";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
@@ -162,19 +166,19 @@ export default function Register(){
           }
     }
 
-    //Pang determing kung match yung password at confirm password
+    //Function if password and retype password is match
     function password_verifyer(){
         const pass = document.getElementById('password').value;
         const confirm_pass = document.getElementById('confirm_password').value;
 
-            if(pass !== confirm_pass && confirm_pass !== ""){ //Pag di equal yung password at confirm password 
+            if(pass !== confirm_pass && confirm_pass !== ""){ //If password and confirm password are not match
                 document.getElementsByClassName("form_handler_container")[0].style.display = "flex";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "Please make sure your password match.";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
                 document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
                 document.getElementsByClassName("confirm_password_container")[0].style.border = "1px solid red";   
             }
-            else if(confirm_pass === ""){ //Pag wala value yung confirm password input
+            else if(confirm_pass === ""){ //If confirm password input has no value
                 document.getElementsByClassName("password_container")[0].style.border = "1px solid #D8D8D8"; 
                 document.getElementsByClassName("confirm_password_container")[0].style.border = "1px solid #D8D8D8";   
                 document.getElementsByClassName("form_handler_container")[0].style.display = "none";
@@ -182,7 +186,7 @@ export default function Register(){
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
                 document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;  
             }
-            else{ //Pag match equal yung password at confirm password 
+            else{ //If password are both match
                 document.getElementsByClassName("form_handler_container")[0].style.display = "none";
                 document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
                 document.getElementsByClassName("form_handler_container")[0].style.backgroundColor = "#f7526d"
@@ -218,7 +222,7 @@ export default function Register(){
             password:data.password,
             confirm_password:data.confirm_password
         }
-        //console.log(sendData)
+     
 
         if (validator.isEmail(document.getElementById("email").value)) {// If email is valid 
             if (validator.isStrongPassword(document.getElementById('password').value, { // If password is valid
@@ -298,182 +302,180 @@ getWebContent.map((res) => {
     document.title = res.abbreviation+" | Sign in or Sign up";
 });
 
-    return (
-        <div className="login_container">
-                <PageLoader/>
+return (
+<div className="login_container">
+    <PageLoader/>
 
-            <div className="cict_text_container cict_text_container1">
-                <img src={CICT_Text} className="cict_text cict_text1"/>     
-            </div>
-            <div className="cict_text_container cict_text_container2">
-                <img src={CICT_Text} className="cict_text cict_text2"/>     
-            </div>
-            <div className="cict_text_container cict_text_container3">
-                <img src={CICT_Text} className="cict_text cict_text1"/>     
-            </div>
+    <div className="cict_text_container cict_text_container1">
+        <img src={CICT_Text} className="cict_text cict_text1"/>     
+    </div>
+    <div className="cict_text_container cict_text_container2">
+        <img src={CICT_Text} className="cict_text cict_text2"/>     
+    </div>
+    <div className="cict_text_container cict_text_container3">
+        <img src={CICT_Text} className="cict_text cict_text1"/>     
+    </div>
 
-            <div className="img_rounder_container">
-                <img src={Image_rounder} />
-            </div>
+    <div className="img_rounder_container">
+        <img src={Image_rounder} />
+    </div>
 
-            <div className="login_form_container register_form_container">
-                <form onSubmit={submitForm}>
-                <Container maxWidth="md">
-                    <Box sx={{  height: 'auto' }}>
+    <div className="login_form_container register_form_container">
+        <form onSubmit={submitForm}>
+        <Container maxWidth="md">
+            <Box sx={{  height: 'auto' }}>
 
-                    <div className="login_form">
-                        <div className="left">
+            <div className="login_form">
+                <div className="left">
 
-                            <div className="left_container">
-                                <h1 style={{lineHeight : 1,}}>Create an Account</h1>
-                                <p className="already_have_account_text">
-                                    Already have an account?&nbsp; 
+                    <div className="left_container">
+                        <h1 style={{lineHeight : 1,}}>Create an Account</h1>
+                        <p className="already_have_account_text">
+                            Already have an account?&nbsp; 
+                            <Link to="/" style={{ textDecoration: 'none' }}>
+                                <span>Sign in</span>
+                            </Link>
+                        </p>
 
-                                    <Link to="/" style={{ textDecoration: 'none' }}>
-                                        <span>Sign in</span>
-                                    </Link>
-                                </p>
-
-                                <div className="input_container input_container1 fname_container">
-                                    <div className="icon_container">
-                                            <LightTooltip title="First Name">
-                                            <img src={Username_icon} className=".for_hover"/>
-                                            </LightTooltip>
-                                    </div>
-                                    <input type="text" placeholder="First Name" name="first_name" onChange={handleChange} value={data.first_name} required style={{textTransform:"capitalize"}}/>
-                                </div>
-
-                                <div className="input_container input_container2 lname_container">
-                                    <div className="icon_container">
-                                            <LightTooltip title="Last Name">
-                                            <img src={Username_icon} className=".for_hover"/>
-                                            </LightTooltip>
-                                    </div>
-                                    <input type="text" placeholder="Last Name" name="last_name" onChange={handleChange} value={data.last_name} required style={{textTransform:"capitalize"}}/>
-                                </div>
-
-                                <div className="input_container input_container2 email_container">
-                                    <div className="icon_container">
-                                            <LightTooltip title="Email">
-                                            <img src={Email_icon} className=".for_hover"/>
-                                            </LightTooltip>
-                                    </div>
-                                    <input type="text" placeholder="Email" name="email" id="email" onChange={handleChange} onKeyUp={email_validation} value={data.email} required/>
-                                </div>
-
-                                <div className="input_container input_container2 password_container">
-                                    <div className="icon_container">
-                                            <LightTooltip title="Password">
-                                            <img src={Password_icon}/>
-                                            </LightTooltip>
-                                    </div>
-                                    <input type="password" placeholder="Password" name="password"  id="password" onKeyUp={() => { TogglePass(); password_validation();}} onChange={handleChange} value={data.password} required/>
-                                    <div className="toggle_password">                           
-                                            <img src={Open_eye_icon} 
-                                                className="password_toggle_icon open_eye"
-                                                style={pass.toggle}
-                                                onClick={show_pass}
-                                                title="Show Password"
-                                            />         
-                                            <img src={Close_eye_icon}
-                                                className="password_toggle_icon close_eye"
-                                                style={pass.toggle}
-                                                onClick={hide_pass}
-                                                title="Hide Password"
-                                            />
-                                    </div>
-                                </div>
-
-                                <div className="input_container input_container2 confirm_password_container">
-                                    <div className="icon_container">
-                                            <LightTooltip title="Confirm Password">
-                                            <img src={Password_icon}/>
-                                            </LightTooltip>
-                                    </div>
-                                    <input type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" onKeyUp={() => { TogglePass1(); password_verifyer();}}  onChange={handleChange} value={data.confirm_password} required/>
-                                    <div className="toggle_password">                           
-                                            <img src={Open_eye_icon} 
-                                                className="password_toggle_icon open_eye"
-                                                style={pass1.toggle}
-                                                onClick={show_pass1}
-                                                title="Show Password"
-                                            />         
-                                            <img src={Close_eye_icon}
-                                                className="password_toggle_icon close_eye"
-                                                style={pass1.toggle}
-                                                onClick={hide_pass1}
-                                                title="Hide Password"
-                                            />
-                                    </div>
-                                </div>
-
-                                <div className="form_handler_container">
-                                     <img src={Invalid_icon} className="img_verifyer"/>
-                                     <p className="text_verifyer"></p>
-                                </div>          
-
-                                <button type="submit" className="sign_up_btn">Sign up</button>
-           
-                                <p className="terms_and_service">
-                                    By continuing to use this website, I state that I have read and understood the&nbsp; 
-                                    <Link to="/TermsOfService" style={{ textDecoration: 'none', margin: "0"}} target="_blank">
-                                    <span>Terms of Service</span>
-                                    </Link>
-                                    &nbsp;and&nbsp; 
-                                    <Link to="/PrivacyPolicy" style={{ textDecoration: 'none', margin: "0"}} target="_blank">
-                                    <span>Privacy Policy</span>.
-                                    </Link>
-
-                                </p>                
+                        <div className="input_container input_container1 fname_container">
+                            <div className="icon_container">
+                                <LightTooltip title="First Name">
+                                <img src={Username_icon} className=".for_hover"/>
+                                </LightTooltip>
                             </div>
-                
+                            <input type="text" placeholder="First Name" name="first_name" onChange={handleChange} value={data.first_name} required style={{textTransform:"capitalize"}}/>
                         </div>
 
-                        <div className="right right_part"
-                            style={{
-                                background: `url(${rightBG}) no-repeat center center fixed`,
-                                webkitBackgroundSize: "cover",
-                            }}
-                        >
-                           {webC_LOGO}
+                        <div className="input_container input_container2 lname_container">
+                            <div className="icon_container">
+                                <LightTooltip title="Last Name">
+                                <img src={Username_icon} className=".for_hover"/>
+                                </LightTooltip>
+                            </div>
+                            <input type="text" placeholder="Last Name" name="last_name" onChange={handleChange} value={data.last_name} required style={{textTransform:"capitalize"}}/>
                         </div>
+
+                        <div className="input_container input_container2 email_container">
+                            <div className="icon_container">
+                                <LightTooltip title="Email">
+                                <img src={Email_icon} className=".for_hover"/>
+                                </LightTooltip>
+                            </div>
+                            <input type="text" placeholder="Email" name="email" id="email" onChange={handleChange} onKeyUp={email_validation} value={data.email} required/>
+                        </div>
+
+                        <div className="input_container input_container2 password_container">
+                            <div className="icon_container">
+                                <LightTooltip title="Password">
+                                <img src={Password_icon}/>
+                                </LightTooltip>
+                            </div>
+                            <input type="password" placeholder="Password" name="password"  id="password" onKeyUp={() => { TogglePass(); password_validation();}} onChange={handleChange} value={data.password} required/>
+                            <div className="toggle_password">                           
+                                <img src={Open_eye_icon} 
+                                    className="password_toggle_icon open_eye"
+                                    style={pass.toggle}
+                                    onClick={show_pass}
+                                    title="Show Password"
+                                />         
+                                <img src={Close_eye_icon}
+                                    className="password_toggle_icon close_eye"
+                                    style={pass.toggle}
+                                    onClick={hide_pass}
+                                    title="Hide Password"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="input_container input_container2 confirm_password_container">
+                            <div className="icon_container">
+                                <LightTooltip title="Confirm Password">
+                                <img src={Password_icon}/>
+                                </LightTooltip>
+                            </div>
+                            <input type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" onKeyUp={() => { TogglePass1(); password_verifyer();}}  onChange={handleChange} value={data.confirm_password} required/>
+                            <div className="toggle_password">                           
+                                <img src={Open_eye_icon} 
+                                    className="password_toggle_icon open_eye"
+                                    style={pass1.toggle}
+                                    onClick={show_pass1}
+                                    title="Show Password"
+                                />         
+                                <img src={Close_eye_icon}
+                                    className="password_toggle_icon close_eye"
+                                    style={pass1.toggle}
+                                    onClick={hide_pass1}
+                                    title="Hide Password"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="form_handler_container">
+                            <img src={Invalid_icon} className="img_verifyer"/>
+                            <p className="text_verifyer"></p>
+                        </div>          
+
+                        <button type="submit" className="sign_up_btn">Sign up</button>
+           
+                        <p className="terms_and_service">
+                            By continuing to use this website, I state that I have read and understood the&nbsp; 
+                            <Link to="/TermsOfService" style={{ textDecoration: 'none', margin: "0"}} target="_blank">
+                            <span>Terms of Service</span>
+                            </Link>
+                            &nbsp;and&nbsp; 
+                            <Link to="/PrivacyPolicy" style={{ textDecoration: 'none', margin: "0"}} target="_blank">
+                            <span>Privacy Policy</span>.
+                            </Link>
+                        </p>                
                     </div>
+                
+                </div>
 
-                    </Box>
-                </Container>
-                </form>
-            </div>
-
-            <div className="footer">
-                <Grid
-                    container
-                    direction="row"
-                    justifyContent="center"
-                    alignItems="center"
+                <div className="right right_part"
+                    style={{
+                        background: `url(${rightBG}) no-repeat center center fixed`,
+                        webkitBackgroundSize: "cover",
+                    }}
                 >
-                    <Link to="/TermsOfService" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}} target="_blank">
-                        <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Terms of Service</span>
-                    </Link>
-                    <Link to="/PrivacyPolicy" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}} target="_blank">
-                        <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Privacy Policy</span>
-                    </Link>
-                    <Link to="" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}}>
-                         {webC_abbr}
-                    </Link>
-                </Grid>                                                    
+                    {webC_LOGO}
+                </div>
             </div>
 
-            {/*Modal*/ }
-            <div className="modal_container">
-                <ModalValidation
-                    name = "EmailValidation.gif"
-                    headtext = "Successful!"
-                    subtext = "Your submission has been sent! Kindly check your email and spam for the reply. Thanks!"
-                    button1 = "Close"
-                />
-            </div>
+            </Box>
+        </Container>
+        </form>
+    </div>
+
+    <div className="footer">
+        <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+        >
+            <Link to="/TermsOfService" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}} target="_blank">
+                <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Terms of Service</span>
+            </Link>
+            <Link to="/PrivacyPolicy" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}} target="_blank">
+                <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Privacy Policy</span>
+            </Link>
+            <Link to="" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}}>
+                    {webC_abbr}
+            </Link>
+        </Grid>                                                    
+    </div>
+
+    {/*Modal*/ }
+    <div className="modal_container">
+        <ModalValidation
+            name = "EmailValidation.gif"
+            headtext = "Successful!"
+            subtext = "Your submission has been sent! Kindly check your email and spam for the reply. Thanks!"
+            button1 = "Close"
+        />
+    </div>
 
 
-        </div>
-    )
+</div>
+)
 }

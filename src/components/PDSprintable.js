@@ -29,9 +29,9 @@ export default function PDSprintable() {
         <div key={key_A}> 
         <div className="pds_row">
             <div className="left">
-                <div className="cont"><span>SURNAME</span></div>
-                <div className="cont"><span>FIRST NAME</span></div>
-                <div className="cont"><span>MIDDLE NAME</span></div>
+              <div className="cont"><span>2. SURNAME</span></div>
+              <div className="cont"><span>&nbsp;&nbsp;&nbsp;&nbsp;FIRST NAME</span></div>
+              <div className="cont"><span>&nbsp;&nbsp;&nbsp;&nbsp;MIDDLE NAME</span></div>
             </div>
             <div className="right">
                 <div className="cont"><span>{res.lname}</span></div>
@@ -49,11 +49,11 @@ export default function PDSprintable() {
         <div className="pds_row1">
             <div className="row1">
                 <div className="cont">
-                    <span>DATE OF BIRTH</span>
-                    <span>(mm/dd/yyyy)</span>
+                  <span>3. DATE OF BIRTH</span>
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;(mm/dd/yyyy)</span>
                 </div>
-                <div className="cont"><span>PLACE OF BIRTH</span></div>
-                <div className="cont"><span>SEX</span></div>
+                <div className="cont"><span>4. PLACE OF BIRTH</span></div>
+                <div className="cont"><span>5. SEX</span></div>
             </div>
             <div className="row2">
                 <div className="cont"><span>{moment(res.bday).format('L')}</span></div>
@@ -61,7 +61,7 @@ export default function PDSprintable() {
                 <div className="cont"><span>{res.gender}</span></div>
             </div>
             <div className="row3">
-                 <span>CITIZENSHIP</span>
+                 <span>16. CITIZENSHIP</span>
                  <span>If holder of  dual citizenship, please indicate the details.</span>
             </div>
             <div className="row4">
@@ -71,9 +71,9 @@ export default function PDSprintable() {
 
         <div className="pds_row2">
             <div className="row1">
-                <div className="cont"><span>CIVIL STATUS</span></div>
-                <div className="cont"><span>HEIGHT (m)</span></div>
-                <div className="cont"><span>WEIGHT (kg)</span></div>
+                <div className="cont"><span>6. CIVIL STATUS</span></div>
+                <div className="cont"><span>7. HEIGHT (m)</span></div>
+                <div className="cont"><span>8. WEIGHT (kg)</span></div>
             </div>
             <div className="row2">
                 <div className="cont"><span>{res.civil}</span></div>
@@ -81,7 +81,7 @@ export default function PDSprintable() {
                 <div className="cont"><span>{res.weight + "kg"}</span></div>
             </div>
             <div className="row3">
-                <div className="cont"><span>RESIDENTIAL ADDRESS</span></div>
+                <div className="cont"><span>17. RESIDENTIAL ADDRESS</span></div>
                 <div className="cont"><span>ZIP CODE</span></div>
             </div>
             <div className="row4">
@@ -123,10 +123,10 @@ export default function PDSprintable() {
 
         <div className="pds_row3">
             <div className="row1">
-                <div className="cont"><span>BLOOD TYPE</span></div>
-                <div className="cont"><span>GSIS ID NO.</span></div>
-                <div className="cont"><span>PAG-IBIG ID NO.</span></div>
-                <div className="cont"><span>PHILHEALTH NO.</span></div>
+                <div className="cont"><span>9. BLOOD TYPE</span></div>
+                <div className="cont"><span>10. GSIS ID NO.</span></div>
+                <div className="cont"><span>11. PAG-IBIG ID NO.</span></div>
+                <div className="cont"><span>12. PHILHEALTH NO.</span></div>
             </div>
             <div className="row2">
                 <div className="cont"><span>{res.blood}</span></div>
@@ -135,7 +135,7 @@ export default function PDSprintable() {
                 <div className="cont"><span>{res.philhealth}</span></div>
             </div>
             <div className="row3">
-                <div className="cont"><span>PERMANENT ADDRESS</span></div>
+                <div className="cont"><span>18. PERMANENT ADDRESS</span></div>
                 <div className="cont"><span>ZIP CODE</span></div>
             </div>
 
@@ -178,9 +178,9 @@ export default function PDSprintable() {
 
         <div className="pds_row4">
             <div className="row1">
-                <div className="cont"><span>SSS NO.</span></div>
-                <div className="cont"><span>TIN NO.</span></div>
-                <div className="cont"><span>AGENCY EMPLOYEE NO.</span></div>
+                <div className="cont"><span>13. SSS NO.</span></div>
+                <div className="cont"><span>14. TIN NO.</span></div>
+                <div className="cont"><span style={{fontSize:".75rem"}}>15. AGENCY EMPLOYEE NO.</span></div>
             </div>
             <div className="row2">
                 <div className="cont"><span>{res.sss}</span></div>
@@ -188,9 +188,9 @@ export default function PDSprintable() {
                 <div className="cont"><span>{res.employeNo}</span></div>
             </div>
             <div className="row3">
-                <div className="cont"><span>TELEPHONE NO.</span></div>
-                <div className="cont"><span>MOBILE NO.</span></div>
-                <div className="cont"><span>E-MAIL ADDRESS</span></div>
+                <div className="cont"><span>19. TELEPHONE NO.</span></div>
+                <div className="cont"><span>20. MOBILE NO.</span></div>
+                <div className="cont"><span>21. E-MAIL ADDRESS</span></div>
             </div>
             <div className="row4">
                 <div className="cont"><span style={{textTransform:"uppercase",fontWeight:"600"}}>{res.tele}</span></div>

@@ -29,7 +29,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Login(){
 
-
+    //Timer of page loader
     setTimeout(function () {
         document.getElementById("pageLoader_container").style.opacity="100%";
     }, 10);
@@ -53,11 +53,11 @@ export default function Login(){
     }));
 
 
-    //Para maclear email sa local storage
+    //Clearing the value of login key local storage
     localStorage.removeItem("email");
     localStorage.removeItem("pds_ctr");
 
-    //Para matoggle yung password
+    //Use state css in password toggle
     const [open,setOpen] = useState(false)
     const pass = {
       toggle:{
@@ -73,19 +73,22 @@ export default function Login(){
             setOpen(true);
         }
     }
-    //Para maview yung password sa input form
+
+    //To show the password value in input form
     function show_pass(){
         document.getElementById('password').type = 'text';
         document.getElementsByClassName("open_eye")[0].style.display = "none"
         document.getElementsByClassName("close_eye")[0].style.display = "flex"
     }
-    //Para mahide yung password sa input form
+
+    //To hide the password value in input form
     function hide_pass(){
         document.getElementById('password').type = 'password';
         document.getElementsByClassName("open_eye")[0].style.display = "flex"
         document.getElementsByClassName("close_eye")[0].style.display = "none"
     }
-    //Para mahide yung validation sa form
+
+    //To hide validation in the form
     function hide_validation(){
         document.getElementsByClassName("form_handler_container")[0].style.display = "none";
         document.getElementsByClassName("text_verifyer")[0].innerHTML = "";
@@ -93,13 +96,14 @@ export default function Login(){
         document.getElementsByClassName("img_verifyer")[0].src = Invalid_icon;
     }
 
-    let navigate = useNavigate(); //Para mag direct sa specific page
+    let navigate = useNavigate(); 
 
     //Declaring variable data to pass in backend
     const [user,setData ] = useState({
         email:"",
         password:""
     })
+
     //Setting a value to a data 
     const handleChange=(e)=>{
         setData({...user, [e.target.name]: e.target.value });
@@ -159,7 +163,7 @@ export default function Login(){
                     navigate(`/FacultyDashboard`);
                 },1000)
             }
-            else if(result.data.status === "Admin Login"){ //If response is Faculty Login
+            else if(result.data.status === "Admin Login"){ //If response is Admin Login
                 setTimeout(function(){
                     if(localStorage.getItem("locked_account_ctr") < 5){
                         lockCTR++;
@@ -198,7 +202,7 @@ export default function Login(){
         })    
     }
 
-
+    //Remember me time set
     var defaultChecked1 = localStorage.getItem("remember_me1");
     setTimeout(function(){
         if(localStorage.getItem("remember_me") !="not_checked" && localStorage.getItem("remember_me") != null){
@@ -209,16 +213,16 @@ export default function Login(){
          }
     },500);
  
- 
+    //Remember me function
    function lsRememberMe1() {
-     if (document.getElementById('keep_logA').checked) {
+     if (document.getElementById('keep_logA').checked) {//If remember me is checked
          window.localStorage.setItem('email_input', document.getElementById("email").value);
          window.localStorage.setItem('password_input', document.getElementById("password").value);
          window.localStorage.setItem('remember_me', "checked");
          window.localStorage.setItem('remember_me1', "true");
 
      } 
-     else{
+     else{//If remember me is not checked
          window.localStorage.setItem('email_input', "");
          window.localStorage.setItem('password_input', "");
          window.localStorage.setItem('remember_me', "not_checked");
@@ -254,185 +258,184 @@ export default function Login(){
   });
 
 
-    return (
-        <div className="login_container" >
-            <PageLoader/>
+return (
+ <div className="login_container" >
+    <PageLoader/>
 
-            {/*Loading when getting data*/ }
-            <div className="LoadingContainer">
-                <div className="mid">
-                    <img src={loading}/>
-                    <span>This may take a while. Please wait...</span>
-                </div>
-            </div>
+    {/*Loading when getting data*/ }
+    <div className="LoadingContainer">
+        <div className="mid">
+            <img src={loading}/>
+             <span>This may take a while. Please wait...</span>
+        </div>
+    </div>
 
-            <div className="cict_text_container cict_text_container1">
-                <img src={CICT_Text} className="cict_text cict_text1"/>     
-            </div>
-            <div className="cict_text_container cict_text_container2">
-                <img src={CICT_Text} className="cict_text cict_text2"/>     
-            </div>
-            <div className="cict_text_container cict_text_container3">
-                <img src={CICT_Text} className="cict_text cict_text1"/>     
-            </div>
+    <div className="cict_text_container cict_text_container1">
+        <img src={CICT_Text} className="cict_text cict_text1"/>     
+    </div>
+    <div className="cict_text_container cict_text_container2">
+         <img src={CICT_Text} className="cict_text cict_text2"/>     
+    </div>
+    <div className="cict_text_container cict_text_container3">
+        <img src={CICT_Text} className="cict_text cict_text1"/>     
+    </div>
 
-            <div className="img_rounder_container">
-                <img src={Image_rounder} />
-            </div>
+    <div className="img_rounder_container">
+        <img src={Image_rounder} />
+    </div>
 
-            <div className="login_form_container">
-                <form onSubmit={submitForm}>
-                <Container maxWidth="md">
-                    <Box sx={{  height: 'auto' }}>
+    <div className="login_form_container">
+        <form onSubmit={submitForm}>
+        <Container maxWidth="md">
+            <Box sx={{  height: 'auto' }}>
      
-                    <div className="login_form">
-                        <div className="left">
-                            <div className="left_container">
-                                <h1>Welcome Back</h1>
-                                <span className="subtext">Login to your account</span>
+            <div className="login_form">
+                <div className="left">
+                    <div className="left_container">
+                        <h1>Welcome Back</h1>
+                        <span className="subtext">Login to your account</span>
 
-                                <div className="input_container input_container1">
-                                    <div className="icon_container">
-                                    <LightTooltip title="Email">
-                                            <img src={Email_icon} className=".for_hover"/>
-                                    </LightTooltip>
-                                    </div>
-                                    <input type="text" placeholder="Email" name="email"  onKeyUp={hide_validation} id="email" defaultValue={localStorage.getItem("email_input")} required/>
-                                </div>
+                        <div className="input_container input_container1">
+                            <div className="icon_container">
+                            <LightTooltip title="Email">
+                                    <img src={Email_icon} className=".for_hover"/>
+                            </LightTooltip>
+                            </div>
+                            <input type="text" placeholder="Email" name="email"  onKeyUp={hide_validation} id="email" defaultValue={localStorage.getItem("email_input")} required/>
+                        </div>
 
-                                <div className="input_container input_container2">
-                                    <div className="icon_container">
-                                    <LightTooltip title="Password">
-                                            <img src={Password_icon}/>
-                                    </LightTooltip>
-                                    </div>
-                                    <input type="password" placeholder="Password" id="password" name="password" onKeyUp={() => { TogglePass(); hide_validation();}}  defaultValue={localStorage.getItem("password_input")} required/>
+                        <div className="input_container input_container2">
+                            <div className="icon_container">
+                            <LightTooltip title="Password">
+                                    <img src={Password_icon}/>
+                            </LightTooltip>
+                            </div>
+                            <input type="password" placeholder="Password" id="password" name="password" onKeyUp={() => { TogglePass(); hide_validation();}}  defaultValue={localStorage.getItem("password_input")} required/>
 
-                                    <div className="toggle_password">
-                                    
-                                            <img src={Open_eye_icon} 
-                                                className="password_toggle_icon open_eye"
-                                                style={pass.toggle}
-                                                onClick={show_pass}
-                                                title="Show Password"
-                                            />
+                            <div className="toggle_password">               
+                                <img src={Open_eye_icon} 
+                                    className="password_toggle_icon open_eye"
+                                    style={pass.toggle}
+                                    onClick={show_pass}
+                                    title="Show Password"
+                                />
             
-                                            <img src={Close_eye_icon}
-                                                className="password_toggle_icon close_eye"
-                                                style={pass.toggle}
-                                                onClick={hide_pass}
-                                                title="Hide Password"
-                                            />
-                             
-                                    </div>
-                                </div>
-
-                                <div className="remember_forgot_container">
-                                    <Grid
-                                        container
-                                        direction="row"
-                                        justifyContent="space-between"
-                                        alignItems="center"
-                                    >
-                                            <div className="left">
-                                                <Checkbox
-                                               defaultChecked={defaultChecked1} 
-                                                id="keep_logA"
-                                                {...label}
-                                                sx={{
-                                                    color: orange[400],
-                                                    '&.Mui-checked': {
-                                                    color: orange[600],
-                                                    },
-                                                    padding: 0,
-                                                    margin: 0,
-                                                    }}
-                                                />
-                                                <span className="remember_me">Remember Me</span>
-                                            </div>
-                                            <div className="right">
-                                                <Link to="/ForgotPassword" style={{ textDecoration: 'none' }}>
-                                                    <span className="forgot_pass">Forgot Password?</span>
-                                                </Link>          
-                                            </div> 
-                                    </Grid>
-                               </div>
-
-                               <div className="form_handler_container">
-                                     <img src={Invalid_icon} className="img_verifyer"/>
-                                     <p className="text_verifyer"></p>
-                                </div>    
-
-                                <button type="submit" className="sign_in_btn" onClick={lsRememberMe1} >Sign in</button>
-                                
-                                <p className="dont_have_account_text">
-                                    Don't have an account?&nbsp; 
-
-                                    <Link to="/Register" style={{ textDecoration: 'none' }}>
-                                        <span>Sign up</span>
-                                    </Link>
-                                </p>
-
+                                <img src={Close_eye_icon}
+                                    className="password_toggle_icon close_eye"
+                                    style={pass.toggle}
+                                    onClick={hide_pass}
+                                    title="Hide Password"
+                                />                       
                             </div>
                         </div>
 
-                        <div className="right right_part" 
-                            style={{
-                                 background: `url(${rightBG}) no-repeat center center fixed`,
-                                 webkitBackgroundSize: "cover",
-                                 }}>
-                                {webC_LOGO} 
+                        <div className="remember_forgot_container">
+                            <Grid
+                                container
+                                direction="row"
+                                justifyContent="space-between"
+                                alignItems="center"
+                            >
+                                <div className="left">
+                                    <Checkbox
+                                        defaultChecked={defaultChecked1} 
+                                        id="keep_logA"
+                                        {...label}
+                                        sx={{
+                                        color: orange[400],
+                                        '&.Mui-checked': {
+                                        color: orange[600],
+                                        },
+                                        padding: 0,
+                                        margin: 0,
+                                        }}
+                                    />
+                                    <span className="remember_me">Remember Me</span>
+                                </div>
+                                <div className="right">
+                                    <Link to="/ForgotPassword" style={{ textDecoration: 'none' }}>
+                                        <span className="forgot_pass">Forgot Password?</span>
+                                    </Link>          
+                                </div> 
+                            </Grid>
                         </div>
+
+                        <div className="form_handler_container">
+                            <img src={Invalid_icon} className="img_verifyer"/>
+                            <p className="text_verifyer"></p>
+                        </div>    
+
+                        <button type="submit" className="sign_in_btn" onClick={lsRememberMe1} >Sign in</button>
+                                
+                        <p className="dont_have_account_text">
+                            Don't have an account?&nbsp; 
+                            <Link to="/Register" style={{ textDecoration: 'none' }}>
+                                <span>Sign up</span>
+                            </Link>
+                        </p>
+
                     </div>
+                </div>
 
-                    </Box>
-                </Container>
-                </form>
-            </div>
-
-            <div className="footer">
-                <Grid
-                    container
-                    direction="row"
-                    justifyContent="center"
-                    alignItems="center"
-                >
-                    <Link to="/TermsOfService" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}} target="_blank">
-                        <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Terms of Service</span>
-                    </Link>
-                    <Link to="/PrivacyPolicy" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}} target="_blank">
-                        <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Privacy Policy</span>
-                    </Link>
-                    <Link to="" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}}>
-                            {webC_abbr}
-                    </Link>
-                </Grid>                                                    
-            </div>
-
-
-            {/*Modal*/ }
-            <div className="modal_container" id="accLocked_Modal">
-                <div className="modal_validation">
-                    <img src={locked_accIcon} className="emailVal_img" style={{boxShadow:"none",}}/>
-                    <h1 className="val_header" style={{fontSize:"1.3rem"}}>Too many login attempts</h1>
-                    <span className="val_subtext" style={{maxWidth:"90%"}} id="modal_text">Due to that you can't logged in until 6:00 pm</span>
-                    <button className="modal_close_btn" onClick={closeModal}>Okay</button>
+                <div className="right right_part" 
+                    style={{
+                            background: `url(${rightBG}) no-repeat center center fixed`,
+                            webkitBackgroundSize: "cover",
+                                 }}>
+                        {webC_LOGO} 
                 </div>
             </div>
 
+            </Box>
+        </Container>
+        </form>
+    </div>
+
+    <div className="footer">
+        <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+        >
+            <Link to="/TermsOfService" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}} target="_blank">
+                <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Terms of Service</span>
+            </Link>
+            <Link to="/PrivacyPolicy" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}} target="_blank">
+                <span className="footer_clickable" style={{whiteSpace: "nowrap" }}>Privacy Policy</span>
+            </Link>
+            <Link to="" style={{ textDecoration: 'none', marginBottom: "20px",marginLeft:"15px",marginRight:"15px"}}>
+                {webC_abbr}
+            </Link>
+        </Grid>                                                    
+    </div>
+
+
+    {/*Modal*/ }
+    <div className="modal_container" id="accLocked_Modal">
+        <div className="modal_validation">
+            <img src={locked_accIcon} className="emailVal_img" style={{boxShadow:"none",}}/>
+            <h1 className="val_header" style={{fontSize:"1.3rem"}}>Too many login attempts</h1>
+            <span className="val_subtext" style={{maxWidth:"90%"}} id="modal_text">Due to that you can't logged in until 6:00 pm</span>
+            <button className="modal_close_btn" onClick={closeModal}>Okay</button>
         </div>
+    </div>
+
+    </div>
     )
 }
 
-
+//Close modal function
 function closeModal(){
     document.getElementById("accLocked_Modal").style.display="none";
 }
+
+//Function to go to admin login page
 document.addEventListener("keyup", function(event) {
     if (event.keyCode === 120) {
-        var win = window.open('http://localhost:3000/AdminLogin', '_blank');
-            if (win) {
-                win.focus();
-            } 
+    var win = window.open('http://localhost:3000/AdminLogin', '_blank');
+        if (win) {
+            win.focus();
+        } 
     }
 });

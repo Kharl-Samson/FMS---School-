@@ -11,7 +11,7 @@ import CertificateTopActions from "../certificatesUI/CertificateTopButton";
 import EditCertificate from "../certificatesUI/EditCertificate";
 
 export default function Certificates() {
-
+    //Active pages set css
     setTimeout(function(){
         document.getElementById("certificate_link").classList.add('nav_active');
         document.getElementById("link_certificate").style.pointerEvents="none";

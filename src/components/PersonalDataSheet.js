@@ -31,12 +31,12 @@ import Skeleton from "@mui/material/Skeleton";
 import PreviewPDS from "./PreviewPDS";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
-import { Link } from "react-router-dom";
 import profile_lock from "../images/icons/profile_lock.svg";
 import Permanent_address from "../images/icons/Permanent_address.svg";
-import $ from 'jquery';
 
 export default function PersonalDataSheet() {
+
+
   //Tooltip
   const LightTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -51,14 +51,11 @@ export default function PersonalDataSheet() {
 
   //for getting the initial name in avatar
   let initialName = localStorage.getItem("name").charAt(0);
-  let profile_photo =
-    "http://localhost/fms/upload_profile/" +
-    localStorage.getItem("profile_photo");
+  let profile_photo ="http://localhost/fms/upload_profile/" +localStorage.getItem("profile_photo");
 
-  //If wala pa pds mag direct sa create pds
+  //If the use has no pds. It will redirect to create PDS page
   const [auth, setAuth] = useState("");
   let navigate = useNavigate();
-
   useEffect(() => {
     var auth = localStorage.getItem("pds_status");
     if (auth === "Pending") {
@@ -82,6 +79,7 @@ export default function PersonalDataSheet() {
       document.title = res.abbreviation+" | Personal Information";
   });
 
+  //Active pages set css
   setTimeout(function () {
     document.getElementById("pds_link").classList.add("nav_active");
     document.getElementById("link_profile").style.pointerEvents = "none";
@@ -101,7 +99,8 @@ export default function PersonalDataSheet() {
 
   //getting the email of user
   let email_key = localStorage.getItem("email");
-  //Task box container using map
+
+  //PDS container using map
   var key_pds_A = 0;
   const pds_step1 = pdsStep1.map((res) => {
     key_pds_A++;
@@ -586,6 +585,7 @@ export default function PersonalDataSheet() {
     loadpdsStep2();
   }, []);
 
+  //Map of input key elements in PDS2
   var key_pds_C = 0;
   const pds_step2 = pdsStep2.map((res) => {
     key_pds_C++;
@@ -599,55 +599,28 @@ export default function PersonalDataSheet() {
           <input type="hidden" id="elemYear" value={res.elem_yearGradPDS} />
           <input type="hidden" id="elemAward" value={res.elem_awardsPDS} />
           <input type="hidden" id="secName" value={res.second_namePDS} />
-          <input
-            type="hidden"
-            id="secAttain"
-            value={res.second_attainmentPDS}
-          />
+          <input type="hidden" id="secAttain" value={res.second_attainmentPDS}/>
           <input type="hidden" id="secFrom" value={res.second_dateFromPDS} />
           <input type="hidden" id="secTo" value={res.second_dateToPDS} />
           <input type="hidden" id="secUnit" value={res.second_unitPDS} />
           <input type="hidden" id="secYear" value={res.second_yearGradPDS} />
           <input type="hidden" id="secAward" value={res.second_awardsPDS} />
-
           <input type="hidden" id="vocName" value={res.vocational_namePDS} />
-          <input
-            type="hidden"
-            id="vocAttain"
-            value={res.vocational_attainmentPDS}
-          />
-          <input
-            type="hidden"
-            id="vocFrom"
-            value={res.vocational_dateFromPDS}
-          />
+          <input type="hidden" id="vocAttain" value={res.vocational_attainmentPDS}/>
+          <input type="hidden" id="vocFrom" value={res.vocational_dateFromPDS}/>
           <input type="hidden" id="vocTo" value={res.vocational_dateToPDS} />
           <input type="hidden" id="vocUnit" value={res.vocational_unitPDS} />
-          <input
-            type="hidden"
-            id="vocYear"
-            value={res.vocational_yearGradPDS}
-          />
+          <input type="hidden" id="vocYear" value={res.vocational_yearGradPDS}/>
           <input type="hidden" id="vocAward" value={res.vocational_awardsPDS} />
-
           <input type="hidden" id="colName" value={res.college_namePDS} />
-          <input
-            type="hidden"
-            id="colAttain"
-            value={res.college_attainmentPDS}
-          />
+          <input type="hidden" id="colAttain" value={res.college_attainmentPDS}/>
           <input type="hidden" id="colFrom" value={res.college_dateFromPDS} />
           <input type="hidden" id="colTo" value={res.college_dateToPDS} />
           <input type="hidden" id="colUnit" value={res.college_unitPDS} />
           <input type="hidden" id="colYear" value={res.college_yearGradPDS} />
           <input type="hidden" id="colAward" value={res.college_awardsPDS} />
-
           <input type="hidden" id="gradName" value={res.graduate_namePDS} />
-          <input
-            type="hidden"
-            id="gradAttain"
-            value={res.graduate_attainmentPDS}
-          />
+          <input type="hidden" id="gradAttain"value={res.graduate_attainmentPDS}/>
           <input type="hidden" id="gradFrom" value={res.graduate_dateFromPDS} />
           <input type="hidden" id="gradTo" value={res.graduate_dateToPDS} />
           <input type="hidden" id="gradUnit" value={res.graduate_unitPDS} />
@@ -1994,28 +1967,16 @@ export default function PersonalDataSheet() {
     document.getElementsByClassName("pds_3")[0].style.display = "none";
     document.getElementsByClassName("pds_4")[0].style.display = "none";
     document.getElementsByClassName("pds_1")[0].style.display = "none";
-
-    document.getElementsByClassName("box5go")[0].style.backgroundColor =
-      "#fbce8b";
-    document.getElementsByClassName("box5go")[0].style.borderLeft =
-      "5px solid rgb(254, 138, 60)";
-
-    document.getElementsByClassName("box2go")[0].style.backgroundColor =
-      "transparent";
-    document.getElementsByClassName("box2go")[0].style.borderLeft =
-      "0px solid #ffff";
-    document.getElementsByClassName("box3go")[0].style.backgroundColor =
-      "transparent";
-    document.getElementsByClassName("box3go")[0].style.borderLeft =
-      "0px solid #ffff";
-    document.getElementsByClassName("box4go")[0].style.backgroundColor =
-      "transparent";
-    document.getElementsByClassName("box4go")[0].style.borderLeft =
-      "0px solid #ffff";
-    document.getElementsByClassName("box1go")[0].style.backgroundColor =
-      "transparent";
-    document.getElementsByClassName("box1go")[0].style.borderLeft =
-      "0px solid #ffff";
+    document.getElementsByClassName("box5go")[0].style.backgroundColor = "#fbce8b";
+    document.getElementsByClassName("box5go")[0].style.borderLeft = "5px solid rgb(254, 138, 60)";
+    document.getElementsByClassName("box2go")[0].style.backgroundColor = "transparent";
+    document.getElementsByClassName("box2go")[0].style.borderLeft = "0px solid #ffff";
+    document.getElementsByClassName("box3go")[0].style.backgroundColor = "transparent";
+    document.getElementsByClassName("box3go")[0].style.borderLeft = "0px solid #ffff";
+    document.getElementsByClassName("box4go")[0].style.backgroundColor ="transparent";
+    document.getElementsByClassName("box4go")[0].style.borderLeft ="0px solid #ffff";
+    document.getElementsByClassName("box1go")[0].style.backgroundColor ="transparent";
+    document.getElementsByClassName("box1go")[0].style.borderLeft ="0px solid #ffff";
   }
 
   //Skeleton show
@@ -2031,6 +1992,7 @@ export default function PersonalDataSheet() {
     document.getElementsByClassName("link_to_show")[0].disabled =false;
   }, 1200);
 
+  //function go to web view
   function goToWebView() {
     document.getElementsByClassName("view_pdf_container")[0].style.display =
       "none";
@@ -2044,7 +2006,7 @@ export default function PersonalDataSheet() {
       "3px solid #FFAA28";
     document.getElementById("WebView_PDS").style.fontWeight = "600";
   }
-  //function go to pdf view
+  //function go to pds view
   function goToPDFView() {
     document.getElementsByClassName("view_pds_container")[0].style.display =
       "none";
@@ -2059,29 +2021,16 @@ export default function PersonalDataSheet() {
     document.getElementById("PDFView_PDS").style.fontWeight = "600";
   }
   
-  var doc = new jsPDF();
-  var specialElementHandlers = {
-      '#convertable_pdf_PDS1': function (element, renderer) {
-          return true;
-      }
-  };
-
+  //Printing PDF file
   function printDocument1() {
-    if(localStorage.getItem('isProfileLocked')=="yes"){
-      document.getElementById("profileLocked_modal").style.display = "flex";
-    }
-    else{
       let len = document.getElementsByClassName('page_Separator').length;
       var pdf = new jsPDF("p", "in", [8.5, 14]);
-
       for (let i = 1;i  <= len; i++){
-
         html2canvas(document.querySelector('#page_Separator'+i), {
           useCORS: true,
           allowTaint: true,
           scrollY: 0,
         }).then((canvas) => {
-
           const image = { type: "png", quality: 0.98 };
           const margin = [0.3, 0.3];
           const filename = "PersonalDataSheet.pdf";
@@ -2100,7 +2049,6 @@ export default function PersonalDataSheet() {
           var pageCtx = pageCanvas.getContext("2d");
           pageCanvas.width = canvas.width;
           pageCanvas.height = pxPageHeight;
-
           for (var page = 0; page < nPages; page++) {
             // Trim the final page to reduce file size.
             if (page === nPages - 1 && pxFullHeight % pxPageHeight !== 0) {
@@ -2128,8 +2076,7 @@ export default function PersonalDataSheet() {
               margin[0],
               innerPageWidth,
               pageHeight
-            );
-            
+            );   
           }
           if (i == len){
             window.open(pdf.output('bloburl'))
@@ -2138,11 +2085,7 @@ export default function PersonalDataSheet() {
           }
           //pdf.save(filename);
         });
-
-
       }       
-    }
-
   }
 
   const downloadProfileForm=(e)=>{
