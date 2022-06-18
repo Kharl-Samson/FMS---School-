@@ -1360,7 +1360,7 @@
     #table_containerID{
         margin-top: 19rem;
     }
-
+    
     .certificates_container{
         padding-bottom: 15vh;
     }
@@ -1401,6 +1401,10 @@
         width: 90%;
         -webkit-animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
         animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) ;
+    }
+
+    .tableCertificate_responsive{
+        margin-top: 1rem !important;
     }
 
 }

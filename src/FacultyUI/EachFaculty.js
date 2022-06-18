@@ -79,12 +79,12 @@ export default function EachFaculty() {
 
 
 
-            {/*Decline Modal*/}
+            {/*Delete Modal*/}
             <div className="modal_container delete_account" id="deleteAcc_modal">
                 <div className="modal_validation_version2">             
                 <p title="Close" className='close_modal' onClick={closeDeleteAcc}>&#215;</p>
                 <div className='top'>
-                    <img src={DeleteIconModal}/>
+                    <img src={DeleteIconModal} style={{marginLeft:"25px"}}/>
                     Confirm Action
                 </div>
                 <p className='title' style={{maxWidth:"90%"}}>Are you sure you want to permanently delete your account? </p>

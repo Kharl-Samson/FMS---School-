@@ -834,7 +834,7 @@ export default function PDSprintable() {
   const cseContent = CseBoard.map(() => {
     cse_ctr++;
     return (
-    <div className="pds_cse_row pds_cse_row1" key={cse_ctr}>
+    <div className="pds_cse_row pds_cse_row1 cse_counter" key={cse_ctr}>
       <div className="row1">
           <span>{CseBoard[cse_ctr]}</span>
       </div>
@@ -965,7 +965,7 @@ export default function PDSprintable() {
   const weContent = wePosition.map(() => {
     we_ctr++;
     return (
-    <div className="pds_we_row pds_we_row1" key={we_ctr}>
+    <div className="pds_we_row pds_we_row1 we_counter" key={we_ctr}>
       <div className="row1">
           <div className="bot bot1">
               <div className="from"><span>{weFrom[we_ctr] == "" ? "N/A" : moment(weFrom[we_ctr]).format('L')}</span></div>
@@ -1102,7 +1102,7 @@ export default function PDSprintable() {
 
     if (resultYear <= 5) {
       return (
-        <div className="pds_cert_row pds_cert_row1" key={ld_ctr}>
+        <div className="pds_cert_row pds_cert_row1 ld_counter" key={ld_ctr}>
             <div className="row1">
                 <span>{ldTitle[ld_ctr]}</span>
             </div>
@@ -1125,7 +1125,7 @@ export default function PDSprintable() {
       );
     } else {
       return (
-        <div className="pds_cert_row pds_cert_row1" key={ld_ctr}>
+        <div className="pds_cert_row pds_cert_row1 ld_counter" key={ld_ctr}>
             <div className="row1">
                 <span>N/A</span>
             </div>
@@ -1149,6 +1149,27 @@ export default function PDSprintable() {
     }
   });
 
+
+  setTimeout(function () {
+    var cse_len = document.getElementsByClassName("cse_counter").length;
+    var we_len = document.getElementsByClassName("we_counter").length;
+    var ld_len = document.getElementsByClassName("ld_counter").length;
+    if(cse_len <= 10){
+      for(var i = cse_len ; i < 10 ; i++){
+        document.getElementById("cse_empty"+i).style.display="flex";
+      }
+    }
+    if(we_len <= 15 ){
+      for(var x = we_len ; x < 15 ; x++){
+        document.getElementById("we_empty"+x).style.display="flex";
+      }
+    }
+    if(ld_len <= 22 ){
+      for(var y = ld_len ; y < 22 ; y++){
+        document.getElementById("ld_empty"+y).style.display="flex";
+      }
+    }
+}, 1000);
 
   return (
     <div className="step_content preview_pds">
@@ -1330,6 +1351,78 @@ export default function PDSprintable() {
       </div>
 
         {cseContent}
+
+        <div className="pds_cse_row pds_cse_row1 pds_empty" id="cse_empty1">
+          <div className="row1"><span style={{visibility:"hidden"}}>N/A</span></div>
+          <div className="row2"></div>
+          <div className="row3"></div>
+          <div className="row4"></div>
+          <div className="row5"></div>
+        </div>
+        <div className="pds_cse_row pds_cse_row1 pds_empty" id="cse_empty2">
+          <div className="row1"><span style={{visibility:"hidden"}}>N/A</span></div>
+          <div className="row2"></div>
+          <div className="row3"></div>
+          <div className="row4"></div>
+          <div className="row5"></div>
+        </div>
+        <div className="pds_cse_row pds_cse_row1 pds_empty" id="cse_empty3">
+          <div className="row1"><span style={{visibility:"hidden"}}>N/A</span></div>
+          <div className="row2"></div>
+          <div className="row3"></div>
+          <div className="row4"></div>
+          <div className="row5"></div>
+        </div>
+        <div className="pds_cse_row pds_cse_row1 pds_empty" id="cse_empty4">
+          <div className="row1"><span style={{visibility:"hidden"}}>N/A</span></div>
+          <div className="row2"></div>
+          <div className="row3"></div>
+          <div className="row4"></div>
+          <div className="row5"></div>
+        </div>
+        <div className="pds_cse_row pds_cse_row1 pds_empty" id="cse_empty5">
+          <div className="row1"><span style={{visibility:"hidden"}}>N/A</span></div>
+          <div className="row2"></div>
+          <div className="row3"></div>
+          <div className="row4"></div>
+          <div className="row5"></div>
+        </div>
+        <div className="pds_cse_row pds_cse_row1 pds_empty" id="cse_empty6">
+          <div className="row1"><span style={{visibility:"hidden"}}>N/A</span></div>
+          <div className="row2"></div>
+          <div className="row3"></div>
+          <div className="row4"></div>
+          <div className="row5"></div>
+        </div>
+        <div className="pds_cse_row pds_cse_row1 pds_empty" id="cse_empty7">
+          <div className="row1"><span style={{visibility:"hidden"}}>N/A</span></div>
+          <div className="row2"></div>
+          <div className="row3"></div>
+          <div className="row4"></div>
+          <div className="row5"></div>
+        </div>
+        <div className="pds_cse_row pds_cse_row1 pds_empty" id="cse_empty8">
+          <div className="row1"><span style={{visibility:"hidden"}}>N/A</span></div>
+          <div className="row2"></div>
+          <div className="row3"></div>
+          <div className="row4"></div>
+          <div className="row5"></div>
+        </div>
+        <div className="pds_cse_row pds_cse_row1 pds_empty" id="cse_empty9">
+          <div className="row1"><span style={{visibility:"hidden"}}>N/A</span></div>
+          <div className="row2"></div>
+          <div className="row3"></div>
+          <div className="row4"></div>
+          <div className="row5"></div>
+        </div>
+        <div className="pds_cse_row pds_cse_row1 pds_empty" id="cse_empty10">
+          <div className="row1"><span style={{visibility:"hidden"}}>N/A</span></div>
+          <div className="row2"></div>
+          <div className="row3"></div>
+          <div className="row4"></div>
+          <div className="row5"></div>
+        </div>
+
         {pds_step3 /*Eto yung mga input*/}
 
       {/*Step 4*/}
@@ -1371,6 +1464,143 @@ export default function PDSprintable() {
       </div>
 
         {weContent}
+
+        <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty1">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty2">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty3">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty4">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty5">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty6">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty7">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty8">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty9">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty10">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty11">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty12">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty13">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty14">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+    <div className="pds_we_row pds_we_row1 pds_empty" id="we_empty15">
+      <div className="row1"></div>
+      <div className="row2"><span style={{visibility:"hidden"}}>N/A</span></div>
+      <div className="row3"></div>
+      <div className="row4"></div>
+      <div className="row5"> </div>
+      <div className="row6"></div>
+      <div className="row7"></div>
+    </div>
+
         {pds_step4 /*Eto yung mga input*/}
 
       <div className="separate_sheet">
@@ -1421,6 +1651,162 @@ export default function PDSprintable() {
       </div>
 
         {ldContent}
+        
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty1">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty2">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty3">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty4">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty5">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty6">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty7">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty8">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty9">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty10">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty11">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty12">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty13">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty14">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty15">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty16">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty17">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty18">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty19">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty20">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty21">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+        <div className="pds_cert_row pds_cert_row1 pds_empty" id="ld_empty22">
+            <div className="row1"><span style={{visibility:"hidden"}}>N/a</span></div>
+            <div className="row2"></div>
+            <div className="row3"></div>
+            <div className="row4"></div>
+            <div className="row5"></div>
+        </div>
+
         {pds_step5 /*Eto yung mga input*/}
 
       <div className="pds_end">       

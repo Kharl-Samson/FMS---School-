@@ -15,6 +15,9 @@ import $ from "jquery";
 import PendingUsersPDF from "../FacultyUI/PendingUsersPDF";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import TableRowFacultyArchive from "../FacultyUI/TableRowFacultyArchive";
+import FacultyTopButtonArchive from "../FacultyUI/FacultyTopButtonArchive";
+import ArchiveUsersPDF from "../FacultyUI/ArchiveUsersPDF";
 
 export default function Faculty() {
 
@@ -48,9 +51,14 @@ getWebContent.map((res) => {
           "block";
         document.getElementById("pending_user_Table").style.display =
           "none";
+        document.getElementById("archive_user_Table").style.display =
+          "none";
         document.getElementById("pending_faculty").style.borderBottom =
           "0px solid #FFAA28";
         document.getElementById("pending_faculty").style.fontWeight = "normal";
+        document.getElementById("archive_faculty").style.borderBottom =
+        "0px solid #FFAA28";
+        document.getElementById("archive_faculty").style.fontWeight = "normal";
     
         document.getElementById("active_faculty").style.borderBottom =
           "3px solid #FFAA28";
@@ -75,8 +83,12 @@ getWebContent.map((res) => {
         for (var i = 0; i < div.length; i++) {
           div[i].style.display = "flex";
         }
+        var div22 = document.getElementsByClassName("facultyRow_archive");
+        for (var i = 0; i < div22.length; i++) {
+          div22[i].style.display = "flex";
+        }
       }
-      //function go to pdf view
+
       function goToPending() {
         document.getElementById("search_faculty_Pending").value = "";
 
@@ -84,10 +96,15 @@ getWebContent.map((res) => {
           "none";
         document.getElementById("pending_user_Table").style.display =
           "block";
+        document.getElementById("archive_user_Table").style.display =
+          "none";
         document.getElementById("active_faculty").style.borderBottom =
           "0px solid #FFAA28";
         document.getElementById("active_faculty").style.fontWeight = "normal";
-    
+        document.getElementById("archive_faculty").style.borderBottom =
+        "0px solid #FFAA28";
+        document.getElementById("archive_faculty").style.fontWeight = "normal";
+
         document.getElementById("pending_faculty").style.borderBottom =
           "3px solid #FFAA28";
         document.getElementById("pending_faculty").style.fontWeight = "600";
@@ -115,7 +132,62 @@ getWebContent.map((res) => {
         document.getElementById("input_to").value = "";
         document.getElementById("span_from").textContent = "dd/mm/yyyy";
         document.getElementById("span_to").textContent = "dd/mm/yyyy";
+
+        var div22 = document.getElementsByClassName("facultyRow_archive");
+        for (var i = 0; i < div22.length; i++) {
+          div22[i].style.display = "flex";
+        }
       }
+
+    function goToArchive() {
+        document.getElementById("search_faculty_Pending22").value = "";
+    
+        document.getElementById("active_user_Table").style.display =
+              "none";
+        document.getElementById("pending_user_Table").style.display =
+              "none";
+        document.getElementById("archive_user_Table").style.display =
+              "block";
+        document.getElementById("active_faculty").style.borderBottom =
+              "0px solid #FFAA28";
+        document.getElementById("active_faculty").style.fontWeight = "normal";
+
+        document.getElementById("pending_faculty").style.borderBottom =
+            "0px solid #FFAA28";
+        document.getElementById("pending_faculty").style.fontWeight = "normal";
+    
+        document.getElementById("archive_faculty").style.borderBottom =
+              "3px solid #FFAA28";
+        document.getElementById("archive_faculty").style.fontWeight = "600";
+    
+        if ($("#rowTable_forSearch_archive #facultyRow_archive:visible").length === 0) {
+          document.getElementsByClassName("no_searchFound20")[0].style.display ="flex";
+        }
+        else if ($("#rowTable_forSearch_archive #facultyRow_archive:visible").length != 0) {
+          document.getElementsByClassName("no_searchFound20")[0].style.display ="none";
+        }
+
+        var ele = document.getElementsByName("cb_filter");
+        for (var i = 0; i < ele.length; i++) {
+          ele[i].checked = false;
+        }
+        var div = document.getElementsByClassName("faculty_desktop");
+        var div1 = document.getElementsByClassName("facultyRow_desktop");
+        for (var i = 0; i < div.length; i++) {
+          div[i].style.display = "block";
+          div1[i].style.display = "flex";
+        }
+
+        document.getElementById("input_from").value = "";
+        document.getElementById("input_to").value = "";
+        document.getElementById("span_from").textContent = "dd/mm/yyyy";
+        document.getElementById("span_to").textContent = "dd/mm/yyyy";
+    
+        var div22 = document.getElementsByClassName("facultyRow_archive");
+        for (var i = 0; i < div22.length; i++) {
+          div22[i].style.display = "flex";
+        }
+    }
 
 
   return (
@@ -135,11 +207,14 @@ getWebContent.map((res) => {
                     <div id="pending_faculty" style={{zIndex:"0"}} onClick={goToPending}>
                         Pending Users
                     </div>
+                    <div id="archive_faculty" style={{zIndex:"0"}} onClick={goToArchive}>
+                        Archive
+                    </div>
                 </div>
                 
 
                 <div id="active_user_Table" style={{display:"block"}}>
-                    <div className="table_container" id="table_containerID">
+                    <div className="table_container tableCertificate_responsive" id="table_containerID">
                         <FacultyTopActions/>
                         <div className="certficate_scrollable" id="grid_table"> 
                             <EachFaculty/>
@@ -156,10 +231,19 @@ getWebContent.map((res) => {
                 </div>
 
                 <div id="pending_user_Table">
-                    <div className="table_container" id="table_containerID" style={{backgroundColor:"transparent" , boxShadow:"none"}}>
+                    <div className="table_container tableCertificate_responsive" id="table_containerID" style={{backgroundColor:"transparent" , boxShadow:"none"}}>
                             <FacultyTopButtonPending/>
                         <div className="certficate_scrollable1" id="row_table" style={{display:"block"}}>
                             <TableFacultyPending/>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="archive_user_Table" style={{display:"none"}}>
+                    <div className="table_container tableCertificate_responsive" id="table_containerID" style={{backgroundColor:"transparent" , boxShadow:"none"}}>
+                            <FacultyTopButtonArchive/>
+                        <div className="certficate_scrollable1" id="row_table" style={{display:"block"}}>
+                            <TableRowFacultyArchive/>
                         </div>
                     </div>
                 </div>
@@ -168,6 +252,7 @@ getWebContent.map((res) => {
 
             <AllUsersPDF/>
             <PendingUsersPDF/>
+            <ArchiveUsersPDF/>
 
         </div>
 

@@ -2191,7 +2191,7 @@ export default function PersonalDataSheet() {
             Web View
           </div>
           <div id="PDFView_PDS" onClick={goToPDFView} style={{zIndex:"0"}}>
-            PDF View
+            PDS View
           </div>
         </div>
 

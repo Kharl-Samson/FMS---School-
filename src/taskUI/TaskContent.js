@@ -132,7 +132,8 @@ export default function TaskContent(){
     var decline_faculty_modal_container = document.getElementsByClassName("decline_faculty_modal_container")[0];
     var logout_modalAdmin = document.getElementsByClassName("logout_modalAdmin")[0];
     var delete_account = document.getElementsByClassName("delete_account")[0];
-    
+    var restoreAcc_modal = document.getElementById("restoreAcc_modal");
+
     function CloseAllTask(){
         document.getElementsByClassName("see_all_task_container")[0].style.bottom = "-100%";
         setTimeout(function(){
@@ -198,6 +199,9 @@ export default function TaskContent(){
         }
         else if (event.target == delete_account) {
             delete_account.style.display = "none";
+        }   
+        else if (event.target == restoreAcc_modal) {
+            restoreAcc_modal.style.display = "none";
         }   
     }
 

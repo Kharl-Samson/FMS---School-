@@ -1555,3 +1555,7 @@
     font-size: .8rem;
     background-color: #eaeaea;
 }
+
+.pds_empty{
+    display: none;
+}

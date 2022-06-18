@@ -177,6 +177,45 @@
     text-align: center;
 }
 
+
+/*Table row*/
+#rowTable_forSearch_archive .header_faculty{
+    height:8vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+#rowTable_forSearch_archive .header_faculty .th span{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666666;
+}
+#rowTable_forSearch_archive .header_faculty .th1{
+    width: 25%;
+}
+#rowTable_forSearch_archive .header_faculty .th1 span{
+    margin-left: 30px;
+}
+#rowTable_forSearch_archive .header_faculty .th2{
+    width: 25%;
+}
+#rowTable_forSearch_archive .header_faculty .th2 span{
+    margin-left: 30px;
+}
+#rowTable_forSearch_archive .header_faculty .th3{
+    width: 17.5%;
+    text-align: center;
+}
+#rowTable_forSearch_archive .header_faculty .th4{
+    width: 17.5%;
+    text-align: center;
+}
+#rowTable_forSearch_archive .header_faculty .th5{
+    width: 15%;
+    text-align: center;
+}
+
+
 .certificates_container .table_container .certficate_scrollable1 .tableRow_scrollable_container_faculty{
     height: 53vh;
     width: 100%;
@@ -378,6 +417,24 @@
     width: 80%;
     height: auto;
 }
+.no_searchFound20{
+    height: 100%;
+    width: 300px;
+    margin: 0% auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #666666;
+}
+.no_searchFound20 img{
+    margin-bottom: 5px;
+    width: 80%;
+    height: auto;
+}
 
 #pending_user_Table{
     display: none;
@@ -425,6 +482,25 @@
         width: 30%;
     }
     
+    
+    #rowTable_forSearch_archive .header_faculty .th1{
+        width: 70%;
+    }
+    #rowTable_forSearch_archive .header_faculty .th1 span{
+        margin-left: 30px;
+    }
+    #rowTable_forSearch_archive .header_faculty .th2{
+        display: none;
+    }
+    #rowTable_forSearch_archive .header_faculty .th3{
+        display: none;
+    }
+    #rowTable_forSearch_archive .header_faculty .th4{
+        display: none;
+    }
+    #rowTable_forSearch_archive .header_faculty .th5{
+        width: 30%;
+    }
 
   
     .certificates_container .table_container .certficate_scrollable1{
@@ -508,5 +584,7 @@
         margin-left: 30px;
     }
 
-
+    .tableFaculty_admin{
+        margin-top: -17rem;
+    }
 }

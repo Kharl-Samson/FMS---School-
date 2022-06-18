@@ -27,7 +27,7 @@ export default function Certificates() {
             <div className="certificates_container" id="certificates_container">
                 <h1>Certificates</h1>
                 
-                <div className="table_container" id="table_containerID">
+                <div className="table_container tableCertificate_responsive" id="table_containerID">
                     <CertificateTopActions/>
 
                     <div className="certficate_scrollable" id="grid_table"> 

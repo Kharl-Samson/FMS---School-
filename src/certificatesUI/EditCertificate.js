@@ -228,7 +228,7 @@ const submitForm=(e)=>{
                 <h1>Edit a Certificate</h1>
     
                 <form onSubmit={submitForm}>
-                <div className="table_container" id="table_containerID">
+                <div className="table_container tableCertificate_responsive" id="table_containerID">
                     <div className="Upload_certificate_form">
 
                         <div className="ceritificate_img">
