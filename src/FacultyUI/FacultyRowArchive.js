@@ -22,7 +22,7 @@ export default function FacultyRowArchive(props){
             <div className="div3" style={{justifyContent:"center"}}><span style={{fontWeight:"normal",fontSize:".9rem",color:"#3D3D3D"}}>{props.fDep}</span></div>
             <div className="div4" style={{justifyContent:"center"}}><span style={{fontWeight:"normal",fontSize:".9rem",color:"#3D3D3D"}}>{props.fEmp+" EMPLOYEE"}</span></div>
             <div className="div5">
-                <button onClick={restoreFaculty_function}>Activate</button>    
+                <button onClick={restoreFaculty_function}>Restore</button>    
             </div>
     </div>
     )
